@@ -4,18 +4,19 @@
 
 
 
-# TP2 Algoritmos 3: {nombre}
+# TP2 Algoritmos 3: Kahoot
 
 Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
 
-## Grupo {N}
+## Grupo 1
 
-* **Integrante 1** - [integrante1](https://github.com/integrante1)
-* **Integrante 2** - [integrante2](https://github.com/integrante2)
-* **Integrante 3** - [integrante3](https://github.com/integrante3)
-* **Integrante 4** - [integrante4](https://github.com/integrante4)
+* **Luis Paredes** - [104851](https://github.com/LuisParedes1)
+* **Micaela Villordo** - [103828](https://github.com/micaelavillordo)
+* **Gisela Lopez Giles** - [104842](https://github.com/gylopezgiles)
+* **Alan Goyzueta** - [102988](https://github.com/AlanCristianGoyzueta)
+* **Mario Bezednjak** - [103287](https://github.com/bezednjak)
 
-Corrector: **{Corrector}**
+Corrector: **Diego**
 
 ### Pre-requisitos
 
