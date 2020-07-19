@@ -1,0 +1,63 @@
+
+@startuml
+
+
+abstract class Pregunta{
+    {abstract}mostrarPregunta()
+}
+
+interface respuesta{
+    responder(): bool
+}
+
+abstract Preg_Penal{
+    x2()
+    x3()
+}
+
+abstract Preg_Sin_Penal{
+    Exclusividad()
+}
+
+
+' sin penalidad
+class VF{
+}
+
+class Multiplie_Clasic{
+
+}
+
+class Multiple_Par{
+    
+}
+
+
+
+' con penalidad
+class VF_Penal{
+}
+
+class Multiple_penal{
+
+}
+
+
+
+Pregunta -> respuesta
+
+
+Pregunta <.. Preg_Penal
+Pregunta <.. Preg_Sin_Penal
+
+' Preg_Penal
+Preg_Penal <.. VF_Penal
+Preg_Penal <.. Multiple_penal
+
+
+' Pregun_Sin_Penal
+Preg_Sin_Penal <.. VF
+Preg_Sin_Penal <.. Multiplie_Clasic
+Preg_Sin_Penal <.. Multiple_Par
+
+@enduml

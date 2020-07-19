@@ -17,7 +17,7 @@ class Verdadero_Falso_con_penalidad{
 
 jugador -> pregunta
 
-pregunta --> respuesta
+pregunta -down-> respuesta
 
 
 respuesta --> Verdadero_Falso

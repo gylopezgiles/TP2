@@ -1,0 +1,24 @@
+@startuml
+
+class Juego{
+
+}
+
+
+class Jugador{
+    puntos: int
+
+    responder(): bool
+}
+
+abstract Preguntas{
+    responder(): bool
+}
+
+
+Juego -right->"*" Jugador
+
+Jugador .> Preguntas
+
+
+@enduml
