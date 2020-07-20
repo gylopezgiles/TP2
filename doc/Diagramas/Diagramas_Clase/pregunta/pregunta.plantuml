@@ -8,7 +8,8 @@ abstract class PreguntaCreador{
 }
 
 interface Preguntable{
-    + calcularPuntajeParcial(opcionesElegidas: list<Opciones>):int
+    + obtenerOpciones():List
+    + establecerPuntuacion(opciones:List): int
 }
 
 enum TipoPreguntaConcreta{

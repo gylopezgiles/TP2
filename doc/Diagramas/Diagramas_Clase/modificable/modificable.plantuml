@@ -4,8 +4,7 @@ skinparam classAttributeIconSize 0
 
 
 class Ronda {
-    - jugador1: Jugador
-    - jugador2: Jugador
+    - jugadores: List
     - modificadorPorJugador: Map<Jugador,Modificador>
     - estado:EstadoRonda
 
