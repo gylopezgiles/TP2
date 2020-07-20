@@ -1,63 +1,63 @@
 
 @startuml
+title Pregunta usando Patron Factory
+skinparam classAttributeIconSize 0
 
-
-abstract class Pregunta{
-    {abstract}mostrarPregunta()
+abstract class PreguntaCreador{
+    + {abstract}crearPregunta(tipoPregunta: TipoPregunta): Preguntable
 }
 
-interface respuesta{
-    responder(): bool
+interface Preguntable{
+    + calcularPuntajeParcial(opcionesElegidas: list<Opciones>):int
 }
 
-abstract Preg_Penal{
-    x2()
-    x3()
-}
-
-abstract Preg_Sin_Penal{
-    Exclusividad()
+enum TipoPreguntaConcreta{
 }
 
 
 ' sin penalidad
-class VF{
+class VF_Clasico{
 }
 
-class Multiplie_Clasic{
+class Multiplie_Clasico{
 
 }
 
-class Multiple_Par{
+class Multiple_Parcial{
     
 }
-
 
 
 ' con penalidad
 class VF_Penal{
 }
 
-class Multiple_penal{
-
+class Multiple_Penal{
 }
 
 
+' Especiales
+class GroupChoice{
+}
 
-Pregunta -> respuesta
+class OpcionesOrdenadas{
+}
 
 
-Pregunta <.. Preg_Penal
-Pregunta <.. Preg_Sin_Penal
+PreguntaCreador -down->TipoPreguntaConcreta
+PreguntaCreador -> Preguntable
 
 ' Preg_Penal
-Preg_Penal <.. VF_Penal
-Preg_Penal <.. Multiple_penal
+Preguntable <.. VF_Penal
+Preguntable <.. Multiple_Penal
 
 
 ' Pregun_Sin_Penal
-Preg_Sin_Penal <.. VF
-Preg_Sin_Penal <.. Multiplie_Clasic
-Preg_Sin_Penal <.. Multiple_Par
+Preguntable <.. VF_Clasico
+Preguntable <.. Multiplie_Clasico
+Preguntable <.. Multiple_Parcial
+
+Preguntable <.. GroupChoice
+Preguntable <.. OpcionesOrdenadas
 
 @enduml

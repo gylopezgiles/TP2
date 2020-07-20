@@ -1,0 +1,38 @@
+@startuml
+title Modelo Inicial del Juego
+skinparam classAttributeIconSize 0
+
+class Partida{
+}
+
+
+class Jugador{
+    puntos: int
+
+    + {static} crearJugador(): Jugador
+}
+
+class Preguntable{
+    responder(): bool
+}
+
+class Ronda{
+    + {static} generarRonda(): Ronda
+}
+
+class Alterables{
+}
+
+
+
+Partida "1"-left->"*" Jugador
+
+Partida "1"->"*" Preguntable
+
+Partida "1" -down->"*" Ronda
+Ronda -down-> Alterables
+Ronda o-up-> Preguntable
+Ronda o-left->Jugador
+
+
+@enduml
