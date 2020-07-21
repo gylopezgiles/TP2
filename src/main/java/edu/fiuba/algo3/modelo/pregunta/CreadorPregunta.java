@@ -5,8 +5,13 @@ import java.util.List;
 public class CreadorPregunta {
 
     public static Preguntable crearPregunta(TipoPregunta tipoPregunta, List<Opcion> opciones){
-        //TODO
-        Preguntable preguntaACrear = new VerdaderoFalsoClasico(opciones);
+
+        Preguntable preguntaACrear ;
+        switch (tipoPregunta) {
+            case VerdaderoFalsoClasico: preguntaACrear = new VerdaderoFalsoClasico(opciones);
+            default: preguntaACrear = new VerdaderoFalsoClasico(opciones);
+        }
+
 
         return preguntaACrear;
     }

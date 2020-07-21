@@ -4,7 +4,7 @@ import java.util.List;
 
 public class VerdaderoFalsoClasico implements Preguntable {
 
-    List<Opcion> opciones;
+    private List<Opcion> opciones;
     VerdaderoFalsoClasico(List<Opcion> opciones){
        this.opciones = opciones;
     }
@@ -16,7 +16,7 @@ public class VerdaderoFalsoClasico implements Preguntable {
 
     @Override
     public int establecerPuntuacion(List<Opcion> opciones) {
-        //TODO
+
         return 0;
     }
 }
