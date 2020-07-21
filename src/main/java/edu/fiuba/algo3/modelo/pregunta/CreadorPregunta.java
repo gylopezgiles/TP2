@@ -6,6 +6,8 @@ public class CreadorPregunta {
 
     public static Preguntable crearPregunta(TipoPregunta tipoPregunta, List<Opcion> opciones){
         //TODO
-        return null;
+        Preguntable preguntaACrear = new VerdaderoFalsoClasico(opciones);
+
+        return preguntaACrear;
     }
 }

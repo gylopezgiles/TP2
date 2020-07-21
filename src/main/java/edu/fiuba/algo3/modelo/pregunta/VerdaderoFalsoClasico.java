@@ -4,14 +4,14 @@ import java.util.List;
 
 public class VerdaderoFalsoClasico implements Preguntable {
 
+    List<Opcion> opciones;
     VerdaderoFalsoClasico(List<Opcion> opciones){
-        //TODO
+       this.opciones = opciones;
     }
 
     @Override
     public List<Opcion> obtenerOpciones() {
-        //TODO
-        return null;
+      return this.opciones;
     }
 
     @Override
