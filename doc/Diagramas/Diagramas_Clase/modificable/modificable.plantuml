@@ -1,0 +1,39 @@
+@startuml
+title Modelo de Modificador
+skinparam classAttributeIconSize 0
+
+
+class Ronda {
+    - jugadores: List
+    - modificadorPorJugador: Map<Jugador,Modificador>
+    - estado:EstadoRonda
+
+    + cambiarEstado(estadoRonda)
+    + aplicarAccionRonda()
+}
+
+interface Modificable{
+    + aplicarModificador(jugadorConModificador: Jugador, otroJugador: Jugador): int
+}
+
+class Normal{
+}
+
+class X2{
+}
+
+class X3{
+}
+
+class Exclusividad{
+}
+
+
+Ronda o-> Modificable
+
+Modificable <.up. Normal
+Modificable <.up. X2
+Modificable <.up. X3
+Modificable <.up. Exclusividad
+
+@enduml

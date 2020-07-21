@@ -1,0 +1,64 @@
+
+@startuml
+title Pregunta usando Patron Factory
+skinparam classAttributeIconSize 0
+
+abstract class PreguntaCreador{
+    + {abstract}crearPregunta(tipoPregunta: TipoPregunta): Preguntable
+}
+
+interface Preguntable{
+    + obtenerOpciones():List
+    + establecerPuntuacion(opciones:List): int
+}
+
+enum TipoPreguntaConcreta{
+}
+
+
+' sin penalidad
+class VF_Clasico{
+}
+
+class Multiplie_Clasico{
+
+}
+
+class Multiple_Parcial{
+    
+}
+
+
+' con penalidad
+class VF_Penal{
+}
+
+class Multiple_Penal{
+}
+
+
+' Especiales
+class GroupChoice{
+}
+
+class OpcionesOrdenadas{
+}
+
+
+PreguntaCreador -down->TipoPreguntaConcreta
+PreguntaCreador -> Preguntable
+
+' Preg_Penal
+Preguntable <.. VF_Penal
+Preguntable <.. Multiple_Penal
+
+
+' Pregun_Sin_Penal
+Preguntable <.. VF_Clasico
+Preguntable <.. Multiplie_Clasico
+Preguntable <.. Multiple_Parcial
+
+Preguntable <.. GroupChoice
+Preguntable <.. OpcionesOrdenadas
+
+@enduml
