@@ -14,7 +14,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **Micaela Villordo** - [103828](https://github.com/micaelavillordo)
 * **Gisela Lopez Giles** - [104842](https://github.com/gylopezgiles)
 * **Alan Goyzueta** - [102988](https://github.com/AlanCristianGoyzueta)
-* **Mario Bezednjak** - [103287](https://github.com/bezednjak)
+* **Mario Besednjak** - [103287](https://github.com/besednjak)
 
 Corrector: **Diego**
 
