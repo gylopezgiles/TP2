@@ -10,8 +10,9 @@ import java.util.List;
 
 public class VerdaderoFalsoClasicoTest {
 
+
     @Test
-    void crearVerdaderoFalsoClasicoConOpciones(){
+    public void crearVerdaderoFalsoClasicoConOpciones(){
         //Test para Alan
         Opcion opcionCorrecta = new Opcion("Verdadero", Boolean.TRUE);
         Opcion opcionIncorrecta = new Opcion("Falso", Boolean.FALSE);
@@ -25,7 +26,7 @@ public class VerdaderoFalsoClasicoTest {
     }
 
     @Test
-    void preguntaVerdaderoFalsoClasicoAsignaPuntajeCorrectamente(){
+    public void preguntaVerdaderoFalsoClasicoAsignaPuntajeCorrectamente(){
         //Test para Mica
         Opcion opcionCorrecta = new Opcion("Verdadero", Boolean.TRUE);
         Opcion opcionIncorrecta = new Opcion("Falso", Boolean.FALSE);
