@@ -11,7 +11,6 @@ public class Opcion {
     }
 
     public Boolean esCorrecta(){
-        //TODO
-        return Boolean.TRUE;
+        return correcta;
     }
 }

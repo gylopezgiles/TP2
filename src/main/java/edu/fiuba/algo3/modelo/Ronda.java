@@ -17,6 +17,6 @@ public class Ronda {
     }
 
     public void responder(Jugador jugador, List<Opcion> opciones){
-        jugador.sumarPuntos(this.pregunta.establecerPuntuacion(opciones));
+        jugador.sumarPuntos(pregunta.establecerPuntuacion(opciones));
     }
 }
