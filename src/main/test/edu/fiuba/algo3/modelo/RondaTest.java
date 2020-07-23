@@ -46,7 +46,6 @@ public class RondaTest {
         ronda.responder(jugador1, opciones);
 
         Assertions.assertEquals(1, jugador1.obtenerPuntos());
-
     }
 
     @Test
