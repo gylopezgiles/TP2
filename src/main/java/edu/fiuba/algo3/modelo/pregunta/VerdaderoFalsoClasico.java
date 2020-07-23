@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo.pregunta;
 
-import edu.fiuba.algo3.modelo.excepciones.CantidadOpcionesExcepcion;
-import edu.fiuba.algo3.modelo.excepciones.CantidadRespuestasCorrectasExcepcion;
+import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,7 +14,7 @@ public class VerdaderoFalsoClasico implements Preguntable {
     private List<Opcion> opciones;
     private String pregunta;
 
-    public VerdaderoFalsoClasico(String pregunta, List<Opcion> opciones) throws CantidadOpcionesExcepcion, CantidadRespuestasCorrectasExcepcion {
+    public VerdaderoFalsoClasico(String pregunta, List<Opcion> opciones) throws ParametrosInvalidosExcepcion {
         validarOpciones(opciones);
         this.pregunta = pregunta;
         this.opciones = opciones;
@@ -39,12 +38,12 @@ public class VerdaderoFalsoClasico implements Preguntable {
         return pregunta;
     }
 
-    private void validarOpciones(List<Opcion> opciones) throws CantidadOpcionesExcepcion, CantidadRespuestasCorrectasExcepcion {
+    private void validarOpciones(List<Opcion> opciones) throws ParametrosInvalidosExcepcion {
         if(!tieneCantidadOpcionesValida(opciones)){
-            throw new CantidadOpcionesExcepcion("Las preguntas verdadero falso clasico deben tener solo 2 opciones");
+            throw new ParametrosInvalidosExcepcion("Las preguntas verdadero falso clasico deben tener solo 2 opciones");
         }
         if(!tieneOpcionesCorrectas(opciones)){
-            throw new CantidadRespuestasCorrectasExcepcion("Las preguntas verdadero falso clasico deben tener 1 opcion correcta");
+            throw new ParametrosInvalidosExcepcion("Las preguntas verdadero falso clasico deben tener 1 opcion correcta");
         }
     }
 

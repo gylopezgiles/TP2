@@ -2,9 +2,7 @@ package edu.fiuba.algo3.modelo.entrega;
 
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Ronda;
-import edu.fiuba.algo3.modelo.excepciones.CantidadOpcionesExcepcion;
-import edu.fiuba.algo3.modelo.excepciones.CantidadRespuestasCorrectasExcepcion;
-import edu.fiuba.algo3.modelo.excepciones.RondaSinPreguntaExcepcion;
+import edu.fiuba.algo3.modelo.excepciones.*;
 import edu.fiuba.algo3.modelo.pregunta.CreadorPregunta;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
@@ -18,7 +16,7 @@ import java.util.List;
 public class Entrega0Test {
 
     @Test
-    public void crearVerdaderoFalsoClasicoConOpciones() throws CantidadRespuestasCorrectasExcepcion, CantidadOpcionesExcepcion {
+    public void crearVerdaderoFalsoClasicoConOpciones() throws ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
         //Given
         Opcion opcionCorrecta = new Opcion("Verdadero", Boolean.TRUE);
         Opcion opcionIncorrecta = new Opcion("Falso", Boolean.FALSE);
@@ -35,7 +33,7 @@ public class Entrega0Test {
     }
 
     @Test
-    public void preguntaVerdaderoFalsoClasicoAsignaPuntajeCorrectamente() throws RondaSinPreguntaExcepcion, CantidadRespuestasCorrectasExcepcion, CantidadOpcionesExcepcion {
+    public void preguntaVerdaderoFalsoClasicoAsignaPuntajeCorrectamente() throws RondaSinPreguntaExcepcion, ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
         //Given
         Opcion opcionCorrecta = new Opcion("Verdadero", Boolean.TRUE);
         Opcion opcionIncorrecta = new Opcion("Falso", Boolean.FALSE);

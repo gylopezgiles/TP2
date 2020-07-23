@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo.pregunta;
 
-import edu.fiuba.algo3.modelo.excepciones.CantidadOpcionesExcepcion;
-import edu.fiuba.algo3.modelo.excepciones.CantidadRespuestasCorrectasExcepcion;
+import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +11,7 @@ import java.util.List;
 public class VerdaderoFalsoClasicoTest {
 
     @Test
-    public void debeCrearUnaPreguntaVerdaderFalsoConOpciones() throws CantidadRespuestasCorrectasExcepcion, CantidadOpcionesExcepcion {
+    public void debeCrearUnaPreguntaVerdaderFalsoConOpciones() throws ParametrosInvalidosExcepcion {
         Opcion opcionCorrecta = new Opcion("Verdadero", Boolean.TRUE);
         Opcion opcionIncorrecta = new Opcion("Falso", Boolean.FALSE);
         List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
@@ -27,7 +26,7 @@ public class VerdaderoFalsoClasicoTest {
     @Test
     public void debeLanzarExcepcionCrearPreguntaSinOpciones() {
 
-        Assertions.assertThrows(CantidadOpcionesExcepcion.class, () -> new VerdaderoFalsoClasico("pregunta?", Collections.EMPTY_LIST));
+        Assertions.assertThrows(ParametrosInvalidosExcepcion.class, () -> new VerdaderoFalsoClasico("pregunta?", Collections.EMPTY_LIST));
 
     }
 
@@ -37,7 +36,7 @@ public class VerdaderoFalsoClasicoTest {
         Opcion opcion = new Opcion("opcion", Boolean.TRUE);
         List<Opcion> opciones = Arrays.asList(opcion);
 
-        Assertions.assertThrows(CantidadOpcionesExcepcion.class, () -> new VerdaderoFalsoClasico("pregunta?", opciones));
+        Assertions.assertThrows(ParametrosInvalidosExcepcion.class, () -> new VerdaderoFalsoClasico("pregunta?", opciones));
 
     }
 
@@ -47,7 +46,7 @@ public class VerdaderoFalsoClasicoTest {
         Opcion opcionIncorrecta2 = new Opcion("Falso", Boolean.FALSE);
         List<Opcion> opciones = Arrays.asList(opcionIncorrecta1, opcionIncorrecta2);
 
-        Assertions.assertThrows(CantidadRespuestasCorrectasExcepcion.class, () -> new VerdaderoFalsoClasico("pregunta?", opciones));
+        Assertions.assertThrows(ParametrosInvalidosExcepcion.class, () -> new VerdaderoFalsoClasico("pregunta?", opciones));
 
     }
 
@@ -57,7 +56,7 @@ public class VerdaderoFalsoClasicoTest {
         Opcion opcionCorrecta2 = new Opcion("Falso", Boolean.TRUE);
         List<Opcion> opciones = Arrays.asList(opcionCorrecta1, opcionCorrecta2);
 
-        Assertions.assertThrows(CantidadRespuestasCorrectasExcepcion.class, () -> new VerdaderoFalsoClasico("pregunta?", opciones));
+        Assertions.assertThrows(ParametrosInvalidosExcepcion.class, () -> new VerdaderoFalsoClasico("pregunta?", opciones));
 
     }
 
