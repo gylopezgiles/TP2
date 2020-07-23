@@ -10,6 +10,10 @@ public class Opcion {
         this.correcta = correcta;
     }
 
+    public String obtenerTexto(){
+        return texto;
+    }
+
     public Boolean esCorrecta(){
         return correcta;
     }

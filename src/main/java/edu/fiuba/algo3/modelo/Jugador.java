@@ -9,8 +9,12 @@ public class Jugador {
         this.nombre = nombre;
     }
 
+    public String obtenerNombre(){
+        return nombre;
+    }
+
     public int obtenerPuntos(){
-        return this.puntos;
+        return puntos;
     }
 
     public void sumarPuntos(int puntos){

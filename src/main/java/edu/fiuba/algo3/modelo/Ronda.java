@@ -1,8 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.excepciones.RondaSinPreguntaExcepcion;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
-import edu.fiuba.algo3.modelo.pregunta.VerdaderoFalsoClasico;
 
 import java.util.List;
 
@@ -16,7 +16,19 @@ public class Ronda {
         this.pregunta = pregunta;
     }
 
-    public void responder(Jugador jugador, List<Opcion> opciones){
+    public List<Jugador> obtenerJugadores(){
+        return jugadores;
+    }
+
+    public Preguntable obtenerPregunta(){
+        return pregunta;
+    }
+
+    public void responder(Jugador jugador, List<Opcion> opciones) throws RondaSinPreguntaExcepcion {
+        if(pregunta == null){
+            throw new RondaSinPreguntaExcepcion("No se puede responder sin una pregunta");
+        }
+
         jugador.sumarPuntos(pregunta.establecerPuntuacion(opciones));
     }
 }
