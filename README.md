@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/fiuba/algo3_proyecto_base_tp2.svg?branch=master)](https://travis-ci.org/fiuba/algo3_proyecto_base_tp2)
+[![Build Status](https://travis-ci.org/gylopezgiles/TP2.svg?branch=master)](https://travis-ci.org/gylopezgiles/TP2)
 
-[![codecov](https://codecov.io/gh/fiuba/algo3_proyecto_base_tp2/branch/master/graph/badge.svg)](https://codecov.io/gh/fiuba/algo3_proyecto_base_tp2)
+[![codecov](https://codecov.io/gh/gylopezgiles/TP2/branch/master/graph/badge.svg)](https://codecov.io/gh/gylopezgiles/TP2)
 
 
 
