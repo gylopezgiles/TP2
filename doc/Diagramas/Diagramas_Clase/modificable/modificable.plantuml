@@ -3,13 +3,13 @@ title Modelo de Modificador
 skinparam classAttributeIconSize 0
 
 
-class Ronda {
-    - jugadores: List
-    - modificadorPorJugador: Map<Jugador,Modificador>
-    - estado:EstadoRonda
+class Ronda{
+    - jugadores: List<Jugador>
+    - pregunta: Preguntable
 
-    + cambiarEstado(estadoRonda)
-    + aplicarAccionRonda()
+    + obtenerJugadores(): List<Jugador>
+    + obtenerPregunta():Preguntable
+    + responder():void
 }
 
 interface Modificable{
