@@ -5,7 +5,7 @@ import java.util.List;
 public class CreadorPregunta {
 
     public static Preguntable crearPregunta(TipoPregunta tipoPregunta, List<Opcion> opciones){
-        switch (tipoPregunta) {
+        switch (tipoPregunta){
             case VerdaderoFalsoClasico:
                 return new VerdaderoFalsoClasico(opciones);
             default:

@@ -34,7 +34,7 @@ public class VerdaderoFalsoClasicoTest {
         Preguntable verdaderoFalsoClasico = CreadorPregunta.crearPregunta(TipoPregunta.VerdaderoFalsoClasico, opciones);
         List<Opcion> opcionSeleccionada = Arrays.asList(opcionCorrecta);
         Jugador jugador = new Jugador("jugador");
-        List<Jugador> jugadores = Arrays.asList(new Jugador("jugador"));
+        List<Jugador> jugadores = Arrays.asList(jugador);
         Ronda ronda = new Ronda(jugadores, verdaderoFalsoClasico);
 
         ronda.responder(jugador, opcionSeleccionada);
