@@ -20,7 +20,7 @@ Corrector: **Diego Sánchez**
 
 #### Diagrama de clases
 
-![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://github.com/gylopezgiles/TP2/blob/develop/doc/Diagramas/Diagramas_Clase/partida/partida.plantuml)
+![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/doc/Diagramas/Diagramas_Clase/partida/partida.plantuml)
 
 ### Pre-requisitos
 
