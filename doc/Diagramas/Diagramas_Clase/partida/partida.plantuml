@@ -7,20 +7,32 @@ class Partida{
 
 
 class Jugador{
-    puntos: int
+    - puntos: int
+    - nombre: string
 
-    + {static} crearJugador(): Jugador
+    + obtenerNombre():string
+    + obtenerPuntaje():int
+    + sumarPuntos():void
 }
 
-class Preguntable{
-    responder(): bool
+interface Preguntable{
+    + {abstract}obtenerOpciones(): List<Opcion>
+    + {abstract}establecerPuntuacion(List<Opcion>): int
+    + {abstract}obtenerPregunta(): str
+
 }
 
 class Ronda{
-    + {static} generarRonda(): Ronda
+    ' - jugadores: List<Jugador>
+    ' - pregunta: Preguntable
+
+    + obtenerJugadores(): List<Jugador>
+    + obtenerPregunta():Preguntable
+    + responder():void
 }
 
-class Alterables{
+class Modificable{
+
 }
 
 
@@ -30,9 +42,9 @@ Partida "1"-left->"*" Jugador
 Partida "1"->"*" Preguntable
 
 Partida "1" -down->"*" Ronda
-Ronda -down-> Alterables
-Ronda o-up-> Preguntable
-Ronda o-left->Jugador
+Ronda "1  "-down..>"*" Modificable
+Ronda "1" o-up->"*" Preguntable
+Ronda "1" o-left->"*"Jugador
 
 
 @enduml
