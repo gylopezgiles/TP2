@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/fiuba/algo3_proyecto_base_tp2.svg?branch=master)](https://travis-ci.org/fiuba/algo3_proyecto_base_tp2)
+[![Build Status](https://travis-ci.org/gylopezgiles/TP2.svg?branch=master)](https://travis-ci.org/gylopezgiles/TP2)
 
-[![codecov](https://codecov.io/gh/fiuba/algo3_proyecto_base_tp2/branch/master/graph/badge.svg)](https://codecov.io/gh/fiuba/algo3_proyecto_base_tp2)
+[![codecov](https://codecov.io/gh/gylopezgiles/TP2/branch/master/graph/badge.svg)](https://codecov.io/gh/gylopezgiles/TP2)
 
 
 
@@ -14,7 +14,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **Micaela Villordo** - [103828](https://github.com/micaelavillordo)
 * **Gisela Lopez Giles** - [104842](https://github.com/gylopezgiles)
 * **Alan Goyzueta** - [102988](https://github.com/AlanCristianGoyzueta)
-* **Mario Bezednjak** - [103287](https://github.com/bezednjak)
+* **Mario Besednjak** - [103287](https://github.com/besednjak)
 
 Corrector: **Diego**
 
