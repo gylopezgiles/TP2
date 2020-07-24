@@ -16,7 +16,11 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **Alan Goyzueta** - [102988](https://github.com/AlanCristianGoyzueta)
 * **Mario Besednjak** - [103287](https://github.com/besednjak)
 
-Corrector: **Diego**
+Corrector: **Diego Sánchez**
+
+#### Diagrama de clases
+
+![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/blob/develop/doc/Diagramas/Diagramas_Clase/partida/partida.plantuml)
 
 ### Pre-requisitos
 
