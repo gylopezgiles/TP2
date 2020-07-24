@@ -1,15 +1,16 @@
 
 @startuml
-title Pregunta usando Patron Factory
+title Modelo de Pregunta usando Simple Factory
 skinparam classAttributeIconSize 0
 
-abstract class PreguntaCreador{
-    + {abstract}crearPregunta(tipoPregunta: TipoPregunta): Preguntable
+class PreguntaCreador{
+    + crearPregunta(tipoPregunta: TipoPregunta): Preguntable
 }
 
 interface Preguntable{
     + obtenerOpciones():List
     + establecerPuntuacion(opciones:List): int
+    + obtenerPregunta():str
 }
 
 enum TipoPreguntaConcreta{
