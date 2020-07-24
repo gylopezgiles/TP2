@@ -22,6 +22,10 @@ Corrector: **Diego Sánchez**
 
 ![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Clase/partida/partida.plantuml)
 
+![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Clase/pregunta/pregunta.plantuml)
+
+![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Clase/modificable/modificable.plantuml)
+
 ### Pre-requisitos
 
 Listado de software/herramientas necesarias para el proyecto
