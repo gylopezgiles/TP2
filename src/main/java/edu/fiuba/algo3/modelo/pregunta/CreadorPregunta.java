@@ -11,6 +11,8 @@ public class CreadorPregunta {
         switch (tipoPregunta) {
             case VerdaderoFalsoClasico:
                 return new VerdaderoFalsoClasico(pregunta, opciones);
+            case MultipleChoiceParcial:
+                return new MultipleChoiceParcial();
             default:
                 throw new TipoPreguntaNoImplementadaException(String.format("El tipoPregunta %s no esta implementado", tipoPregunta.toString()));
         }
