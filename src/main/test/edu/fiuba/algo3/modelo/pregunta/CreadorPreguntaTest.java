@@ -17,10 +17,26 @@ public class CreadorPreguntaTest {
         Opcion opcionIncorrecta = new Opcion("opcion", Boolean.FALSE);
         List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
         String preguntaTexto = "pregunta?";
-        Preguntable preguntaEsperada = new VerdaderoFalsoClasico(preguntaTexto, opciones);
+        VerdaderoFalsoClasico preguntaEsperada = new VerdaderoFalsoClasico(preguntaTexto, opciones);
 
         Preguntable pregunta = CreadorPregunta.crearPregunta(TipoPregunta.VerdaderoFalsoClasico, preguntaTexto, opciones);
 
+        Assertions.assertEquals(preguntaEsperada.getClass(), pregunta.getClass());
+        Assertions.assertEquals(preguntaEsperada.obtenerOpciones(), pregunta.obtenerOpciones());
+        Assertions.assertEquals(preguntaEsperada.obtenerPregunta(), pregunta.obtenerPregunta());
+    }
+
+    @Test
+    public void debeCrearPreguntaVerdaderoFalsoPenalidad() throws ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
+        Opcion opcionCorrecta = new Opcion("opcion", Boolean.TRUE);
+        Opcion opcionIncorrecta = new Opcion("opcion", Boolean.FALSE);
+        List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
+        String preguntaTexto = "pregunta?";
+        VerdaderoFalsoPenalidad preguntaEsperada = new VerdaderoFalsoPenalidad(preguntaTexto, opciones);
+
+        Preguntable pregunta = CreadorPregunta.crearPregunta(TipoPregunta.VerdaderoFalsoPenalidad, preguntaTexto, opciones);
+
+        Assertions.assertEquals(preguntaEsperada.getClass(), pregunta.getClass());
         Assertions.assertEquals(preguntaEsperada.obtenerOpciones(), pregunta.obtenerOpciones());
         Assertions.assertEquals(preguntaEsperada.obtenerPregunta(), pregunta.obtenerPregunta());
     }
