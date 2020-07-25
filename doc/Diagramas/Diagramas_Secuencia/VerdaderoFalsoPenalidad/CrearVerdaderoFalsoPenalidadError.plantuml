@@ -1,0 +1,13 @@
+@startuml
+title Creación Verdadero Falso Con Penalidad Con Opciones Invalidas
+
+Kahoot -> CreadorPregunta: CreadorPregunta.crearPregunta(TipoPregunta.VerdaderoFalsoPenalidad, pregunta, opciones)
+CreadorPregunta -> VerdaderoFalsoPenalidad: new VerdaderoFalsoPenalidad(pregunta, opciones)
+
+activate VerdaderoFalsoPenalidad
+VerdaderoFalsoPenalidad -> VerdaderoFalsoPenalidad: validarOpciones(opciones)
+VerdaderoFalsoPenalidad -> CreadorPregunta: throw ParametrosInvalidosExcepcion()
+deactivate VerdaderoFalsoPenalidad
+
+CreadorPregunta --> Kahoot: throw ParametrosInvalidosExcepcion()
+@enduml
