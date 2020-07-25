@@ -6,15 +6,15 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class VerdaderoFalsoClasico implements Preguntable {
+public class VerdaderoFalsoClasicoConPenalidad implements Preguntable {
 
     private static final int CANTIDAD_OPCIONES_VALIDAS = 2;
     private static final int CANTIDAD_OPCIONES_CORRECTAS = 1;
 
-    private List<Opcion> opciones;
     private String pregunta;
+    private List<Opcion> opciones;
 
-    public VerdaderoFalsoClasico(String pregunta, List<Opcion> opciones) throws ParametrosInvalidosExcepcion {
+    public VerdaderoFalsoClasicoConPenalidad(String pregunta, List<Opcion> opciones) throws ParametrosInvalidosExcepcion {
         validarOpciones(opciones);
         this.pregunta = pregunta;
         this.opciones = opciones;
@@ -22,7 +22,7 @@ public class VerdaderoFalsoClasico implements Preguntable {
 
     @Override
     public List<Opcion> obtenerOpciones() {
-      return this.opciones;
+        return this.opciones;
     }
 
     @Override
@@ -30,7 +30,12 @@ public class VerdaderoFalsoClasico implements Preguntable {
         Optional<Opcion> opcion = opciones.stream()
                 .filter(op -> op.esCorrecta())
                 .findAny();
-        return opcion.isPresent() ? 1 : 0;
+        return opcion.isPresent() ? 1 : -1;
+    }
+
+    @Override
+    public String obtenerPregunta() {
+        return this.pregunta;
     }
 
     @Override
@@ -43,10 +48,7 @@ public class VerdaderoFalsoClasico implements Preguntable {
     }
 
 
-    @Override
-    public String obtenerPregunta() {
-        return pregunta;
-    }
+    // REPETIDO <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
     private void validarOpciones(List<Opcion> opciones) throws ParametrosInvalidosExcepcion {
         if(!tieneCantidadOpcionesValida(opciones)){
@@ -65,4 +67,6 @@ public class VerdaderoFalsoClasico implements Preguntable {
         List<Opcion> opcionesCorrectas = opciones.stream().filter(op -> op.esCorrecta()).collect(Collectors.toList());
         return !opcionesCorrectas.isEmpty() && opcionesCorrectas.size() == CANTIDAD_OPCIONES_CORRECTAS;
     }
+
+    //////////////////////////////////////////////// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 }
