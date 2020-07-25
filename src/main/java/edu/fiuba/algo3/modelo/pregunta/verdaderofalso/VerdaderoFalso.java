@@ -1,11 +1,13 @@
-package edu.fiuba.algo3.modelo.pregunta;
+package edu.fiuba.algo3.modelo.pregunta.verdaderofalso;
 
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
+import edu.fiuba.algo3.modelo.pregunta.Opcion;
+import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-public abstract class VerdaderoFalso implements Preguntable{
+public abstract class VerdaderoFalso implements Preguntable {
 
     private static final int CANTIDAD_OPCIONES_VALIDAS = 2;
     private static final int CANTIDAD_OPCIONES_CORRECTAS = 1;
