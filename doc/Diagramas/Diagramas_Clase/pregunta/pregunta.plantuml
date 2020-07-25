@@ -21,11 +21,15 @@ enum TipoPreguntaConcreta{
 class VF_Clasico{
 }
 
+abstract class MultiplieChoice{
+
+}
+
 class Multiplie_Clasico{
 
 }
 
-class Multiple_Parcial{
+class MultiplieChoiceParcial{
     
 }
 
@@ -57,7 +61,8 @@ Preguntable <.. Multiple_Penal
 ' Pregun_Sin_Penal
 Preguntable <.. VF_Clasico
 Preguntable <.. Multiplie_Clasico
-Preguntable <.. Multiple_Parcial
+Preguntable <.. MultiplieChoice
+MultiplieChoice <|-- MultiplieChoiceParcial
 
 Preguntable <.. GroupChoice
 Preguntable <.. OpcionesOrdenadas
