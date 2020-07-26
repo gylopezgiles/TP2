@@ -9,6 +9,4 @@ public interface Preguntable {
     int establecerPuntuacion(List<Opcion> opciones);
 
     String obtenerPregunta();
-
-    Opcion obtenerOpcionCorrecta();
 }

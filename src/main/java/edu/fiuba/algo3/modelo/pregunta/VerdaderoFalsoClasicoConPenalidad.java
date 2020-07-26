@@ -38,15 +38,6 @@ public class VerdaderoFalsoClasicoConPenalidad implements Preguntable {
         return this.pregunta;
     }
 
-    @Override
-    public Opcion obtenerOpcionCorrecta() {
-        Optional<Opcion> opcion = opciones.stream()
-                .filter(op -> op.esCorrecta())
-                .findAny();
-
-        return opcion.get();
-    }
-
 
     // REPETIDO <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 

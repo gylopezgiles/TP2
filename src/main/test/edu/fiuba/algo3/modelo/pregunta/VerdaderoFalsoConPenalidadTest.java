@@ -86,17 +86,4 @@ public class VerdaderoFalsoConPenalidadTest {
 
         Assertions.assertEquals(-1, verdaderoFalsoClasicoConPenalidad.establecerPuntuacion(Arrays.asList(opcionIncorrecta)));
     }
-
-    @Test
-    public void alCrearUnaPruebaVerdaderoOFalsoConPenalidadLePideLaRespuestaCorrectaYMeLaDevuelve() throws ParametrosInvalidosExcepcion {
-
-        Opcion opcionCorrecta = new Opcion("Verdadero", Boolean.TRUE);
-        Opcion opcionIncorrecta = new Opcion("Falso", Boolean.FALSE);
-        List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
-        String preguntaTexto = "pregunta?";
-
-        Preguntable verdaderoFalsoClasicoConPenalidad = new VerdaderoFalsoClasicoConPenalidad(preguntaTexto, opciones);
-
-        Assertions.assertEquals(opcionCorrecta, verdaderoFalsoClasicoConPenalidad.obtenerOpcionCorrecta());
-    }
 }

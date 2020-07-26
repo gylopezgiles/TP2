@@ -33,15 +33,6 @@ public class VerdaderoFalsoClasico implements Preguntable {
         return opcion.isPresent() ? 1 : 0;
     }
 
-    @Override
-    public Opcion obtenerOpcionCorrecta() {
-        Optional<Opcion> opcion = opciones.stream()
-                .filter(op -> op.esCorrecta())
-                .findAny();
-
-        return opcion.get();
-    }
-
 
     @Override
     public String obtenerPregunta() {

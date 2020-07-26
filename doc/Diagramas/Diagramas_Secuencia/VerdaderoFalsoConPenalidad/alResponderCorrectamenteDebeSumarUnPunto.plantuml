@@ -1,0 +1,29 @@
+@startuml alResponderCorrectamenteDebeSumarUnPunto
+ title alResponderCorrectamenteDebeSumarUnPunto
+    hide footbox
+
+    '"opcion:Opcion" as opcion
+
+    actor "test:Junit" as test
+     ' le asigno el alias para que sea mas sencillo de hacer referencia
+
+
+    test -> PreguntaCreador: crearPregunta(pregunta: VFconPenalidad, opciones: Opcion)
+    
+    create "preguntaVFconPenalidad: Preguntable" as preguntaVFconPenalidad
+    PreguntaCreador -> preguntaVFconPenalidad: <<create>>
+    
+    PreguntaCreador --> test: preguntaVFconPenalidad
+
+    test -> "opcionCorrecta:Opcion" as opcionCorrecta : generarOpcion(contenido:str, valor:Bool)
+    opcionCorrecta --> test: opcionCorrecta
+
+    
+    test -> preguntaVFconPenalidad: establecerPuntuacion(opcionCorrecta: Opcion)
+    preguntaVFconPenalidad -> opcionCorrecta: esCorrecta()
+    opcionCorrecta --> preguntaVFconPenalidad: true
+
+    preguntaVFconPenalidad --> test: 1
+
+
+@enduml
