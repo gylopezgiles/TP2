@@ -1,0 +1,13 @@
+@startuml
+title Creación MultipleChoice Parcial Con Opciones Invalidas
+
+Kahoot -> CreadorPregunta: CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceParcial, pregunta, opciones)
+CreadorPregunta -> MultipleChoiceParcial: new MultipleChoiceParcial(pregunta, opciones)
+
+activate MultipleChoiceParcial
+MultipleChoiceParcial -> MultipleChoiceParcial: validarOpciones(opciones)
+MultipleChoiceParcial -> CreadorPregunta: throw ParametrosInvalidosExcepcion()
+deactivate MultipleChoiceParcial
+
+CreadorPregunta --> Kahoot: throw ParametrosInvalidosExcepcion()
+@enduml

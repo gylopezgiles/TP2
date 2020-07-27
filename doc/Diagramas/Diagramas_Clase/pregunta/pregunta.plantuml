@@ -26,11 +26,11 @@ abstract class VerdaderoFalso{
 class VerdaderoFalsoClasico{
 }
 
-class Multiplie_Clasico{
+class MultipleChoiceClasico{
 
 }
 
-class Multiple_Parcial{
+class MultipleChoiceParcial{
     
 }
 
@@ -38,7 +38,7 @@ class Multiple_Parcial{
 class VerdaderoFalsoPenalidad{
 }
 
-class Multiple_Penal{
+class MultipleChoicePenalidad{
 }
 
 
@@ -49,6 +49,10 @@ class GroupChoice{
 class OpcionesOrdenadas{
 }
 
+abstract class MultipleChoice{
+
+}
+
 
 PreguntaCreador -down->TipoPreguntaConcreta
 PreguntaCreador -> Preguntable
@@ -57,13 +61,14 @@ Preguntable <.. VerdaderoFalso
 
 ' Preg_Penal
 VerdaderoFalso <|-- VerdaderoFalsoPenalidad
-Preguntable <.. Multiple_Penal
+MultipleChoice <|-- MultipleChoicePenalidad
 
 
 ' Pregun_Sin_Penal
 VerdaderoFalso <|-- VerdaderoFalsoClasico
-Preguntable <.. Multiplie_Clasico
-Preguntable <.. Multiple_Parcial
+Preguntable <.. MultipleChoice
+MultipleChoice <|-- MultipleChoiceParcial
+MultipleChoice <|-- MultipleChoiceClasico
 
 Preguntable <.. GroupChoice
 Preguntable <.. OpcionesOrdenadas
