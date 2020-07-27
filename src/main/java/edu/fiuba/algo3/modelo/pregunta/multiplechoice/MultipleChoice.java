@@ -20,7 +20,7 @@ public abstract class MultipleChoice implements Preguntable {
             throw new ParametrosInvalidosExcepcion("Las preguntas multiple choice deben tener 2 opciones como minimo y 5 como maximo");
         }
         if(!tieneOpcionesCorrectas(opciones)){
-            throw new ParametrosInvalidosExcepcion("Las preguntas multiple choice clasico deben tener al menos 1 opcion correcta");
+            throw new ParametrosInvalidosExcepcion("Las preguntas multiple choice deben tener al menos 1 opcion correcta");
         }
     }
 
