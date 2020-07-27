@@ -14,31 +14,31 @@ interface Preguntable{
 }
 
 enum TipoPreguntaConcreta{
+    VerdaderoFalsoClasico
+    VerdaderoFalsoPenalidad
 }
 
-
-' sin penalidad
-class VF_Clasico{
-}
-
-abstract class MultiplieChoice{
-
-}
-
-class Multiplie_Clasico{
-
-}
-
-class MultiplieChoiceParcial{
+abstract class VerdaderoFalso{
     
 }
 
-
-' con penalidad
-class VF_Penal{
+' sin penalidad
+class VerdaderoFalsoClasico{
 }
 
-class Multiple_Penal{
+class MultipleChoiceClasico{
+
+}
+
+class MultipleChoiceParcial{
+    
+}
+
+' con penalidad
+class VerdaderoFalsoPenalidad{
+}
+
+class MultipleChoicePenalidad{
 }
 
 
@@ -49,20 +49,26 @@ class GroupChoice{
 class OpcionesOrdenadas{
 }
 
+abstract class MultipleChoice{
+
+}
+
 
 PreguntaCreador -down->TipoPreguntaConcreta
 PreguntaCreador -> Preguntable
 
+Preguntable <.. VerdaderoFalso
+
 ' Preg_Penal
-Preguntable <.. VF_Penal
-Preguntable <.. Multiple_Penal
+VerdaderoFalso <|-- VerdaderoFalsoPenalidad
+MultipleChoice <|-- MultipleChoicePenalidad
 
 
 ' Pregun_Sin_Penal
-Preguntable <.. VF_Clasico
-Preguntable <.. Multiplie_Clasico
-Preguntable <.. MultiplieChoice
-MultiplieChoice <|-- MultiplieChoiceParcial
+VerdaderoFalso <|-- VerdaderoFalsoClasico
+Preguntable <.. MultipleChoice
+MultipleChoice <|-- MultipleChoiceParcial
+MultipleChoice <|-- MultipleChoiceClasico
 
 Preguntable <.. GroupChoice
 Preguntable <.. OpcionesOrdenadas

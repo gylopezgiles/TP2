@@ -1,6 +1,9 @@
-package edu.fiuba.algo3.modelo.pregunta;
+package edu.fiuba.algo3.modelo.pregunta.verdaderofalso;
 
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
+import edu.fiuba.algo3.modelo.pregunta.Opcion;
+import edu.fiuba.algo3.modelo.pregunta.Preguntable;
+import edu.fiuba.algo3.modelo.pregunta.verdaderofalso.VerdaderoFalsoClasico;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -59,9 +62,5 @@ public class VerdaderoFalsoClasicoTest {
         Assertions.assertThrows(ParametrosInvalidosExcepcion.class, () -> new VerdaderoFalsoClasico("pregunta?", opciones));
 
     }
-
-
-
-
 
 }
