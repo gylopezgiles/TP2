@@ -3,7 +3,6 @@ package edu.fiuba.algo3.modelo.pregunta.verdaderofalso;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
-import edu.fiuba.algo3.modelo.pregunta.verdaderofalso.VerdaderoFalsoPenalidad;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -60,6 +59,33 @@ public class VerdaderoFalsoPenalidadTest {
         List<Opcion> opciones = Arrays.asList(opcionCorrecta1, opcionCorrecta2);
 
         Assertions.assertThrows(ParametrosInvalidosExcepcion.class, () -> new VerdaderoFalsoPenalidad("pregunta?", opciones));
+
+    }
+
+    @Test
+    public void alResponderCorrectamenteDebeSumarUnPunto() throws ParametrosInvalidosExcepcion {
+
+        Opcion opcionCorrecta = new Opcion("Verdadero", Boolean.TRUE);
+        Opcion opcionIncorrecta = new Opcion("Falso", Boolean.FALSE);
+        List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
+        String preguntaTexto = "pregunta?";
+
+        Preguntable verdaderoFalsoConPenalidad = new VerdaderoFalsoPenalidad(preguntaTexto, opciones);
+
+        Assertions.assertEquals(1, verdaderoFalsoConPenalidad.establecerPuntuacion(Arrays.asList(opcionCorrecta)));
+    }
+
+
+    @Test
+    public void alResponderIncorrectamenteDebeRestarUnPunto() throws ParametrosInvalidosExcepcion {
+        Opcion opcionCorrecta = new Opcion("Verdadero", Boolean.TRUE);
+        Opcion opcionIncorrecta = new Opcion("Falso", Boolean.FALSE);
+        List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
+        String preguntaTexto = "pregunta?";
+
+        Preguntable verdaderoFalsoConPenalidad = new VerdaderoFalsoPenalidad(preguntaTexto, opciones);
+
+        Assertions.assertEquals(-1, verdaderoFalsoConPenalidad.establecerPuntuacion(Arrays.asList(opcionIncorrecta)));
 
     }
 }

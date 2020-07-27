@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 
 import java.util.List;
+import java.util.Optional;
 
 public class VerdaderoFalsoPenalidad extends VerdaderoFalso {
 
@@ -15,6 +16,9 @@ public class VerdaderoFalsoPenalidad extends VerdaderoFalso {
 
     @Override
     public int establecerPuntuacion(List<Opcion> opciones) {
-        return 0;
+        Optional<Opcion> opcion = opciones.stream()
+                .filter(op -> op.esCorrecta())
+                .findAny();
+        return opcion.isPresent() ? 1 : -1;
     }
 }
