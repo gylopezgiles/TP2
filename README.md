@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/gylopezgiles/TP2.svg?branch=master)](https://travis-ci.org/gylopezgiles/TP2)
+[![Build Status](https://travis-ci.org/gylopezgiles/TP2.svg?branch=develop)](https://travis-ci.org/gylopezgiles/TP2)
 
-[![codecov](https://codecov.io/gh/gylopezgiles/TP2/branch/master/graph/badge.svg)](https://codecov.io/gh/gylopezgiles/TP2)
+[![codecov](https://codecov.io/gh/gylopezgiles/TP2/branch/develop/graph/badge.svg)](https://codecov.io/gh/gylopezgiles/TP2)
 
 
 
