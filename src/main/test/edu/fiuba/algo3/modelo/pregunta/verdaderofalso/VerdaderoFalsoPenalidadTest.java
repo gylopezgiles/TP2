@@ -1,6 +1,8 @@
-package edu.fiuba.algo3.modelo.pregunta;
+package edu.fiuba.algo3.modelo.pregunta.verdaderofalso;
 
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
+import edu.fiuba.algo3.modelo.pregunta.Opcion;
+import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -8,26 +10,26 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class VerdaderoFalsoConPenalidadTest {
-
-    // Pruebas que deben pasar las preguntas Verdadero & Falso
+public class VerdaderoFalsoPenalidadTest {
 
     @Test
     public void debeCrearUnaPreguntaVerdaderFalsoConOpciones() throws ParametrosInvalidosExcepcion {
-       Opcion opcionCorrecta = new Opcion("Verdadero", Boolean.TRUE);
-       Opcion opcionIncorrecta = new Opcion("Falso", Boolean.FALSE);
-       List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
-       String preguntaTexto = "pregunta?";
+        Opcion opcionCorrecta = new Opcion("Verdadero", Boolean.TRUE);
+        Opcion opcionIncorrecta = new Opcion("Falso", Boolean.FALSE);
+        List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
+        String preguntaTexto = "pregunta?";
 
-       Preguntable verdaderoFalsoClasicoConPenalidad = new VerdaderoFalsoClasicoConPenalidad(preguntaTexto, opciones);
+        Preguntable verdaderoFalsoPenalidad = new VerdaderoFalsoPenalidad(preguntaTexto, opciones);
 
-       Assertions.assertEquals(opciones, verdaderoFalsoClasicoConPenalidad.obtenerOpciones());
-       Assertions.assertEquals(preguntaTexto, verdaderoFalsoClasicoConPenalidad.obtenerPregunta());
+        Assertions.assertEquals(opciones, verdaderoFalsoPenalidad.obtenerOpciones());
+        Assertions.assertEquals(preguntaTexto, verdaderoFalsoPenalidad.obtenerPregunta());
     }
 
     @Test
     public void debeLanzarExcepcionCrearPreguntaSinOpciones() {
-        Assertions.assertThrows(ParametrosInvalidosExcepcion.class, () -> new VerdaderoFalsoClasicoConPenalidad("pregunta?", Collections.EMPTY_LIST));
+
+        Assertions.assertThrows(ParametrosInvalidosExcepcion.class, () -> new VerdaderoFalsoPenalidad("pregunta?", Collections.EMPTY_LIST));
+
     }
 
     @Test
@@ -36,7 +38,8 @@ public class VerdaderoFalsoConPenalidadTest {
         Opcion opcion = new Opcion("opcion", Boolean.TRUE);
         List<Opcion> opciones = Arrays.asList(opcion);
 
-        Assertions.assertThrows(ParametrosInvalidosExcepcion.class, () -> new VerdaderoFalsoClasicoConPenalidad("pregunta?", opciones));
+        Assertions.assertThrows(ParametrosInvalidosExcepcion.class, () -> new VerdaderoFalsoPenalidad("pregunta?", opciones));
+
     }
 
     @Test
@@ -45,21 +48,19 @@ public class VerdaderoFalsoConPenalidadTest {
         Opcion opcionIncorrecta2 = new Opcion("Falso", Boolean.FALSE);
         List<Opcion> opciones = Arrays.asList(opcionIncorrecta1, opcionIncorrecta2);
 
-        Assertions.assertThrows(ParametrosInvalidosExcepcion.class, () -> new VerdaderoFalsoClasicoConPenalidad("pregunta?", opciones));
+        Assertions.assertThrows(ParametrosInvalidosExcepcion.class, () -> new VerdaderoFalsoPenalidad("pregunta?", opciones));
 
     }
 
     @Test
-    public void debeLanzarExcepcionCrearPreguntaConMasDeUnaOpcionCorrecta() {
+    public void debeLanzarExcepcionCrearPreguntaConMasDe1OpcionCorrecta() {
         Opcion opcionCorrecta1 = new Opcion("Verdadero", Boolean.TRUE);
         Opcion opcionCorrecta2 = new Opcion("Falso", Boolean.TRUE);
         List<Opcion> opciones = Arrays.asList(opcionCorrecta1, opcionCorrecta2);
 
-        Assertions.assertThrows(ParametrosInvalidosExcepcion.class, () -> new VerdaderoFalsoClasicoConPenalidad("pregunta?", opciones));
+        Assertions.assertThrows(ParametrosInvalidosExcepcion.class, () -> new VerdaderoFalsoPenalidad("pregunta?", opciones));
 
     }
-
-    // Nuevas Pruebas especificas con respecto a Verdadero & Falso Con Penalidad
 
     @Test
     public void alResponderCorrectamenteDebeSumarUnPunto() throws ParametrosInvalidosExcepcion {
@@ -69,9 +70,9 @@ public class VerdaderoFalsoConPenalidadTest {
         List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
         String preguntaTexto = "pregunta?";
 
-        Preguntable verdaderoFalsoClasicoConPenalidad = new VerdaderoFalsoClasicoConPenalidad(preguntaTexto, opciones);
+        Preguntable verdaderoFalsoConPenalidad = new VerdaderoFalsoPenalidad(preguntaTexto, opciones);
 
-        Assertions.assertEquals(1, verdaderoFalsoClasicoConPenalidad.establecerPuntuacion(Arrays.asList(opcionCorrecta)));
+        Assertions.assertEquals(1, verdaderoFalsoConPenalidad.establecerPuntuacion(Arrays.asList(opcionCorrecta)));
     }
 
 
@@ -82,8 +83,9 @@ public class VerdaderoFalsoConPenalidadTest {
         List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
         String preguntaTexto = "pregunta?";
 
-        Preguntable verdaderoFalsoClasicoConPenalidad = new VerdaderoFalsoClasicoConPenalidad(preguntaTexto, opciones);
+        Preguntable verdaderoFalsoConPenalidad = new VerdaderoFalsoPenalidad(preguntaTexto, opciones);
 
-        Assertions.assertEquals(-1, verdaderoFalsoClasicoConPenalidad.establecerPuntuacion(Arrays.asList(opcionIncorrecta)));
+        Assertions.assertEquals(-1, verdaderoFalsoConPenalidad.establecerPuntuacion(Arrays.asList(opcionIncorrecta)));
+
     }
 }

@@ -14,11 +14,16 @@ interface Preguntable{
 }
 
 enum TipoPreguntaConcreta{
+    VerdaderoFalsoClasico
+    VerdaderoFalsoPenalidad
 }
 
+abstract class VerdaderoFalso{
+    
+}
 
 ' sin penalidad
-class VF_Clasico{
+class VerdaderoFalsoClasico{
 }
 
 class Multiplie_Clasico{
@@ -29,9 +34,8 @@ class Multiple_Parcial{
     
 }
 
-
 ' con penalidad
-class VF_Penal{
+class VerdaderoFalsoPenalidad{
 }
 
 class Multiple_Penal{
@@ -49,13 +53,15 @@ class OpcionesOrdenadas{
 PreguntaCreador -down->TipoPreguntaConcreta
 PreguntaCreador -> Preguntable
 
+Preguntable <.. VerdaderoFalso
+
 ' Preg_Penal
-Preguntable <.. VF_Penal
+VerdaderoFalso <|-- VerdaderoFalsoPenalidad
 Preguntable <.. Multiple_Penal
 
 
 ' Pregun_Sin_Penal
-Preguntable <.. VF_Clasico
+VerdaderoFalso <|-- VerdaderoFalsoClasico
 Preguntable <.. Multiplie_Clasico
 Preguntable <.. Multiple_Parcial
 
