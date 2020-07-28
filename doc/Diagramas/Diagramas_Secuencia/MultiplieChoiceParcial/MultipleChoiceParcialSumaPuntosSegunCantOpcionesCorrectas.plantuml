@@ -1,0 +1,24 @@
+@startuml
+title Multiple Choice Parcial suma puntos según cantidad de Opciones Correctas seleccionadas si no hay Opciones Incorrectas seleccionadas
+hide footbox
+
+    kahoot-> "ronda: Ronda" as ronda : responder(jugador: Jugador, opcionesSeleccionadas: List<Opcion>)
+
+    ronda-> "multipleChoiceParcial: Preguntable" as MCparcial: establecerPuntuacion(opciones: List<Opcion>)
+
+    MCparcial-> "opciones: List<Opcion>" as listaOpciones : hallarAlgunaOpcionIncorrecta()
+
+    listaOpciones-> MCparcial : emptyOptional<Opcion>
+
+    MCparcial->MCparcial : puntajeOpcionesCorrectas(opciones: List<Opcion>)
+
+    MCparcial->listaOpciones : contarOpcionesCorrectas()
+
+    listaOpciones-> MCparcial :puntaje: Int
+
+    MCparcial-> ronda : puntaje: Int
+
+    ronda-> "jugador: Jugador" as jugador : sumarPuntos(puntaje: Int)
+
+    jugador-> jugador: puntos += puntaje
+@enduml
