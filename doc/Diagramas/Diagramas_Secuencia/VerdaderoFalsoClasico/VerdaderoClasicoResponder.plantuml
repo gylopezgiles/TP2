@@ -1,0 +1,8 @@
+@startuml
+title Verdadero Falso Clasico Responder
+
+Kahoot -> "unaRonda: Ronda" as Ronda: responder(unJugador: Jugador, opciones: Opcion)
+Ronda -> "VerdaderoFalsoClasico: Preguntable" as VerdaderoFalsoClasico: establecerPuntuacion(opciones: Opcion)
+VerdaderoFalsoClasico -> Ronda: puntajeRespuesta:int
+Ronda -> "un Jugador: Jugador" as Jugador: asignarPuntos(puntajeRespuesta: int)
+@enduml
