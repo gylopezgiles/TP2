@@ -16,6 +16,8 @@ public class CreadorPregunta {
                 return new VerdaderoFalsoClasico(pregunta, opciones);
             case VerdaderoFalsoPenalidad:
                 return new VerdaderoFalsoPenalidad(pregunta, opciones);
+            case MultipleChoiceClasico:
+                return new MultipleChoiceParcial(pregunta, opciones);
             case MultipleChoiceParcial:
                 return new MultipleChoiceParcial(pregunta, opciones);
             default:

@@ -15,7 +15,7 @@ import java.util.List;
 
 public class Entrega1Test {
     @Test
-    public void crearMultipleChoiceClasicoConOpciones(){
+    public void crearMultipleChoiceClasicoConOpciones()throws ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException{
         //Given
         Opcion opcionCorrecta = new Opcion("Esta Si", Boolean.TRUE);
         Opcion opcion2 = new Opcion("Esta NO", Boolean.FALSE);
@@ -26,12 +26,12 @@ public class Entrega1Test {
         String preguntaTexto = "pregunta?";
 
         //When
-        Preguntable multipleChoiceClasico = CreadorPregunta.crearPregunta(TipoPregunta.MultpleChoiceClasico, preguntaTexto, opciones);
+        Preguntable multipleChoiceClasico = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceClasico, preguntaTexto, opciones);
 
         //Then
         Assertions.assertEquals(5, multipleChoiceClasico.obtenerOpciones().size());
         Assertions.assertEquals(opciones, multipleChoiceClasico.obtenerOpciones());
-        Assertions.assertEquals(opcionCorrecta, multipleChoiceClasico.obtenerOpciones().stream().filter(opcion -> opcion.esCorrecta()).findAny().orElse(null));
+        Assertions.assertEquals(opcionCorrecta, multipleChoiceClasico.obtenerOpcionCorrecta());
     }
 
 }
