@@ -28,7 +28,7 @@ public class MultipleChoiceClasicoTest {
         String preguntaTexto = "pregunta?";
 
         //When
-        Preguntable multipleChoiceClasico = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceClasico, preguntaTexto, opciones);
+        Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
 
         //Then
         Assertions.assertEquals(5, multipleChoiceClasico.obtenerOpciones().size());
@@ -47,7 +47,7 @@ public class MultipleChoiceClasicoTest {
         String preguntaTexto = "pregunta?";
 
         //When
-        Preguntable multipleChoiceClasico = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceClasico, preguntaTexto, opciones);
+        Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
 
         //Then
         Assertions.assertEquals(opcionCorrecta, multipleChoiceClasico.obtenerOpciones().stream().filter(opcion -> opcion.esCorrecta()).findAny().orElse(null));
@@ -66,7 +66,7 @@ public class MultipleChoiceClasicoTest {
         String preguntaTexto = "pregunta?";
 
         //When
-        Preguntable multipleChoiceClasico = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceClasico, preguntaTexto, opciones);
+        Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
 
         //Then
         Assertions.assertEquals(opcionesCorrectas, multipleChoiceClasico.obtenerOpciones().stream().filter(opcion -> opcion.esCorrecta()).collect(Collectors.toList()));
@@ -84,7 +84,7 @@ public class MultipleChoiceClasicoTest {
         String preguntaTexto = "pregunta?";
 
         //When
-        Preguntable multipleChoiceClasico = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceClasico, preguntaTexto, opciones);
+        Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
 
         //Then
         Assertions.assertEquals(opciones, multipleChoiceClasico.obtenerOpciones().stream().filter(opcion -> opcion.esCorrecta()).collect(Collectors.toList()));
