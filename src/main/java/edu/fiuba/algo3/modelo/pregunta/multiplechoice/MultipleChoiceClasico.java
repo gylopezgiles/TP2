@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo.pregunta.multiplechoice;
 
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
-
+import java.util.Optional;
 import java.util.List;
 
 public class MultipleChoiceClasico extends MultipleChoice {
@@ -15,7 +15,14 @@ public class MultipleChoiceClasico extends MultipleChoice {
 
     @Override
     public int establecerPuntuacion(List<Opcion> opciones) {
-        return 0;
+        boolean sonTodasCorrectas = cantidadDeOpcionesCorrectas(opciones) == cantidadDeOpcionesCorrectas(this.opciones);
+        return sonTodasCorrectas ? cantidadDeOpcionesCorrectas(this.opciones) : 0;
+    }
+
+    private int cantidadDeOpcionesCorrectas(List<Opcion> opciones){
+        return (int)opciones.stream()
+                .filter(op -> op.esCorrecta())
+                .count();
     }
 
 }
