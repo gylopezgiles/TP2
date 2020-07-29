@@ -43,8 +43,4 @@ public abstract class MultipleChoice implements Preguntable {
         return pregunta;
     }
 
-    @Override
-    public Opcion obtenerOpcionCorrecta(){
-       return (this.opciones.stream().filter(opcion -> opcion.esCorrecta()).findAny().orElse(null));
-    }
 }

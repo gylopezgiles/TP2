@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MultipleChoiceClasicoTest {
 
@@ -36,7 +37,7 @@ public class MultipleChoiceClasicoTest {
     }
 
     @Test
-    public void multipleChoiceDevuelveLaOpcionCorrecta()throws ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException{
+    public void multipleChoiceAlmacenaUnaOpcionCorrecta()throws ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException{
         Opcion opcionCorrecta = new Opcion("Esta Si", Boolean.TRUE);
         Opcion opcion2 = new Opcion("Esta NO", Boolean.FALSE);
         Opcion opcion3 = new Opcion("Esta Tampoco", Boolean.FALSE);
@@ -49,7 +50,44 @@ public class MultipleChoiceClasicoTest {
         Preguntable multipleChoiceClasico = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceClasico, preguntaTexto, opciones);
 
         //Then
-        Assertions.assertEquals(opcionCorrecta, multipleChoiceClasico.obtenerOpcionCorrecta());
+        Assertions.assertEquals(opcionCorrecta, multipleChoiceClasico.obtenerOpciones().stream().filter(opcion -> opcion.esCorrecta()).findAny().orElse(null));
+
+    }
+
+    @Test
+    public void multipleChoiceAlmacenaMasDeUnaOpcionCorrecta()throws ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException{
+        Opcion opcionCorrecta = new Opcion("Esta Si", Boolean.TRUE);
+        Opcion opcion2 = new Opcion("Esta NO", Boolean.FALSE);
+        Opcion opcion3 = new Opcion("Esta Tampoco", Boolean.FALSE);
+        Opcion opcion4 = new Opcion("Esta Menos", Boolean.FALSE);
+        Opcion otraOpcionCorrecta = new Opcion("Si", Boolean.TRUE);
+        List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcion2, opcion3, opcion4, otraOpcionCorrecta);
+        List<Opcion> opcionesCorrectas = Arrays.asList(opcionCorrecta, otraOpcionCorrecta);
+        String preguntaTexto = "pregunta?";
+
+        //When
+        Preguntable multipleChoiceClasico = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceClasico, preguntaTexto, opciones);
+
+        //Then
+        Assertions.assertEquals(opcionesCorrectas, multipleChoiceClasico.obtenerOpciones().stream().filter(opcion -> opcion.esCorrecta()).collect(Collectors.toList()));
+
+    }
+
+    @Test
+    public void multipleChoicePuedeTenerTodasOpcionesCorrectas()throws ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException{
+        Opcion opcion1 = new Opcion("Esta Si", Boolean.TRUE);
+        Opcion opcion2 = new Opcion("Esta Si", Boolean.TRUE);
+        Opcion opcion3 = new Opcion("Esta Tambien", Boolean.TRUE);
+        Opcion opcion4 = new Opcion("Esta Mas", Boolean.TRUE);
+        Opcion opcion5 = new Opcion("Si", Boolean.TRUE);
+        List<Opcion> opciones = Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5);
+        String preguntaTexto = "pregunta?";
+
+        //When
+        Preguntable multipleChoiceClasico = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceClasico, preguntaTexto, opciones);
+
+        //Then
+        Assertions.assertEquals(opciones, multipleChoiceClasico.obtenerOpciones().stream().filter(opcion -> opcion.esCorrecta()).collect(Collectors.toList()));
 
     }
 

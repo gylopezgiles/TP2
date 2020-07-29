@@ -31,7 +31,7 @@ public class Entrega1Test {
         //Then
         Assertions.assertEquals(5, multipleChoiceClasico.obtenerOpciones().size());
         Assertions.assertEquals(opciones, multipleChoiceClasico.obtenerOpciones());
-        Assertions.assertEquals(opcionCorrecta, multipleChoiceClasico.obtenerOpcionCorrecta());
+
     }
 
 }
