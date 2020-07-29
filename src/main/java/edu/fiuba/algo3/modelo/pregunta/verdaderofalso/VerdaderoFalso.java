@@ -42,4 +42,5 @@ public abstract class VerdaderoFalso implements Preguntable {
     public String obtenerPregunta() {
         return pregunta;
     }
+
 }

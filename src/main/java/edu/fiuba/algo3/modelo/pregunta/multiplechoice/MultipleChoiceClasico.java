@@ -5,17 +5,17 @@ import edu.fiuba.algo3.modelo.pregunta.Opcion;
 
 import java.util.List;
 
-public class MultipleChoiceParcial extends MultipleChoice {
+public class MultipleChoiceClasico extends MultipleChoice {
 
-    public  MultipleChoiceParcial(String pregunta, List<Opcion> opciones) throws ParametrosInvalidosExcepcion {
+    public  MultipleChoiceClasico(String pregunta, List<Opcion> opciones) throws ParametrosInvalidosExcepcion {
         validarOpciones(opciones);
         this.opciones = opciones;
         this.pregunta = pregunta;
     }
 
-
     @Override
     public int establecerPuntuacion(List<Opcion> opciones) {
         return 0;
     }
+
 }

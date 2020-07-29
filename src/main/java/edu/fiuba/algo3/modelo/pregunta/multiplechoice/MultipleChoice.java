@@ -42,4 +42,5 @@ public abstract class MultipleChoice implements Preguntable {
     public String obtenerPregunta() {
         return pregunta;
     }
+
 }
