@@ -3,11 +3,11 @@ package edu.fiuba.algo3.modelo.pregunta;
 public class Opcion {
 
     private String texto;
-    private Boolean correcta;
+    private Boolean esCorrecta;
 
-    public Opcion(String texto, Boolean correcta){
+    public Opcion(String texto, Boolean esCorrecta){
         this.texto = texto;
-        this.correcta = correcta;
+        this.esCorrecta = esCorrecta;
     }
 
     public String obtenerTexto(){
@@ -15,6 +15,6 @@ public class Opcion {
     }
 
     public Boolean esCorrecta(){
-        return correcta;
+        return esCorrecta;
     }
 }
