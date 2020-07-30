@@ -16,10 +16,16 @@ interface Preguntable{
 enum TipoPreguntaConcreta{
     VerdaderoFalsoClasico
     VerdaderoFalsoPenalidad
+    MultipleChoiceClasico
+    MultipleChoiceParcial
 }
 
 abstract class VerdaderoFalso{
-    
+    ~ opciones: List<Opcion>
+    ~ pregunta: String
+    ~ validarOpciones(opciones: List<Opcion>)
+    - tieneCantidadOpcionesValida(opciones:List<Opcion>): Boolean
+    - tieneOpcionesCorrectas(opciones:List<Opcion>): Boolean
 }
 
 ' sin penalidad
@@ -50,7 +56,11 @@ class OpcionesOrdenadas{
 }
 
 abstract class MultipleChoice{
-
+    ~ opciones: List<Opcion>
+    ~ pregunta: String
+    ~ validarOpciones(opciones: List<Opcion>)
+    - tieneCantidadOpcionesValida(opciones:List<Opcion>): Boolean
+    - tieneOpcionesCorrectas(opciones:List<Opcion>): Boolean
 }
 
 
