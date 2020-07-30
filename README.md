@@ -28,7 +28,7 @@ Corrector: **Diego Sánchez**
 
 #### Diagrama de secuencia
 
-## VerdaderoFalsoClasico
+##### VerdaderoFalsoClasico
 
 ![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/VerdaderoFalsoClasico/VerdaderoFalsoClasicoCreacion.plantuml)
 
@@ -36,7 +36,7 @@ Corrector: **Diego Sánchez**
 
 ![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/VerdaderoFalsoClasico/VerdaderoFalsoClasicoCreacionError.plantuml)
 
-## VerdaderoFalsoPenalidad
+##### VerdaderoFalsoPenalidad
 
 ![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/VerdaderoFalsoPenalidad/CrearVerdaderoFalsoPenalidad.plantuml)
 
@@ -48,14 +48,14 @@ Corrector: **Diego Sánchez**
 
 ![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/VerdaderoFalsoConPenalidad/alResponderIncorrectamenteDebeRestarUnPunto.plantuml)
 
-## MultipleChoiceClasico
+##### MultipleChoiceClasico
 
 ![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/MultipleChoiceClasico/MultipleChoiceClasicoCreacion.plantuml)
 
 ![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/MultipleChoiceClasico/MultipleChoiceClasicoCreacionError.plantuml)
 
 
-## MultipleChoiceParcial
+##### MultipleChoiceParcial
 
 ![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/MultiplieChoiceParcial/MultiplieChoiceParcialCreacion.plantuml)
 
