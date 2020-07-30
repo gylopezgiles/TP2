@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/gylopezgiles/TP2.svg?branch=master)](https://travis-ci.org/gylopezgiles/TP2)
+[![Build Status](https://travis-ci.org/gylopezgiles/TP2.svg?branch=develop)](https://travis-ci.org/gylopezgiles/TP2)
 
-[![codecov](https://codecov.io/gh/gylopezgiles/TP2/branch/master/graph/badge.svg)](https://codecov.io/gh/gylopezgiles/TP2)
+[![codecov](https://codecov.io/gh/gylopezgiles/TP2/branch/develop/graph/badge.svg)](https://codecov.io/gh/gylopezgiles/TP2)
 
 
 
@@ -16,7 +16,54 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 * **Alan Goyzueta** - [102988](https://github.com/AlanCristianGoyzueta)
 * **Mario Besednjak** - [103287](https://github.com/besednjak)
 
-Corrector: **Diego**
+Corrector: **Diego Sánchez**
+
+#### Diagrama de clases
+
+![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Clase/partida/partida.plantuml)
+
+![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Clase/pregunta/pregunta.plantuml)
+
+![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Clase/modificable/modificable.plantuml)
+
+#### Diagrama de secuencia
+
+##### VerdaderoFalsoClasico
+
+![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/VerdaderoFalsoClasico/VerdaderoFalsoClasicoCreacion.plantuml)
+
+![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/VerdaderoFalsoClasico/VerdaderoClasicoResponder.plantuml)
+
+![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/VerdaderoFalsoClasico/VerdaderoFalsoClasicoCreacionError.plantuml)
+
+##### VerdaderoFalsoPenalidad
+
+![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/VerdaderoFalsoPenalidad/CrearVerdaderoFalsoPenalidad.plantuml)
+
+![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/VerdaderoFalsoPenalidad/CrearVerdaderoFalsoPenalidadError.plantuml)
+
+![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/VerdaderoFalsoClasico/VerdaderoFalsoClasicoCreacionError.plantuml)
+
+![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/VerdaderoFalsoConPenalidad/alResponderCorrectamenteDebeSumarUnPunto.plantuml)
+
+![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/VerdaderoFalsoConPenalidad/alResponderIncorrectamenteDebeRestarUnPunto.plantuml)
+
+##### MultipleChoiceClasico
+
+![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/MultipleChoiceClasico/MultipleChoiceClasicoCreacion.plantuml)
+
+![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/MultipleChoiceClasico/MultipleChoiceClasicoCreacionError.plantuml)
+
+
+##### MultipleChoiceParcial
+
+![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/MultiplieChoiceParcial/MultiplieChoiceParcialCreacion.plantuml)
+
+![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/MultiplieChoiceParcial/MultipleChoiceParcialCreacionError.plantuml)
+
+![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/MultiplieChoiceParcial/MultipleChoiceParcialSumaPuntosSegunCantOpcionesCorrectas.plantuml)
+
+![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/MultiplieChoiceParcial/MultipleChoiceParcialNoSumaPuntosConOpcionIncorrectaSeleccionada.plantuml)
 
 ### Pre-requisitos
 

@@ -1,0 +1,24 @@
+@startuml generarPreguntaVerdaderoFalso
+    title generarPreguntaVerdaderoFalso
+    hide footbox
+
+    autonumber
+    
+
+    actor "test:Junit" as test
+     ' le asigno el alias para que sea mas sencillo de hacer referencia
+
+    test -> test: generarOpciones()
+
+    create "opcionCorrecta:Opcion" as opcionCorrecta
+    test -> opcionCorrecta: generarOpcion(contenido:str, valor:Bool)
+    
+    create "opcionIncorrecta:Opcion" as opcionIncorrecta
+    test -> opcionIncorrecta: generarOpcion(contenido:str, valor:Bool)
+
+    test -> test: opciones:Opcion
+
+    test -> Preguntable: crearPregunta(pregunta: PreguntaConcreta, opciones: Opcion)
+
+
+@enduml

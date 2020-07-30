@@ -31,8 +31,8 @@ class Ronda{
     + responder():void
 }
 
-class Modificable{
-
+interface Modificable{
+    + aplicarModificador(jugadorConModificador: Jugador, otroJugador: Jugador): int
 }
 
 

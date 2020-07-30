@@ -1,0 +1,13 @@
+@startuml
+title Creación Verdadero Falso Clasico Con Opciones Validas
+
+Kahoot -> CreadorPregunta: CreadorPregunta.crearPregunta(TipoPregunta.VerdaderoFalsoClasico, pregunta, opciones)
+CreadorPregunta -> VerdaderoFalsoClasico: new VerdaderoFalsoClasico(pregunta, opciones)
+
+activate VerdaderoFalsoClasico
+VerdaderoFalsoClasico -> VerdaderoFalsoClasico: validarOpciones(opciones)
+VerdaderoFalsoClasico -> CreadorPregunta: new VerdaderoFalsoClasico(pregunta, opciones)
+deactivate VerdaderoFalsoClasico
+
+CreadorPregunta --> Kahoot: new VerdaderoFalsoClasico(pregunta, opciones)
+@enduml

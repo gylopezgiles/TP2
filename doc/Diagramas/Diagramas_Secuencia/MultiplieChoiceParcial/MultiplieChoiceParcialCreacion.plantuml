@@ -1,0 +1,13 @@
+@startuml
+title Creación MultipleChoice Parcial Con Opciones Validas
+
+Kahoot -> CreadorPregunta: CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceParcial, pregunta, opciones)
+CreadorPregunta -> MultipleChoiceParcial: new MultipleChoiceParcial(pregunta, opciones)
+
+activate MultipleChoiceParcial
+MultipleChoiceParcial -> MultipleChoiceParcial: validarOpciones(opciones)
+MultipleChoiceParcial -> CreadorPregunta: new MultipleChoiceParcial(pregunta, opciones)
+deactivate MultipleChoiceParcial
+
+CreadorPregunta --> Kahoot: new MultipleChoiceParcial(pregunta, opciones)
+@enduml

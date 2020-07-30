@@ -1,44 +1,21 @@
-package edu.fiuba.algo3.modelo.pregunta;
+package edu.fiuba.algo3.modelo.pregunta.verdaderofalso;
 
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
+import edu.fiuba.algo3.modelo.pregunta.Opcion;
+import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class VerdaderoFalsoClasico implements Preguntable {
+public abstract class VerdaderoFalso implements Preguntable {
 
     private static final int CANTIDAD_OPCIONES_VALIDAS = 2;
     private static final int CANTIDAD_OPCIONES_CORRECTAS = 1;
 
-    private List<Opcion> opciones;
-    private String pregunta;
+    protected List<Opcion> opciones;
+    protected String pregunta;
 
-    public VerdaderoFalsoClasico(String pregunta, List<Opcion> opciones) throws ParametrosInvalidosExcepcion {
-        validarOpciones(opciones);
-        this.pregunta = pregunta;
-        this.opciones = opciones;
-    }
-
-    @Override
-    public List<Opcion> obtenerOpciones() {
-      return this.opciones;
-    }
-
-    @Override
-    public int establecerPuntuacion(List<Opcion> opciones) {
-        Optional<Opcion> opcion = opciones.stream()
-                .filter(op -> op.esCorrecta())
-                .findAny();
-        return opcion.isPresent() ? 1 : 0;
-    }
-
-    @Override
-    public String obtenerPregunta() {
-        return pregunta;
-    }
-
-    private void validarOpciones(List<Opcion> opciones) throws ParametrosInvalidosExcepcion {
+    protected void validarOpciones(List<Opcion> opciones) throws ParametrosInvalidosExcepcion {
         if(!tieneCantidadOpcionesValida(opciones)){
             throw new ParametrosInvalidosExcepcion("Las preguntas verdadero falso clasico deben tener solo 2 opciones");
         }
@@ -55,4 +32,15 @@ public class VerdaderoFalsoClasico implements Preguntable {
         List<Opcion> opcionesCorrectas = opciones.stream().filter(op -> op.esCorrecta()).collect(Collectors.toList());
         return !opcionesCorrectas.isEmpty() && opcionesCorrectas.size() == CANTIDAD_OPCIONES_CORRECTAS;
     }
+
+    @Override
+    public List<Opcion> obtenerOpciones() {
+        return this.opciones;
+    }
+
+    @Override
+    public String obtenerPregunta() {
+        return pregunta;
+    }
+
 }

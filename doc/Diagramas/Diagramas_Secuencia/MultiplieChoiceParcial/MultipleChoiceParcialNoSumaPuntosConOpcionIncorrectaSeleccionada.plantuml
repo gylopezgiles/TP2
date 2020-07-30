@@ -1,0 +1,18 @@
+@startuml
+title Multiple Choice Parcial no suma puntos con alguna Opcion Incorrecta seleccionada
+hide footbox
+
+    kahoot-> "ronda: Ronda" as ronda : responder(jugador: Jugador, opcionesSeleccionadas: List<Opcion>)
+
+    ronda-> "multipleChoiceParcial: Preguntable" as MCparcial: establecerPuntuacion(opciones: List<Opcion>)
+
+    MCparcial-> "opciones: List<Opcion>" as listaOpciones : hallarAlgunaOpcionIncorrecta()
+
+    listaOpciones-> MCparcial : opcionIncorrecta: Optional<Opcion>
+
+    MCparcial-> ronda : 0: Int
+
+    ronda-> "jugador: Jugador" as jugador : sumarPuntos(0: Int)
+
+    jugador-> jugador: puntos += 0
+@enduml

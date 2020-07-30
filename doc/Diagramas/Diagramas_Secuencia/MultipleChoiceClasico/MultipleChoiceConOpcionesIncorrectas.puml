@@ -1,0 +1,22 @@
+@startuml
+title Multiple Choice Clasico asigna puntaje con opciones incorrectas seleccionadas
+hide footbox
+
+    kahoot-> "ronda: Ronda" as ronda : responder(jugador: Jugador, opcionesSeleccionadas: List<Opcion>)
+    activate ronda
+    ronda-> "multipleChoiceClasico: Preguntable" as MCclasico: establecerPuntuacion(opciones: List<Opcion>)
+    activate MCclasico
+    MCclasico-> "opciones: List<Opcion>" as listaOpciones : contarOpcionesCorrectas(opciones)
+    activate listaOpciones
+    MCclasico <-- listaOpciones : cantidadDeOpcionesCorrectas
+    deactivate listaOpciones
+    MCclasico->MCclasico : contarOpcionesCorrectas(this.opciones)
+    activate MCclasico
+    MCclasico-->MCclasico : cantidadDeOpcionesCorrectas
+    deactivate MCclasico
+    ronda <-- MCclasico: 0
+    deactivate MCclasico
+    ronda-> "jugador: Jugador" as jugador : sumarPuntos(0)
+    deactivate ronda
+    jugador-> jugador: puntos += 0
+@enduml

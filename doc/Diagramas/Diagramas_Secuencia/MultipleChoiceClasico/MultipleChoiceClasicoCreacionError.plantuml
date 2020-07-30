@@ -1,0 +1,13 @@
+@startuml
+title Creación MultipleChoiceClasico Con Opciones Invalidas
+
+Kahoot -> CreadorPregunta: CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceClasico, pregunta, opciones)
+CreadorPregunta -> MultipleChoiceClasico: new MultipleChoiceClasico(pregunta, opciones)
+
+activate MultipleChoiceClasico
+MultipleChoiceClasico -> MultipleChoiceClasico: validarOpciones(opciones)
+MultipleChoiceClasico -> CreadorPregunta: throw ParametrosInvalidosExcepcion()
+deactivate MultipleChoiceClasico
+
+CreadorPregunta --> Kahoot: throw ParametrosInvalidosExcepcion()
+@enduml
