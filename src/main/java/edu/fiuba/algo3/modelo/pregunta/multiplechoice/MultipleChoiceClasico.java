@@ -16,7 +16,7 @@ public class MultipleChoiceClasico extends MultipleChoice {
     @Override
     public int establecerPuntuacion(List<Opcion> opciones) {
         boolean sonTodasCorrectas = cantidadDeOpcionesCorrectas(opciones) == cantidadDeOpcionesCorrectas(this.opciones);
-        return sonTodasCorrectas ? cantidadDeOpcionesCorrectas(this.opciones) : 0;
+        return sonTodasCorrectas ? 1 : 0;
     }
 
     private int cantidadDeOpcionesCorrectas(List<Opcion> opciones){

@@ -2,15 +2,12 @@ package edu.fiuba.algo3.modelo.pregunta.multiplechoice;
 
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.TipoPreguntaNoImplementadaException;
-import edu.fiuba.algo3.modelo.excepciones.RondaSinPreguntaExcepcion;
 import edu.fiuba.algo3.modelo.pregunta.CreadorPregunta;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 import edu.fiuba.algo3.modelo.pregunta.TipoPregunta;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.modelo.Ronda;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -137,7 +134,7 @@ public class MultipleChoiceClasicoTest {
     }
 
     @Test
-    public void multipleChoiceClasicoAsignaCorrectamenteElPuntajeAUnJugadorConTodasLasOpcionesCorrectas()throws ParametrosInvalidosExcepcion,RondaSinPreguntaExcepcion{
+    public void multipleChoiceClasicoAsignaCorrectamenteElPuntajeAUnJugadorConTodasLasOpcionesCorrectas()throws ParametrosInvalidosExcepcion{
         Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
         Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
         Opcion opcion3Correcta = new Opcion("opcion 3", Boolean.TRUE);
@@ -145,19 +142,15 @@ public class MultipleChoiceClasicoTest {
         Opcion opcion5Incorrecta = new Opcion("opcion 5", Boolean.FALSE);
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta,opcion4Incorrecta,opcion5Incorrecta);
         String preguntaTexto = "pregunta?";
+
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
         List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta);
-        Jugador jugador = new Jugador("jugador");
-        List<Jugador> jugadores = Arrays.asList(jugador);
-        Ronda ronda = new Ronda(jugadores, multipleChoiceClasico);
 
-        ronda.responder(jugador, opcionesSeleccionadas);
-
-        Assertions.assertEquals(3, jugador.obtenerPuntos());
+        Assertions.assertEquals(1,multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas));
     }
 
     @Test
-    public void multipleChoiceClasicoAsignaCorrectamenteElPuntajeAUnJugadorConTodasLasOpcionesIncorrectas()throws ParametrosInvalidosExcepcion,RondaSinPreguntaExcepcion{
+    public void multipleChoiceClasicoAsignaCorrectamenteElPuntajeAUnJugadorConTodasLasOpcionesIncorrectas()throws ParametrosInvalidosExcepcion{
         Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
         Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
         Opcion opcion3Correcta = new Opcion("opcion 3", Boolean.TRUE);
@@ -165,18 +158,14 @@ public class MultipleChoiceClasicoTest {
         Opcion opcion5Incorrecta = new Opcion("opcion 5", Boolean.FALSE);
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta,opcion4Incorrecta,opcion5Incorrecta);
         String preguntaTexto = "pregunta?";
+
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
         List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion4Incorrecta,opcion5Incorrecta);
-        Jugador jugador = new Jugador("jugador");
-        List<Jugador> jugadores = Arrays.asList(jugador);
-        Ronda ronda = new Ronda(jugadores, multipleChoiceClasico);
 
-        ronda.responder(jugador, opcionesSeleccionadas);
-
-        Assertions.assertEquals(0, jugador.obtenerPuntos());
+        Assertions.assertEquals(0,multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas));
     }
 
-    public void multipleChoiceClasicoAsignaCorrectamenteElPuntajeAUnJugadorConAlgunasOpcionesCorrectas()throws ParametrosInvalidosExcepcion,RondaSinPreguntaExcepcion{
+    public void multipleChoiceClasicoAsignaCorrectamenteElPuntajeAUnJugadorConAlgunasOpcionesCorrectas()throws ParametrosInvalidosExcepcion{
         Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
         Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
         Opcion opcion3Correcta = new Opcion("opcion 3", Boolean.TRUE);
@@ -184,18 +173,14 @@ public class MultipleChoiceClasicoTest {
         Opcion opcion5Incorrecta = new Opcion("opcion 5", Boolean.FALSE);
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta,opcion4Incorrecta,opcion5Incorrecta);
         String preguntaTexto = "pregunta?";
+
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
         List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta,opcion2Correcta);
-        Jugador jugador = new Jugador("jugador");
-        List<Jugador> jugadores = Arrays.asList(jugador);
-        Ronda ronda = new Ronda(jugadores, multipleChoiceClasico);
 
-        ronda.responder(jugador, opcionesSeleccionadas);
-
-        Assertions.assertEquals(0, jugador.obtenerPuntos());
+        Assertions.assertEquals(0,multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas));
     }
 
-    public void multipleChoiceClasicoAsignaCorrectamenteElPuntajeAUnJugadorConAlgunasOpcionesCorrectasEIncorrectas()throws ParametrosInvalidosExcepcion,RondaSinPreguntaExcepcion{
+    public void multipleChoiceClasicoAsignaCorrectamenteElPuntajeAUnJugadorConAlgunasOpcionesCorrectasEIncorrectas()throws ParametrosInvalidosExcepcion{
         Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
         Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
         Opcion opcion3Correcta = new Opcion("opcion 3", Boolean.TRUE);
@@ -203,15 +188,11 @@ public class MultipleChoiceClasicoTest {
         Opcion opcion5Incorrecta = new Opcion("opcion 5", Boolean.FALSE);
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta,opcion4Incorrecta,opcion5Incorrecta);
         String preguntaTexto = "pregunta?";
+
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
         List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta,opcion2Correcta,opcion4Incorrecta);
-        Jugador jugador = new Jugador("jugador");
-        List<Jugador> jugadores = Arrays.asList(jugador);
-        Ronda ronda = new Ronda(jugadores, multipleChoiceClasico);
 
-        ronda.responder(jugador, opcionesSeleccionadas);
-
-        Assertions.assertEquals(0, jugador.obtenerPuntos());
+        Assertions.assertEquals(0,multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas));
     }
 
 }
