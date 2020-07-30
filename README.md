@@ -26,6 +26,45 @@ Corrector: **Diego Sánchez**
 
 ![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Clase/modificable/modificable.plantuml)
 
+#### Diagrama de secuencia
+
+##### VerdaderoFalsoClasico
+
+![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/VerdaderoFalsoClasico/VerdaderoFalsoClasicoCreacion.plantuml)
+
+![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/VerdaderoFalsoClasico/VerdaderoClasicoResponder.plantuml)
+
+![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/VerdaderoFalsoClasico/VerdaderoFalsoClasicoCreacionError.plantuml)
+
+##### VerdaderoFalsoPenalidad
+
+![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/VerdaderoFalsoPenalidad/CrearVerdaderoFalsoPenalidad.plantuml)
+
+![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/VerdaderoFalsoPenalidad/CrearVerdaderoFalsoPenalidadError.plantuml)
+
+![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/VerdaderoFalsoClasico/VerdaderoFalsoClasicoCreacionError.plantuml)
+
+![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/VerdaderoFalsoConPenalidad/alResponderCorrectamenteDebeSumarUnPunto.plantuml)
+
+![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/VerdaderoFalsoConPenalidad/alResponderIncorrectamenteDebeRestarUnPunto.plantuml)
+
+##### MultipleChoiceClasico
+
+![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/MultipleChoiceClasico/MultipleChoiceClasicoCreacion.plantuml)
+
+![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/MultipleChoiceClasico/MultipleChoiceClasicoCreacionError.plantuml)
+
+
+##### MultipleChoiceParcial
+
+![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/MultiplieChoiceParcial/MultiplieChoiceParcialCreacion.plantuml)
+
+![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/MultiplieChoiceParcial/MultipleChoiceParcialCreacionError.plantuml)
+
+![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/MultiplieChoiceParcial/MultipleChoiceParcialSumaPuntosSegunCantOpcionesCorrectas.plantuml)
+
+![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/MultiplieChoiceParcial/MultipleChoiceParcialNoSumaPuntosConOpcionIncorrectaSeleccionada.plantuml)
+
 ### Pre-requisitos
 
 Listado de software/herramientas necesarias para el proyecto
