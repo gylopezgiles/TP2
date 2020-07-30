@@ -78,6 +78,54 @@ public class MultipleChoiceParcialTest {
     }
 
     @Test
+    public void debeEstablecerPuntuacionCorrectamenteEligiendoTodasRespuestasCorrectasSinIncorrectas() throws ParametrosInvalidosExcepcion {
+        Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
+        Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
+        Opcion opcion3Correcta = new Opcion("opcion 3", Boolean.TRUE);
+        Opcion opcion4Incorrecta = new Opcion("opcion 4", Boolean.FALSE);
+        List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta, opcion4Incorrecta);
+        String preguntaTexto = "pregunta?";
+        Preguntable multipleChoiceParcial = new MultipleChoiceParcial(preguntaTexto, opciones);
+        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta);
+
+        int puntuacion = multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas);
+
+        Assertions.assertEquals(3, puntuacion);
+    }
+
+    @Test
+    public void debeEstablecerPuntuacionCorrectamenteEligiendoAlgunasRespuestasCorrectasSinIncorrectas() throws ParametrosInvalidosExcepcion {
+        Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
+        Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
+        Opcion opcion3Correcta = new Opcion("opcion 3", Boolean.TRUE);
+        Opcion opcion4Incorrecta = new Opcion("opcion 4", Boolean.FALSE);
+        List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta, opcion4Incorrecta);
+        String preguntaTexto = "pregunta?";
+        Preguntable multipleChoiceParcial = new MultipleChoiceParcial(preguntaTexto, opciones);
+        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta, opcion3Correcta);
+
+        int puntuacion = multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas);
+
+        Assertions.assertEquals(2, puntuacion);
+    }
+
+    @Test
+    public void debeEstablecerPuntuacionCorrectamenteEligiendoAlgunasRespuestasCorrectasYUnaIncorrecta() throws ParametrosInvalidosExcepcion {
+        Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
+        Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
+        Opcion opcion3Correcta = new Opcion("opcion 3", Boolean.TRUE);
+        Opcion opcion4Incorrecta = new Opcion("opcion 4", Boolean.FALSE);
+        List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta, opcion4Incorrecta);
+        String preguntaTexto = "pregunta?";
+        Preguntable multipleChoiceParcial = new MultipleChoiceParcial(preguntaTexto, opciones);
+        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta, opcion3Correcta, opcion4Incorrecta);
+
+        int puntuacion = multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas);
+
+        Assertions.assertEquals(0, puntuacion);
+    }
+
+    @Test
     public void preguntaMultipleChoiceParcialAsignaPuntajeCorrectamenteEligiendoTodasCorrectasSinIncorrectas() throws ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion, TipoPreguntaNoImplementadaException {
         Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
         Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
