@@ -1,8 +1,14 @@
 package edu.fiuba.algo3.modelo.pregunta.multiplechoice;
 
+import edu.fiuba.algo3.modelo.Jugador;
+import edu.fiuba.algo3.modelo.Ronda;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
+import edu.fiuba.algo3.modelo.excepciones.RondaSinPreguntaExcepcion;
+import edu.fiuba.algo3.modelo.excepciones.TipoPreguntaNoImplementadaException;
+import edu.fiuba.algo3.modelo.pregunta.CreadorPregunta;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
+import edu.fiuba.algo3.modelo.pregunta.TipoPregunta;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -69,6 +75,60 @@ public class MultipleChoiceParcialTest {
 
         Assertions.assertThrows(ParametrosInvalidosExcepcion.class, () -> new MultipleChoiceParcial("pregunta?", opciones));
 
+    }
+
+    @Test
+    public void preguntaMultipleChoiceParcialAsignaPuntajeCorrectamenteEligiendoTodasCorrectasSinIncorrectas() throws ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion, TipoPreguntaNoImplementadaException {
+        Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
+        Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
+        Opcion opcion3Incorrecta = new Opcion("opcion 3", Boolean.FALSE);
+        List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta);
+        String preguntaTexto = "pregunta?";
+        Preguntable multipleChoiceParcial = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceParcial, preguntaTexto, opciones);
+        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta, opcion2Correcta);
+        Jugador jugador = new Jugador("jugador");
+        List<Jugador> jugadores = Arrays.asList(jugador);
+        Ronda ronda = new Ronda(jugadores, multipleChoiceParcial);
+
+        ronda.responder(jugador, opcionesSeleccionadas);
+
+        Assertions.assertEquals(2, jugador.obtenerPuntos());
+    }
+
+    @Test
+    public void preguntaMultipleChoiceParcialAsignaPuntajeCorrectamenteEligiendoAlgunasCorrectasSinIncorrectas() throws ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion, TipoPreguntaNoImplementadaException {
+        Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
+        Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
+        Opcion opcion3Incorrecta = new Opcion("opcion 3", Boolean.FALSE);
+        List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta);
+        String preguntaTexto = "pregunta?";
+        Preguntable multipleChoiceParcial = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceParcial, preguntaTexto, opciones);
+        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta);
+        Jugador jugador = new Jugador("jugador");
+        List<Jugador> jugadores = Arrays.asList(jugador);
+        Ronda ronda = new Ronda(jugadores, multipleChoiceParcial);
+
+        ronda.responder(jugador, opcionesSeleccionadas);
+
+        Assertions.assertEquals(1, jugador.obtenerPuntos());
+    }
+
+    @Test
+    public void preguntaMultipleChoiceParcialAsignaPuntajeCorrectamenteEligiendoIncorrecta() throws ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion, TipoPreguntaNoImplementadaException {
+        Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
+        Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
+        Opcion opcion3Incorrecta = new Opcion("opcion 3", Boolean.FALSE);
+        List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta);
+        String preguntaTexto = "pregunta?";
+        Preguntable multipleChoiceParcial = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceParcial, preguntaTexto, opciones);
+        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta);
+        Jugador jugador = new Jugador("jugador");
+        List<Jugador> jugadores = Arrays.asList(jugador);
+        Ronda ronda = new Ronda(jugadores, multipleChoiceParcial);
+
+        ronda.responder(jugador, opcionesSeleccionadas);
+
+        Assertions.assertEquals(0, jugador.obtenerPuntos());
     }
 
 }
