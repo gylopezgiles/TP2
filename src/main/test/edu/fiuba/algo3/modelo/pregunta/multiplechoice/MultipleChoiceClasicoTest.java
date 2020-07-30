@@ -132,5 +132,68 @@ public class MultipleChoiceClasicoTest {
         Assertions.assertThrows(ParametrosInvalidosExcepcion.class,
                                () -> new MultipleChoiceClasico("pregunta?", opciones));
     }
+
+    @Test
+    public void multipleChoiceClasicoAsignaCorrectamenteElPuntajeAUnJugadorConTodasLasOpcionesCorrectas()throws ParametrosInvalidosExcepcion{
+        Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
+        Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
+        Opcion opcion3Correcta = new Opcion("opcion 3", Boolean.TRUE);
+        Opcion opcion4Incorrecta = new Opcion("opcion 4", Boolean.FALSE);
+        Opcion opcion5Incorrecta = new Opcion("opcion 5", Boolean.FALSE);
+        List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta,opcion4Incorrecta,opcion5Incorrecta);
+        String preguntaTexto = "pregunta?";
+
+        Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
+        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta);
+
+        Assertions.assertEquals(1,multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas));
+    }
+
+    @Test
+    public void multipleChoiceClasicoAsignaCorrectamenteElPuntajeAUnJugadorConTodasLasOpcionesIncorrectas()throws ParametrosInvalidosExcepcion{
+        Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
+        Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
+        Opcion opcion3Correcta = new Opcion("opcion 3", Boolean.TRUE);
+        Opcion opcion4Incorrecta = new Opcion("opcion 4", Boolean.FALSE);
+        Opcion opcion5Incorrecta = new Opcion("opcion 5", Boolean.FALSE);
+        List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta,opcion4Incorrecta,opcion5Incorrecta);
+        String preguntaTexto = "pregunta?";
+
+        Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
+        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion4Incorrecta,opcion5Incorrecta);
+
+        Assertions.assertEquals(0,multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas));
+    }
+
+    public void multipleChoiceClasicoAsignaCorrectamenteElPuntajeAUnJugadorConAlgunasOpcionesCorrectas()throws ParametrosInvalidosExcepcion{
+        Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
+        Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
+        Opcion opcion3Correcta = new Opcion("opcion 3", Boolean.TRUE);
+        Opcion opcion4Incorrecta = new Opcion("opcion 4", Boolean.FALSE);
+        Opcion opcion5Incorrecta = new Opcion("opcion 5", Boolean.FALSE);
+        List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta,opcion4Incorrecta,opcion5Incorrecta);
+        String preguntaTexto = "pregunta?";
+
+        Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
+        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta,opcion2Correcta);
+
+        Assertions.assertEquals(0,multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas));
+    }
+
+    public void multipleChoiceClasicoAsignaCorrectamenteElPuntajeAUnJugadorConAlgunasOpcionesCorrectasEIncorrectas()throws ParametrosInvalidosExcepcion{
+        Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
+        Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
+        Opcion opcion3Correcta = new Opcion("opcion 3", Boolean.TRUE);
+        Opcion opcion4Incorrecta = new Opcion("opcion 4", Boolean.FALSE);
+        Opcion opcion5Incorrecta = new Opcion("opcion 5", Boolean.FALSE);
+        List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta,opcion4Incorrecta,opcion5Incorrecta);
+        String preguntaTexto = "pregunta?";
+
+        Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
+        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta,opcion2Correcta,opcion4Incorrecta);
+
+        Assertions.assertEquals(0,multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas));
+    }
+
 }
 

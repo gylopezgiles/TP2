@@ -1,0 +1,29 @@
+@startuml
+hide footbox
+title MultipleChoiceClasico con opciones Correctas
+actor Test
+participant ":MultipleChoiceClasico" as MultipleChoiceClasico
+participant ": Opcion" as opcion
+
+Test ->MultipleChoiceClasico: asignarPuntuacion(opciones: List<Opcion>)
+activate Test
+activate MultipleChoiceClasico
+MultipleChoiceClasico -> MultipleChoiceClasico :cantidadDeOpcionesCorrectas(opciones)
+activate MultipleChoiceClasico
+loop para cada opcion
+    MultipleChoiceClasico -> opcion : esCorrecta()
+    activate opcion
+    MultipleChoiceClasico <-- opcion: esCorrecta
+    deactivate opcion
+end
+MultipleChoiceClasico --> MultipleChoiceClasico :opcionesCorrectasSeleccionadas
+deactivate MultipleChoiceClasico
+MultipleChoiceClasico -> MultipleChoiceClasico :cantidadDeOpcionesCorrectas(this.opciones)
+activate MultipleChoiceClasico
+MultipleChoiceClasico --> MultipleChoiceClasico :opcionesCorrectas
+deactivate MultipleChoiceClasico
+Test <-- MultipleChoiceClasico: 1
+deactivate MultipleChoiceClasico
+deactivate Test
+
+@enduml
