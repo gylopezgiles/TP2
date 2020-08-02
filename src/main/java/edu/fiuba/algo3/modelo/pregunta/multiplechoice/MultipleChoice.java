@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.modelo.pregunta.multiplechoice;
 
+import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
+import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 
@@ -41,6 +43,14 @@ public abstract class MultipleChoice implements Preguntable {
     @Override
     public String obtenerPregunta() {
         return pregunta;
+    }
+
+    @Override
+    public int aplicarMultiplicador(int puntos, Multiplicador multiplicador) throws MultiplicadorExcepcion {
+        if(!multiplicador.equals(Multiplicador.PorDefecto)){
+            throw new MultiplicadorExcepcion("Solo se puede aplicar multiplicadores a preguntas con penalidad");
+        }
+        return multiplicador.aplicarMultiplicador(puntos);
     }
 
 }

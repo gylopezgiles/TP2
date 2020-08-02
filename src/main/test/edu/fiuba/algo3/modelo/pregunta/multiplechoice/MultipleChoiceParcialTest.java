@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.modelo.pregunta.multiplechoice;
 
+import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
+import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 import org.junit.jupiter.api.Assertions;
@@ -117,6 +119,34 @@ public class MultipleChoiceParcialTest {
         int puntuacion = multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas);
 
         Assertions.assertEquals(0, puntuacion);
+    }
+
+    @Test
+    public void alAplicarMultiplicadorDebeLanzarUnaExcepcion() throws ParametrosInvalidosExcepcion {
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcionCorrecta1 = new Opcion("Opcion 1", esCorrecta);
+        Opcion opcionIncorrecta2 = new Opcion("Opcion 2", !esCorrecta);
+        Opcion opcionIncorrecta3 = new Opcion("Opcion 3", !esCorrecta);
+        List<Opcion> opciones = Arrays.asList(opcionCorrecta1, opcionIncorrecta2, opcionIncorrecta3);
+
+        Preguntable multipleChoiceParcial = new MultipleChoiceParcial("pregunta?", opciones);
+
+        Assertions.assertThrows(MultiplicadorExcepcion.class, () -> multipleChoiceParcial.aplicarMultiplicador(1, Multiplicador.PorDos));
+
+    }
+
+    @Test
+    public void alAplicarMultiplicadorDefaultNoDebeLanzarExcepcion() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcionCorrecta1 = new Opcion("Opcion 1", esCorrecta);
+        Opcion opcionIncorrecta2 = new Opcion("Opcion 2", !esCorrecta);
+        Opcion opcionIncorrecta3 = new Opcion("Opcion 3", !esCorrecta);
+        List<Opcion> opciones = Arrays.asList(opcionCorrecta1, opcionIncorrecta2, opcionIncorrecta3);
+
+        Preguntable multipleChoiceParcial = new MultipleChoiceParcial("pregunta?", opciones);
+
+        Assertions.assertEquals(1, multipleChoiceParcial.aplicarMultiplicador(1, Multiplicador.PorDefecto));
+
     }
 
 }

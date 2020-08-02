@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo.entrega;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Ronda;
 import edu.fiuba.algo3.modelo.excepciones.*;
+import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.CreadorPregunta;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
@@ -19,7 +20,7 @@ import java.util.List;
 public class Entrega1Test {
 
     @Test
-    public void crearVerdaderoFalsoClasicoConPenalidadConOpciones() throws ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
+    public void crearVerdaderoFalsoClasicoConPenalidadConOpciones() throws ExcepcionBase {
         //Given
         Opcion opcionCorrecta = new Opcion("Verdadero", Boolean.TRUE);
         Opcion opcionIncorrecta = new Opcion("Falso", Boolean.FALSE);
@@ -38,7 +39,7 @@ public class Entrega1Test {
 
 
     @Test
-    public void crearMultipleChoiceClasicoConOpciones()throws ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException{
+    public void crearMultipleChoiceClasicoConOpciones()throws ExcepcionBase {
         //Given
         Opcion opcionCorrecta = new Opcion("Esta Si", Boolean.TRUE);
         Opcion opcion2 = new Opcion("Esta NO", Boolean.FALSE);
@@ -59,7 +60,7 @@ public class Entrega1Test {
     }
 
     @Test
-    public void crearMultipleChoiceParcialConOpciones()throws ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException{
+    public void crearMultipleChoiceParcialConOpciones()throws ExcepcionBase {
         //Given
         Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
         Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
@@ -78,7 +79,7 @@ public class Entrega1Test {
     }
 
     @Test
-    public void preguntaVerdaderoFalsoConPenalidadSumaPuntosAJugadoresRespondenCorrectamente() throws RondaSinPreguntaExcepcion, ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
+    public void preguntaVerdaderoFalsoConPenalidadSumaPuntosAJugadoresRespondenCorrectamente() throws ExcepcionBase {
         //Given
         Opcion opcionCorrecta = new Opcion("Verdadero", Boolean.TRUE);
         Opcion opcionIncorrecta = new Opcion("Falso", Boolean.FALSE);
@@ -99,7 +100,7 @@ public class Entrega1Test {
     }
 
     @Test
-    public void preguntaVerdaderoFalsoConPenalidadRestaPuntosAJugadoresRespondenIncorrectamente() throws RondaSinPreguntaExcepcion, ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
+    public void preguntaVerdaderoFalsoConPenalidadRestaPuntosAJugadoresRespondenIncorrectamente() throws ExcepcionBase {
         //Given
         Opcion opcionCorrecta = new Opcion("Verdadero", Boolean.TRUE);
         Opcion opcionIncorrecta = new Opcion("Falso", Boolean.FALSE);
@@ -120,7 +121,7 @@ public class Entrega1Test {
     }
 
     @Test
-    public void preguntaMultipleChoiceClasicoSumaPuntosAJugadoresRespondenCorrectamente() throws RondaSinPreguntaExcepcion, ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
+    public void preguntaMultipleChoiceClasicoSumaPuntosAJugadoresRespondenCorrectamente() throws ExcepcionBase {
         //Given
         Opcion opcion1Correcta = new Opcion("Opcion 1", Boolean.TRUE);
         Opcion opcion2Correcta = new Opcion("Opcion 2", Boolean.TRUE);
@@ -144,7 +145,7 @@ public class Entrega1Test {
     }
 
     @Test
-    public void preguntaMultipleChoiceClasicoNoSumaPuntosAJugadoresRespondenIncorrectamente() throws RondaSinPreguntaExcepcion, ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
+    public void preguntaMultipleChoiceClasicoNoSumaPuntosAJugadoresRespondenIncorrectamente() throws ExcepcionBase {
         //Given
         Opcion opcion1Correcta = new Opcion("Opcion 1", Boolean.TRUE);
         Opcion opcion2Correcta = new Opcion("Opcion 2", Boolean.TRUE);
@@ -168,7 +169,7 @@ public class Entrega1Test {
     }
 
     @Test
-    public void preguntaMultipleChoiceParcialAsignaPuntajeCorrectamenteEligiendoTodasCorrectasSinIncorrectas() throws ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion, TipoPreguntaNoImplementadaException {
+    public void preguntaMultipleChoiceParcialAsignaPuntajeCorrectamenteEligiendoTodasCorrectasSinIncorrectas() throws ExcepcionBase {
         //Given
         Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
         Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
@@ -190,7 +191,7 @@ public class Entrega1Test {
     }
 
     @Test
-    public void preguntaMultipleChoiceParcialAsignaPuntajeCorrectamenteEligiendoAlgunasCorrectasSinIncorrectas() throws ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion, TipoPreguntaNoImplementadaException {
+    public void preguntaMultipleChoiceParcialAsignaPuntajeCorrectamenteEligiendoAlgunasCorrectasSinIncorrectas() throws ExcepcionBase {
         //Given
         Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
         Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
@@ -212,7 +213,7 @@ public class Entrega1Test {
     }
 
     @Test
-    public void preguntaMultipleChoiceParcialAsignaPuntajeCorrectamenteEligiendoIncorrecta() throws ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion, TipoPreguntaNoImplementadaException {
+    public void preguntaMultipleChoiceParcialAsignaPuntajeCorrectamenteEligiendoIncorrecta() throws ExcepcionBase {
         //Given
         Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
         Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
@@ -227,7 +228,7 @@ public class Entrega1Test {
         Ronda ronda = new Ronda(jugadores, multipleChoiceParcial);
 
         //When
-        ronda.responder(jugador, opcionesSeleccionadas);
+        ronda.responder(jugador, opcionesSeleccionadas, Multiplicador.PorDefecto);
 
         //Then
         Assertions.assertEquals(0, jugador.obtenerPuntos());

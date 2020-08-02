@@ -1,9 +1,10 @@
 package edu.fiuba.algo3.modelo.pregunta.verdaderofalso;
 
+import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
+import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
-import edu.fiuba.algo3.modelo.pregunta.verdaderofalso.VerdaderoFalsoClasico;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -60,6 +61,32 @@ public class VerdaderoFalsoClasicoTest {
         List<Opcion> opciones = Arrays.asList(opcionCorrecta1, opcionCorrecta2);
 
         Assertions.assertThrows(ParametrosInvalidosExcepcion.class, () -> new VerdaderoFalsoClasico("pregunta?", opciones));
+
+    }
+
+    @Test
+    public void alAplicarMultiplicadorDebeLanzarUnaExcepcion() throws ParametrosInvalidosExcepcion {
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcionCorrecta1 = new Opcion("Verdadero", esCorrecta);
+        Opcion opcionIncorrecta2 = new Opcion("Falso", !esCorrecta);
+        List<Opcion> opciones = Arrays.asList(opcionCorrecta1, opcionIncorrecta2);
+
+        Preguntable verdaderoFalsoClasico = new VerdaderoFalsoClasico("pregunta?", opciones);
+
+        Assertions.assertThrows(MultiplicadorExcepcion.class, () -> verdaderoFalsoClasico.aplicarMultiplicador(1, Multiplicador.PorDos));
+
+    }
+
+    @Test
+    public void alAplicarMultiplicadorDefaultNoDebeLanzarExcepcion() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcionCorrecta1 = new Opcion("Verdadero", esCorrecta);
+        Opcion opcionIncorrecta2 = new Opcion("Falso", !esCorrecta);
+        List<Opcion> opciones = Arrays.asList(opcionCorrecta1, opcionIncorrecta2);
+
+        Preguntable verdaderoFalsoClasico = new VerdaderoFalsoClasico("pregunta?", opciones);
+
+        Assertions.assertEquals(1, verdaderoFalsoClasico.aplicarMultiplicador(1, Multiplicador.PorDefecto));
 
     }
 

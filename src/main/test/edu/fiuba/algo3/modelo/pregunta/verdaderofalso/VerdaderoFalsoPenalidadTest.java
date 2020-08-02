@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.modelo.pregunta.verdaderofalso;
 
+import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
+import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 import org.junit.jupiter.api.Assertions;
@@ -88,4 +90,31 @@ public class VerdaderoFalsoPenalidadTest {
         Assertions.assertEquals(-1, verdaderoFalsoConPenalidad.establecerPuntuacion(Arrays.asList(opcionIncorrecta)));
 
     }
+
+    @Test
+    public void alAplicarMultiplicadorDebeMultiplicarLosPuntos() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+        String preguntaTexto = "La banda Kiss tiene 6 integrantes";
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcionCorrecta = new Opcion("Verdadero", !esCorrecta);
+        Opcion opcionIncorrecta = new Opcion("Falso", esCorrecta);
+        List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
+
+        Preguntable verdaderoFalsoConPenalidad = new VerdaderoFalsoPenalidad(preguntaTexto, opciones);
+
+        Assertions.assertEquals(2, verdaderoFalsoConPenalidad.aplicarMultiplicador(1, Multiplicador.PorDos));
+    }
+
+    @Test
+    public void alAplicarMultiplicadorDebeMultiplicarLosPuntosNegativos() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+        String preguntaTexto = "La banda Kiss tiene 6 integrantes";
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcionCorrecta = new Opcion("Verdadero", !esCorrecta);
+        Opcion opcionIncorrecta = new Opcion("Falso", esCorrecta);
+        List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
+
+        Preguntable verdaderoFalsoConPenalidad = new VerdaderoFalsoPenalidad(preguntaTexto, opciones);
+
+        Assertions.assertEquals(-2, verdaderoFalsoConPenalidad.aplicarMultiplicador(-1, Multiplicador.PorDos));
+    }
+
 }
