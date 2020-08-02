@@ -11,6 +11,7 @@ interface Preguntable{
     + obtenerOpciones():List
     + establecerPuntuacion(opciones:List): int
     + obtenerPregunta():str
+    + aplicarMultiplicador(puntos: int, multiplicador: MultiplicableStrategy): int
 }
 
 enum TipoPreguntaConcreta{
@@ -30,29 +31,38 @@ abstract class VerdaderoFalso{
 
 ' sin penalidad
 class VerdaderoFalsoClasico{
+    + establecerPuntuacion(opciones: List<Opcion>): int
 }
 
 class MultipleChoiceClasico{
-
+    + establecerPuntuacion(opciones: List<Opcion>): int
+    - cantidadDeOpcionesCorrectas(opciones: List<Opcion>): int
 }
 
 class MultipleChoiceParcial{
-    
+    + establecerPuntuacion(opciones: List<Opcion>): int
+    - puntajeOpcionesCorrectas(opciones: List<Opcion>): int
 }
 
 ' con penalidad
 class VerdaderoFalsoPenalidad{
+    + establecerPuntuacion(opciones: List<Opcion>): int
+    + aplicarMultiplicador(puntos: int, multiplicador: MultiplicableStrategy): int
 }
 
 class MultipleChoicePenalidad{
+    + establecerPuntuacion(opciones: List<Opcion>): int
+    + aplicarMultiplicador(puntos: int, multiplicador: MultiplicableStrategy): int
 }
 
 
 ' Especiales
 class GroupChoice{
+    + establecerPuntuacion(opciones: List<Opcion>): int
 }
 
 class OpcionesOrdenadas{
+    + establecerPuntuacion(opciones: List<Opcion>): int
 }
 
 abstract class MultipleChoice{
@@ -67,7 +77,7 @@ abstract class MultipleChoice{
 PreguntaCreador -down->TipoPreguntaConcreta
 PreguntaCreador -> Preguntable
 
-Preguntable <.. VerdaderoFalso
+Preguntable <|.. VerdaderoFalso
 
 ' Preg_Penal
 VerdaderoFalso <|-- VerdaderoFalsoPenalidad
@@ -76,11 +86,11 @@ MultipleChoice <|-- MultipleChoicePenalidad
 
 ' Pregun_Sin_Penal
 VerdaderoFalso <|-- VerdaderoFalsoClasico
-Preguntable <.. MultipleChoice
+Preguntable <|.. MultipleChoice
 MultipleChoice <|-- MultipleChoiceParcial
 MultipleChoice <|-- MultipleChoiceClasico
 
-Preguntable <.. GroupChoice
-Preguntable <.. OpcionesOrdenadas
+Preguntable <|.. GroupChoice
+Preguntable <|.. OpcionesOrdenadas
 
 @enduml

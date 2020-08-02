@@ -1,10 +1,6 @@
 @startuml
-title Modelo Inicial del Juego
+title Modelo General del Juego
 skinparam classAttributeIconSize 0
-
-class Partida{
-}
-
 
 class Jugador{
     - puntos: int
@@ -16,33 +12,25 @@ class Jugador{
 }
 
 interface Preguntable{
-    + {abstract}obtenerOpciones(): List<Opcion>
-    + {abstract}establecerPuntuacion(List<Opcion>): int
-    + {abstract}obtenerPregunta(): str
-
+    + obtenerOpciones():List
+    + establecerPuntuacion(opciones:List): int
+    + obtenerPregunta():str
+    + aplicarMultiplicador(puntos: int, multiplicador: MultiplicableStrategy): int
 }
 
 class Ronda{
-    ' - jugadores: List<Jugador>
-    ' - pregunta: Preguntable
 
     + obtenerJugadores(): List<Jugador>
     + obtenerPregunta():Preguntable
-    + responder():void
+    + responder(jugador: Jugador, opciones: List<Opcion>):void
+    + responder(jugador: Jugador, opciones: List<Opcion>, multiplicador: MultiplicableStrategy):void
 }
 
-interface Modificable{
-    + aplicarModificador(jugadorConModificador: Jugador, otroJugador: Jugador): int
+interface MultiplicableStrategy{
+    + aplicarMultiplicador(puntos: int): int
 }
 
-
-
-Partida "1"-left->"*" Jugador
-
-Partida "1"->"*" Preguntable
-
-Partida "1" -down->"*" Ronda
-Ronda "1  "-down..>"*" Modificable
+Ronda "1" o-down-"*" MultiplicableStrategy
 Ronda "1" o-up->"*" Preguntable
 Ronda "1" o-left->"*"Jugador
 
