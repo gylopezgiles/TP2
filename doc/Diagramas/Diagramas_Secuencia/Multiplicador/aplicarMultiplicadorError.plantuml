@@ -1,0 +1,11 @@
+@startuml
+
+title Aplicar Multiplicador a Pregunta sin Penalidad
+
+Kahoot -> Ronda: responder(jugador, opciones, multiplicador)
+Ronda -> Preguntable: establecerPuntuacion(opciones)
+Preguntable -> Ronda: puntos
+Ronda -> Preguntable: aplicarMultiplicador(puntos, multiplicador)
+Preguntable -> Ronda: new MultiplicadorExcepcion()
+
+@enduml
