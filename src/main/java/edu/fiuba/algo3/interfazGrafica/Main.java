@@ -27,7 +27,7 @@ public class Main extends Application {
         layout.getChildren().add(boton);
 
 
-        Scene scene = new Scene(layout);
+        Scene scene = new Scene(layout, 200, 300);
         stage.setScene(scene);
 
         stage.show();
