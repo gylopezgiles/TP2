@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.pregunta.verdaderofalso;
 
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
+import edu.fiuba.algo3.modelo.multiplicador.MultiplicableStrategy;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 
@@ -24,7 +25,7 @@ public class VerdaderoFalsoPenalidad extends VerdaderoFalso {
     }
 
     @Override
-    public int aplicarMultiplicador(int puntos, Multiplicador multiplicador) {
+    public int aplicarMultiplicador(int puntos, MultiplicableStrategy multiplicador) {
         return multiplicador.aplicarMultiplicador(puntos);
     }
 }
