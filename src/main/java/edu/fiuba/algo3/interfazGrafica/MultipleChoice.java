@@ -5,10 +5,12 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -50,32 +52,38 @@ public class MultipleChoice extends Application {
         Text pregunta = new Text("¿2 + 2 = 4?");
         pregunta.setFont(Font.font("Arial", FontWeight.NORMAL, 20));
 
-        Button opcion1 = new Button();
+
+        TilePane contenedorOpciones = new TilePane();
+
+        RadioButton opcion1 = new RadioButton();
         opcion1.setText("opcion 1");
 
-        Button opcion2 = new Button();
+        RadioButton opcion2 = new RadioButton();
         opcion2.setText("opcion 2");
 
-        Button opcion3 = new Button();
+        RadioButton opcion3 = new RadioButton();
         opcion3.setText("opcion 3");
 
-        Button opcion4 = new Button();
+        RadioButton opcion4 = new RadioButton();
         opcion4.setText("opcion 4");
 
-        Button opcion5 = new Button();
+        RadioButton opcion5 = new RadioButton();
         opcion5.setText("opcion 5");
 
-        HBox fila1opciones = new HBox(opcion1, opcion2, opcion3);
-        centrar_alinear_fila(fila1opciones, 3);
 
-        HBox fila2opciones = new HBox(opcion4, opcion5);
-        centrar_alinear_fila(fila2opciones, 3);
+        contenedorOpciones.getChildren().add(opcion1);
+        contenedorOpciones.getChildren().add(opcion2);
+        contenedorOpciones.getChildren().add(opcion3);
+        contenedorOpciones.getChildren().add(opcion4);
+        contenedorOpciones.getChildren().add(opcion5);
 
-        VBox contenedorOpciones = new VBox(fila1opciones, fila2opciones);
-        contenedorOpciones.setSpacing(5);
+        contenedorOpciones.setAlignment(Pos.CENTER);
+
+        Button enviar = new Button();
+        enviar.setText("Enviar");
 
 
-        VBox contenedorPrincipal = new VBox(pregunta, contenedorOpciones);
+        VBox contenedorPrincipal = new VBox(pregunta, contenedorOpciones, enviar);
         contenedorPrincipal.setSpacing(60);
         contenedorPrincipal.setPadding(new Insets(40));
         contenedorPrincipal.setAlignment(Pos.CENTER);
