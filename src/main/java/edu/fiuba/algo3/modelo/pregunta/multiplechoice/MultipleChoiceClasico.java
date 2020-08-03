@@ -2,14 +2,13 @@ package edu.fiuba.algo3.modelo.pregunta.multiplechoice;
 
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
-import java.util.Optional;
 import java.util.List;
 
 public class MultipleChoiceClasico extends MultipleChoice {
 
-    public  MultipleChoiceClasico(String pregunta, List<Opcion> opciones) throws ParametrosInvalidosExcepcion {
-        validarOpciones(opciones);
-        this.opciones = opciones;
+    public <T>  MultipleChoiceClasico(String pregunta, T opciones) throws ParametrosInvalidosExcepcion {
+        validarOpciones((List<Opcion>) opciones);
+        this.opciones = (List<Opcion>) opciones;
         this.pregunta = pregunta;
     }
 

@@ -31,7 +31,8 @@ public class MultipleChoiceClasicoTest {
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
 
         //Then
-        Assertions.assertEquals(5, multipleChoiceClasico.obtenerOpciones().size());
+        List<Opcion> opcionesEnPregunta = (List<Opcion>) multipleChoiceClasico.obtenerOpciones();
+        Assertions.assertEquals(5, opcionesEnPregunta.size());
         Assertions.assertEquals(opciones, multipleChoiceClasico.obtenerOpciones());
 
     }
@@ -50,7 +51,8 @@ public class MultipleChoiceClasicoTest {
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
 
         //Then
-        Assertions.assertEquals(opcionCorrecta, multipleChoiceClasico.obtenerOpciones().stream().filter(opcion -> opcion.esCorrecta()).findAny().orElse(null));
+        List<Opcion> opcionesEnPregunta = (List<Opcion>) multipleChoiceClasico.obtenerOpciones();
+        Assertions.assertEquals(opcionCorrecta, opcionesEnPregunta.stream().filter(opcion -> opcion.esCorrecta()).findAny().orElse(null));
 
     }
 
@@ -69,7 +71,8 @@ public class MultipleChoiceClasicoTest {
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
 
         //Then
-        Assertions.assertEquals(opcionesCorrectas, multipleChoiceClasico.obtenerOpciones().stream().filter(opcion -> opcion.esCorrecta()).collect(Collectors.toList()));
+        List<Opcion> opcionesEnPregunta = (List<Opcion>) multipleChoiceClasico.obtenerOpciones();
+        Assertions.assertEquals(opcionesCorrectas, opcionesEnPregunta.stream().filter(opcion -> opcion.esCorrecta()).collect(Collectors.toList()));
 
     }
 
@@ -87,7 +90,8 @@ public class MultipleChoiceClasicoTest {
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
 
         //Then
-        Assertions.assertEquals(opciones, multipleChoiceClasico.obtenerOpciones().stream().filter(opcion -> opcion.esCorrecta()).collect(Collectors.toList()));
+        List<Opcion> opcionesEnPregunta = (List<Opcion>) multipleChoiceClasico.obtenerOpciones();
+        Assertions.assertEquals(opciones, opcionesEnPregunta.stream().filter(opcion -> opcion.esCorrecta()).collect(Collectors.toList()));
 
     }
 

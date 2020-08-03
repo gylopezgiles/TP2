@@ -7,7 +7,7 @@ import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public abstract class MultipleChoice implements Preguntable {
+public abstract class MultipleChoice implements Preguntable<List<Opcion>> {
 
     private static final int CANTIDAD_OPCIONES_MINIMO = 2;
     private static final int CANTIDAD_OPCIONES_MAXIMO = 5;

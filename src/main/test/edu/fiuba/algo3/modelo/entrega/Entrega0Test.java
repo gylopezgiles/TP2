@@ -27,9 +27,10 @@ public class Entrega0Test {
         Preguntable verdaderoFalsoClasico = CreadorPregunta.crearPregunta(TipoPregunta.VerdaderoFalsoClasico, preguntaTexto, opciones);
 
         //Then
-        Assertions.assertEquals(2, verdaderoFalsoClasico.obtenerOpciones().size());
+        List<Opcion> opcionesEnPregunta = (List<Opcion>) verdaderoFalsoClasico.obtenerOpciones();
+        Assertions.assertEquals(2, opcionesEnPregunta.size());
         Assertions.assertEquals(opciones, verdaderoFalsoClasico.obtenerOpciones());
-        Assertions.assertEquals(opcionCorrecta, verdaderoFalsoClasico.obtenerOpciones().stream().filter(opcion -> opcion.esCorrecta()).findAny().orElse(null));
+        Assertions.assertEquals(opcionCorrecta, opcionesEnPregunta.stream().filter(opcion -> opcion.esCorrecta()).findAny().orElse(null));
     }
 
     @Test

@@ -1,12 +1,10 @@
 package edu.fiuba.algo3.modelo.pregunta;
 
-import java.util.List;
+public interface Preguntable<T> {
 
-public interface Preguntable {
+    T obtenerOpciones();
 
-    List<Opcion> obtenerOpciones();
-
-    int establecerPuntuacion(List<Opcion> opciones);
+    int establecerPuntuacion(T seleccion);
 
     String obtenerPregunta();
 }

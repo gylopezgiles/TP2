@@ -30,10 +30,11 @@ public class Entrega1Test {
         Preguntable verdaderoFalsoPenalidad = CreadorPregunta.crearPregunta(TipoPregunta.VerdaderoFalsoPenalidad, preguntaTexto, opciones);
 
         //Then
+        List<Opcion> opcionesEnPregunta = (List<Opcion>) verdaderoFalsoPenalidad.obtenerOpciones();
         Assertions.assertEquals(VerdaderoFalsoPenalidad.class, verdaderoFalsoPenalidad.getClass());
-        Assertions.assertEquals(2, verdaderoFalsoPenalidad.obtenerOpciones().size());
+        Assertions.assertEquals(2, opcionesEnPregunta.size());
         Assertions.assertEquals(opciones, verdaderoFalsoPenalidad.obtenerOpciones());
-        Assertions.assertEquals(opcionCorrecta, verdaderoFalsoPenalidad.obtenerOpciones().stream().filter(opcion -> opcion.esCorrecta()).findAny().orElse(null));
+        Assertions.assertEquals(opcionCorrecta, opcionesEnPregunta.stream().filter(opcion -> opcion.esCorrecta()).findAny().orElse(null));
     }
 
 
@@ -52,8 +53,9 @@ public class Entrega1Test {
         Preguntable multipleChoiceClasico = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceClasico, preguntaTexto, opciones);
 
         //Then
+        List<Opcion> opcionesEnPregunta = (List<Opcion>) multipleChoiceClasico.obtenerOpciones();
         Assertions.assertEquals(MultipleChoiceClasico.class, multipleChoiceClasico.getClass());
-        Assertions.assertEquals(5, multipleChoiceClasico.obtenerOpciones().size());
+        Assertions.assertEquals(5, opcionesEnPregunta.size());
         Assertions.assertEquals(opciones, multipleChoiceClasico.obtenerOpciones());
 
     }
@@ -71,8 +73,9 @@ public class Entrega1Test {
         Preguntable multipleChoiceParcial = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceParcial, preguntaTexto, opciones);
 
         //Then
+        List<Opcion> opcionesEnPregunta = (List<Opcion>) multipleChoiceParcial.obtenerOpciones();
         Assertions.assertEquals(MultipleChoiceParcial.class, multipleChoiceParcial.getClass());
-        Assertions.assertEquals(3, multipleChoiceParcial.obtenerOpciones().size());
+        Assertions.assertEquals(3, opcionesEnPregunta.size());
         Assertions.assertEquals(opciones, multipleChoiceParcial.obtenerOpciones());
 
     }
