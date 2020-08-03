@@ -47,11 +47,9 @@ public abstract class VerdaderoFalso implements Preguntable {
     }
 
     @Override
-    public int aplicarMultiplicador(int puntos, MultiplicableStrategy multiplicador) throws MultiplicadorExcepcion {
-        if(!multiplicador.equals(Multiplicador.PorDefecto)){
-            throw new MultiplicadorExcepcion("Solo se puede aplicar multiplicadores a preguntas con penalidad");
-        }
-        return multiplicador.aplicarMultiplicador(puntos);
+    public int establecerPuntuacion(List<Opcion> opciones) throws MultiplicadorExcepcion {
+        return establecerPuntuacion(opciones, Multiplicador.PorDefecto);
     }
+
 
 }

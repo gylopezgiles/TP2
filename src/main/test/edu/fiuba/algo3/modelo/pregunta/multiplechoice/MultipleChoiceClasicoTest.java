@@ -133,7 +133,7 @@ public class MultipleChoiceClasicoTest {
     }
 
     @Test
-    public void multipleChoiceClasicoAsignaCorrectamenteElPuntajeAUnJugadorConTodasLasOpcionesCorrectas()throws ParametrosInvalidosExcepcion {
+    public void multipleChoiceClasicoAsignaCorrectamenteElPuntajeAUnJugadorConTodasLasOpcionesCorrectas() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
         Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
         Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
         Opcion opcion3Correcta = new Opcion("opcion 3", Boolean.TRUE);
@@ -149,7 +149,7 @@ public class MultipleChoiceClasicoTest {
     }
 
     @Test
-    public void multipleChoiceClasicoAsignaCorrectamenteElPuntajeAUnJugadorConTodasLasOpcionesIncorrectas()throws ParametrosInvalidosExcepcion{
+    public void multipleChoiceClasicoAsignaCorrectamenteElPuntajeAUnJugadorConTodasLasOpcionesIncorrectas() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
         Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
         Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
         Opcion opcion3Correcta = new Opcion("opcion 3", Boolean.TRUE);
@@ -165,7 +165,7 @@ public class MultipleChoiceClasicoTest {
     }
 
     @Test
-    public void multipleChoiceClasicoAsignaCorrectamenteElPuntajeAUnJugadorConAlgunasOpcionesCorrectas()throws ParametrosInvalidosExcepcion{
+    public void multipleChoiceClasicoAsignaCorrectamenteElPuntajeAUnJugadorConAlgunasOpcionesCorrectas() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
         Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
         Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
         Opcion opcion3Correcta = new Opcion("opcion 3", Boolean.TRUE);
@@ -181,7 +181,7 @@ public class MultipleChoiceClasicoTest {
     }
 
     @Test
-    public void multipleChoiceClasicoAsignaCorrectamenteElPuntajeAUnJugadorConAlgunasOpcionesCorrectasEIncorrectas()throws ParametrosInvalidosExcepcion{
+    public void multipleChoiceClasicoAsignaCorrectamenteElPuntajeAUnJugadorConAlgunasOpcionesCorrectasEIncorrectas() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
         Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
         Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
         Opcion opcion3Correcta = new Opcion("opcion 3", Boolean.TRUE);
@@ -198,29 +198,17 @@ public class MultipleChoiceClasicoTest {
 
     @Test
     public void alAplicarMultiplicadorDebeLanzarUnaExcepcion() throws ParametrosInvalidosExcepcion {
+        String preguntaTexto = "Cuáles de los siguientes artistas interpretaron la canción Proud Mary";
         Boolean esCorrecta = Boolean.TRUE;
-        Opcion opcionCorrecta1 = new Opcion("Opcion 1", esCorrecta);
-        Opcion opcionIncorrecta2 = new Opcion("Opcion 2", !esCorrecta);
-        Opcion opcionIncorrecta3 = new Opcion("Opcion 3", !esCorrecta);
-        List<Opcion> opciones = Arrays.asList(opcionCorrecta1, opcionIncorrecta2, opcionIncorrecta3);
+        Opcion opcionCorrecta1 = new Opcion("Creedence Clearwater Revival", esCorrecta);
+        Opcion opcionCorrecta2 = new Opcion("Tina Turner", esCorrecta);
+        Opcion opcionIncorrecta3 = new Opcion("Radiohead", !esCorrecta);
+        List<Opcion> opciones = Arrays.asList(opcionCorrecta1, opcionCorrecta2, opcionIncorrecta3);
+        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcionCorrecta1, opcionCorrecta2, opcionIncorrecta3);
 
-        Preguntable multipleChoiceClasico = new MultipleChoiceClasico("pregunta?", opciones);
+        Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
 
-        Assertions.assertThrows(MultiplicadorExcepcion.class, () -> multipleChoiceClasico.aplicarMultiplicador(1, Multiplicador.PorDos));
-
-    }
-
-    @Test
-    public void alAplicarMultiplicadorDefaultNoDebeLanzarExcepcion() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
-        Boolean esCorrecta = Boolean.TRUE;
-        Opcion opcionCorrecta1 = new Opcion("Opcion 1", esCorrecta);
-        Opcion opcionIncorrecta2 = new Opcion("Opcion 2", !esCorrecta);
-        Opcion opcionIncorrecta3 = new Opcion("Opcion 3", !esCorrecta);
-        List<Opcion> opciones = Arrays.asList(opcionCorrecta1, opcionIncorrecta2, opcionIncorrecta3);
-
-        Preguntable multipleChoiceClasico = new MultipleChoiceClasico("pregunta?", opciones);
-
-        Assertions.assertEquals(1,multipleChoiceClasico.aplicarMultiplicador(1, Multiplicador.PorDefecto));
+        Assertions.assertThrows(MultiplicadorExcepcion.class, () -> multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDos));
 
     }
 

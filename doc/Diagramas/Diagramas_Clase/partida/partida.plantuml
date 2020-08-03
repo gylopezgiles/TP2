@@ -14,8 +14,8 @@ class Jugador{
 interface Preguntable{
     + obtenerOpciones():List
     + establecerPuntuacion(opciones:List): int
+    + establecerPuntuacion(opciones: List<Opcion>, multiplicador: MultiplicableStrategy): int
     + obtenerPregunta():str
-    + aplicarMultiplicador(puntos: int, multiplicador: MultiplicableStrategy): int
 }
 
 class Ronda{

@@ -74,7 +74,7 @@ public class MultipleChoiceParcialTest {
     }
 
     @Test
-    public void debeEstablecerPuntuacionCorrectamenteEligiendoTodasRespuestasCorrectasSinIncorrectas() throws ParametrosInvalidosExcepcion {
+    public void debeEstablecerPuntuacionCorrectamenteEligiendoTodasRespuestasCorrectasSinIncorrectas() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
         Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
         Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
         Opcion opcion3Correcta = new Opcion("opcion 3", Boolean.TRUE);
@@ -90,7 +90,7 @@ public class MultipleChoiceParcialTest {
     }
 
     @Test
-    public void debeEstablecerPuntuacionCorrectamenteEligiendoAlgunasRespuestasCorrectasSinIncorrectas() throws ParametrosInvalidosExcepcion {
+    public void debeEstablecerPuntuacionCorrectamenteEligiendoAlgunasRespuestasCorrectasSinIncorrectas() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
         Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
         Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
         Opcion opcion3Correcta = new Opcion("opcion 3", Boolean.TRUE);
@@ -106,7 +106,7 @@ public class MultipleChoiceParcialTest {
     }
 
     @Test
-    public void debeEstablecerPuntuacionCorrectamenteEligiendoAlgunasRespuestasCorrectasYUnaIncorrecta() throws ParametrosInvalidosExcepcion {
+    public void debeEstablecerPuntuacionCorrectamenteEligiendoAlgunasRespuestasCorrectasYUnaIncorrecta() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
         Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
         Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
         Opcion opcion3Correcta = new Opcion("opcion 3", Boolean.TRUE);
@@ -123,29 +123,17 @@ public class MultipleChoiceParcialTest {
 
     @Test
     public void alAplicarMultiplicadorDebeLanzarUnaExcepcion() throws ParametrosInvalidosExcepcion {
+        String preguntaTexto = "La canción Sinnerman corresponde a qué artista";
         Boolean esCorrecta = Boolean.TRUE;
-        Opcion opcionCorrecta1 = new Opcion("Opcion 1", esCorrecta);
-        Opcion opcionIncorrecta2 = new Opcion("Opcion 2", !esCorrecta);
-        Opcion opcionIncorrecta3 = new Opcion("Opcion 3", !esCorrecta);
+        Opcion opcionCorrecta1 = new Opcion("Nina Simone", esCorrecta);
+        Opcion opcionIncorrecta2 = new Opcion("Tom Ellis", !esCorrecta);
+        Opcion opcionIncorrecta3 = new Opcion("Ella Fitzgerald", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcionCorrecta1, opcionIncorrecta2, opcionIncorrecta3);
+        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcionCorrecta1, opcionIncorrecta2, opcionIncorrecta3);
 
-        Preguntable multipleChoiceParcial = new MultipleChoiceParcial("pregunta?", opciones);
+        Preguntable multipleChoiceParcial = new MultipleChoiceParcial(preguntaTexto, opciones);
 
-        Assertions.assertThrows(MultiplicadorExcepcion.class, () -> multipleChoiceParcial.aplicarMultiplicador(1, Multiplicador.PorDos));
-
-    }
-
-    @Test
-    public void alAplicarMultiplicadorDefaultNoDebeLanzarExcepcion() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
-        Boolean esCorrecta = Boolean.TRUE;
-        Opcion opcionCorrecta1 = new Opcion("Opcion 1", esCorrecta);
-        Opcion opcionIncorrecta2 = new Opcion("Opcion 2", !esCorrecta);
-        Opcion opcionIncorrecta3 = new Opcion("Opcion 3", !esCorrecta);
-        List<Opcion> opciones = Arrays.asList(opcionCorrecta1, opcionIncorrecta2, opcionIncorrecta3);
-
-        Preguntable multipleChoiceParcial = new MultipleChoiceParcial("pregunta?", opciones);
-
-        Assertions.assertEquals(1, multipleChoiceParcial.aplicarMultiplicador(1, Multiplicador.PorDefecto));
+        Assertions.assertThrows(MultiplicadorExcepcion.class, () -> multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDos));
 
     }
 

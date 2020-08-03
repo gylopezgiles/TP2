@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
+import edu.fiuba.algo3.modelo.pregunta.multiplechoice.MultipleChoiceParcial;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -66,28 +67,16 @@ public class VerdaderoFalsoClasicoTest {
 
     @Test
     public void alAplicarMultiplicadorDebeLanzarUnaExcepcion() throws ParametrosInvalidosExcepcion {
+        String preguntaTexto = "La canción Feelling Good fue escrita por Muse";
         Boolean esCorrecta = Boolean.TRUE;
-        Opcion opcionCorrecta1 = new Opcion("Verdadero", esCorrecta);
-        Opcion opcionIncorrecta2 = new Opcion("Falso", !esCorrecta);
-        List<Opcion> opciones = Arrays.asList(opcionCorrecta1, opcionIncorrecta2);
+        Opcion opcionIncorrecta = new Opcion("Verdadero", !esCorrecta);
+        Opcion opcionCorrecta = new Opcion("Falso", esCorrecta);
+        List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
+        List<Opcion> opcionSeleccionada = Arrays.asList(opcionCorrecta);
 
-        Preguntable verdaderoFalsoClasico = new VerdaderoFalsoClasico("pregunta?", opciones);
+        Preguntable verdaderoFalsoClasico = new VerdaderoFalsoClasico(preguntaTexto, opciones);
 
-        Assertions.assertThrows(MultiplicadorExcepcion.class, () -> verdaderoFalsoClasico.aplicarMultiplicador(1, Multiplicador.PorDos));
-
-    }
-
-    @Test
-    public void alAplicarMultiplicadorDefaultNoDebeLanzarExcepcion() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
-        Boolean esCorrecta = Boolean.TRUE;
-        Opcion opcionCorrecta1 = new Opcion("Verdadero", esCorrecta);
-        Opcion opcionIncorrecta2 = new Opcion("Falso", !esCorrecta);
-        List<Opcion> opciones = Arrays.asList(opcionCorrecta1, opcionIncorrecta2);
-
-        Preguntable verdaderoFalsoClasico = new VerdaderoFalsoClasico("pregunta?", opciones);
-
-        Assertions.assertEquals(1, verdaderoFalsoClasico.aplicarMultiplicador(1, Multiplicador.PorDefecto));
-
+        Assertions.assertThrows(MultiplicadorExcepcion.class, () -> verdaderoFalsoClasico.establecerPuntuacion(opcionSeleccionada, Multiplicador.PorDos));
     }
 
 }

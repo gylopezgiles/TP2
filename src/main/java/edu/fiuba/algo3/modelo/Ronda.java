@@ -35,8 +35,6 @@ public class Ronda {
         if(pregunta == null){
             throw new RondaSinPreguntaExcepcion("No se puede responder sin una pregunta");
         }
-        int puntosObtenidos = pregunta.establecerPuntuacion(opciones);
-
-        jugador.sumarPuntos(pregunta.aplicarMultiplicador(puntosObtenidos, multiplicador));
+        jugador.sumarPuntos(pregunta.establecerPuntuacion(opciones, multiplicador));
     }
 }

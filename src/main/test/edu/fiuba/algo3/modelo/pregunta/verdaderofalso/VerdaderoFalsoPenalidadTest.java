@@ -65,7 +65,7 @@ public class VerdaderoFalsoPenalidadTest {
     }
 
     @Test
-    public void alResponderCorrectamenteDebeSumarUnPunto() throws ParametrosInvalidosExcepcion {
+    public void alResponderCorrectamenteDebeSumarUnPunto() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
 
         Opcion opcionCorrecta = new Opcion("Verdadero", Boolean.TRUE);
         Opcion opcionIncorrecta = new Opcion("Falso", Boolean.FALSE);
@@ -79,7 +79,7 @@ public class VerdaderoFalsoPenalidadTest {
 
 
     @Test
-    public void alResponderIncorrectamenteDebeRestarUnPunto() throws ParametrosInvalidosExcepcion {
+    public void alResponderIncorrectamenteDebeRestarUnPunto() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
         Opcion opcionCorrecta = new Opcion("Verdadero", Boolean.TRUE);
         Opcion opcionIncorrecta = new Opcion("Falso", Boolean.FALSE);
         List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
@@ -95,26 +95,28 @@ public class VerdaderoFalsoPenalidadTest {
     public void alAplicarMultiplicadorDebeMultiplicarLosPuntos() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
         String preguntaTexto = "La banda Kiss tiene 6 integrantes";
         Boolean esCorrecta = Boolean.TRUE;
-        Opcion opcionCorrecta = new Opcion("Verdadero", !esCorrecta);
-        Opcion opcionIncorrecta = new Opcion("Falso", esCorrecta);
+        Opcion opcionIncorrecta = new Opcion("Verdadero", !esCorrecta);
+        Opcion opcionCorrecta = new Opcion("Falso", esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
+        List<Opcion> opcionSeleccionada = Arrays.asList(opcionCorrecta);
 
         Preguntable verdaderoFalsoConPenalidad = new VerdaderoFalsoPenalidad(preguntaTexto, opciones);
 
-        Assertions.assertEquals(2, verdaderoFalsoConPenalidad.aplicarMultiplicador(1, Multiplicador.PorDos));
+        Assertions.assertEquals(2, verdaderoFalsoConPenalidad.establecerPuntuacion(opcionSeleccionada, Multiplicador.PorDos));
     }
 
     @Test
     public void alAplicarMultiplicadorDebeMultiplicarLosPuntosNegativos() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
         String preguntaTexto = "La banda Kiss tiene 6 integrantes";
         Boolean esCorrecta = Boolean.TRUE;
-        Opcion opcionCorrecta = new Opcion("Verdadero", !esCorrecta);
-        Opcion opcionIncorrecta = new Opcion("Falso", esCorrecta);
+        Opcion opcionIncorrecta = new Opcion("Verdadero", !esCorrecta);
+        Opcion opcionCorrecta = new Opcion("Falso", esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
+        List<Opcion> opcionSeleccionada = Arrays.asList(opcionIncorrecta);
 
         Preguntable verdaderoFalsoConPenalidad = new VerdaderoFalsoPenalidad(preguntaTexto, opciones);
 
-        Assertions.assertEquals(-2, verdaderoFalsoConPenalidad.aplicarMultiplicador(-1, Multiplicador.PorDos));
+        Assertions.assertEquals(-2, verdaderoFalsoConPenalidad.establecerPuntuacion(opcionSeleccionada, Multiplicador.PorDos));
     }
 
 }

@@ -16,15 +16,12 @@ public class VerdaderoFalsoPenalidad extends VerdaderoFalso {
     }
 
     @Override
-    public int establecerPuntuacion(List<Opcion> opciones) {
+    public int establecerPuntuacion(List<Opcion> opciones, MultiplicableStrategy multiplicador) {
         Optional<Opcion> opcion = opciones.stream()
                 .filter(op -> op.esCorrecta())
                 .findAny();
-        return opcion.isPresent() ? 1 : -1;
-    }
-
-    @Override
-    public int aplicarMultiplicador(int puntos, MultiplicableStrategy multiplicador) {
+        int puntos = opcion.isPresent() ? 1 : -1;
         return multiplicador.aplicarMultiplicador(puntos);
     }
+
 }
