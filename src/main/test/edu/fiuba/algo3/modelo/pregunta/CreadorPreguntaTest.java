@@ -78,16 +78,15 @@ public class CreadorPreguntaTest {
 
     @Test
     public void debeCrearPreguntaMultipleChoiceConPenalidad() throws ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
-        boolean esCorrecta = true;
+        String preguntaTexto = "Cuál es la capital de Uruguay?";
+        Boolean esCorrecta = Boolean.TRUE;
         Opcion opcionCorrecta = new Opcion("Montevideo", esCorrecta);
         Opcion opcionIncorrecta = new Opcion("Asunción", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
-        String preguntaTexto = "Cuál es la capital de Uruguay?";
-        MultipleChoiceConPenalidad preguntaEsperada = new MultipleChoiceConPenalidad(preguntaTexto, opciones);
 
         Preguntable pregunta = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceConPenalidad, preguntaTexto, opciones);
 
-        Assertions.assertEquals(preguntaEsperada.getClass(), pregunta.getClass());
+        Assertions.assertEquals(MultipleChoiceConPenalidad.class, pregunta.getClass());
     }
 
     @Test
