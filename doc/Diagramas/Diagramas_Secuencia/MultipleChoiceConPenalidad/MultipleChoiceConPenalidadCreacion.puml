@@ -1,0 +1,14 @@
+@startuml
+title Creación Multiple Choice Con Penalidad Con Opciones Válidas
+hide footbox
+
+Kahoot -> CreadorPregunta: CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceConPenalidad, pregunta, opciones)
+CreadorPregunta -> MultipleChoiceConPenalidad: new MultipleChoiceConPenalidad(pregunta, opciones)
+
+activate MultipleChoiceConPenalidad
+MultipleChoiceConPenalidad -> MultipleChoiceConPenalidad: validarOpciones(opciones)
+MultipleChoiceConPenalidad -> CreadorPregunta: new MultipleChoiceConPenalidad(pregunta, opciones)
+deactivate MultipleChoiceConPenalidad
+
+CreadorPregunta --> Kahoot: new MultipleChoiceConPenalidad(pregunta, opciones)
+@enduml

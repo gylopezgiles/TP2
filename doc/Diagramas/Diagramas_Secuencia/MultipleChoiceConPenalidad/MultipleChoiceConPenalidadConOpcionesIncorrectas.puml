@@ -1,0 +1,24 @@
+@startuml
+title Multiple Choice Con Penalidad resta puntos según cantidad de Opciones Incorrectas seleccionadas
+hide footbox
+
+    Kahoot-> "ronda: Ronda" as ronda : responder(jugador: Jugador, opcionesSeleccionadas: List<Opcion>)
+
+    ronda-> "multipleChoiceConPenalidad: Preguntable" as MCpenalidad: establecerPuntuacion(opciones: List<Opcion>)
+
+    MCpenalidad-> "opciones: List<Opcion>" as listaOpciones : hallarAlgunaOpcionIncorrecta()
+
+    listaOpciones-> MCpenalidad : opcionIncorrecta: Optional<Opcion>
+
+    MCpenalidad->MCpenalidad : puntajeOpcionesIncorrectas(opciones: List<Opcion>)
+
+    MCpenalidad->listaOpciones : contarOpcionesIncorrectas()
+
+    listaOpciones-> MCpenalidad :puntaje = - CantidadOpcionesCorrectas: Int
+
+    MCpenalidad-> ronda : puntaje: Int
+
+    ronda-> "jugador: Jugador" as jugador : sumarPuntos(puntaje: Int)
+
+    jugador-> jugador: puntos += puntaje
+@enduml
