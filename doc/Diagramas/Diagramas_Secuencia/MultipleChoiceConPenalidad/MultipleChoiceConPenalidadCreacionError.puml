@@ -1,0 +1,14 @@
+@startuml
+title Creación Multiple Choice Con Penalidad Con Opciones Inválidas
+hide footbox
+
+Kahoot -> CreadorPregunta: CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceConPenalidad, pregunta, opciones)
+CreadorPregunta -> MultipleChoiceConPenalidad: new MultipleChoiceConPenalidad(pregunta, opciones)
+
+activate MultipleChoiceConPenalidad
+MultipleChoiceConPenalidad -> MultipleChoiceConPenalidad: validarOpciones(opciones)
+MultipleChoiceConPenalidad -> CreadorPregunta: throw ParametrosInvalidosExcepcion()
+deactivate MultipleChoiceConPenalidad
+
+CreadorPregunta --> Kahoot: throw ParametrosInvalidosExcepcion()
+@enduml

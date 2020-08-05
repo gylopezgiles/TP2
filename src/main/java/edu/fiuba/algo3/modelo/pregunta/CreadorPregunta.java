@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.TipoPreguntaNoImplementadaException;
 import edu.fiuba.algo3.modelo.pregunta.GroupChoice.GroupChoice;
 import edu.fiuba.algo3.modelo.pregunta.multiplechoice.MultipleChoiceClasico;
+import edu.fiuba.algo3.modelo.pregunta.multiplechoice.MultipleChoiceConPenalidad;
 import edu.fiuba.algo3.modelo.pregunta.multiplechoice.MultipleChoiceParcial;
 import edu.fiuba.algo3.modelo.pregunta.verdaderofalso.VerdaderoFalsoClasico;
 import edu.fiuba.algo3.modelo.pregunta.verdaderofalso.VerdaderoFalsoPenalidad;
@@ -22,6 +23,8 @@ public class CreadorPregunta {
                 return new MultipleChoiceClasico(pregunta, opciones);
             case MultipleChoiceParcial:
                 return new MultipleChoiceParcial(pregunta, opciones);
+            case MultipleChoiceConPenalidad:
+                return new MultipleChoiceConPenalidad(pregunta, opciones);
             case GroupChoice:
                 return new GroupChoice(pregunta, opciones);
             default:

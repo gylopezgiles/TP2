@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.modelo.pregunta.multiplechoice;
 
+import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
+import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 import org.junit.jupiter.api.Assertions;
@@ -78,7 +80,7 @@ public class MultipleChoiceParcialTest {
     }
 
     @Test
-    public void debeEstablecerPuntuacionCorrectamenteEligiendoTodasRespuestasCorrectasSinIncorrectas() throws ParametrosInvalidosExcepcion {
+    public void debeEstablecerPuntuacionCorrectamenteEligiendoTodasRespuestasCorrectasSinIncorrectas() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion  {
 
         String preguntaTexto = "¿Cuales son gases nobles?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -86,18 +88,19 @@ public class MultipleChoiceParcialTest {
         Opcion opcion2Correcta = new Opcion("Neon", esCorrecta);
         Opcion opcion3Correcta = new Opcion("Kripton", esCorrecta);
         Opcion opcion4Incorrecta = new Opcion("Oxigeno", !esCorrecta);
+
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta, opcion4Incorrecta);
 
         Preguntable multipleChoiceParcial = new MultipleChoiceParcial(preguntaTexto, opciones);
         List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta);
 
-        int puntuacion = multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas);
+        int puntuacion = multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDefecto);
 
         Assertions.assertEquals(3, puntuacion);
     }
 
     @Test
-    public void debeEstablecerPuntuacionCorrectamenteEligiendoAlgunasRespuestasCorrectasSinIncorrectas() throws ParametrosInvalidosExcepcion {
+    public void debeEstablecerPuntuacionCorrectamenteEligiendoAlgunasRespuestasCorrectasSinIncorrectas() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion  {
 
         String preguntaTexto = "¿Cuales son gases nobles?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -105,18 +108,19 @@ public class MultipleChoiceParcialTest {
         Opcion opcion2Correcta = new Opcion("Neon", esCorrecta);
         Opcion opcion3Correcta = new Opcion("Kripton", esCorrecta);
         Opcion opcion4Incorrecta = new Opcion("Oxigeno", !esCorrecta);
+
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta, opcion4Incorrecta);
 
         Preguntable multipleChoiceParcial = new MultipleChoiceParcial(preguntaTexto, opciones);
         List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta, opcion3Correcta);
 
-        int puntuacion = multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas);
+        int puntuacion = multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDefecto);
 
         Assertions.assertEquals(2, puntuacion);
     }
 
     @Test
-    public void debeEstablecerPuntuacionCorrectamenteEligiendoAlgunasRespuestasCorrectasYUnaIncorrecta() throws ParametrosInvalidosExcepcion {
+    public void debeEstablecerPuntuacionCorrectamenteEligiendoAlgunasRespuestasCorrectasYUnaIncorrecta() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion  {
 
         String preguntaTexto = "¿Cuales son gases nobles?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -124,14 +128,31 @@ public class MultipleChoiceParcialTest {
         Opcion opcion2Correcta = new Opcion("Neon", esCorrecta);
         Opcion opcion3Correcta = new Opcion("Kripton", esCorrecta);
         Opcion opcion4Incorrecta = new Opcion("Oxigeno", !esCorrecta);
+
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta, opcion4Incorrecta);
 
         Preguntable multipleChoiceParcial = new MultipleChoiceParcial(preguntaTexto, opciones);
         List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta, opcion3Correcta, opcion4Incorrecta);
 
-        int puntuacion = multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas);
+        int puntuacion = multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDefecto);
 
         Assertions.assertEquals(0, puntuacion);
+    }
+
+    @Test
+    public void alAplicarMultiplicadorDebeLanzarUnaExcepcion() throws ParametrosInvalidosExcepcion {
+        String preguntaTexto = "La canción Sinnerman corresponde a qué artista";
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcionCorrecta1 = new Opcion("Nina Simone", esCorrecta);
+        Opcion opcionIncorrecta2 = new Opcion("Tom Ellis", !esCorrecta);
+        Opcion opcionIncorrecta3 = new Opcion("Ella Fitzgerald", !esCorrecta);
+        List<Opcion> opciones = Arrays.asList(opcionCorrecta1, opcionIncorrecta2, opcionIncorrecta3);
+        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcionCorrecta1, opcionIncorrecta2, opcionIncorrecta3);
+
+        Preguntable multipleChoiceParcial = new MultipleChoiceParcial(preguntaTexto, opciones);
+
+        Assertions.assertThrows(MultiplicadorExcepcion.class, () -> multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDos));
+
     }
 
 }

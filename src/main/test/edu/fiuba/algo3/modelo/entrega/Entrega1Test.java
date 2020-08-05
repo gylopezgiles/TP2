@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo.entrega;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Ronda;
 import edu.fiuba.algo3.modelo.excepciones.*;
+import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.CreadorPregunta;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
@@ -19,7 +20,7 @@ import java.util.List;
 public class Entrega1Test {
 
     @Test
-    public void crearVerdaderoFalsoClasicoConPenalidadConOpciones() throws ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
+    public void crearVerdaderoFalsoClasicoConPenalidadConOpciones() throws ExcepcionBase {
         //Given
         String preguntaTexto = "¿Sydney es la capital de Australia?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -36,7 +37,7 @@ public class Entrega1Test {
 
 
     @Test
-    public void crearMultipleChoiceClasicoConOpciones()throws ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException{
+    public void crearMultipleChoiceClasicoConOpciones()throws ExcepcionBase {
         //Given
         String preguntaTexto = "¿Donde nacio Simon Bolivar?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -56,7 +57,7 @@ public class Entrega1Test {
     }
 
     @Test
-    public void crearMultipleChoiceParcialConOpciones()throws ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException{
+    public void crearMultipleChoiceParcialConOpciones()throws ExcepcionBase {
         //Given
         String preguntaTexto = "¿Cuales ciudades pertenecen a Nueva Zelanda?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -74,12 +75,13 @@ public class Entrega1Test {
     }
 
     @Test
-    public void preguntaVerdaderoFalsoConPenalidadSumaPuntosAJugadoresRespondenCorrectamente() throws RondaSinPreguntaExcepcion, ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
+    public void preguntaVerdaderoFalsoConPenalidadSumaPuntosAJugadoresRespondenCorrectamente() throws RondaSinPreguntaExcepcion, ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException, MultiplicadorExcepcion  {
         //Give
         String preguntaTexto = "¿Sydney es la capital de Australia?";
         Boolean esCorrecta = Boolean.TRUE;
         Opcion opcionCorrecta = new Opcion("Falso", esCorrecta);
         Opcion opcionIncorrecta = new Opcion("Verdadero", !esCorrecta);
+
         List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
         Preguntable verdaderoFalsoPenalidad = CreadorPregunta.crearPregunta(TipoPregunta.VerdaderoFalsoPenalidad, preguntaTexto, opciones);
 
@@ -96,7 +98,7 @@ public class Entrega1Test {
     }
 
     @Test
-    public void preguntaVerdaderoFalsoConPenalidadRestaPuntosAJugadoresRespondenIncorrectamente() throws RondaSinPreguntaExcepcion, ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
+    public void preguntaVerdaderoFalsoConPenalidadRestaPuntosAJugadoresRespondenIncorrectamente() throws ExcepcionBase {
         //Given
         String preguntaTexto = "¿Sydney es la capital de Australia?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -118,7 +120,7 @@ public class Entrega1Test {
     }
 
     @Test
-    public void preguntaMultipleChoiceClasicoSumaPuntosAJugadoresRespondenCorrectamente() throws RondaSinPreguntaExcepcion, ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
+    public void preguntaMultipleChoiceClasicoSumaPuntosAJugadoresRespondenCorrectamente() throws ExcepcionBase {
         //Given
         String preguntaTexto = "¿Frases celebres de el comandante?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -143,7 +145,7 @@ public class Entrega1Test {
     }
 
     @Test
-    public void preguntaMultipleChoiceClasicoNoSumaPuntosAJugadoresRespondenIncorrectamente() throws RondaSinPreguntaExcepcion, ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
+    public void preguntaMultipleChoiceClasicoNoSumaPuntosAJugadoresRespondenIncorrectamente() throws ExcepcionBase {
         //Given
         String preguntaTexto = "¿Frases celebres de el comandante?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -168,7 +170,7 @@ public class Entrega1Test {
     }
 
     @Test
-    public void preguntaMultipleChoiceParcialAsignaPuntajeCorrectamenteEligiendoTodasCorrectasSinIncorrectas() throws ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion, TipoPreguntaNoImplementadaException {
+    public void preguntaMultipleChoiceParcialAsignaPuntajeCorrectamenteEligiendoTodasCorrectasSinIncorrectas() throws ExcepcionBase {
         //Given
         String preguntaTexto = "¿Que ciudades pertenecen a Nueva Zelanda?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -191,7 +193,7 @@ public class Entrega1Test {
     }
 
     @Test
-    public void preguntaMultipleChoiceParcialAsignaPuntajeCorrectamenteEligiendoAlgunasCorrectasSinIncorrectas() throws ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion, TipoPreguntaNoImplementadaException {
+    public void preguntaMultipleChoiceParcialAsignaPuntajeCorrectamenteEligiendoAlgunasCorrectasSinIncorrectas() throws ExcepcionBase {
         //Given
         String preguntaTexto = "¿Cuales ciudades pertenecen a Nueva Zelanda?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -214,7 +216,7 @@ public class Entrega1Test {
     }
 
     @Test
-    public void preguntaMultipleChoiceParcialAsignaPuntajeCorrectamenteEligiendoIncorrecta() throws ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion, TipoPreguntaNoImplementadaException {
+    public void preguntaMultipleChoiceParcialAsignaPuntajeCorrectamenteEligiendoIncorrecta() throws ExcepcionBase {
         //Given
         String preguntaTexto = "¿Cuales ciudades pertenecen a Nueva Zelanda?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -230,7 +232,7 @@ public class Entrega1Test {
         Ronda ronda = new Ronda(jugadores, multipleChoiceParcial);
 
         //When
-        ronda.responder(jugador, opcionesSeleccionadas);
+        ronda.responder(jugador, opcionesSeleccionadas, Multiplicador.PorDefecto);
 
         //Then
         Assertions.assertEquals(0, jugador.obtenerPuntos());

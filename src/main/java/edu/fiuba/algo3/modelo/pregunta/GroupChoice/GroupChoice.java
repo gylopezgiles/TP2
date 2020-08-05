@@ -1,6 +1,9 @@
 package edu.fiuba.algo3.modelo.pregunta.GroupChoice;
 
+import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
+import edu.fiuba.algo3.modelo.multiplicador.MultiplicableStrategy;
+import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 import javafx.print.Collation;
@@ -54,12 +57,19 @@ public class GroupChoice implements Preguntable {
     }
 
     @Override
-    public int establecerPuntuacion(List<Opcion> opcionesRespondidas){
+    public int establecerPuntuacion(List<Opcion> opcionesRespondidas, MultiplicableStrategy multiplicador) throws MultiplicadorExcepcion {
+        if(!multiplicador.equals(Multiplicador.PorDefecto)){
+            throw new MultiplicadorExcepcion("Solo se puede aplicar multiplicadores a preguntas con penalidad");
+        }
         //FIXME implementar una mejor manera de ordenar y comparar las listas
         List<Opcion> grupoUnoRespondido = opcionesRespondidas.stream().filter(op -> op.esCorrecta()).collect(Collectors.toList());
         List<Opcion> grupoDosRespondido = opcionesRespondidas.stream().filter(op -> !op.esCorrecta()).collect(Collectors.toList());
         Collections.sort(grupoUnoRespondido, (op1, op2) -> op1.obtenerTexto().compareTo(op2.obtenerTexto()));
         Collections.sort(grupoDosRespondido, (op1, op2) -> op1.obtenerTexto().compareTo(op2.obtenerTexto()));
         return this.grupoUno.equals(grupoUnoRespondido) && this.grupoDos.equals(grupoDosRespondido)? 0 : 1;
+    }
+    @Override
+    public int establecerPuntuacion(List<Opcion> opciones) throws MultiplicadorExcepcion{
+        return this.establecerPuntuacion(opciones, Multiplicador.PorDefecto);
     }
 }

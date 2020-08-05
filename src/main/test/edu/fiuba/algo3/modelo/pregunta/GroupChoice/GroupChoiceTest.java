@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.modelo.pregunta.GroupChoice;
 
+import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
+import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 import edu.fiuba.algo3.modelo.pregunta.multiplechoice.MultipleChoiceClasico;
@@ -95,7 +97,7 @@ public class GroupChoiceTest {
     }
 
     @Test
-    public void groupChoiceEstablecePuntuacionCorrectamente()throws ParametrosInvalidosExcepcion {
+    public void groupChoiceEstablecePuntuacionCorrectamente() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
 
         String preguntaTexto = "¿Cuales ciudades pertenecen a Nueva Zelanda y cuales no?";
         Boolean pertenece = Boolean.TRUE;
@@ -118,6 +120,6 @@ public class GroupChoiceTest {
 
         List<Opcion> opcionesAgrupadas = Arrays.asList(respuesta1, respuesta2, respuesta3, respuesta4, respuesta5, respuesta6);
 
-        Assertions.assertEquals(1, pregunta.establecerPuntuacion(opcionesAgrupadas));
+        Assertions.assertEquals(1, pregunta.establecerPuntuacion(opcionesAgrupadas, Multiplicador.PorDefecto));
     }
 }
