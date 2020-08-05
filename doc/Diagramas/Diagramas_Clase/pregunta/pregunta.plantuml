@@ -19,6 +19,7 @@ enum TipoPreguntaConcreta{
     VerdaderoFalsoPenalidad
     MultipleChoiceClasico
     MultipleChoiceParcial
+    MultipleChoiceConPenalidad
 }
 
 abstract class VerdaderoFalso{
@@ -51,6 +52,9 @@ class VerdaderoFalsoPenalidad{
 
 class MultipleChoicePenalidad{
     + establecerPuntuacion(opciones: List<Opcion>, multiplicador: MultiplicableStrategy): int
+    - puntajeOpcionesCorrectas(opciones:List): int
+    - puntajeOpcionesIncorrectas(opciones:List): int
+}
 }
 
 
@@ -83,7 +87,7 @@ Preguntable <|.. VerdaderoFalso
 
 ' Preg_Penal
 VerdaderoFalso <|-- VerdaderoFalsoPenalidad
-MultipleChoice <|-- MultipleChoicePenalidad
+MultipleChoice <|-- MultipleChoiceConPenalidad
 
 
 ' Pregun_Sin_Penal
