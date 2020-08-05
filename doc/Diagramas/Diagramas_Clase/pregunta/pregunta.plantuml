@@ -55,7 +55,6 @@ class MultipleChoicePenalidad{
     - puntajeOpcionesCorrectas(opciones:List): int
     - puntajeOpcionesIncorrectas(opciones:List): int
 }
-}
 
 
 ' Especiales
