@@ -8,7 +8,7 @@ import edu.fiuba.algo3.modelo.excepciones.TipoPreguntaNoImplementadaException;
 import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.CreadorPregunta;
-import edu.fiuba.algo3.modelo.pregunta.GroupChoice.GroupChoice;
+import edu.fiuba.algo3.modelo.pregunta.GroupChoice;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 import edu.fiuba.algo3.modelo.pregunta.TipoPregunta;

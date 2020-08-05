@@ -2,7 +2,6 @@ package edu.fiuba.algo3.modelo.pregunta;
 
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.TipoPreguntaNoImplementadaException;
-import edu.fiuba.algo3.modelo.pregunta.GroupChoice.GroupChoice;
 import edu.fiuba.algo3.modelo.pregunta.multiplechoice.MultipleChoiceClasico;
 import edu.fiuba.algo3.modelo.pregunta.multiplechoice.MultipleChoiceConPenalidad;
 import edu.fiuba.algo3.modelo.pregunta.multiplechoice.MultipleChoiceParcial;

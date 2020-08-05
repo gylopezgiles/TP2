@@ -22,9 +22,6 @@ public class MultipleChoiceParcial extends MultipleChoice {
         if(!multiplicador.equals(Multiplicador.PorDefecto)){
             throw new MultiplicadorExcepcion("Solo se puede aplicar multiplicadores a preguntas con penalidad");
         }
-        if(tieneOpcionesIncorrectas(opciones)){
-            return 0;
-        }
         Optional<Opcion> opcion = opciones.stream()
                 .filter(op -> !op.esCorrecta())
                 .findAny();

@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo.pregunta.GroupChoice;
+package edu.fiuba.algo3.modelo.pregunta;
 
 import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
@@ -57,12 +57,11 @@ public class GroupChoice implements Preguntable {
 
     private boolean sonIguales(List<Opcion> unGrupo, List<Opcion> otroGrupo){
         Boolean sonIguales = Boolean.TRUE;
-        int i = 0;
-        Collections.sort(unGrupo, (op1, op2) -> op1.obtenerTexto().compareTo(op2.obtenerTexto()));
-        Collections.sort(otroGrupo, (op1, op2) -> op1.obtenerTexto().compareTo(op2.obtenerTexto()));
         if(unGrupo.size() != otroGrupo.size()){
             return !sonIguales;
         }
+        Collections.sort(unGrupo, (op1, op2) -> op1.obtenerTexto().compareTo(op2.obtenerTexto()));
+        Collections.sort(otroGrupo, (op1, op2) -> op1.obtenerTexto().compareTo(op2.obtenerTexto()));
         Iterator<Opcion> iteradorUno = unGrupo.iterator();
         Iterator<Opcion> iteradorDos = otroGrupo.iterator();
         while (sonIguales && iteradorUno.hasNext() && iteradorDos.hasNext()){
