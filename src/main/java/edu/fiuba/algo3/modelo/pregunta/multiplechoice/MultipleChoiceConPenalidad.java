@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.modelo.pregunta.multiplechoice;
 
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
+import edu.fiuba.algo3.modelo.multiplicador.MultiplicableStrategy;
+import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 
 import java.util.List;
@@ -16,10 +18,16 @@ public class MultipleChoiceConPenalidad extends MultipleChoice {
 
     @Override
     public int establecerPuntuacion(List<Opcion> opciones) {
+        return establecerPuntuacion(opciones, Multiplicador.PorDefecto);
+    }
+
+    @Override
+    public int establecerPuntuacion(List<Opcion> opciones, MultiplicableStrategy multiplicador){
         Optional<Opcion> opcion = opciones.stream()
                 .filter(op -> !op.esCorrecta())
                 .findAny();
-        return opcion.isPresent() ? puntajeOpcionesIncorrectas(opciones) : puntajeOpcionesCorrectas(opciones);
+        int puntosObtenidos = opcion.isPresent() ? puntajeOpcionesIncorrectas(opciones) : puntajeOpcionesCorrectas(opciones);
+        return multiplicador.aplicarMultiplicador(puntosObtenidos);
     }
 
     private int puntajeOpcionesCorrectas(List<Opcion> opciones) {

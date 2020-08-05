@@ -1,0 +1,10 @@
+@startuml
+
+title Aplicar Multiplicador a Pregunta Con Penalidad
+
+Kahoot -> Ronda: responder(jugador, opciones, multiplicador)
+Ronda -> Preguntable: establecerPuntuacion(opciones, multiplicador)
+Preguntable -> Ronda: puntos
+Ronda -> Jugador: sumarPuntos(puntos)
+
+@enduml

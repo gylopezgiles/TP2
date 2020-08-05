@@ -1,6 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.RondaSinPreguntaExcepcion;
+import edu.fiuba.algo3.modelo.multiplicador.MultiplicableStrategy;
+import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 
@@ -24,11 +27,14 @@ public class Ronda {
         return pregunta;
     }
 
-    public void responder(Jugador jugador, List<Opcion> opciones) throws RondaSinPreguntaExcepcion {
+    public void responder(Jugador jugador, List<Opcion> opciones) throws RondaSinPreguntaExcepcion, MultiplicadorExcepcion {
+        responder(jugador, opciones, Multiplicador.PorDefecto);
+    }
+
+    public void responder(Jugador jugador, List<Opcion> opciones, MultiplicableStrategy multiplicador) throws RondaSinPreguntaExcepcion, MultiplicadorExcepcion {
         if(pregunta == null){
             throw new RondaSinPreguntaExcepcion("No se puede responder sin una pregunta");
         }
-
-        jugador.sumarPuntos(pregunta.establecerPuntuacion(opciones));
+        jugador.sumarPuntos(pregunta.establecerPuntuacion(opciones, multiplicador));
     }
 }
