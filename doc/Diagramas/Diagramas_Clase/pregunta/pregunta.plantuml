@@ -50,7 +50,7 @@ class VerdaderoFalsoPenalidad{
     + establecerPuntuacion(opciones: List<Opcion>, multiplicador: MultiplicableStrategy): int
 }
 
-class MultipleChoicePenalidad{
+class MultipleChoiceConPenalidad{
     + establecerPuntuacion(opciones: List<Opcion>, multiplicador: MultiplicableStrategy): int
     - puntajeOpcionesCorrectas(opciones:List): int
     - puntajeOpcionesIncorrectas(opciones:List): int
