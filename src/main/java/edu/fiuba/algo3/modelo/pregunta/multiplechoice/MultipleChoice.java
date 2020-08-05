@@ -38,14 +38,4 @@ public abstract class MultipleChoice implements Preguntable {
     }
 
 
-    @Override
-    public List<Opcion> obtenerOpciones() {
-        return this.opciones;
-    }
-
-    @Override
-    public String obtenerPregunta() {
-        return pregunta;
-    }
-
 }

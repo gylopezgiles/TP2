@@ -33,14 +33,4 @@ public abstract class VerdaderoFalso implements Preguntable {
         return !opcionesCorrectas.isEmpty() && opcionesCorrectas.size() == CANTIDAD_OPCIONES_CORRECTAS;
     }
 
-    @Override
-    public List<Opcion> obtenerOpciones() {
-        return this.opciones;
-    }
-
-    @Override
-    public String obtenerPregunta() {
-        return pregunta;
-    }
-
 }

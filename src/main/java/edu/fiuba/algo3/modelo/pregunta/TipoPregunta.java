@@ -5,5 +5,5 @@ public enum TipoPregunta {
     VerdaderoFalsoPenalidad,
     MultipleChoiceClasico,
     MultipleChoiceParcial,
-    Otro
+    GroupChoice, Otro
 }
