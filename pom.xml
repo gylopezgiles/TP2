@@ -61,7 +61,7 @@
 
                 <configuration>
                     <excludes>
-                        <exclude>*/edu/fiuba/algo3/interfazGrafica/*</exclude>
+                        <exclude>**/edu/fiuba/algo3/interfazGrafica/*</exclude>
                     </excludes>
                 </configuration>
 
