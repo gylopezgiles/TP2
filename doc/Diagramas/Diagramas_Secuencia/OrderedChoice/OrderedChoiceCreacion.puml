@@ -1,0 +1,14 @@
+@startuml
+title Creación OrderedChoice Con Opciones Válidas
+hide footbox
+
+Kahoot -> CreadorPregunta: CreadorPregunta.crearPregunta(TipoPregunta.OrderedChoice, pregunta, opciones)
+CreadorPregunta -> OrderedChoice: new OrderedChoice(pregunta, opciones)
+
+activate OrderedChoice
+OrderedChoice -> OrderedChoice: validarOpciones(opciones)
+OrderedChoice -> CreadorPregunta: new OrderedChoice(pregunta, opciones)
+deactivate OrderedChoice
+
+CreadorPregunta --> Kahoot: new OrderedChoice(pregunta, opciones)
+@enduml
