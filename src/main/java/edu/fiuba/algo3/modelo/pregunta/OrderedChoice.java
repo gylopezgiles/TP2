@@ -58,11 +58,10 @@ public class OrderedChoice implements Preguntable{
     boolean tieneElOrdenAdecuado(Iterator<Opcion> opcionesSeleccionadas, Iterator<Opcion> opcionesOrdenadas){
         Opcion opcionSeleccionada = opcionesSeleccionadas.next();
         Opcion opcionOrdenada = opcionesOrdenadas.next();
-        if(!opcionesSeleccionadas.hasNext() || opcionSeleccionada.obtenerTexto() != opcionOrdenada.obtenerTexto()){
-            return opcionSeleccionada.obtenerTexto() == opcionOrdenada.obtenerTexto();
-        }else{
+        if(opcionesSeleccionadas.hasNext() && opcionSeleccionada.obtenerTexto() == opcionOrdenada.obtenerTexto()){
             return tieneElOrdenAdecuado(opcionesSeleccionadas,opcionesOrdenadas);
         }
+        return opcionSeleccionada.obtenerTexto() == opcionOrdenada.obtenerTexto();
 
     }
 
