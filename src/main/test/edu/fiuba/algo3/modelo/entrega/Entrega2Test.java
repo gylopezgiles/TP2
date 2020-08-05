@@ -7,10 +7,7 @@ import edu.fiuba.algo3.modelo.excepciones.RondaSinPreguntaExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.TipoPreguntaNoImplementadaException;
 import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
-import edu.fiuba.algo3.modelo.pregunta.CreadorPregunta;
-import edu.fiuba.algo3.modelo.pregunta.Opcion;
-import edu.fiuba.algo3.modelo.pregunta.Preguntable;
-import edu.fiuba.algo3.modelo.pregunta.TipoPregunta;
+import edu.fiuba.algo3.modelo.pregunta.*;
 import edu.fiuba.algo3.modelo.pregunta.multiplechoice.MultipleChoiceConPenalidad;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -333,6 +330,49 @@ public class Entrega2Test {
         //WhenThen
         Assertions.assertThrows(MultiplicadorExcepcion.class, () -> ronda.responder(jugador, Arrays.asList(opcion1Incorrecta, opcion2Correcta), Multiplicador.PorDos));
         Assertions.assertThrows(MultiplicadorExcepcion.class, () -> ronda.responder(jugador, Arrays.asList(opcion2Correcta), Multiplicador.PorTres));
+
+    }
+
+
+
+    @Test
+    public void OrderedChoiceAsignaPuntajeCorrectamenteConOpcionesOrdenadas() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, MultiplicadorExcepcion, RondaSinPreguntaExcepcion {
+        String preguntaTexto = "Orden de las letras vocales";
+        boolean esCorrecta = Boolean.TRUE;
+        Opcion opcion1 = new Opcion("A", esCorrecta);
+        Opcion opcion2 = new Opcion("E",esCorrecta);
+        Opcion opcion3 = new Opcion("I", esCorrecta);
+        Opcion opcion4 = new Opcion("O", esCorrecta);
+        Opcion opcion5 = new Opcion("U", esCorrecta);
+        List<Opcion> opciones = Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5);
+        Preguntable orderedChoice = CreadorPregunta.crearPregunta(TipoPregunta.OrderedChoice,preguntaTexto,opciones);
+        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5);
+        Jugador jugador = new Jugador("Jugador1");
+        Ronda ronda = new Ronda(Arrays.asList(jugador), orderedChoice);
+
+        ronda.responder(jugador,opcionesSeleccionadas);
+
+        Assertions.assertEquals(1,jugador.obtenerPuntos());
+    }
+
+    @Test
+    public void OrderedChoiceAsignaPuntajeCorrectamenteConOpcionesDesrdenadas() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, MultiplicadorExcepcion, RondaSinPreguntaExcepcion {
+        String preguntaTexto = "Orden de las letras vocales";
+        boolean esCorrecta = Boolean.TRUE;
+        Opcion opcion1 = new Opcion("A", esCorrecta);
+        Opcion opcion2 = new Opcion("E",esCorrecta);
+        Opcion opcion3 = new Opcion("I", esCorrecta);
+        Opcion opcion4 = new Opcion("O", esCorrecta);
+        Opcion opcion5 = new Opcion("U", esCorrecta);
+        List<Opcion> opciones = Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5);
+        Preguntable orderedChoice = CreadorPregunta.crearPregunta(TipoPregunta.OrderedChoice,preguntaTexto,opciones);
+        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion4, opcion5, opcion2, opcion1, opcion3);
+        Jugador jugador = new Jugador("Jugador1");
+        Ronda ronda = new Ronda(Arrays.asList(jugador), orderedChoice);
+
+        ronda.responder(jugador,opcionesSeleccionadas);
+
+        Assertions.assertEquals(0,jugador.obtenerPuntos());
 
     }
 

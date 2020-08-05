@@ -65,6 +65,7 @@ public class OrderedChoiceTest {
 
         OrderedChoice orderedChoice = new OrderedChoice("Orden de las letras vocales", opciones);
         List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5);
+
         Assertions.assertEquals(1, orderedChoice.establecerPuntuacion(opcionesSeleccionadas));
 
     }
@@ -76,11 +77,11 @@ public class OrderedChoiceTest {
         Opcion opcion3 = new Opcion("I", esCorrecta);
         Opcion opcion4 = new Opcion("O", esCorrecta);
         Opcion opcion5 = new Opcion("U", esCorrecta);
-
         List<Opcion> opciones = Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5);
 
         OrderedChoice orderedChoice = new OrderedChoice("Orden de las letras vocales", opciones);
         List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion4, opcion3, opcion2, opcion1, opcion5);
+
         Assertions.assertEquals(0, orderedChoice.establecerPuntuacion(opcionesSeleccionadas));
     }
 }
