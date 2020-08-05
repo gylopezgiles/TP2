@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo.pregunta;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.TipoPreguntaNoImplementadaException;
 import edu.fiuba.algo3.modelo.pregunta.multiplechoice.MultipleChoiceClasico;
+import edu.fiuba.algo3.modelo.pregunta.multiplechoice.MultipleChoiceConPenalidad;
 import edu.fiuba.algo3.modelo.pregunta.multiplechoice.MultipleChoiceParcial;
 import edu.fiuba.algo3.modelo.pregunta.verdaderofalso.VerdaderoFalsoClasico;
 import edu.fiuba.algo3.modelo.pregunta.verdaderofalso.VerdaderoFalsoPenalidad;
@@ -73,6 +74,19 @@ public class CreadorPreguntaTest {
         Assertions.assertEquals(preguntaEsperada.getClass(), pregunta.getClass());
         Assertions.assertEquals(preguntaEsperada.obtenerOpciones(), pregunta.obtenerOpciones());
         Assertions.assertEquals(preguntaEsperada.obtenerPregunta(), pregunta.obtenerPregunta());
+    }
+
+    @Test
+    public void debeCrearPreguntaMultipleChoiceConPenalidad() throws ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
+        String preguntaTexto = "Cuál es la capital de Uruguay?";
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcionCorrecta = new Opcion("Montevideo", esCorrecta);
+        Opcion opcionIncorrecta = new Opcion("Asunción", !esCorrecta);
+        List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
+
+        Preguntable pregunta = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceConPenalidad, preguntaTexto, opciones);
+
+        Assertions.assertEquals(MultipleChoiceConPenalidad.class, pregunta.getClass());
     }
 
     @Test
