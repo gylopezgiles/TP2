@@ -8,6 +8,7 @@ import edu.fiuba.algo3.modelo.excepciones.TipoPreguntaNoImplementadaException;
 import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.CreadorPregunta;
+import edu.fiuba.algo3.modelo.pregunta.GroupChoice.GroupChoice;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 import edu.fiuba.algo3.modelo.pregunta.TipoPregunta;
@@ -134,6 +135,97 @@ public class Entrega2Test {
 
         //Then
         Assertions.assertEquals(-3, jugador.obtenerPuntos());
+    }
+
+    // Test de GroupChoice
+    @Test
+    public void crearGroupChoiceConOpciones() throws ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
+        //Given
+        String preguntaTexto = "¿Cuales ciudades pertenecen a Nueva Zelanda y cuales no?";
+        Boolean pertenece = Boolean.TRUE;
+        Opcion opcion1 = new Opcion("Auckland", pertenece);
+        Opcion opcion2 = new Opcion("Wellington", pertenece);
+        Opcion opcion3 = new Opcion("Hamilton", pertenece);
+        Opcion opcion4 = new Opcion("Canberra", !pertenece);
+        Opcion opcion5 = new Opcion("Hawaii", !pertenece);
+        Opcion opcion6 = new Opcion("Oslo", !pertenece);
+        List<Opcion> opciones = Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5, opcion6);
+
+        //When
+        Preguntable pregunta = CreadorPregunta.crearPregunta(TipoPregunta.GroupChoice, preguntaTexto, opciones);
+
+        //Then
+        Assertions.assertEquals(GroupChoice.class , pregunta.getClass());
+    }
+
+    @Test
+    public void asignaCorrectamenteLosPuntosAUnJugadorQueAgrupoTodasCorrectamente() throws ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException, MultiplicadorExcepcion, RondaSinPreguntaExcepcion {
+        //Given
+        String preguntaTexto = "¿Cuales ciudades pertenecen a Nueva Zelanda y cuales no?";
+        Boolean pertenece = Boolean.TRUE;
+        Opcion opcion1 = new Opcion("Auckland", pertenece);
+        Opcion opcion2 = new Opcion("Wellington", pertenece);
+        Opcion opcion3 = new Opcion("Hamilton", pertenece);
+        Opcion opcion4 = new Opcion("Canberra", !pertenece);
+        Opcion opcion5 = new Opcion("Hawaii", !pertenece);
+        Opcion opcion6 = new Opcion("Oslo", !pertenece);
+        List<Opcion> opciones = Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5, opcion6);
+
+        Preguntable groupChoice = CreadorPregunta.crearPregunta(TipoPregunta.GroupChoice, preguntaTexto, opciones);
+
+        Jugador jugador = new Jugador("Diego");
+        List<Jugador> jugadores = Arrays.asList(jugador);
+
+        Ronda ronda = new Ronda(jugadores, groupChoice);
+
+        Opcion respuesta1 = new Opcion("Auckland", pertenece);
+        Opcion respuesta2 = new Opcion("Wellington", pertenece);
+        Opcion respuesta3 = new Opcion("Hamilton", pertenece);
+        Opcion respuesta4 = new Opcion("Canberra", !pertenece);
+        Opcion respuesta5 = new Opcion("Hawaii", !pertenece);
+        Opcion respuesta6 = new Opcion("Oslo", !pertenece);
+        List<Opcion> opcionesAgrupadas = Arrays.asList(respuesta1, respuesta2, respuesta3, respuesta4, respuesta5, respuesta6);
+        //When
+        ronda.responder(jugador, opcionesAgrupadas);
+
+        //Then
+        Assertions.assertEquals(1, jugador.obtenerPuntos());
+
+    }
+
+    @Test
+    public void asignaCorrectamenteLosPuntosAUnJugadorQueAgrupoAlgunaMal() throws ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException, MultiplicadorExcepcion, RondaSinPreguntaExcepcion {
+        //Given
+        String preguntaTexto = "¿Cuales ciudades pertenecen a Nueva Zelanda y cuales no?";
+        Boolean pertenece = Boolean.TRUE;
+        Opcion opcion1 = new Opcion("Auckland", pertenece);
+        Opcion opcion2 = new Opcion("Wellington", pertenece);
+        Opcion opcion3 = new Opcion("Hamilton", pertenece);
+        Opcion opcion4 = new Opcion("Canberra", !pertenece);
+        Opcion opcion5 = new Opcion("Hawaii", !pertenece);
+        Opcion opcion6 = new Opcion("Oslo", !pertenece);
+        List<Opcion> opciones = Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5, opcion6);
+
+        Preguntable groupChoice = CreadorPregunta.crearPregunta(TipoPregunta.GroupChoice, preguntaTexto, opciones);
+
+        Jugador jugador = new Jugador("Diego");
+        List<Jugador> jugadores = Arrays.asList(jugador);
+
+        Ronda ronda = new Ronda(jugadores, groupChoice);
+
+        Opcion respuesta1 = new Opcion("Auckland", pertenece);
+        Opcion respuesta2 = new Opcion("Wellington", pertenece);
+        Opcion respuesta3 = new Opcion("Hamilton", !pertenece);
+        Opcion respuesta4 = new Opcion("Canberra", !pertenece);
+        Opcion respuesta5 = new Opcion("Hawaii", !pertenece);
+        Opcion respuesta6 = new Opcion("Oslo", !pertenece);
+        List<Opcion> opcionesAgrupadas = Arrays.asList(respuesta1, respuesta2, respuesta3, respuesta4, respuesta5, respuesta6);
+        //When
+        ronda.responder(jugador, opcionesAgrupadas);
+
+        //Then
+        Assertions.assertEquals(0, jugador.obtenerPuntos());
+
     }
 
     // Tests de Multiplicadores
