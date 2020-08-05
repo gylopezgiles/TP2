@@ -24,6 +24,10 @@ public abstract class MultipleChoice implements Preguntable {
         }
     }
 
+    protected boolean tieneOpcionesIncorrectas(List<Opcion> opciones){
+        return (opciones.stream().filter(opcion -> !opcion.esCorrecta()).count() > 0);
+    }
+
     private Boolean tieneCantidadOpcionesValida(List<Opcion> opciones){
         return !opciones.isEmpty() && opciones.size() >= CANTIDAD_OPCIONES_MINIMO && opciones.size() <= CANTIDAD_OPCIONES_MAXIMO;
     }
@@ -32,6 +36,7 @@ public abstract class MultipleChoice implements Preguntable {
         List<Opcion> opcionesCorrectas = opciones.stream().filter(op -> op.esCorrecta()).collect(Collectors.toList());
         return !opcionesCorrectas.isEmpty();
     }
+
 
     @Override
     public List<Opcion> obtenerOpciones() {

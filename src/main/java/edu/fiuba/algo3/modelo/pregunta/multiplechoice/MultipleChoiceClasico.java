@@ -15,14 +15,18 @@ public class MultipleChoiceClasico extends MultipleChoice {
 
     @Override
     public int establecerPuntuacion(List<Opcion> opciones) {
-        boolean sonTodasCorrectas = cantidadDeOpcionesCorrectas(opciones) == cantidadDeOpcionesCorrectas(this.opciones);
+        if(tieneOpcionesIncorrectas(opciones)){
+            return 0;
+        }
+        boolean sonTodasCorrectas = (cantidadDeOpcionesCorrectas(opciones) == cantidadDeOpcionesCorrectas(this.opciones));
         return sonTodasCorrectas ? 1 : 0;
     }
 
     private int cantidadDeOpcionesCorrectas(List<Opcion> opciones){
         return (int)opciones.stream()
-                .filter(op -> op.esCorrecta())
+                .filter(opcion -> opcion.esCorrecta())
                 .count();
     }
+
 
 }

@@ -17,6 +17,10 @@ public class MultipleChoiceParcial extends MultipleChoice {
 
     @Override
     public int establecerPuntuacion(List<Opcion> opciones) {
+        if(tieneOpcionesIncorrectas(opciones)){
+            return 0;
+        }
+
         Optional<Opcion> opcion = opciones.stream()
                 .filter(op -> !op.esCorrecta())
                 .findAny();
