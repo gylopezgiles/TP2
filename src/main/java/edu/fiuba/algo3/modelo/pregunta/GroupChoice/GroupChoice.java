@@ -9,6 +9,7 @@ import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 import javafx.print.Collation;
 
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -48,12 +49,26 @@ public class GroupChoice implements Preguntable {
     private void agrupar(List<Opcion> opciones){
        this.grupoUno = opciones.stream().filter(op -> op.esCorrecta()).collect(Collectors.toList());
        this.grupoDos = opciones.stream().filter(op -> !op.esCorrecta()).collect(Collectors.toList());
-       Collections.sort(this.grupoUno, (op1, op2) -> op1.obtenerTexto().compareTo(op2.obtenerTexto()));
-       Collections.sort(this.grupoDos, (op1, op2) -> op1.obtenerTexto().compareTo(op2.obtenerTexto()));
     }
 
     private boolean tieneGrupoVacio(){
         return (this.grupoUno.isEmpty() || this.grupoDos.isEmpty());
+    }
+
+    private boolean sonIguales(List<Opcion> unGrupo, List<Opcion> otroGrupo){
+        Boolean sonIguales = Boolean.TRUE;
+        int i = 0;
+        Collections.sort(unGrupo, (op1, op2) -> op1.obtenerTexto().compareTo(op2.obtenerTexto()));
+        Collections.sort(otroGrupo, (op1, op2) -> op1.obtenerTexto().compareTo(op2.obtenerTexto()));
+        if(unGrupo.size() != otroGrupo.size()){
+            return !sonIguales;
+        }
+        Iterator<Opcion> iteradorUno = unGrupo.iterator();
+        Iterator<Opcion> iteradorDos = otroGrupo.iterator();
+        while (sonIguales && iteradorUno.hasNext() && iteradorDos.hasNext()){
+            sonIguales = (iteradorUno.next().obtenerTexto().equals(iteradorDos.next().obtenerTexto()));
+        }
+        return sonIguales;
     }
 
     @Override
@@ -61,12 +76,10 @@ public class GroupChoice implements Preguntable {
         if(!multiplicador.equals(Multiplicador.PorDefecto)){
             throw new MultiplicadorExcepcion("Solo se puede aplicar multiplicadores a preguntas con penalidad");
         }
-        //FIXME implementar una mejor manera de ordenar y comparar las listas
         List<Opcion> grupoUnoRespondido = opcionesRespondidas.stream().filter(op -> op.esCorrecta()).collect(Collectors.toList());
         List<Opcion> grupoDosRespondido = opcionesRespondidas.stream().filter(op -> !op.esCorrecta()).collect(Collectors.toList());
-        Collections.sort(grupoUnoRespondido, (op1, op2) -> op1.obtenerTexto().compareTo(op2.obtenerTexto()));
-        Collections.sort(grupoDosRespondido, (op1, op2) -> op1.obtenerTexto().compareTo(op2.obtenerTexto()));
-        return this.grupoUno.equals(grupoUnoRespondido) && this.grupoDos.equals(grupoDosRespondido)? 0 : 1;
+        return this.sonIguales(this.grupoUno, grupoUnoRespondido) &&
+               this.sonIguales(this.grupoDos, grupoDosRespondido)? 1 : 0;
     }
     @Override
     public int establecerPuntuacion(List<Opcion> opciones) throws MultiplicadorExcepcion{
