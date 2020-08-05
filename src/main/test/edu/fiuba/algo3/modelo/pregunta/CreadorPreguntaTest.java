@@ -90,6 +90,23 @@ public class CreadorPreguntaTest {
     }
 
     @Test
+    public void debeCrearPreguntaOrderedChoice() throws ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
+        String preguntaTexto = "Orden de las letras vocales";
+        boolean esCorrecta = Boolean.TRUE;
+        Opcion opcion1 = new Opcion("A", esCorrecta);
+        Opcion opcion2 = new Opcion("E",esCorrecta);
+        Opcion opcion3 = new Opcion("I", esCorrecta);
+        Opcion opcion4 = new Opcion("O", esCorrecta);
+        Opcion opcion5 = new Opcion("U", esCorrecta);
+
+        List<Opcion> opciones = Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5);
+
+        Preguntable pregunta = CreadorPregunta.crearPregunta(TipoPregunta.OrderedChoice, preguntaTexto, opciones);
+
+        Assertions.assertEquals(OrderedChoice.class, pregunta.getClass());
+    }
+
+    @Test
     public void debeLanzarErrorCrearTipoPreguntaNoImplementada() {
 
         Assertions.assertThrows(TipoPreguntaNoImplementadaException.class, () -> CreadorPregunta.crearPregunta(TipoPregunta.Otro, "pregunta?", Collections.EMPTY_LIST));
