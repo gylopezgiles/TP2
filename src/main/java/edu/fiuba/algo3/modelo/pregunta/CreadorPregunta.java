@@ -26,6 +26,8 @@ public class CreadorPregunta {
                 return new MultipleChoiceConPenalidad(pregunta, opciones);
             case GroupChoice:
                 return new GroupChoice(pregunta, opciones);
+            case OrderedChoice:
+                return new OrderedChoice(pregunta,opciones);
             default:
                 throw new TipoPreguntaNoImplementadaException(String.format("El tipoPregunta %s no esta implementado", tipoPregunta.toString()));
         }

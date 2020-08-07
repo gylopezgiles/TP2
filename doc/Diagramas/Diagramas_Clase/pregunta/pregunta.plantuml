@@ -32,26 +32,26 @@ abstract class VerdaderoFalso{
 
 ' sin penalidad
 class VerdaderoFalsoClasico{
-    + establecerPuntuacion(opciones: List<Opcion>, multiplicador: MultiplicableStrategy): int
+    {abstract} + establecerPuntuacion(opciones: List<Opcion>, multiplicador: MultiplicableStrategy): int
 }
 
 class MultipleChoiceClasico{
-    + establecerPuntuacion(opciones: List<Opcion>, multiplicador: MultiplicableStrategy): int
+    {abstract} + establecerPuntuacion(opciones: List<Opcion>, multiplicador: MultiplicableStrategy): int
     - cantidadDeOpcionesCorrectas(opciones: List<Opcion>): int
 }
 
 class MultipleChoiceParcial{
-    + establecerPuntuacion(opciones: List<Opcion>, multiplicador: MultiplicableStrategy): int
+    {abstract} + establecerPuntuacion(opciones: List<Opcion>, multiplicador: MultiplicableStrategy): int
     - puntajeOpcionesCorrectas(opciones: List<Opcion>): int
 }
 
 ' con penalidad
 class VerdaderoFalsoPenalidad{
-    + establecerPuntuacion(opciones: List<Opcion>, multiplicador: MultiplicableStrategy): int
+    {abstract} + establecerPuntuacion(opciones: List<Opcion>, multiplicador: MultiplicableStrategy): int
 }
 
 class MultipleChoiceConPenalidad{
-    + establecerPuntuacion(opciones: List<Opcion>, multiplicador: MultiplicableStrategy): int
+    {abstract} + establecerPuntuacion(opciones: List<Opcion>, multiplicador: MultiplicableStrategy): int
     - puntajeOpcionesCorrectas(opciones:List): int
     - puntajeOpcionesIncorrectas(opciones:List): int
 }
@@ -59,15 +59,9 @@ class MultipleChoiceConPenalidad{
 
 ' Especiales
 class GroupChoice{
-    + establecerPuntuacion(opciones: List<Opcion>): int
-    + establecerPuntuacion(opciones: List<Opcion>, multiplicador: MultiplicableStrategy): int
-
 }
 
 class OpcionesOrdenadas{
-    + establecerPuntuacion(opciones: List<Opcion>): int
-    + establecerPuntuacion(opciones: List<Opcion>, multiplicador: MultiplicableStrategy): int
-
 }
 
 abstract class MultipleChoice{
@@ -79,14 +73,14 @@ abstract class MultipleChoice{
 }
 
 
-PreguntaCreador -down->TipoPreguntaConcreta
-PreguntaCreador -> Preguntable
+PreguntaCreador -up->TipoPreguntaConcreta
+PreguntaCreador -down-> Preguntable
 
 Preguntable <|.. VerdaderoFalso
 
 ' Preg_Penal
 VerdaderoFalso <|-- VerdaderoFalsoPenalidad
-MultipleChoice <|-- MultipleChoiceConPenalidad
+MultipleChoice <|-left- MultipleChoiceConPenalidad
 
 
 ' Pregun_Sin_Penal
@@ -95,7 +89,7 @@ Preguntable <|.. MultipleChoice
 MultipleChoice <|-- MultipleChoiceParcial
 MultipleChoice <|-- MultipleChoiceClasico
 
-Preguntable <|.. GroupChoice
-Preguntable <|.. OpcionesOrdenadas
+Preguntable <|.left. GroupChoice
+Preguntable <|.right. OpcionesOrdenadas
 
 @enduml

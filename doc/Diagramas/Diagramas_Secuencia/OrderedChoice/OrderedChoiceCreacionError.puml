@@ -1,0 +1,14 @@
+@startuml
+title Creación OrderedChoice Con Opciones Inválidas
+hide footbox
+
+Kahoot -> CreadorPregunta: CreadorPregunta.crearPregunta(TipoPregunta.OrderedChoice, pregunta, opciones)
+CreadorPregunta -> OrderedChoice: new OrderedChoice(pregunta, opciones)
+
+activate OrderedChoice
+OrderedChoice -> OrderedChoice: validarOpciones(opciones)
+OrderedChoice -> CreadorPregunta: throw ParametrosInvalidosExcepcion()
+deactivate OrderedChoice
+
+CreadorPregunta --> Kahoot: throw ParametrosInvalidosExcepcion()
+@enduml
