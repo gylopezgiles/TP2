@@ -10,6 +10,7 @@ class PreguntaCreador{
 interface Preguntable{
     + obtenerOpciones():List
     + establecerPuntuacion(opciones:List): int
+    + establecerPuntuacion(opciones: List<Opcion>, multiplicador: MultiplicableStrategy): int
     + obtenerPregunta():str
 }
 
@@ -18,6 +19,7 @@ enum TipoPreguntaConcreta{
     VerdaderoFalsoPenalidad
     MultipleChoiceClasico
     MultipleChoiceParcial
+    MultipleChoiceConPenalidad
 }
 
 abstract class VerdaderoFalso{
@@ -30,21 +32,28 @@ abstract class VerdaderoFalso{
 
 ' sin penalidad
 class VerdaderoFalsoClasico{
+    {abstract} + establecerPuntuacion(opciones: List<Opcion>, multiplicador: MultiplicableStrategy): int
 }
 
 class MultipleChoiceClasico{
-
+    {abstract} + establecerPuntuacion(opciones: List<Opcion>, multiplicador: MultiplicableStrategy): int
+    - cantidadDeOpcionesCorrectas(opciones: List<Opcion>): int
 }
 
 class MultipleChoiceParcial{
-    
+    {abstract} + establecerPuntuacion(opciones: List<Opcion>, multiplicador: MultiplicableStrategy): int
+    - puntajeOpcionesCorrectas(opciones: List<Opcion>): int
 }
 
 ' con penalidad
 class VerdaderoFalsoPenalidad{
+    {abstract} + establecerPuntuacion(opciones: List<Opcion>, multiplicador: MultiplicableStrategy): int
 }
 
-class MultipleChoicePenalidad{
+class MultipleChoiceConPenalidad{
+    {abstract} + establecerPuntuacion(opciones: List<Opcion>, multiplicador: MultiplicableStrategy): int
+    - puntajeOpcionesCorrectas(opciones:List): int
+    - puntajeOpcionesIncorrectas(opciones:List): int
 }
 
 
@@ -64,23 +73,23 @@ abstract class MultipleChoice{
 }
 
 
-PreguntaCreador -down->TipoPreguntaConcreta
-PreguntaCreador -> Preguntable
+PreguntaCreador -up->TipoPreguntaConcreta
+PreguntaCreador -down-> Preguntable
 
-Preguntable <.. VerdaderoFalso
+Preguntable <|.. VerdaderoFalso
 
 ' Preg_Penal
 VerdaderoFalso <|-- VerdaderoFalsoPenalidad
-MultipleChoice <|-- MultipleChoicePenalidad
+MultipleChoice <|-left- MultipleChoiceConPenalidad
 
 
 ' Pregun_Sin_Penal
 VerdaderoFalso <|-- VerdaderoFalsoClasico
-Preguntable <.. MultipleChoice
+Preguntable <|.. MultipleChoice
 MultipleChoice <|-- MultipleChoiceParcial
 MultipleChoice <|-- MultipleChoiceClasico
 
-Preguntable <.. GroupChoice
-Preguntable <.. OpcionesOrdenadas
+Preguntable <|.left. GroupChoice
+Preguntable <|.right. OpcionesOrdenadas
 
 @enduml

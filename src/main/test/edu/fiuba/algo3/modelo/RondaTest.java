@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.excepciones.*;
+import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.CreadorPregunta;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
@@ -31,7 +32,7 @@ public class RondaTest {
     }
 
     @Test
-    public void debeResponderUnaPreguntaParaUnJugador() throws RondaSinPreguntaExcepcion, ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
+    public void debeResponderUnaPreguntaParaUnJugador() throws RondaSinPreguntaExcepcion, ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException, MultiplicadorExcepcion {
         Jugador jugador1 = new Jugador("jugador1");
         Jugador jugador2 = new Jugador("jugador2");
         List<Jugador> jugadores = Arrays.asList(jugador1, jugador2);
@@ -61,6 +62,26 @@ public class RondaTest {
 
         Assertions.assertThrows(RondaSinPreguntaExcepcion.class, () -> ronda.responder(jugador1, opciones));
 
+    }
+
+    @Test
+    public void debeResponderUnaPreguntaParaUnJugadorConMultiplicadores() throws RondaSinPreguntaExcepcion, ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException, MultiplicadorExcepcion {
+        Jugador jugador1 = new Jugador("jugador1");
+        Jugador jugador2 = new Jugador("jugador2");
+        List<Jugador> jugadores = Arrays.asList(jugador1, jugador2);
+
+        Boolean esCorrecta = Boolean.TRUE;
+        String textoPregunta = "La canción Renegade de Styx, fue lanzada en 1978";
+        Opcion opcionCorrecta = new Opcion("Verdadero", esCorrecta);
+        Opcion opcionIncorrecta = new Opcion("Falso", !esCorrecta);
+        List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
+        Preguntable pregunta = CreadorPregunta.crearPregunta(TipoPregunta.VerdaderoFalsoPenalidad, textoPregunta ,opciones);
+
+        Ronda ronda = new Ronda(jugadores, pregunta);
+
+        ronda.responder(jugador1, opciones, Multiplicador.PorDos);
+
+        Assertions.assertEquals(2, jugador1.obtenerPuntos());
     }
 
 }

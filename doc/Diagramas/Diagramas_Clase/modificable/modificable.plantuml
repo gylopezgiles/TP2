@@ -1,5 +1,5 @@
 @startuml
-title Modelo de Modificador
+title Modelo de Multiplicador
 skinparam classAttributeIconSize 0
 
 
@@ -9,31 +9,23 @@ class Ronda{
 
     + obtenerJugadores(): List<Jugador>
     + obtenerPregunta():Preguntable
-    + responder():void
+    + responder(jugador: Jugador, opciones: List<Opcion>):void
+    + responder(jugador: Jugador, opciones: List<Opcion>, multiplicador: MultiplicableStrategy):void
 }
 
-interface Modificable{
-    + aplicarModificador(jugadorConModificador: Jugador, otroJugador: Jugador): int
+interface MultiplicableStrategy{
+    + aplicarMultiplicador(puntos: int): int
 }
 
-class Normal{
-}
-
-class X2{
-}
-
-class X3{
-}
-
-class Exclusividad{
+enum Multiplicador{
+    PorDefecto
+    PorDos
+    PorTres
 }
 
 
-Ronda o-> Modificable
+Ronda --> MultiplicableStrategy
 
-Modificable <.up. Normal
-Modificable <.up. X2
-Modificable <.up. X3
-Modificable <.up. Exclusividad
+MultiplicableStrategy <|.. Multiplicador
 
 @enduml
