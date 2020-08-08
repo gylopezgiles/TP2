@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo.pregunta.multiplechoice;
 
-import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
@@ -68,7 +67,7 @@ public class MultipleChoiceConPenalidadTest {
     }
 
     @Test
-    public void debeEstablecerPuntuacionCorrectamenteEligiendoTodasRespuestasCorrectasSinIncorrectas() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+    public void debeEstablecerPuntuacionCorrectamenteEligiendoTodasRespuestasCorrectasSinIncorrectas() throws ParametrosInvalidosExcepcion {
         String preguntaTexto = "Qué países se encuentran en Asia?";
         Boolean esCorrecta = Boolean.TRUE;
         Opcion opcion1Correcta = new Opcion("China", esCorrecta);
@@ -85,7 +84,7 @@ public class MultipleChoiceConPenalidadTest {
     }
 
     @Test
-    public void debeEstablecerPuntuacionCorrectamenteEligiendoAlgunasRespuestasCorrectasSinIncorrectas() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+    public void debeEstablecerPuntuacionCorrectamenteEligiendoAlgunasRespuestasCorrectasSinIncorrectas() throws ParametrosInvalidosExcepcion {
         String preguntaTexto = "Qué países se encuentran en Europa?";
         Boolean esCorrecta = Boolean.TRUE;
         Opcion opcion1Correcta = new Opcion("España", esCorrecta);
@@ -102,7 +101,7 @@ public class MultipleChoiceConPenalidadTest {
     }
 
     @Test
-    public void debeEstablecerPuntuacionCorrectamenteEligiendoAlgunasRespuestasCorrectasYUnaIncorrecta() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+    public void debeEstablecerPuntuacionCorrectamenteEligiendoAlgunasRespuestasCorrectasYUnaIncorrecta() throws ParametrosInvalidosExcepcion {
         String preguntaTexto = "Qué países se encuentran en África?";
         Boolean esCorrecta = Boolean.TRUE;
         Opcion opcion1Correcta = new Opcion("Egipto", esCorrecta);
@@ -119,7 +118,7 @@ public class MultipleChoiceConPenalidadTest {
     }
 
     @Test
-    public void debeEstablecerPuntuacionCorrectamenteEligiendoAlgunasRespuestasCorrectasYAlgunasIncorrecta() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+    public void debeEstablecerPuntuacionCorrectamenteEligiendoAlgunasRespuestasCorrectasYAlgunasIncorrecta() throws ParametrosInvalidosExcepcion {
         String preguntaTexto = "Qué países se encuentran en América del Sur?";
         Boolean esCorrecta = Boolean.TRUE;
         Opcion opcion1Correcta = new Opcion("Chile", esCorrecta);
@@ -137,7 +136,7 @@ public class MultipleChoiceConPenalidadTest {
     }
 
     @Test
-    public void debeEstablecerPuntuacionCorrectamenteEligiendoTodasRespuestasIncorrectas() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+    public void debeEstablecerPuntuacionCorrectamenteEligiendoTodasRespuestasIncorrectas() throws ParametrosInvalidosExcepcion {
         String preguntaTexto = "Qué países se encuentran en América Central?";
         Boolean esCorrecta = Boolean.TRUE;
         Opcion opcion1Correcta = new Opcion("Guatemala", esCorrecta);

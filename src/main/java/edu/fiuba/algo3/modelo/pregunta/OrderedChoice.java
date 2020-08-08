@@ -1,14 +1,11 @@
 package edu.fiuba.algo3.modelo.pregunta;
 
-import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.multiplicador.MultiplicableStrategy;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class OrderedChoice implements Preguntable{
 

@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.RondaSinPreguntaExcepcion;
 import edu.fiuba.algo3.modelo.multiplicador.MultiplicableStrategy;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;

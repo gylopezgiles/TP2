@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo.pregunta.multiplechoice;
 
-import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
@@ -74,7 +73,7 @@ public class MultipleChoiceParcialTest {
     }
 
     @Test
-    public void debeEstablecerPuntuacionCorrectamenteEligiendoTodasRespuestasCorrectasSinIncorrectas() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+    public void debeEstablecerPuntuacionCorrectamenteEligiendoTodasRespuestasCorrectasSinIncorrectas() throws ParametrosInvalidosExcepcion {
         Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
         Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
         Opcion opcion3Correcta = new Opcion("opcion 3", Boolean.TRUE);
@@ -90,7 +89,7 @@ public class MultipleChoiceParcialTest {
     }
 
     @Test
-    public void debeEstablecerPuntuacionCorrectamenteEligiendoAlgunasRespuestasCorrectasSinIncorrectas() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+    public void debeEstablecerPuntuacionCorrectamenteEligiendoAlgunasRespuestasCorrectasSinIncorrectas() throws ParametrosInvalidosExcepcion {
         Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
         Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
         Opcion opcion3Correcta = new Opcion("opcion 3", Boolean.TRUE);
@@ -106,7 +105,7 @@ public class MultipleChoiceParcialTest {
     }
 
     @Test
-    public void debeEstablecerPuntuacionCorrectamenteEligiendoAlgunasRespuestasCorrectasYUnaIncorrecta() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+    public void debeEstablecerPuntuacionCorrectamenteEligiendoAlgunasRespuestasCorrectasYUnaIncorrecta() throws ParametrosInvalidosExcepcion {
         Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
         Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
         Opcion opcion3Correcta = new Opcion("opcion 3", Boolean.TRUE);

@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo.pregunta.multiplechoice;
 
-import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
@@ -133,7 +132,7 @@ public class MultipleChoiceClasicoTest {
     }
 
     @Test
-    public void multipleChoiceClasicoAsignaCorrectamenteElPuntajeAUnJugadorConTodasLasOpcionesCorrectas() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+    public void multipleChoiceClasicoAsignaCorrectamenteElPuntajeAUnJugadorConTodasLasOpcionesCorrectas() throws ParametrosInvalidosExcepcion {
         Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
         Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
         Opcion opcion3Correcta = new Opcion("opcion 3", Boolean.TRUE);
@@ -149,7 +148,7 @@ public class MultipleChoiceClasicoTest {
     }
 
     @Test
-    public void multipleChoiceClasicoAsignaCorrectamenteElPuntajeAUnJugadorConTodasLasOpcionesIncorrectas() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+    public void multipleChoiceClasicoAsignaCorrectamenteElPuntajeAUnJugadorConTodasLasOpcionesIncorrectas() throws ParametrosInvalidosExcepcion {
         Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
         Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
         Opcion opcion3Correcta = new Opcion("opcion 3", Boolean.TRUE);
@@ -165,7 +164,7 @@ public class MultipleChoiceClasicoTest {
     }
 
     @Test
-    public void multipleChoiceClasicoAsignaCorrectamenteElPuntajeAUnJugadorConAlgunasOpcionesCorrectas() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+    public void multipleChoiceClasicoAsignaCorrectamenteElPuntajeAUnJugadorConAlgunasOpcionesCorrectas() throws ParametrosInvalidosExcepcion {
         Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
         Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
         Opcion opcion3Correcta = new Opcion("opcion 3", Boolean.TRUE);
@@ -181,7 +180,7 @@ public class MultipleChoiceClasicoTest {
     }
 
     @Test
-    public void multipleChoiceClasicoAsignaCorrectamenteElPuntajeAUnJugadorConAlgunasOpcionesCorrectasEIncorrectas() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+    public void multipleChoiceClasicoAsignaCorrectamenteElPuntajeAUnJugadorConAlgunasOpcionesCorrectasEIncorrectas() throws ParametrosInvalidosExcepcion {
         Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
         Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
         Opcion opcion3Correcta = new Opcion("opcion 3", Boolean.TRUE);

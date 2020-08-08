@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo.pregunta.verdaderofalso;
 
-import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
@@ -65,7 +64,7 @@ public class VerdaderoFalsoPenalidadTest {
     }
 
     @Test
-    public void alResponderCorrectamenteDebeSumarUnPunto() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+    public void alResponderCorrectamenteDebeSumarUnPunto() throws ParametrosInvalidosExcepcion {
 
         Opcion opcionCorrecta = new Opcion("Verdadero", Boolean.TRUE);
         Opcion opcionIncorrecta = new Opcion("Falso", Boolean.FALSE);
@@ -79,7 +78,7 @@ public class VerdaderoFalsoPenalidadTest {
 
 
     @Test
-    public void alResponderIncorrectamenteDebeRestarUnPunto() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+    public void alResponderIncorrectamenteDebeRestarUnPunto() throws ParametrosInvalidosExcepcion {
         Opcion opcionCorrecta = new Opcion("Verdadero", Boolean.TRUE);
         Opcion opcionIncorrecta = new Opcion("Falso", Boolean.FALSE);
         List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
@@ -92,7 +91,7 @@ public class VerdaderoFalsoPenalidadTest {
     }
 
     @Test
-    public void alAplicarMultiplicadorDebeMultiplicarLosPuntos() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+    public void alAplicarMultiplicadorDebeMultiplicarLosPuntos() throws ParametrosInvalidosExcepcion {
         String preguntaTexto = "La banda Kiss tiene 6 integrantes";
         Boolean esCorrecta = Boolean.TRUE;
         Opcion opcionIncorrecta = new Opcion("Verdadero", !esCorrecta);
@@ -106,7 +105,7 @@ public class VerdaderoFalsoPenalidadTest {
     }
 
     @Test
-    public void alAplicarMultiplicadorDebeMultiplicarLosPuntosNegativos() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+    public void alAplicarMultiplicadorDebeMultiplicarLosPuntosNegativos() throws ParametrosInvalidosExcepcion {
         String preguntaTexto = "La banda Kiss tiene 6 integrantes";
         Boolean esCorrecta = Boolean.TRUE;
         Opcion opcionIncorrecta = new Opcion("Verdadero", !esCorrecta);

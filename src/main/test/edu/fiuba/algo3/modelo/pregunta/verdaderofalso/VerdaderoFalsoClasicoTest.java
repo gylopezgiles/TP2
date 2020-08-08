@@ -1,11 +1,9 @@
 package edu.fiuba.algo3.modelo.pregunta.verdaderofalso;
 
-import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
-import edu.fiuba.algo3.modelo.pregunta.multiplechoice.MultipleChoiceParcial;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
