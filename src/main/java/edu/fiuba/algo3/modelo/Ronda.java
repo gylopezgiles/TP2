@@ -27,11 +27,11 @@ public class Ronda {
         return pregunta;
     }
 
-    public void responder(Jugador jugador, List<Opcion> opciones) throws RondaSinPreguntaExcepcion, MultiplicadorExcepcion {
+    public void responder(Jugador jugador, List<Opcion> opciones) throws RondaSinPreguntaExcepcion {
         responder(jugador, opciones, Multiplicador.PorDefecto);
     }
 
-    public void responder(Jugador jugador, List<Opcion> opciones, MultiplicableStrategy multiplicador) throws RondaSinPreguntaExcepcion, MultiplicadorExcepcion {
+    public void responder(Jugador jugador, List<Opcion> opciones, MultiplicableStrategy multiplicador) throws RondaSinPreguntaExcepcion {
         if(pregunta == null){
             throw new RondaSinPreguntaExcepcion("No se puede responder sin una pregunta");
         }

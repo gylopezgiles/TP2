@@ -42,16 +42,12 @@ public class OrderedChoice implements Preguntable{
     }
 
     @Override
-    public int establecerPuntuacion(List<Opcion> opciones) throws MultiplicadorExcepcion {
+    public int establecerPuntuacion(List<Opcion> opciones) {
         return establecerPuntuacion(opciones, Multiplicador.PorDefecto);
     }
 
     @Override
-    public int establecerPuntuacion(List<Opcion> opciones, MultiplicableStrategy multiplicador) throws MultiplicadorExcepcion {
-        if(!multiplicador.equals(Multiplicador.PorDefecto)){
-            throw new MultiplicadorExcepcion("Solo se puede aplicar multiplicadores a preguntas con penalidad");
-        }
-
+    public int establecerPuntuacion(List<Opcion> opciones, MultiplicableStrategy multiplicador) {
         return tieneElOrdenAdecuado(opciones.iterator(),this.obtenerOpciones().iterator()) ? 1: 0;
     }
 

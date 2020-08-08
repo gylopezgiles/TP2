@@ -197,18 +197,19 @@ public class MultipleChoiceClasicoTest {
     }
 
     @Test
-    public void alAplicarMultiplicadorDebeLanzarUnaExcepcion() throws ParametrosInvalidosExcepcion {
+    public void alResponderConMultiplicadorNoLoDebeAplicar() throws ParametrosInvalidosExcepcion {
         String preguntaTexto = "Cuáles de los siguientes artistas interpretaron la canción Proud Mary";
         Boolean esCorrecta = Boolean.TRUE;
         Opcion opcionCorrecta1 = new Opcion("Creedence Clearwater Revival", esCorrecta);
         Opcion opcionCorrecta2 = new Opcion("Tina Turner", esCorrecta);
         Opcion opcionIncorrecta3 = new Opcion("Radiohead", !esCorrecta);
-        List<Opcion> opciones = Arrays.asList(opcionCorrecta1, opcionCorrecta2, opcionIncorrecta3);
+        List<Opcion> opciones = Arrays.asList(opcionCorrecta1, opcionCorrecta2);
         List<Opcion> opcionesSeleccionadas = Arrays.asList(opcionCorrecta1, opcionCorrecta2, opcionIncorrecta3);
 
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
 
-        Assertions.assertThrows(MultiplicadorExcepcion.class, () -> multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDos));
+        Assertions.assertEquals(1, multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDos));
+        Assertions.assertEquals(1, multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorTres));
 
     }
 

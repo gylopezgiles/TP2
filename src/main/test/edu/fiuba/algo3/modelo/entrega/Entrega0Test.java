@@ -33,7 +33,7 @@ public class Entrega0Test {
     }
 
     @Test
-    public void preguntaVerdaderoFalsoClasicoAsignaPuntajeCorrectamente() throws RondaSinPreguntaExcepcion, ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException, MultiplicadorExcepcion {
+    public void preguntaVerdaderoFalsoClasicoAsignaPuntajeCorrectamente() throws RondaSinPreguntaExcepcion, ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
         //Given
         Opcion opcionCorrecta = new Opcion("Verdadero", Boolean.TRUE);
         Opcion opcionIncorrecta = new Opcion("Falso", Boolean.FALSE);

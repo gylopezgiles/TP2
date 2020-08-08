@@ -47,7 +47,7 @@ public abstract class MultipleChoice implements Preguntable {
     }
 
     @Override
-    public int establecerPuntuacion(List<Opcion> opciones) throws MultiplicadorExcepcion {
+    public int establecerPuntuacion(List<Opcion> opciones) {
         return establecerPuntuacion(opciones, Multiplicador.PorDefecto);
     }
 

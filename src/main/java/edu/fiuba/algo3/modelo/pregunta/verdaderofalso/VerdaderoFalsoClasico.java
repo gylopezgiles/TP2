@@ -18,10 +18,7 @@ public class VerdaderoFalsoClasico extends VerdaderoFalso {
     }
 
     @Override
-    public int establecerPuntuacion(List<Opcion> opciones, MultiplicableStrategy multiplicador) throws MultiplicadorExcepcion {
-        if(!multiplicador.equals(Multiplicador.PorDefecto)){
-            throw new MultiplicadorExcepcion("Solo se puede aplicar multiplicadores a preguntas con penalidad");
-        }
+    public int establecerPuntuacion(List<Opcion> opciones, MultiplicableStrategy multiplicador) {
         Optional<Opcion> opcion = opciones.stream()
                 .filter(op -> op.esCorrecta())
                 .findAny();

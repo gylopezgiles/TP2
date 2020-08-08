@@ -66,7 +66,7 @@ public class VerdaderoFalsoClasicoTest {
     }
 
     @Test
-    public void alAplicarMultiplicadorDebeLanzarUnaExcepcion() throws ParametrosInvalidosExcepcion {
+    public void alEstablecerPuntuacionConMultiplicadorNoLoDebeAplicar() throws ParametrosInvalidosExcepcion {
         String preguntaTexto = "La canción Feelling Good fue escrita por Muse";
         Boolean esCorrecta = Boolean.TRUE;
         Opcion opcionIncorrecta = new Opcion("Verdadero", !esCorrecta);
@@ -76,7 +76,9 @@ public class VerdaderoFalsoClasicoTest {
 
         Preguntable verdaderoFalsoClasico = new VerdaderoFalsoClasico(preguntaTexto, opciones);
 
-        Assertions.assertThrows(MultiplicadorExcepcion.class, () -> verdaderoFalsoClasico.establecerPuntuacion(opcionSeleccionada, Multiplicador.PorDos));
+        Assertions.assertEquals(1, verdaderoFalsoClasico.establecerPuntuacion(opcionSeleccionada, Multiplicador.PorDos));
+        Assertions.assertEquals(1, verdaderoFalsoClasico.establecerPuntuacion(opcionSeleccionada, Multiplicador.PorTres));
+
     }
 
 }

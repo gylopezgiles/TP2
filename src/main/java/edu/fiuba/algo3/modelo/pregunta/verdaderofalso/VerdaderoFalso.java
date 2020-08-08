@@ -1,8 +1,6 @@
 package edu.fiuba.algo3.modelo.pregunta.verdaderofalso;
 
-import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
-import edu.fiuba.algo3.modelo.multiplicador.MultiplicableStrategy;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
@@ -47,7 +45,7 @@ public abstract class VerdaderoFalso implements Preguntable {
     }
 
     @Override
-    public int establecerPuntuacion(List<Opcion> opciones) throws MultiplicadorExcepcion {
+    public int establecerPuntuacion(List<Opcion> opciones) {
         return establecerPuntuacion(opciones, Multiplicador.PorDefecto);
     }
 
