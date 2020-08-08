@@ -4,6 +4,8 @@ title Aplicar Multiplicador a Pregunta Con Penalidad
 
 Kahoot -> Ronda: responder(jugador, opciones, multiplicador)
 Ronda -> Preguntable: establecerPuntuacion(opciones, multiplicador)
+Preguntable -> MultiplicableStrategy: aplicarMultiplicador(puntos)
+MultiplicableStrategy -> Preguntable: puntos
 Preguntable -> Ronda: puntos
 Ronda -> Jugador: sumarPuntos(puntos)
 

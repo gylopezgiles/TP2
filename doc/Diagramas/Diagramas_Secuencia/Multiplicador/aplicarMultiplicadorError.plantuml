@@ -4,6 +4,7 @@ title Aplicar Multiplicador a Pregunta sin Penalidad
 
 Kahoot -> Ronda: responder(jugador, opciones, multiplicador)
 Ronda -> Preguntable: establecerPuntuacion(opciones, multiplicador)
-Preguntable -> Ronda: new MultiplicadorExcepcion()
+Preguntable -> Ronda: puntos
+Ronda -> Jugador: sumarPuntos(puntos)
 
 @enduml
