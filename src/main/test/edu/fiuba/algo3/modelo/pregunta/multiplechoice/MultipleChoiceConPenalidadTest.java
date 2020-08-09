@@ -154,4 +154,20 @@ public class MultipleChoiceConPenalidadTest {
         Assertions.assertEquals(-3, puntuacion);
     }
 
+    @Test
+    public void obtenerOpcionesPorNombreTest() throws ParametrosInvalidosExcepcion {
+        String preguntaTexto = "Cuáles de los siguientes artistas interpretaron la canción Proud Mary";
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcionCorrecta1 = new Opcion("Creedence Clearwater Revival", esCorrecta);
+        Opcion opcionCorrecta2 = new Opcion("Tina Turner", esCorrecta);
+        Opcion opcionIncorrecta3 = new Opcion("Radiohead", !esCorrecta);
+        List<Opcion> opciones = Arrays.asList(opcionCorrecta1, opcionCorrecta2, opcionIncorrecta3);
+        List<String> opcionesPorNombre = Arrays.asList("Creedence Clearwater Revival", "Tina Turner", "Radiohead");
+        Preguntable multipleChoiceConPenalidad = new MultipleChoiceConPenalidad(preguntaTexto, opciones);
+
+        List<Opcion> opcionesObtenidas = multipleChoiceConPenalidad.obtenerOpcionesPorNombre(opcionesPorNombre);
+
+        Assertions.assertEquals(opciones, opcionesObtenidas);
+    }
+
 }

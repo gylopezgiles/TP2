@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.multiplicador.MultiplicableStrategy;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
+import edu.fiuba.algo3.modelo.pregunta.TipoPregunta;
 
 import java.util.List;
 
@@ -25,6 +26,10 @@ public class MultipleChoiceClasico extends MultipleChoice {
         return sonTodasCorrectas ? 1 : 0;
     }
 
+    @Override
+    public TipoPregunta obtenerTipoPregunta() {
+        return TipoPregunta.MultipleChoiceClasico;
+    }
 
     private int cantidadDeOpcionesCorrectas(List<Opcion> opciones){
         return (int)opciones.stream()

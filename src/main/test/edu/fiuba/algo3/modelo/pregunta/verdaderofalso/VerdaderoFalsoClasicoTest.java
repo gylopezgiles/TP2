@@ -79,4 +79,18 @@ public class VerdaderoFalsoClasicoTest {
         Assertions.assertThrows(MultiplicadorExcepcion.class, () -> verdaderoFalsoClasico.establecerPuntuacion(opcionSeleccionada, Multiplicador.PorDos));
     }
 
+    @Test
+    public void obtenerOpcionesPorNombreTest() throws ParametrosInvalidosExcepcion {
+        Opcion opcionCorrecta = new Opcion("Verdadero", Boolean.TRUE);
+        Opcion opcionIncorrecta = new Opcion("Falso", Boolean.FALSE);
+        List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
+        String preguntaTexto = "pregunta?";
+        List<String> opcionesPorNombre = Arrays.asList("Verdadero", "Falso");
+        Preguntable verdaderoFalsoClasico = new VerdaderoFalsoClasico(preguntaTexto, opciones);
+
+        List<Opcion> opcionesObtenidas = verdaderoFalsoClasico.obtenerOpcionesPorNombre(opcionesPorNombre);
+
+        Assertions.assertEquals(opciones, opcionesObtenidas);
+    }
+
 }

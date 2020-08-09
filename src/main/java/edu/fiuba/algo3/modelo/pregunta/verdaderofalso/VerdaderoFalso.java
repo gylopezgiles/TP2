@@ -51,5 +51,10 @@ public abstract class VerdaderoFalso implements Preguntable {
         return establecerPuntuacion(opciones, Multiplicador.PorDefecto);
     }
 
+    @Override
+    public List<Opcion> obtenerOpcionesPorNombre(List<String> opcionesSeleccionadas) {
+        return opciones.stream().filter(op -> opcionesSeleccionadas.contains(op.obtenerTexto())).collect(Collectors.toList());
+    }
+
 
 }

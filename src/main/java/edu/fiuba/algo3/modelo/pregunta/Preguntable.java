@@ -13,6 +13,9 @@ public interface Preguntable {
 
     int establecerPuntuacion(List<Opcion> opciones, MultiplicableStrategy multiplicador) throws MultiplicadorExcepcion;
 
+    TipoPregunta obtenerTipoPregunta();
+
     String obtenerPregunta();
 
+    List<Opcion> obtenerOpcionesPorNombre(List<String> opcionesSeleccionadas);
 }
