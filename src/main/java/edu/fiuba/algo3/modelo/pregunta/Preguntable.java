@@ -10,7 +10,7 @@ public interface Preguntable<T> {
 
     int establecerPuntuacion(T seleccion) throws MultiplicadorExcepcion;
 
-    int establecerPuntuacion(T opciones, MultiplicableStrategy multiplicador) throws MultiplicadorExcepcion;
+    int establecerPuntuacion(T seleccion, MultiplicableStrategy multiplicador) throws MultiplicadorExcepcion;
 
     String obtenerPregunta();
 

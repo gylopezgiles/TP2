@@ -23,19 +23,19 @@ public class GroupChoice implements Preguntable < List<List<Opcion> >>{
 
     private final String pregunta;
     private final List<Opcion> opciones;
-    private List<Opcion> opcionesVerdaderas;
-    private List<Opcion> opcionesFalsas;
+    private List<Opcion> opcionesPrimerGrupo;
+    private List<Opcion> opcionesSegundoGrupo;
 
-    public GroupChoice(String preguntaTexto, List<Opcion> opciones) throws ParametrosInvalidosExcepcion {
-        separarOpcionesVerdaderoFalso(opciones);
-        validarOpciones(opciones);
-        this.opciones = opciones;
+    public <T> GroupChoice(String preguntaTexto, T opciones) throws ParametrosInvalidosExcepcion {
+        separarOpcionesVerdaderoFalso((List<Opcion>)opciones);
+        validarOpciones((List<Opcion>)opciones);
+        this.opciones = (List<Opcion>)opciones;
         this.pregunta = preguntaTexto;
     }
 
     private void separarOpcionesVerdaderoFalso(List<Opcion> opciones){
-        this.opcionesVerdaderas = opciones.stream().filter(op -> op.esCorrecta()).collect(Collectors.toList());
-        this.opcionesFalsas = opciones.stream().filter(op -> !op.esCorrecta()).collect(Collectors.toList());
+        this.opcionesPrimerGrupo = opciones.stream().filter(op -> op.esCorrecta()).collect(Collectors.toList());
+        this.opcionesSegundoGrupo = opciones.stream().filter(op -> !op.esCorrecta()).collect(Collectors.toList());
     }
 
     private void validarOpciones(List<Opcion> opciones) throws ParametrosInvalidosExcepcion {
@@ -53,7 +53,7 @@ public class GroupChoice implements Preguntable < List<List<Opcion> >>{
     }
 
     private boolean tieneGrupoVacio(){
-        return (this.opcionesVerdaderas.isEmpty() || this.opcionesFalsas.isEmpty());
+        return (this.opcionesPrimerGrupo.isEmpty() || this.opcionesSegundoGrupo.isEmpty());
     }
 
     @Override
@@ -72,11 +72,11 @@ public class GroupChoice implements Preguntable < List<List<Opcion> >>{
             throw new MultiplicadorExcepcion("");
         }
 
-        List<Opcion> respuestasGrupoVerdadero = grupos.get(0);
-        List<Opcion> respuestasGrupoFalso = grupos.get(1);
+        List<Opcion> respuestasPrimerGrupo = grupos.get(0);
+        List<Opcion> respuestasSegundoGrupo = grupos.get(1);
 
-        return ( esIgual(opcionesVerdaderas, respuestasGrupoVerdadero) &&
-                esIgual(opcionesFalsas, respuestasGrupoFalso) ) ? PUNTACION_CORRECTA : PUNTACION_INCORRECTA;
+        return ( esIgual(opcionesPrimerGrupo, respuestasPrimerGrupo) &&
+                esIgual(opcionesSegundoGrupo, respuestasSegundoGrupo ) ) ? PUNTACION_CORRECTA : PUNTACION_INCORRECTA;
     }
 
 

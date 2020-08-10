@@ -5,8 +5,12 @@ import edu.fiuba.algo3.modelo.excepciones.TipoPreguntaNoImplementadaException;
 import edu.fiuba.algo3.modelo.pregunta.multiplechoice.MultipleChoiceClasico;
 import edu.fiuba.algo3.modelo.pregunta.multiplechoice.MultipleChoiceConPenalidad;
 import edu.fiuba.algo3.modelo.pregunta.multiplechoice.MultipleChoiceParcial;
+import edu.fiuba.algo3.modelo.pregunta.multiplechoice.GroupChoice;
 import edu.fiuba.algo3.modelo.pregunta.verdaderofalso.VerdaderoFalsoClasico;
 import edu.fiuba.algo3.modelo.pregunta.verdaderofalso.VerdaderoFalsoPenalidad;
+
+import java.util.List;
+
 
 public class CreadorPregunta {
 
@@ -24,6 +28,8 @@ public class CreadorPregunta {
                 return new MultipleChoiceConPenalidad(pregunta, opciones);
             case OrderedChoice:
                 return new OrderedChoice(pregunta,opciones);
+            case GroupChoice:
+                return new GroupChoice(pregunta, opciones);
             default:
                 throw new TipoPreguntaNoImplementadaException(String.format("El tipoPregunta %s no esta implementado", tipoPregunta.toString()));
         }
