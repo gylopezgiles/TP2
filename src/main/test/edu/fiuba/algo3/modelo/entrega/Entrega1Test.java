@@ -22,73 +22,71 @@ public class Entrega1Test {
     @Test
     public void crearVerdaderoFalsoClasicoConPenalidadConOpciones() throws ExcepcionBase {
         //Given
-        Opcion opcionCorrecta = new Opcion("Verdadero", Boolean.TRUE);
-        Opcion opcionIncorrecta = new Opcion("Falso", Boolean.FALSE);
+        String preguntaTexto = "¿Sydney es la capital de Australia?";
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcionCorrecta = new Opcion("Falso", esCorrecta);
+        Opcion opcionIncorrecta = new Opcion("Verdadero", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
-        String preguntaTexto = "pregunta?";
 
         //When
         Preguntable verdaderoFalsoPenalidad = CreadorPregunta.crearPregunta(TipoPregunta.VerdaderoFalsoPenalidad, preguntaTexto, opciones);
 
         //Then
         Assertions.assertEquals(VerdaderoFalsoPenalidad.class, verdaderoFalsoPenalidad.getClass());
-        Assertions.assertEquals(2, verdaderoFalsoPenalidad.obtenerOpciones().size());
-        Assertions.assertEquals(opciones, verdaderoFalsoPenalidad.obtenerOpciones());
-        Assertions.assertEquals(opcionCorrecta, verdaderoFalsoPenalidad.obtenerOpciones().stream().filter(opcion -> opcion.esCorrecta()).findAny().orElse(null));
     }
 
 
     @Test
     public void crearMultipleChoiceClasicoConOpciones()throws ExcepcionBase {
         //Given
-        Opcion opcionCorrecta = new Opcion("Esta Si", Boolean.TRUE);
-        Opcion opcion2 = new Opcion("Esta NO", Boolean.FALSE);
-        Opcion opcion3 = new Opcion("Esta Tampoco", Boolean.FALSE);
-        Opcion opcion4 = new Opcion("Esta Menos", Boolean.FALSE);
-        Opcion opcion5 = new Opcion("Nope", Boolean.FALSE);
+        String preguntaTexto = "¿Donde nacio Simon Bolivar?";
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcionCorrecta = new Opcion("Venezuela", esCorrecta);
+        Opcion opcion2 = new Opcion("España", !esCorrecta);
+        Opcion opcion3 = new Opcion("Colombia", !esCorrecta);
+        Opcion opcion4 = new Opcion("Bolivia", !esCorrecta);
+        Opcion opcion5 = new Opcion("Ecuador", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcion2, opcion3, opcion4, opcion5);
-        String preguntaTexto = "pregunta?";
 
         //When
         Preguntable multipleChoiceClasico = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceClasico, preguntaTexto, opciones);
 
         //Then
         Assertions.assertEquals(MultipleChoiceClasico.class, multipleChoiceClasico.getClass());
-        Assertions.assertEquals(5, multipleChoiceClasico.obtenerOpciones().size());
-        Assertions.assertEquals(opciones, multipleChoiceClasico.obtenerOpciones());
 
     }
 
     @Test
     public void crearMultipleChoiceParcialConOpciones()throws ExcepcionBase {
         //Given
-        Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
-        Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
-        Opcion opcion3Incorrecta = new Opcion("opcion 3", Boolean.FALSE);
+        String preguntaTexto = "¿Cuales ciudades pertenecen a Nueva Zelanda?";
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcion1Correcta = new Opcion("Auckland", esCorrecta);
+        Opcion opcion2Correcta = new Opcion("Wellington", esCorrecta);
+        Opcion opcion3Incorrecta = new Opcion("Canberra", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta);
-        String preguntaTexto = "pregunta?";
 
         //When
         Preguntable multipleChoiceParcial = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceParcial, preguntaTexto, opciones);
 
         //Then
         Assertions.assertEquals(MultipleChoiceParcial.class, multipleChoiceParcial.getClass());
-        Assertions.assertEquals(3, multipleChoiceParcial.obtenerOpciones().size());
-        Assertions.assertEquals(opciones, multipleChoiceParcial.obtenerOpciones());
 
     }
 
     @Test
-    public void preguntaVerdaderoFalsoConPenalidadSumaPuntosAJugadoresRespondenCorrectamente() throws ExcepcionBase {
-        //Given
-        Opcion opcionCorrecta = new Opcion("Verdadero", Boolean.TRUE);
-        Opcion opcionIncorrecta = new Opcion("Falso", Boolean.FALSE);
+    public void preguntaVerdaderoFalsoConPenalidadSumaPuntosAJugadoresRespondenCorrectamente() throws RondaSinPreguntaExcepcion, ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException, MultiplicadorExcepcion  {
+        //Give
+        String preguntaTexto = "¿Sydney es la capital de Australia?";
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcionCorrecta = new Opcion("Falso", esCorrecta);
+        Opcion opcionIncorrecta = new Opcion("Verdadero", !esCorrecta);
+
         List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
-        String preguntaTexto = "pregunta?";
         Preguntable verdaderoFalsoPenalidad = CreadorPregunta.crearPregunta(TipoPregunta.VerdaderoFalsoPenalidad, preguntaTexto, opciones);
 
         List<Opcion> opcionSeleccionada = Arrays.asList(opcionCorrecta);
-        Jugador jugador = new Jugador("jugador");
+        Jugador jugador = new Jugador("Diego");
         List<Jugador> jugadores = Arrays.asList(jugador);
         Ronda ronda = new Ronda(jugadores, verdaderoFalsoPenalidad);
 
@@ -102,14 +100,15 @@ public class Entrega1Test {
     @Test
     public void preguntaVerdaderoFalsoConPenalidadRestaPuntosAJugadoresRespondenIncorrectamente() throws ExcepcionBase {
         //Given
-        Opcion opcionCorrecta = new Opcion("Verdadero", Boolean.TRUE);
-        Opcion opcionIncorrecta = new Opcion("Falso", Boolean.FALSE);
+        String preguntaTexto = "¿Sydney es la capital de Australia?";
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcionCorrecta = new Opcion("Falso", esCorrecta);
+        Opcion opcionIncorrecta = new Opcion("Verdadero", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
-        String preguntaTexto = "pregunta?";
         Preguntable verdaderoFalsoPenalidad = CreadorPregunta.crearPregunta(TipoPregunta.VerdaderoFalsoPenalidad, preguntaTexto, opciones);
 
         List<Opcion> opcionSeleccionada = Arrays.asList(opcionIncorrecta);
-        Jugador jugador = new Jugador("jugador");
+        Jugador jugador = new Jugador("Diego");
         List<Jugador> jugadores = Arrays.asList(jugador);
         Ronda ronda = new Ronda(jugadores, verdaderoFalsoPenalidad);
 
@@ -123,17 +122,18 @@ public class Entrega1Test {
     @Test
     public void preguntaMultipleChoiceClasicoSumaPuntosAJugadoresRespondenCorrectamente() throws ExcepcionBase {
         //Given
-        Opcion opcion1Correcta = new Opcion("Opcion 1", Boolean.TRUE);
-        Opcion opcion2Correcta = new Opcion("Opcion 2", Boolean.TRUE);
-        Opcion opcion3Incorrecta = new Opcion("Opcion 3", Boolean.FALSE);
-        Opcion opcion4Incorrecta = new Opcion("Opcion 4", Boolean.FALSE);
-        Opcion opcion5Incorrecta = new Opcion("Opcion 5", Boolean.FALSE);
+        String preguntaTexto = "¿Frases celebres de el comandante?";
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcion1Correcta = new Opcion("Yo no manejo el rating, yo manejo un Rolls Royce", esCorrecta);
+        Opcion opcion2Correcta = new Opcion("MAIAMEEEEEEEEE!!!", esCorrecta);
+        Opcion opcion3Incorrecta = new Opcion("El amor es mejor maestro que el deber", !esCorrecta);
+        Opcion opcion4Incorrecta = new Opcion("El dinero no comprará la felicidad a quien no sabe qué desea", !esCorrecta);
+        Opcion opcion5Incorrecta = new Opcion("Un pueblo ignorante es un instrumento ciego de su propia destrucción", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta, opcion4Incorrecta, opcion5Incorrecta);
-        String preguntaTexto = "pregunta?";
         Preguntable multipleChoiceClasico = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceClasico, preguntaTexto, opciones);
 
         List<Opcion> opcionSeleccionada = Arrays.asList(opcion1Correcta, opcion2Correcta);
-        Jugador jugador = new Jugador("jugador");
+        Jugador jugador = new Jugador("Diego");
         List<Jugador> jugadores = Arrays.asList(jugador);
         Ronda ronda = new Ronda(jugadores, multipleChoiceClasico);
 
@@ -147,17 +147,18 @@ public class Entrega1Test {
     @Test
     public void preguntaMultipleChoiceClasicoNoSumaPuntosAJugadoresRespondenIncorrectamente() throws ExcepcionBase {
         //Given
-        Opcion opcion1Correcta = new Opcion("Opcion 1", Boolean.TRUE);
-        Opcion opcion2Correcta = new Opcion("Opcion 2", Boolean.TRUE);
-        Opcion opcion3Incorrecta = new Opcion("Opcion 3", Boolean.FALSE);
-        Opcion opcion4Incorrecta = new Opcion("Opcion 4", Boolean.FALSE);
-        Opcion opcion5Incorrecta = new Opcion("Opcion 5", Boolean.FALSE);
+        String preguntaTexto = "¿Frases celebres de el comandante?";
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcion1Correcta = new Opcion("Yo no manejo el rating, yo manejo un Rolls Royce", esCorrecta);
+        Opcion opcion2Correcta = new Opcion("MAIAMEEEEEEEEE!!!", esCorrecta);
+        Opcion opcion3Incorrecta = new Opcion("El amor es mejor maestro que el deber", !esCorrecta);
+        Opcion opcion4Incorrecta = new Opcion("El dinero no comprará la felicidad a quien no sabe qué desea", !esCorrecta);
+        Opcion opcion5Incorrecta = new Opcion("Un pueblo ignorante es un instrumento ciego de su propia destrucción", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta, opcion4Incorrecta, opcion5Incorrecta);
-        String preguntaTexto = "pregunta?";
         Preguntable multipleChoiceClasico = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceClasico, preguntaTexto, opciones);
 
         List<Opcion> opcionSeleccionada = Arrays.asList(opcion1Correcta, opcion3Incorrecta);
-        Jugador jugador = new Jugador("jugador");
+        Jugador jugador = new Jugador("Diego");
         List<Jugador> jugadores = Arrays.asList(jugador);
         Ronda ronda = new Ronda(jugadores, multipleChoiceClasico);
 
@@ -171,15 +172,16 @@ public class Entrega1Test {
     @Test
     public void preguntaMultipleChoiceParcialAsignaPuntajeCorrectamenteEligiendoTodasCorrectasSinIncorrectas() throws ExcepcionBase {
         //Given
-        Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
-        Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
-        Opcion opcion3Incorrecta = new Opcion("opcion 3", Boolean.FALSE);
+        String preguntaTexto = "¿Que ciudades pertenecen a Nueva Zelanda?";
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcion1Correcta = new Opcion("Auckland", esCorrecta);
+        Opcion opcion2Correcta = new Opcion("Wellington", esCorrecta);
+        Opcion opcion3Incorrecta = new Opcion("Canberra", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta);
-        String preguntaTexto = "pregunta?";
         Preguntable multipleChoiceParcial = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceParcial, preguntaTexto, opciones);
 
         List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta, opcion2Correcta);
-        Jugador jugador = new Jugador("jugador");
+        Jugador jugador = new Jugador("Diego");
         List<Jugador> jugadores = Arrays.asList(jugador);
         Ronda ronda = new Ronda(jugadores, multipleChoiceParcial);
 
@@ -193,11 +195,12 @@ public class Entrega1Test {
     @Test
     public void preguntaMultipleChoiceParcialAsignaPuntajeCorrectamenteEligiendoAlgunasCorrectasSinIncorrectas() throws ExcepcionBase {
         //Given
-        Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
-        Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
-        Opcion opcion3Incorrecta = new Opcion("opcion 3", Boolean.FALSE);
+        String preguntaTexto = "¿Cuales ciudades pertenecen a Nueva Zelanda?";
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcion1Correcta = new Opcion("Auckland", esCorrecta);
+        Opcion opcion2Correcta = new Opcion("Wellington", esCorrecta);
+        Opcion opcion3Incorrecta = new Opcion("Canberra", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta);
-        String preguntaTexto = "pregunta?";
         Preguntable multipleChoiceParcial = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceParcial, preguntaTexto, opciones);
 
         List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta);
@@ -215,15 +218,16 @@ public class Entrega1Test {
     @Test
     public void preguntaMultipleChoiceParcialAsignaPuntajeCorrectamenteEligiendoIncorrecta() throws ExcepcionBase {
         //Given
-        Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
-        Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
-        Opcion opcion3Incorrecta = new Opcion("opcion 3", Boolean.FALSE);
+        String preguntaTexto = "¿Cuales ciudades pertenecen a Nueva Zelanda?";
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcion1Correcta = new Opcion("Auckland", esCorrecta);
+        Opcion opcion2Correcta = new Opcion("Wellington", esCorrecta);
+        Opcion opcion3Incorrecta = new Opcion("Canberra", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta);
-        String preguntaTexto = "pregunta?";
         Preguntable multipleChoiceParcial = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceParcial, preguntaTexto, opciones);
 
         List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta);
-        Jugador jugador = new Jugador("jugador");
+        Jugador jugador = new Jugador("Diego");
         List<Jugador> jugadores = Arrays.asList(jugador);
         Ronda ronda = new Ronda(jugadores, multipleChoiceParcial);
 

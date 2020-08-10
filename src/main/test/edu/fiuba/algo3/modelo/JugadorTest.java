@@ -7,15 +7,15 @@ public class JugadorTest {
 
     @Test
     public void debeCrearJugadorConNombreYPuntaje0(){
-        Jugador jugador = new Jugador("nombre");
+        Jugador jugador = new Jugador("Diego");
 
-        Assertions.assertEquals("nombre", jugador.obtenerNombre());
+        Assertions.assertEquals("Diego", jugador.obtenerNombre());
         Assertions.assertEquals(0, jugador.obtenerPuntos());
     }
 
     @Test
     public void debeSumar1PuntoAJugador(){
-        Jugador jugador = new Jugador("nombre");
+        Jugador jugador = new Jugador("Diego");
 
         Assertions.assertEquals(0, jugador.obtenerPuntos());
 
@@ -26,7 +26,7 @@ public class JugadorTest {
 
     @Test
     public void debeSumar1PuntoNegativoAJugador(){
-        Jugador jugador = new Jugador("nombre");
+        Jugador jugador = new Jugador("Diego");
 
         Assertions.assertEquals(0, jugador.obtenerPuntos());
 

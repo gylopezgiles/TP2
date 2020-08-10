@@ -7,6 +7,7 @@ import edu.fiuba.algo3.modelo.pregunta.CreadorPregunta;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 import edu.fiuba.algo3.modelo.pregunta.TipoPregunta;
+import edu.fiuba.algo3.modelo.pregunta.verdaderofalso.VerdaderoFalsoClasico;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -18,31 +19,31 @@ public class Entrega0Test {
     @Test
     public void crearVerdaderoFalsoClasicoConOpciones() throws ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
         //Given
-        Opcion opcionCorrecta = new Opcion("Verdadero", Boolean.TRUE);
-        Opcion opcionIncorrecta = new Opcion("Falso", Boolean.FALSE);
+        String preguntaTexto = "¿Los Elefantes son los mamiferos TERRESTRES mas grandes del mundo?";
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcionCorrecta = new Opcion("Verdadero", esCorrecta);
+        Opcion opcionIncorrecta = new Opcion("Falso", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
-        String preguntaTexto = "pregunta?";
 
         //When
         Preguntable verdaderoFalsoClasico = CreadorPregunta.crearPregunta(TipoPregunta.VerdaderoFalsoClasico, preguntaTexto, opciones);
 
         //Then
-        Assertions.assertEquals(2, verdaderoFalsoClasico.obtenerOpciones().size());
-        Assertions.assertEquals(opciones, verdaderoFalsoClasico.obtenerOpciones());
-        Assertions.assertEquals(opcionCorrecta, verdaderoFalsoClasico.obtenerOpciones().stream().filter(opcion -> opcion.esCorrecta()).findAny().orElse(null));
+        Assertions.assertEquals(VerdaderoFalsoClasico.class, verdaderoFalsoClasico.getClass());
     }
 
     @Test
     public void preguntaVerdaderoFalsoClasicoAsignaPuntajeCorrectamente() throws RondaSinPreguntaExcepcion, ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException, MultiplicadorExcepcion {
         //Given
-        Opcion opcionCorrecta = new Opcion("Verdadero", Boolean.TRUE);
-        Opcion opcionIncorrecta = new Opcion("Falso", Boolean.FALSE);
+        String preguntaTexto = "¿Los Elefantes son los mamiferos mas grandes del mundo?";
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcionCorrecta = new Opcion("Falso", esCorrecta);
+        Opcion opcionIncorrecta = new Opcion("Verdadero", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
-        String preguntaTexto = "pregunta?";
         Preguntable verdaderoFalsoClasico = CreadorPregunta.crearPregunta(TipoPregunta.VerdaderoFalsoClasico, preguntaTexto, opciones);
 
         List<Opcion> opcionSeleccionada = Arrays.asList(opcionCorrecta);
-        Jugador jugador = new Jugador("jugador");
+        Jugador jugador = new Jugador("Diego");
         List<Jugador> jugadores = Arrays.asList(jugador);
         Ronda ronda = new Ronda(jugadores, verdaderoFalsoClasico);
 
