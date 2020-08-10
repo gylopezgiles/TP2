@@ -100,7 +100,6 @@ public class GroupChoiceTest {
                 () -> new GroupChoice(preguntaTexto, opciones));
     }
 
-    //ACA cambiar
 
     @Test
     public void groupChoiceEstablecePuntuacionCorrectamente() throws ParametrosInvalidosExcepcion{
@@ -231,9 +230,9 @@ public class GroupChoiceTest {
         Preguntable pregunta= new GroupChoice(preguntaTexto, opciones);
 
         List<Opcion> respuestaGrupoVerdadero = Arrays.asList(opcion3, opcion2, opcion1);
-        List<Opcion> respuestaGrupoFalso = Arrays.asList(opcion5, opcion4);
+        List<Opcion> respuestaGrupoFalso = Arrays.asList(opcion6, opcion4, opcion5);
         List<List<Opcion>> respuestas = Arrays.asList(respuestaGrupoVerdadero, respuestaGrupoFalso);
 
-        Assertions.assertEquals(0, pregunta.establecerPuntuacion(respuestas));
+        Assertions.assertEquals(1, pregunta.establecerPuntuacion(respuestas));
     }
 }

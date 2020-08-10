@@ -8,10 +8,14 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
 public class GroupChoice implements Preguntable < List<List<Opcion> >>{
 
     private static final int CANTIDAD_OPCIONES_MINIMO = 2;
     private static final int CANTIDAD_OPCIONES_MAXIMO = 6;
+
+    private static final int PUNTACION_CORRECTA = 1;
+    private static final int PUNTACION_INCORRECTA = 0;
 
 
     private final String pregunta;
@@ -56,11 +60,20 @@ public class GroupChoice implements Preguntable < List<List<Opcion> >>{
 
     @Override
     public int establecerPuntuacion(List<List<Opcion>> grupos) {
-        List<Opcion> respuestaGrupoVerdadero = grupos.get(0);
-        List<Opcion> respuestaGrupoFalso = grupos.get(1);
+        List<Opcion> respuestasGrupoVerdadero = grupos.get(0);
+        List<Opcion> respuestasGrupoFalso = grupos.get(1);
 
-        return (respuestaGrupoVerdadero.equals(opcionesVerdaderas) &&
-                respuestaGrupoFalso.equals(opcionesFalsas)) ? 1:0;
+        return ( esIgual(opcionesVerdaderas, respuestasGrupoVerdadero) &&
+                esIgual(opcionesFalsas, respuestasGrupoFalso) ) ? PUNTACION_CORRECTA : PUNTACION_INCORRECTA;
+    }
+
+
+    private Boolean esIgual(List<Opcion> opciones, List<Opcion> respuestas){
+        return ( opciones.stream()
+                         .filter(respuestas::contains)
+                            .collect(Collectors
+                                  .toList())
+                ).size() == opciones.size() ;
     }
 
     @Override
