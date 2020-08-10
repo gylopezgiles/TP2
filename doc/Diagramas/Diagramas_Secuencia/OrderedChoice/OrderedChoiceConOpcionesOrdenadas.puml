@@ -1,0 +1,19 @@
+@startuml
+title OrderedChoice con opciones ordenadas
+hide footbox
+
+    kahoot-> "ronda: Ronda" as ronda : responder(jugador: Jugador, opcionesSeleccionadas: List<Opcion>)
+    activate ronda
+    ronda-> "OrderedChoice: Preguntable" as OrderedChoice: establecerPuntuacion(opciones: List<Opcion>)
+    activate OrderedChoice
+    OrderedChoice -> OrderedChoice : tieneElOrdenAdecuado(opciones)
+    activate OrderedChoice
+    OrderedChoice --> OrderedChoice : true
+    deactivate OrderedChoice
+    ronda <-- OrderedChoice : 1
+    deactivate OrderedChoice
+    ronda-> "jugador: Jugador" as jugador : sumarPuntos(puntaje: Int)
+    deactivate ronda
+    jugador-> jugador: puntos += puntaje
+
+@enduml
