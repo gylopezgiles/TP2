@@ -6,7 +6,6 @@ public enum TipoPregunta {
     MultipleChoiceClasico,
     MultipleChoiceParcial,
     MultipleChoiceConPenalidad,
-    GroupChoice,
     OrderedChoice,
     Otro
 }

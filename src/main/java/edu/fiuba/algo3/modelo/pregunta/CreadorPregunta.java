@@ -24,8 +24,6 @@ public class CreadorPregunta {
                 return new MultipleChoiceParcial(pregunta, opciones);
             case MultipleChoiceConPenalidad:
                 return new MultipleChoiceConPenalidad(pregunta, opciones);
-            case GroupChoice:
-                return new GroupChoice(pregunta, opciones);
             case OrderedChoice:
                 return new OrderedChoice(pregunta,opciones);
             default:

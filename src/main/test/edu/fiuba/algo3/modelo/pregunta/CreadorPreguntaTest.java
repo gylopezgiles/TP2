@@ -84,26 +84,6 @@ public class CreadorPreguntaTest {
     }
 
     @Test
-    public void debeCrearPreguntaGroupChoice() throws ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
-
-        String preguntaTexto = "¿Cuales ciudades pertenecen a Nueva Zelanda y cuales no?";
-        Boolean pertenece = Boolean.TRUE;
-        Opcion opcion1 = new Opcion("Auckland", pertenece);
-        Opcion opcion2 = new Opcion("Wellington", pertenece);
-        Opcion opcion3 = new Opcion("Hamilton", pertenece);
-        Opcion opcion4 = new Opcion("Canberra", !pertenece);
-        Opcion opcion5 = new Opcion("Hawaii", !pertenece);
-        Opcion opcion6 = new Opcion("Oslo", !pertenece);
-        List<Opcion> opciones = Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5, opcion6);
-        GroupChoice preguntaEsperada = new GroupChoice(preguntaTexto, opciones);
-
-        Preguntable pregunta = CreadorPregunta.crearPregunta(TipoPregunta.GroupChoice, preguntaTexto, opciones);
-
-        Assertions.assertEquals(preguntaEsperada.getClass(), pregunta.getClass());
-
-    }
-
-    @Test
     public void debeCrearPreguntaMultipleChoiceConPenalidad() throws ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
         String preguntaTexto = "Cuál es la capital de Uruguay?";
         Boolean esCorrecta = Boolean.TRUE;
