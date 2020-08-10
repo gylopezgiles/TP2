@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
+import edu.fiuba.algo3.modelo.pregunta.TipoPregunta;
 import edu.fiuba.algo3.modelo.pregunta.multiplechoice.MultipleChoiceParcial;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -26,6 +27,7 @@ public class VerdaderoFalsoClasicoTest {
 
         Assertions.assertEquals(opciones, verdaderoFalsoClasico.obtenerOpciones());
         Assertions.assertEquals(preguntaTexto, verdaderoFalsoClasico.obtenerPregunta());
+        Assertions.assertEquals(TipoPregunta.VerdaderoFalsoClasico, verdaderoFalsoClasico.obtenerTipoPregunta());
     }
 
     @Test

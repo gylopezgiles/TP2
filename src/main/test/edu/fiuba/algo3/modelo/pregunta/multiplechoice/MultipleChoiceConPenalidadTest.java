@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
+import edu.fiuba.algo3.modelo.pregunta.TipoPregunta;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -82,6 +83,7 @@ public class MultipleChoiceConPenalidadTest {
         int puntuacion = multipleChoiceConPenalidad.establecerPuntuacion(opcionesSeleccionadas);
 
         Assertions.assertEquals(3, puntuacion);
+        Assertions.assertEquals(TipoPregunta.MultipleChoiceConPenalidad, multipleChoiceConPenalidad.obtenerTipoPregunta());
     }
 
     @Test

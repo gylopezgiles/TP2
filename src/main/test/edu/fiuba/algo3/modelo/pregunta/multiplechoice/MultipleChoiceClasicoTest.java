@@ -31,6 +31,7 @@ public class MultipleChoiceClasicoTest {
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
 
         //Then
+        Assertions.assertEquals(TipoPregunta.MultipleChoiceClasico, multipleChoiceClasico.obtenerTipoPregunta());
         Assertions.assertEquals(5, multipleChoiceClasico.obtenerOpciones().size());
         Assertions.assertEquals(opciones, multipleChoiceClasico.obtenerOpciones());
 

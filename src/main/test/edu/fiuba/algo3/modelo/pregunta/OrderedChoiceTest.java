@@ -21,6 +21,7 @@ public class OrderedChoiceTest {
 
         Assertions.assertEquals(opciones, orderedChoice.obtenerOpciones());
         Assertions.assertEquals(preguntaTexto, orderedChoice.obtenerPregunta());
+        Assertions.assertEquals(TipoPregunta.OrderedChoice, orderedChoice.obtenerTipoPregunta());
     }
 
     @Test
