@@ -68,6 +68,10 @@ public class GroupChoice implements Preguntable < List<List<Opcion> >>{
 
     @Override
     public int establecerPuntuacion(List<List<Opcion>> grupos, MultiplicableStrategy multiplicador) throws MultiplicadorExcepcion {
+        if (multiplicador != Multiplicador.PorDefecto){
+            throw new MultiplicadorExcepcion("");
+        }
+
         List<Opcion> respuestasGrupoVerdadero = grupos.get(0);
         List<Opcion> respuestasGrupoFalso = grupos.get(1);
 

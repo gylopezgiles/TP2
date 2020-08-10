@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.pregunta.multiplechoice;
 
 import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
+import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 import org.junit.Test;
@@ -236,4 +237,43 @@ public class GroupChoiceTest {
 
         Assertions.assertEquals(1, pregunta.establecerPuntuacion(respuestas));
     }
+
+    @Test
+    public void AlPasarleUnMultiplicadorPorDosEntoncesLanzaExcepcion() throws ParametrosInvalidosExcepcion {
+
+        String preguntaTexto = "¿Cuales ciudades pertenecen a Nueva Zelanda y cuales no?";
+        Boolean pertenece = Boolean.TRUE;
+        Opcion opcion1 = new Opcion("Auckland", pertenece);
+        Opcion opcion2 = new Opcion("Hawaii", !pertenece);
+        List<Opcion> opciones = Arrays.asList(opcion1, opcion2);
+
+        Preguntable pregunta= new GroupChoice(preguntaTexto, opciones);
+
+        List<Opcion> respuestaGrupoVerdadero = Arrays.asList(opcion1);
+        List<Opcion> respuestaGrupoFalso = Arrays.asList(opcion2);
+        List<List<Opcion>> respuestas = Arrays.asList(respuestaGrupoVerdadero, respuestaGrupoFalso);
+
+        Assertions.assertThrows(MultiplicadorExcepcion.class,
+                () -> pregunta.establecerPuntuacion(respuestas, Multiplicador.PorDos) );
+    }
+
+    @Test
+    public void AlPasarleUnMultiplicadorPorTresEntoncesLanzaExcepcion() throws ParametrosInvalidosExcepcion {
+
+        String preguntaTexto = "¿Cuales ciudades pertenecen a Nueva Zelanda y cuales no?";
+        Boolean pertenece = Boolean.TRUE;
+        Opcion opcion1 = new Opcion("Auckland", pertenece);
+        Opcion opcion2 = new Opcion("Hawaii", !pertenece);
+        List<Opcion> opciones = Arrays.asList(opcion1, opcion2);
+
+        Preguntable pregunta= new GroupChoice(preguntaTexto, opciones);
+
+        List<Opcion> respuestaGrupoVerdadero = Arrays.asList(opcion1);
+        List<Opcion> respuestaGrupoFalso = Arrays.asList(opcion2);
+        List<List<Opcion>> respuestas = Arrays.asList(respuestaGrupoVerdadero, respuestaGrupoFalso);
+
+        Assertions.assertThrows(MultiplicadorExcepcion.class,
+                () -> pregunta.establecerPuntuacion(respuestas, Multiplicador.PorTres) );
+    }
+
 }
