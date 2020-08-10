@@ -8,9 +8,9 @@ public interface Preguntable<T> {
 
     List<Opcion> obtenerOpciones();
 
-    int establecerPuntuacion(T seleccion);
+    int establecerPuntuacion(T seleccion) throws MultiplicadorExcepcion;
 
-    int establecerPuntuacion(List<Opcion> opciones, MultiplicableStrategy multiplicador) throws MultiplicadorExcepcion;
+    int establecerPuntuacion(T opciones, MultiplicableStrategy multiplicador) throws MultiplicadorExcepcion;
 
     String obtenerPregunta();
 

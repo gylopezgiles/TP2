@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.pregunta.multiplechoice;
 
+import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
@@ -32,7 +33,7 @@ public class GroupChoiceTest {
     }
 
     @Test
-    public void groupChoiceDebeTenerAlMenosUnaOpcionDeGruposDiferentes() throws ParametrosInvalidosExcepcion {
+    public void groupChoiceDebeTenerAlMenosUnaOpcionDeGruposDiferentes() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
 
         String preguntaTexto = "¿Cuales ciudades pertenecen a Nueva Zelanda y cuales no?";
 
@@ -102,7 +103,7 @@ public class GroupChoiceTest {
 
 
     @Test
-    public void groupChoiceEstablecePuntuacionCorrectamente() throws ParametrosInvalidosExcepcion{
+    public void groupChoiceEstablecePuntuacionCorrectamente() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
 
         String preguntaTexto = "¿Cuales ciudades pertenecen a Nueva Zelanda y cuales no?";
         Boolean pertenece = Boolean.TRUE;
@@ -126,7 +127,7 @@ public class GroupChoiceTest {
     }
 
     @Test
-    public void groupChoiceEstablecePuntuacionCorrectamenteConGruposDeDiferenteTamanio() throws ParametrosInvalidosExcepcion {
+    public void groupChoiceEstablecePuntuacionCorrectamenteConGruposDeDiferenteTamanio() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
 
         String preguntaTexto = "¿Cuales ciudades pertenecen a Nueva Zelanda y cuales no?";
         Boolean pertenece = Boolean.TRUE;
@@ -148,7 +149,7 @@ public class GroupChoiceTest {
     }
 
     @Test
-    public void groupChoiceNoAsignaPuntosSiAlgunElementoNoPerteneceAlGrupo() throws ParametrosInvalidosExcepcion{
+    public void groupChoiceNoAsignaPuntosSiAlgunElementoNoPerteneceAlGrupo() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
 
         String preguntaTexto = "¿Cuales ciudades pertenecen a Nueva Zelanda y cuales no?";
         Boolean pertenece = Boolean.TRUE;
@@ -170,7 +171,7 @@ public class GroupChoiceTest {
     }
 
     @Test
-    public void groupChoiceNoAsignaPuntosSiVariosElementosNoPertenecenAlGrupo() throws ParametrosInvalidosExcepcion{
+    public void groupChoiceNoAsignaPuntosSiVariosElementosNoPertenecenAlGrupo() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
 
         String preguntaTexto = "¿Cuales ciudades pertenecen a Nueva Zelanda y cuales no?";
         Boolean pertenece = Boolean.TRUE;
@@ -193,7 +194,7 @@ public class GroupChoiceTest {
 
 
     @Test
-    public void groupChoiceNoAsignaPuntosSiNoSeAgrupanTodosLosElementosDeCadaGrupo() throws ParametrosInvalidosExcepcion{
+    public void groupChoiceNoAsignaPuntosSiNoSeAgrupanTodosLosElementosDeCadaGrupo() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
 
         String preguntaTexto = "¿Cuales ciudades pertenecen a Nueva Zelanda y cuales no?";
         Boolean pertenece = Boolean.TRUE;
@@ -215,7 +216,7 @@ public class GroupChoiceTest {
     }
 
     @Test
-    public void groupChoiceAsignaPuntosCuandoLasRespuestasEstanDesordenadasPeroEnLosGruposCorrectos() throws ParametrosInvalidosExcepcion{
+    public void groupChoiceAsignaPuntosCuandoLasRespuestasEstanDesordenadasPeroEnLosGruposCorrectos() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
 
         String preguntaTexto = "¿Cuales ciudades pertenecen a Nueva Zelanda y cuales no?";
         Boolean pertenece = Boolean.TRUE;

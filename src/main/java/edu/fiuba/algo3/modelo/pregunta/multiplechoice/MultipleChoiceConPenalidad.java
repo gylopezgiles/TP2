@@ -10,9 +10,9 @@ import java.util.Optional;
 
 public class MultipleChoiceConPenalidad extends MultipleChoice {
 
-    public MultipleChoiceConPenalidad(String pregunta, List<Opcion> opciones) throws ParametrosInvalidosExcepcion {
-        validarOpciones(opciones);
-        this.opciones = opciones;
+    public  <T> MultipleChoiceConPenalidad(String pregunta, T opciones) throws ParametrosInvalidosExcepcion {
+        validarOpciones((List<Opcion>)opciones);
+        this.opciones = (List<Opcion>) opciones;
         this.pregunta = pregunta;
     }
 
