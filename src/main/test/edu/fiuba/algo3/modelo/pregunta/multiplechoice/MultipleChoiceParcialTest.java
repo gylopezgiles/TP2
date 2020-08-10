@@ -16,107 +16,125 @@ public class MultipleChoiceParcialTest {
 
     @Test
     public void debeCrearUnaPreguntaMultipleChoiceParcialConOpciones() throws ParametrosInvalidosExcepcion {
-        Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
-        Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
-        Opcion opcion3Incorrecta = new Opcion("opcion 3", Boolean.FALSE);
+        String preguntaTexto = "¿Que ciudades pertenecen a Nueva Zelanda?";
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcion1Correcta = new Opcion("Auckland", esCorrecta);
+        Opcion opcion2Correcta = new Opcion("Wellington", esCorrecta);
+        Opcion opcion3Incorrecta = new Opcion("Canberra", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta);
-        String preguntaTexto = "pregunta?";
 
         Preguntable multipleChoiceParcial = new MultipleChoiceParcial(preguntaTexto, opciones);
 
-        Assertions.assertEquals(opciones, multipleChoiceParcial.obtenerOpciones());
-        Assertions.assertEquals(preguntaTexto, multipleChoiceParcial.obtenerPregunta());
+        Assertions.assertEquals(MultipleChoiceParcial.class , multipleChoiceParcial.getClass());
     }
 
     @Test
     public void debeLanzarExcepcionCrearPreguntaSinOpciones() {
 
-        Assertions.assertThrows(ParametrosInvalidosExcepcion.class, () -> new MultipleChoiceParcial("pregunta?", Collections.EMPTY_LIST));
+        Assertions.assertThrows(ParametrosInvalidosExcepcion.class, () -> new MultipleChoiceParcial("¿pregunta?", Collections.EMPTY_LIST));
 
     }
 
     @Test
     public void debeLanzarExcepcionCrearPreguntaConCantidadOpcionesMenorA2() {
 
-        Opcion opcion = new Opcion("opcion", Boolean.TRUE);
+        String textoPregunta = "¿Te gusta el Helado?";
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcion = new Opcion("Si", esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcion);
 
-        Assertions.assertThrows(ParametrosInvalidosExcepcion.class, () -> new MultipleChoiceParcial("pregunta?", opciones));
+        Assertions.assertThrows(ParametrosInvalidosExcepcion.class, () -> new MultipleChoiceParcial(textoPregunta, opciones));
 
     }
 
     @Test
     public void debeLanzarExcepcionCrearPreguntaConCantidadOpcionesMayorA5() {
 
-        Opcion opcion1 = new Opcion("opcion", Boolean.TRUE);
-        Opcion opcion2 = new Opcion("opcion", Boolean.FALSE);
-        Opcion opcion3 = new Opcion("opcion", Boolean.TRUE);
-        Opcion opcion4 = new Opcion("opcion", Boolean.TRUE);
-        Opcion opcion5 = new Opcion("opcion", Boolean.FALSE);
-        Opcion opcion6 = new Opcion("opcion", Boolean.TRUE);
+        String preguntaTexto = "¿Cuales de estos son numeros Naturales?";
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcion1 = new Opcion("1", esCorrecta);
+        Opcion opcion2 = new Opcion("-2", !esCorrecta);
+        Opcion opcion3 = new Opcion("-3", !esCorrecta);
+        Opcion opcion4 = new Opcion("-4", !esCorrecta);
+        Opcion opcion5 = new Opcion("-5", !esCorrecta);
+        Opcion opcion6 = new Opcion("-6", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5, opcion6);
 
-        Assertions.assertThrows(ParametrosInvalidosExcepcion.class, () -> new MultipleChoiceParcial("pregunta?", opciones));
+        Assertions.assertThrows(ParametrosInvalidosExcepcion.class, () -> new MultipleChoiceParcial(preguntaTexto, opciones));
 
     }
 
     @Test
     public void debeLanzarExcepcionCrearPreguntaSinOpcionesCorrectas() {
-        Opcion opcion1 = new Opcion("opcion", Boolean.FALSE);
-        Opcion opcion2 = new Opcion("opcion", Boolean.FALSE);
-        Opcion opcion3 = new Opcion("opcion", Boolean.FALSE);
-        Opcion opcion4 = new Opcion("opcion", Boolean.FALSE);
-        Opcion opcion5 = new Opcion("opcion", Boolean.FALSE);
+        String preguntaTexto = "¿Cuales de estos son numeros Naturales?";
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcion1 = new Opcion("-1", !esCorrecta);
+        Opcion opcion2 = new Opcion("-2", !esCorrecta);
+        Opcion opcion3 = new Opcion("-3", !esCorrecta);
+        Opcion opcion4 = new Opcion("-4", !esCorrecta);
+        Opcion opcion5 = new Opcion("-5", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5);
 
-        Assertions.assertThrows(ParametrosInvalidosExcepcion.class, () -> new MultipleChoiceParcial("pregunta?", opciones));
+        Assertions.assertThrows(ParametrosInvalidosExcepcion.class, () -> new MultipleChoiceParcial(preguntaTexto, opciones));
 
     }
 
     @Test
-    public void debeEstablecerPuntuacionCorrectamenteEligiendoTodasRespuestasCorrectasSinIncorrectas() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
-        Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
-        Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
-        Opcion opcion3Correcta = new Opcion("opcion 3", Boolean.TRUE);
-        Opcion opcion4Incorrecta = new Opcion("opcion 4", Boolean.FALSE);
+    public void debeEstablecerPuntuacionCorrectamenteEligiendoTodasRespuestasCorrectasSinIncorrectas() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion  {
+
+        String preguntaTexto = "¿Cuales son gases nobles?";
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcion1Correcta = new Opcion("Helio", esCorrecta);
+        Opcion opcion2Correcta = new Opcion("Neon", esCorrecta);
+        Opcion opcion3Correcta = new Opcion("Kripton", esCorrecta);
+        Opcion opcion4Incorrecta = new Opcion("Oxigeno", !esCorrecta);
+
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta, opcion4Incorrecta);
-        String preguntaTexto = "pregunta?";
+
         Preguntable multipleChoiceParcial = new MultipleChoiceParcial(preguntaTexto, opciones);
         List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta);
 
-        int puntuacion = multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas);
+        int puntuacion = multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDefecto);
 
         Assertions.assertEquals(3, puntuacion);
     }
 
     @Test
-    public void debeEstablecerPuntuacionCorrectamenteEligiendoAlgunasRespuestasCorrectasSinIncorrectas() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
-        Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
-        Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
-        Opcion opcion3Correcta = new Opcion("opcion 3", Boolean.TRUE);
-        Opcion opcion4Incorrecta = new Opcion("opcion 4", Boolean.FALSE);
+    public void debeEstablecerPuntuacionCorrectamenteEligiendoAlgunasRespuestasCorrectasSinIncorrectas() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion  {
+
+        String preguntaTexto = "¿Cuales son gases nobles?";
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcion1Correcta = new Opcion("Helio", esCorrecta);
+        Opcion opcion2Correcta = new Opcion("Neon", esCorrecta);
+        Opcion opcion3Correcta = new Opcion("Kripton", esCorrecta);
+        Opcion opcion4Incorrecta = new Opcion("Oxigeno", !esCorrecta);
+
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta, opcion4Incorrecta);
-        String preguntaTexto = "pregunta?";
+
         Preguntable multipleChoiceParcial = new MultipleChoiceParcial(preguntaTexto, opciones);
         List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta, opcion3Correcta);
 
-        int puntuacion = multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas);
+        int puntuacion = multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDefecto);
 
         Assertions.assertEquals(2, puntuacion);
     }
 
     @Test
-    public void debeEstablecerPuntuacionCorrectamenteEligiendoAlgunasRespuestasCorrectasYUnaIncorrecta() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
-        Opcion opcion1Correcta = new Opcion("opcion 1", Boolean.TRUE);
-        Opcion opcion2Correcta = new Opcion("opcion 2", Boolean.TRUE);
-        Opcion opcion3Correcta = new Opcion("opcion 3", Boolean.TRUE);
-        Opcion opcion4Incorrecta = new Opcion("opcion 4", Boolean.FALSE);
+    public void debeEstablecerPuntuacionCorrectamenteEligiendoAlgunasRespuestasCorrectasYUnaIncorrecta() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion  {
+
+        String preguntaTexto = "¿Cuales son gases nobles?";
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcion1Correcta = new Opcion("Helio", esCorrecta);
+        Opcion opcion2Correcta = new Opcion("Neon", esCorrecta);
+        Opcion opcion3Correcta = new Opcion("Kripton", esCorrecta);
+        Opcion opcion4Incorrecta = new Opcion("Oxigeno", !esCorrecta);
+
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta, opcion4Incorrecta);
-        String preguntaTexto = "pregunta?";
+
         Preguntable multipleChoiceParcial = new MultipleChoiceParcial(preguntaTexto, opciones);
         List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta, opcion3Correcta, opcion4Incorrecta);
 
-        int puntuacion = multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas);
+        int puntuacion = multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDefecto);
 
         Assertions.assertEquals(0, puntuacion);
     }

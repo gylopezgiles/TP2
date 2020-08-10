@@ -27,6 +27,10 @@ public abstract class MultipleChoice implements Preguntable<List<Opcion>> {
         }
     }
 
+    protected boolean tieneOpcionesIncorrectas(List<Opcion> opciones){
+        return (opciones.stream().filter(opcion -> !opcion.esCorrecta()).count() > 0);
+    }
+
     private Boolean tieneCantidadOpcionesValida(List<Opcion> opciones){
         return !opciones.isEmpty() && opciones.size() >= CANTIDAD_OPCIONES_MINIMO && opciones.size() <= CANTIDAD_OPCIONES_MAXIMO;
     }
@@ -37,18 +41,19 @@ public abstract class MultipleChoice implements Preguntable<List<Opcion>> {
     }
 
     @Override
-    public List<Opcion> obtenerOpciones() {
-        return this.opciones;
+    public int establecerPuntuacion(List<Opcion> opciones) throws MultiplicadorExcepcion{
+        return establecerPuntuacion(opciones, Multiplicador.PorDefecto);
     }
 
     @Override
-    public String obtenerPregunta() {
+    public List<Opcion> obtenerOpciones(){
+        return opciones;
+    }
+
+    @Override
+    public String obtenerPregunta(){
         return pregunta;
     }
 
-    @Override
-    public int establecerPuntuacion(List<Opcion> opciones) throws MultiplicadorExcepcion {
-        return establecerPuntuacion(opciones, Multiplicador.PorDefecto);
-    }
 
 }

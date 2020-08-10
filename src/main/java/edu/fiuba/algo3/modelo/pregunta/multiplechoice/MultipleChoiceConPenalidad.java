@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.pregunta.multiplechoice;
 
+import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.multiplicador.MultiplicableStrategy;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;

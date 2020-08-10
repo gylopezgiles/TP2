@@ -16,61 +16,71 @@ public class VerdaderoFalsoPenalidadTest {
 
     @Test
     public void debeCrearUnaPreguntaVerdaderFalsoConOpciones() throws ParametrosInvalidosExcepcion {
-        Opcion opcionCorrecta = new Opcion("Verdadero", Boolean.TRUE);
-        Opcion opcionIncorrecta = new Opcion("Falso", Boolean.FALSE);
+
+        String preguntaTexto = "¿Los Elefantes son los mamiferos mas grandes del planeta?";
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcionCorrecta = new Opcion("Falso", esCorrecta);
+        Opcion opcionIncorrecta = new Opcion("Verdadero", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
-        String preguntaTexto = "pregunta?";
 
         Preguntable verdaderoFalsoPenalidad = new VerdaderoFalsoPenalidad(preguntaTexto, opciones);
 
-        Assertions.assertEquals(opciones, verdaderoFalsoPenalidad.obtenerOpciones());
-        Assertions.assertEquals(preguntaTexto, verdaderoFalsoPenalidad.obtenerPregunta());
+        Assertions.assertEquals(VerdaderoFalsoPenalidad.class, verdaderoFalsoPenalidad.getClass());
     }
 
     @Test
     public void debeLanzarExcepcionCrearPreguntaSinOpciones() {
 
-        Assertions.assertThrows(ParametrosInvalidosExcepcion.class, () -> new VerdaderoFalsoPenalidad("pregunta?", Collections.EMPTY_LIST));
+        Assertions.assertThrows(ParametrosInvalidosExcepcion.class, () -> new VerdaderoFalsoPenalidad("¿pregunta?", Collections.EMPTY_LIST));
 
     }
 
     @Test
     public void debeLanzarExcepcionCrearPreguntaConCantidadOpcionesDistintoDe2() {
 
-        Opcion opcion = new Opcion("opcion", Boolean.TRUE);
-        List<Opcion> opciones = Arrays.asList(opcion);
+        String preguntaTexto = "¿Los Elefantes son los mamiferos mas grandes del planeta?";
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcionCorrecta = new Opcion("Falso", esCorrecta);
+        List<Opcion> opciones = Arrays.asList(opcionCorrecta);
 
-        Assertions.assertThrows(ParametrosInvalidosExcepcion.class, () -> new VerdaderoFalsoPenalidad("pregunta?", opciones));
+        Assertions.assertThrows(ParametrosInvalidosExcepcion.class, () -> new VerdaderoFalsoPenalidad(preguntaTexto, opciones));
 
     }
 
     @Test
     public void debeLanzarExcepcionCrearPreguntaSinOpcionesCorrectas() {
-        Opcion opcionIncorrecta1 = new Opcion("Verdadero", Boolean.FALSE);
-        Opcion opcionIncorrecta2 = new Opcion("Falso", Boolean.FALSE);
+
+        String preguntaTexto = "El gato de Schrödinger esta muerto?";
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcionIncorrecta1 = new Opcion("Verdadero", !esCorrecta);
+        Opcion opcionIncorrecta2 = new Opcion("Falso", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcionIncorrecta1, opcionIncorrecta2);
 
-        Assertions.assertThrows(ParametrosInvalidosExcepcion.class, () -> new VerdaderoFalsoPenalidad("pregunta?", opciones));
+        Assertions.assertThrows(ParametrosInvalidosExcepcion.class, () -> new VerdaderoFalsoPenalidad(preguntaTexto, opciones));
 
     }
 
     @Test
     public void debeLanzarExcepcionCrearPreguntaConMasDe1OpcionCorrecta() {
-        Opcion opcionCorrecta1 = new Opcion("Verdadero", Boolean.TRUE);
-        Opcion opcionCorrecta2 = new Opcion("Falso", Boolean.TRUE);
+
+        String preguntaTexto = "El gato de Schrödinger esta vivo?";
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcionCorrecta1 = new Opcion("Verdadero", esCorrecta);
+        Opcion opcionCorrecta2 = new Opcion("Falso", esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcionCorrecta1, opcionCorrecta2);
 
-        Assertions.assertThrows(ParametrosInvalidosExcepcion.class, () -> new VerdaderoFalsoPenalidad("pregunta?", opciones));
+        Assertions.assertThrows(ParametrosInvalidosExcepcion.class, () -> new VerdaderoFalsoPenalidad(preguntaTexto, opciones));
 
     }
 
     @Test
     public void alResponderCorrectamenteDebeSumarUnPunto() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
 
-        Opcion opcionCorrecta = new Opcion("Verdadero", Boolean.TRUE);
-        Opcion opcionIncorrecta = new Opcion("Falso", Boolean.FALSE);
+        String preguntaTexto = "¿Sydney es la capital de Australia?";
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcionCorrecta = new Opcion("Falso", esCorrecta);
+        Opcion opcionIncorrecta = new Opcion("Verdadero", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
-        String preguntaTexto = "pregunta?";
 
         Preguntable verdaderoFalsoConPenalidad = new VerdaderoFalsoPenalidad(preguntaTexto, opciones);
 
@@ -79,11 +89,15 @@ public class VerdaderoFalsoPenalidadTest {
 
 
     @Test
+
     public void alResponderIncorrectamenteDebeRestarUnPunto() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
-        Opcion opcionCorrecta = new Opcion("Verdadero", Boolean.TRUE);
-        Opcion opcionIncorrecta = new Opcion("Falso", Boolean.FALSE);
+
+        String preguntaTexto = "¿Sydney es la capital de Australia?";
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcionCorrecta = new Opcion("Falso", esCorrecta);
+        Opcion opcionIncorrecta = new Opcion("Verdadero", !esCorrecta);
+
         List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
-        String preguntaTexto = "pregunta?";
 
         Preguntable verdaderoFalsoConPenalidad = new VerdaderoFalsoPenalidad(preguntaTexto, opciones);
 

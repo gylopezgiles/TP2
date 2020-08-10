@@ -19,8 +19,7 @@ public class OrderedChoiceTest {
 
         Preguntable orderedChoice = new OrderedChoice(preguntaTexto, opciones);
 
-        Assertions.assertEquals(opciones, orderedChoice.obtenerOpciones());
-        Assertions.assertEquals(preguntaTexto, orderedChoice.obtenerPregunta());
+        Assertions.assertEquals(OrderedChoice.class, orderedChoice.getClass());
     }
 
     @Test

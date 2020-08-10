@@ -37,19 +37,17 @@ public abstract class VerdaderoFalso implements Preguntable<List<Opcion>> {
     }
 
     @Override
-    public List<Opcion> obtenerOpciones() {
-        return this.opciones;
-    }
-
-    @Override
-    public String obtenerPregunta() {
-        return pregunta;
-    }
-
-    @Override
-    public int establecerPuntuacion(List<Opcion> opciones) throws MultiplicadorExcepcion {
+    public int establecerPuntuacion(List<Opcion> opciones) throws MultiplicadorExcepcion{
         return establecerPuntuacion(opciones, Multiplicador.PorDefecto);
     }
 
+    @Override
+    public List<Opcion> obtenerOpciones(){
+        return opciones;
+    }
 
+    @Override
+    public String obtenerPregunta(){
+        return pregunta;
+    }
 }

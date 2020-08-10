@@ -20,15 +20,18 @@ public class MultipleChoiceClasico extends MultipleChoice {
         if(!multiplicador.equals(Multiplicador.PorDefecto)){
             throw new MultiplicadorExcepcion("Solo se puede aplicar multiplicadores a preguntas con penalidad");
         }
+        if(tieneOpcionesIncorrectas(opciones)){//esto debe estar sino falla test linea 206
+            return 0;
+        }
         boolean sonTodasCorrectas = cantidadDeOpcionesCorrectas(opciones) == cantidadDeOpcionesCorrectas(this.opciones);
         return sonTodasCorrectas ? 1 : 0;
     }
 
-
     private int cantidadDeOpcionesCorrectas(List<Opcion> opciones){
         return (int)opciones.stream()
-                .filter(op -> op.esCorrecta())
+                .filter(opcion -> opcion.esCorrecta())
                 .count();
     }
+
 
 }

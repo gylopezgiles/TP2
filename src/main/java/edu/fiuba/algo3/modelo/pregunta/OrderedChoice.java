@@ -35,12 +35,6 @@ public class OrderedChoice implements Preguntable <List<Opcion>>{
         return !opciones.isEmpty() && opciones.size() >= CANTIDAD_OPCIONES_MINIMO && opciones.size() <= CANTIDAD_OPCIONES_MAXIMO;
     }
 
-
-    @Override
-    public List<Opcion> obtenerOpciones() {
-        return this.opciones;
-    }
-
     @Override
     public int establecerPuntuacion(List<Opcion> opciones) throws MultiplicadorExcepcion {
         return establecerPuntuacion(opciones, Multiplicador.PorDefecto);
@@ -52,7 +46,7 @@ public class OrderedChoice implements Preguntable <List<Opcion>>{
             throw new MultiplicadorExcepcion("Solo se puede aplicar multiplicadores a preguntas con penalidad");
         }
 
-        return tieneElOrdenAdecuado(opciones.iterator(),this.obtenerOpciones().iterator()) ? 1: 0;
+        return tieneElOrdenAdecuado(opciones.iterator(),this.opciones.iterator()) ? 1: 0;
     }
 
     boolean tieneElOrdenAdecuado(Iterator<Opcion> opcionesSeleccionadas, Iterator<Opcion> opcionesOrdenadas){
@@ -66,7 +60,13 @@ public class OrderedChoice implements Preguntable <List<Opcion>>{
     }
 
     @Override
-    public String obtenerPregunta() {
-        return this.pregunta;
+    public List<Opcion> obtenerOpciones(){
+        return opciones;
     }
+
+    @Override
+    public String obtenerPregunta(){
+        return pregunta;
+    }
+
 }

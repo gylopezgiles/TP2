@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.pregunta;
 import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.multiplicador.MultiplicableStrategy;
+import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 
 import java.util.List;
 
