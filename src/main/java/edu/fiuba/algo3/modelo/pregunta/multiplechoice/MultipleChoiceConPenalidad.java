@@ -28,7 +28,7 @@ public class MultipleChoiceConPenalidad extends MultipleChoice {
 
     @Override
     public int establecerPuntuacion(List<Opcion> opciones) throws MultiplicadorExcepcion {
-        return this.establecerPuntuacion(opciones, Multiplicador.PorDefecto);
+        return establecerPuntuacion(opciones, Multiplicador.PorDefecto);
     }
 
     private int puntajeOpcionesCorrectas(List<Opcion> opciones) {

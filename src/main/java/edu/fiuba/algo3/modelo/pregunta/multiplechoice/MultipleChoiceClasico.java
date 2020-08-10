@@ -21,7 +21,7 @@ public class MultipleChoiceClasico extends MultipleChoice {
         if(!multiplicador.equals(Multiplicador.PorDefecto)){
             throw new MultiplicadorExcepcion("Solo se puede aplicar multiplicadores a preguntas con penalidad");
         }
-        if(tieneOpcionesIncorrectas(opciones)){
+        if(tieneOpcionesIncorrectas(opciones)){//esto debe estar sino falla test linea 206
             return 0;
         }
         boolean sonTodasCorrectas = cantidadDeOpcionesCorrectas(opciones) == cantidadDeOpcionesCorrectas(this.opciones);
@@ -30,7 +30,7 @@ public class MultipleChoiceClasico extends MultipleChoice {
 
     @Override
     public int establecerPuntuacion(List<Opcion> opciones) throws MultiplicadorExcepcion{
-        return this.establecerPuntuacion(opciones, Multiplicador.PorDefecto);
+        return establecerPuntuacion(opciones, Multiplicador.PorDefecto);
     }
 
 

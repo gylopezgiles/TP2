@@ -30,7 +30,7 @@ public class VerdaderoFalsoClasico extends VerdaderoFalso {
 
     @Override
     public int establecerPuntuacion(List<Opcion> opciones) throws MultiplicadorExcepcion{
-        return this.establecerPuntuacion(opciones, Multiplicador.PorDefecto);
+        return establecerPuntuacion(opciones, Multiplicador.PorDefecto);
     }
 
 }

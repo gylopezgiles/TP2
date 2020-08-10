@@ -59,4 +59,14 @@ public class OrderedChoice implements Preguntable{
 
     }
 
+    @Override
+    public List<Opcion> obtenerOpciones(){
+        return opciones;
+    }
+
+    @Override
+    public String obtenerPregunta(){
+        return pregunta;
+    }
+
 }

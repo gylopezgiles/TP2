@@ -40,4 +40,15 @@ public abstract class MultipleChoice implements Preguntable {
         return !opcionesCorrectas.isEmpty();
     }
 
+    @Override
+    public List<Opcion> obtenerOpciones(){
+        return opciones;
+    }
+
+    @Override
+    public String obtenerPregunta(){
+        return pregunta;
+    }
+
+
 }
