@@ -28,12 +28,6 @@ public class MultipleChoiceClasico extends MultipleChoice {
         return sonTodasCorrectas ? 1 : 0;
     }
 
-    @Override
-    public int establecerPuntuacion(List<Opcion> opciones) throws MultiplicadorExcepcion{
-        return establecerPuntuacion(opciones, Multiplicador.PorDefecto);
-    }
-
-
     private int cantidadDeOpcionesCorrectas(List<Opcion> opciones){
         return (int)opciones.stream()
                 .filter(opcion -> opcion.esCorrecta())

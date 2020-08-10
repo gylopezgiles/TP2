@@ -28,11 +28,6 @@ public class MultipleChoiceParcial extends MultipleChoice {
         return opcion.isPresent() ? 0 : puntajeOpcionesCorrectas(opciones);
     }
 
-    @Override
-    public int establecerPuntuacion(List<Opcion> opciones) throws MultiplicadorExcepcion{
-        return establecerPuntuacion(opciones, Multiplicador.PorDefecto);
-    }
-
     private int puntajeOpcionesCorrectas(List<Opcion> opciones) {
         long puntaje = opciones.stream()
                 .filter(op -> op.esCorrecta())

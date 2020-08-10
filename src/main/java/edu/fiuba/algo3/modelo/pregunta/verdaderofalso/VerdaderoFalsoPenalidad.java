@@ -17,12 +17,6 @@ public class VerdaderoFalsoPenalidad extends VerdaderoFalso {
         this.opciones = opciones;
     }
 
-
-    @Override
-    public int establecerPuntuacion(List<Opcion> opciones) throws MultiplicadorExcepcion {
-        return establecerPuntuacion(opciones, Multiplicador.PorDefecto);
-    }
-
     @Override
     public int establecerPuntuacion(List<Opcion> opciones, MultiplicableStrategy multiplicador) {
         Optional<Opcion> opcion = opciones.stream()

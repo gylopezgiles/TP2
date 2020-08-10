@@ -26,11 +26,6 @@ public class MultipleChoiceConPenalidad extends MultipleChoice {
         return multiplicador.aplicarMultiplicador(puntosObtenidos);
     }
 
-    @Override
-    public int establecerPuntuacion(List<Opcion> opciones) throws MultiplicadorExcepcion {
-        return establecerPuntuacion(opciones, Multiplicador.PorDefecto);
-    }
-
     private int puntajeOpcionesCorrectas(List<Opcion> opciones) {
         long puntaje = opciones.stream()
                 .filter(op -> op.esCorrecta())
