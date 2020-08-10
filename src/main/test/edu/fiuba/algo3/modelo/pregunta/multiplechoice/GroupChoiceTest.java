@@ -274,7 +274,7 @@ public class GroupChoiceTest {
     public void AlPasarleUnMultiplicadorPorTresEntoncesLanzaExcepcion() throws ParametrosInvalidosExcepcion {
 
         String preguntaTexto = "¿Cuales ciudades pertenecePrimerGrupon a Nueva Zelanda y cuales no?";
-        
+
         Boolean pertenecePrimerGrupo = Boolean.TRUE;
         Opcion opcion1 = new Opcion("Auckland", pertenecePrimerGrupo);
         Opcion opcion2 = new Opcion("Hawaii", !pertenecePrimerGrupo);
