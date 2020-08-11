@@ -12,9 +12,9 @@ import java.util.Optional;
 
 public class MultipleChoiceParcial extends MultipleChoice {
 
-    public  MultipleChoiceParcial(String pregunta, List<Opcion> opciones) throws ParametrosInvalidosExcepcion {
-        validarOpciones(opciones);
-        this.opciones = opciones;
+    public <T> MultipleChoiceParcial(String pregunta, T opciones) throws ParametrosInvalidosExcepcion {
+        validarOpciones((List<Opcion>) opciones);
+        this.opciones = (List<Opcion>) opciones;
         this.pregunta = pregunta;
     }
 

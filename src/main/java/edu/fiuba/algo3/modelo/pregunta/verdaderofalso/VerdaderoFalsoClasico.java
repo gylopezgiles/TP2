@@ -12,10 +12,10 @@ import java.util.Optional;
 
 public class VerdaderoFalsoClasico extends VerdaderoFalso {
 
-    public VerdaderoFalsoClasico(String pregunta, List<Opcion> opciones) throws ParametrosInvalidosExcepcion {
-        validarOpciones(opciones);
+    public <T> VerdaderoFalsoClasico(String pregunta, T opciones) throws ParametrosInvalidosExcepcion {
+        validarOpciones((List<Opcion>) opciones);
         this.pregunta = pregunta;
-        this.opciones = opciones;
+        this.opciones = (List<Opcion>) opciones;
     }
 
     @Override

@@ -30,9 +30,7 @@ public class MultipleChoiceClasicoTest {
         //When
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
 
-        //Then
         Assertions.assertEquals(MultipleChoiceClasico.class, multipleChoiceClasico.getClass());
-
     }
 
     @Test
@@ -56,7 +54,6 @@ public class MultipleChoiceClasicoTest {
 
         //Then
         Assertions.assertEquals( 1 , multipleChoiceClasico.establecerPuntuacion(opcionesCorrectas, Multiplicador.PorDefecto, exclusividad));
-
     }
 
     @Test
@@ -78,7 +75,6 @@ public class MultipleChoiceClasicoTest {
 
         //Then
         Assertions.assertEquals(1, multipleChoiceClasico.establecerPuntuacion(opcionesCorrectas, Multiplicador.PorDefecto, exclusividad));
-
     }
 
     @Test
@@ -100,7 +96,6 @@ public class MultipleChoiceClasicoTest {
 
         //Then
         Assertions.assertEquals(1, multipleChoiceClasico.establecerPuntuacion(opciones, Multiplicador.PorDefecto, exclusividad));
-
     }
 
     @Test

@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.pregunta;
 
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.TipoPreguntaNoImplementadaException;
+import edu.fiuba.algo3.modelo.pregunta.multiplechoice.GroupChoice;
 import edu.fiuba.algo3.modelo.pregunta.multiplechoice.MultipleChoiceClasico;
 import edu.fiuba.algo3.modelo.pregunta.multiplechoice.MultipleChoiceConPenalidad;
 import edu.fiuba.algo3.modelo.pregunta.multiplechoice.MultipleChoiceParcial;
@@ -111,6 +112,24 @@ public class CreadorPreguntaTest {
         Preguntable pregunta = CreadorPregunta.crearPregunta(TipoPregunta.OrderedChoice, preguntaTexto, opciones);
 
         Assertions.assertEquals(OrderedChoice.class, pregunta.getClass());
+    }
+
+    @Test
+    public void debeCrearPreguntaGroupChoice() throws ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
+        String preguntaTexto = "¿Cuales ciudades pertenecen a Nueva Zelanda y cuales no?";
+
+        Boolean pertenecePrimerGrupo  = Boolean.TRUE;
+        Opcion opcion1 = new Opcion("Auckland", pertenecePrimerGrupo );
+        Opcion opcion2 = new Opcion("Wellington", pertenecePrimerGrupo );
+        Opcion opcion3 = new Opcion("Hamilton", pertenecePrimerGrupo );
+        Opcion opcion4 = new Opcion("Canberra", !pertenecePrimerGrupo );
+        Opcion opcion5 = new Opcion("Hawaii", !pertenecePrimerGrupo );
+        Opcion opcion6 = new Opcion("Oslo", !pertenecePrimerGrupo );
+        List<Opcion> opciones = Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5, opcion6);
+
+        Preguntable pregunta = CreadorPregunta.crearPregunta(TipoPregunta.GroupChoice, preguntaTexto, opciones);
+
+        Assertions.assertEquals(GroupChoice.class, pregunta.getClass());
     }
 
     @Test

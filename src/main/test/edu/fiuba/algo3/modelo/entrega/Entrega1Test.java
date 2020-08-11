@@ -33,6 +33,7 @@ public class Entrega1Test {
         Preguntable verdaderoFalsoPenalidad = CreadorPregunta.crearPregunta(TipoPregunta.VerdaderoFalsoPenalidad, preguntaTexto, opciones);
 
         //Then
+        List<Opcion> opcionesEnPregunta = (List<Opcion>) verdaderoFalsoPenalidad.obtenerOpciones();
         Assertions.assertEquals(VerdaderoFalsoPenalidad.class, verdaderoFalsoPenalidad.getClass());
     }
 
@@ -53,8 +54,8 @@ public class Entrega1Test {
         Preguntable multipleChoiceClasico = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceClasico, preguntaTexto, opciones);
 
         //Then
+        List<Opcion> opcionesEnPregunta = (List<Opcion>) multipleChoiceClasico.obtenerOpciones();
         Assertions.assertEquals(MultipleChoiceClasico.class, multipleChoiceClasico.getClass());
-
     }
 
     @Test
@@ -71,8 +72,8 @@ public class Entrega1Test {
         Preguntable multipleChoiceParcial = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceParcial, preguntaTexto, opciones);
 
         //Then
+        List<Opcion> opcionesEnPregunta = (List<Opcion>) multipleChoiceParcial.obtenerOpciones();
         Assertions.assertEquals(MultipleChoiceParcial.class, multipleChoiceParcial.getClass());
-
     }
 
     @Test
@@ -245,8 +246,5 @@ public class Entrega1Test {
         //Then
         Assertions.assertEquals(0, jugador.obtenerPuntos());
     }
-
-
-
 
 }

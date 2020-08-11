@@ -30,6 +30,7 @@ public class Entrega0Test {
         Preguntable verdaderoFalsoClasico = CreadorPregunta.crearPregunta(TipoPregunta.VerdaderoFalsoClasico, preguntaTexto, opciones);
 
         //Then
+
         Assertions.assertEquals(VerdaderoFalsoClasico.class, verdaderoFalsoClasico.getClass());
     }
 
