@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo.pregunta.multiplechoice;
 
-import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
@@ -34,7 +33,7 @@ public class MultipleChoiceClasicoTest {
     }
 
     @Test
-    public void multipleChoiceAlmacenaUnaOpcionCorrecta() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+    public void multipleChoiceAlmacenaUnaOpcionCorrecta() throws ParametrosInvalidosExcepcion {
         //Given
         String preguntaTexto = "¿Donde nacio Simon Bolivar?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -47,17 +46,15 @@ public class MultipleChoiceClasicoTest {
         List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcion2, opcion3, opcion4, opcion5);
         List<Opcion> opcionesCorrectas = Arrays.asList(opcionCorrecta);
 
-        Exclusividad exclusividad = new Exclusividad();
-
         //When
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
 
         //Then
-        Assertions.assertEquals( 1 , multipleChoiceClasico.establecerPuntuacion(opcionesCorrectas, Multiplicador.PorDefecto, exclusividad));
+        Assertions.assertEquals( 1 , multipleChoiceClasico.establecerPuntuacion(opcionesCorrectas));
     }
 
     @Test
-    public void multipleChoiceAlmacenaMasDeUnaOpcionCorrecta() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+    public void multipleChoiceAlmacenaMasDeUnaOpcionCorrecta() throws ParametrosInvalidosExcepcion {
         //Given
         String preguntaTexto = "¿Frases celebres de el comandante?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -68,17 +65,16 @@ public class MultipleChoiceClasicoTest {
         Opcion opcion5Incorrecta = new Opcion("Un pueblo ignorante es un instrumento ciego de su propia destrucción", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta, opcion4Incorrecta, opcion5Incorrecta);
         List<Opcion> opcionesCorrectas = Arrays.asList(opcion1Correcta, opcion2Correcta);
-        Exclusividad exclusividad = new Exclusividad();
 
         //When
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
 
         //Then
-        Assertions.assertEquals(1, multipleChoiceClasico.establecerPuntuacion(opcionesCorrectas, Multiplicador.PorDefecto, exclusividad));
+        Assertions.assertEquals(1, multipleChoiceClasico.establecerPuntuacion(opcionesCorrectas));
     }
 
     @Test
-    public void multipleChoicePuedeTenerTodasOpcionesCorrectas() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+    public void multipleChoicePuedeTenerTodasOpcionesCorrectas() throws ParametrosInvalidosExcepcion {
         //Given
         String preguntaTexto = "¿Cuales de estos son numeros Naturales?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -89,13 +85,12 @@ public class MultipleChoiceClasicoTest {
         Opcion opcion5 = new Opcion("5", esCorrecta);
 
         List<Opcion> opciones = Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5);
-        Exclusividad exclusividad = new Exclusividad();
 
         //When
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
 
         //Then
-        Assertions.assertEquals(1, multipleChoiceClasico.establecerPuntuacion(opciones, Multiplicador.PorDefecto, exclusividad));
+        Assertions.assertEquals(1, multipleChoiceClasico.establecerPuntuacion(opciones));
     }
 
     @Test
@@ -150,7 +145,7 @@ public class MultipleChoiceClasicoTest {
     }
 
     @Test
-    public void multipleChoiceClasicoAsignaCorrectamenteElPuntajeConTodasOpcionesCorrectas() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+    public void multipleChoiceClasicoAsignaCorrectamenteElPuntajeConTodasOpcionesCorrectas() throws ParametrosInvalidosExcepcion {
 
         String preguntaTexto = "¿Frases celebres de el comandante?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -160,16 +155,15 @@ public class MultipleChoiceClasicoTest {
         Opcion opcion4Incorrecta = new Opcion("El dinero no comprará la felicidad a quien no sabe qué desea", !esCorrecta);
         Opcion opcion5Incorrecta = new Opcion("Un pueblo ignorante es un instrumento ciego de su propia destrucción", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta, opcion4Incorrecta, opcion5Incorrecta);
-        Exclusividad exclusividad = new Exclusividad();
 
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
         List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta, opcion2Correcta);
 
-        Assertions.assertEquals(1,multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDefecto, exclusividad));
+        Assertions.assertEquals(1,multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas));
     }
 
     @Test
-    public void multipleChoiceClasicoAsignaCorrectamenteElPuntajeConTodasLasOpcionesIncorrectas() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+    public void multipleChoiceClasicoAsignaCorrectamenteElPuntajeConTodasLasOpcionesIncorrectas() throws ParametrosInvalidosExcepcion{
 
         String preguntaTexto = "¿Frases celebres de el comandante?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -179,16 +173,15 @@ public class MultipleChoiceClasicoTest {
         Opcion opcion4Incorrecta = new Opcion("El dinero no comprará la felicidad a quien no sabe qué desea", !esCorrecta);
         Opcion opcion5Incorrecta = new Opcion("Un pueblo ignorante es un instrumento ciego de su propia destrucción", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta, opcion4Incorrecta, opcion5Incorrecta);
-        Exclusividad exclusividad = new Exclusividad();
 
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
         List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion4Incorrecta,opcion5Incorrecta);
 
-        Assertions.assertEquals(0,multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDefecto, exclusividad));
+        Assertions.assertEquals(0,multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas));
     }
 
     @Test
-    public void multipleChoiceClasicoAsignaCorrectamenteElPuntajeConAlgunasOpcionesCorrectas() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+    public void multipleChoiceClasicoAsignaCorrectamenteElPuntajeConAlgunasOpcionesCorrectas() throws ParametrosInvalidosExcepcion {
         String preguntaTexto = "¿Frases celebres de el comandante?";
         Boolean esCorrecta = Boolean.TRUE;
         Opcion opcion1Correcta = new Opcion("Yo no manejo el rating, yo manejo un Rolls Royce", esCorrecta);
@@ -197,16 +190,15 @@ public class MultipleChoiceClasicoTest {
         Opcion opcion4Incorrecta = new Opcion("El dinero no comprará la felicidad a quien no sabe qué desea", !esCorrecta);
         Opcion opcion5Incorrecta = new Opcion("Un pueblo ignorante es un instrumento ciego de su propia destrucción", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta, opcion4Incorrecta, opcion5Incorrecta);
-        Exclusividad exclusividad = new Exclusividad();
 
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
         List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta);
 
-        Assertions.assertEquals(0,multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDefecto, exclusividad));
+        Assertions.assertEquals(0,multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas));
     }
 
     @Test
-    public void multipleChoiceClasicoAsignaCorrectamenteElPuntajeConAlgunasOpcionesCorrectasEIncorrectas() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+    public void multipleChoiceClasicoAsignaCorrectamenteElPuntajeConAlgunasOpcionesCorrectasEIncorrectas() throws ParametrosInvalidosExcepcion {
         String preguntaTexto = "¿Frases celebres de el comandante?";
         Boolean esCorrecta = Boolean.TRUE;
         Opcion opcion1Correcta = new Opcion("Yo no manejo el rating, yo manejo un Rolls Royce", esCorrecta);
@@ -215,28 +207,27 @@ public class MultipleChoiceClasicoTest {
         Opcion opcion4Incorrecta = new Opcion("El dinero no comprará la felicidad a quien no sabe qué desea", !esCorrecta);
         Opcion opcion5Incorrecta = new Opcion("Un pueblo ignorante es un instrumento ciego de su propia destrucción", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta, opcion4Incorrecta, opcion5Incorrecta);
-        Exclusividad exclusividad = new Exclusividad();
 
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
         List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta,opcion2Correcta,opcion4Incorrecta);
 
-        Assertions.assertEquals(0,multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDefecto, exclusividad));
+        Assertions.assertEquals(0,multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas));
     }
 
     @Test
-    public void alAplicarMultiplicadorDebeLanzarUnaExcepcion() throws ParametrosInvalidosExcepcion {
+    public void alResponderConMultiplicadorNoLoDebeAplicar() throws ParametrosInvalidosExcepcion {
         String preguntaTexto = "Cuáles de los siguientes artistas interpretaron la canción Proud Mary";
         Boolean esCorrecta = Boolean.TRUE;
         Opcion opcionCorrecta1 = new Opcion("Creedence Clearwater Revival", esCorrecta);
         Opcion opcionCorrecta2 = new Opcion("Tina Turner", esCorrecta);
         Opcion opcionIncorrecta3 = new Opcion("Radiohead", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcionCorrecta1, opcionCorrecta2, opcionIncorrecta3);
-        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcionCorrecta1, opcionCorrecta2, opcionIncorrecta3);
+        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcionCorrecta1, opcionCorrecta2);
         Exclusividad exclusividad = new Exclusividad();
-
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
 
-        Assertions.assertThrows(MultiplicadorExcepcion.class, () -> multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDos, exclusividad));
+        Assertions.assertEquals(1, multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDos, exclusividad));
+        Assertions.assertEquals(1, multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorTres, exclusividad));
 
     }
 

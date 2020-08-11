@@ -34,7 +34,7 @@ public class RondaTest {
     }
 
     @Test
-    public void debeResponderUnaPreguntaParaUnJugador() throws RondaSinPreguntaExcepcion, ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException, MultiplicadorExcepcion {
+    public void debeResponderUnaPreguntaParaUnJugador() throws RondaSinPreguntaExcepcion, ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
         Exclusividad exclusividad = new Exclusividad();
         Jugador jugador1 = new Jugador("jugador1", exclusividad);
         Jugador jugador2 = new Jugador("jugador2", exclusividad);
@@ -69,7 +69,7 @@ public class RondaTest {
     }
 
     @Test
-    public void debeResponderUnaPreguntaParaUnJugadorConMultiplicadores() throws RondaSinPreguntaExcepcion, ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException, MultiplicadorExcepcion {
+    public void debeResponderUnaPreguntaParaUnJugadorConMultiplicadores() throws RondaSinPreguntaExcepcion, ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
         Exclusividad exclusividad = new Exclusividad();
         Jugador jugador1 = new Jugador("jugador1", exclusividad);
         Jugador jugador2 = new Jugador("jugador2", exclusividad);

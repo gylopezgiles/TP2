@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.modelo.pregunta.verdaderofalso;
 
-import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
@@ -18,7 +16,6 @@ public class VerdaderoFalsoPenalidadTest {
 
     @Test
     public void debeCrearUnaPreguntaVerdaderFalsoConOpciones() throws ParametrosInvalidosExcepcion {
-
         String preguntaTexto = "¿Los Elefantes son los mamiferos mas grandes del planeta?";
         Boolean esCorrecta = Boolean.TRUE;
         Opcion opcionCorrecta = new Opcion("Falso", esCorrecta);
@@ -76,7 +73,7 @@ public class VerdaderoFalsoPenalidadTest {
     }
 
     @Test
-    public void alResponderCorrectamenteDebeSumarUnPunto() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+    public void alResponderCorrectamenteDebeSumarUnPunto() throws ParametrosInvalidosExcepcion {
 
         String preguntaTexto = "¿Sydney es la capital de Australia?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -91,8 +88,7 @@ public class VerdaderoFalsoPenalidadTest {
 
 
     @Test
-
-    public void alResponderIncorrectamenteDebeRestarUnPunto() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+    public void alResponderIncorrectamenteDebeRestarUnPunto() throws ParametrosInvalidosExcepcion {
 
         String preguntaTexto = "¿Sydney es la capital de Australia?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -108,7 +104,7 @@ public class VerdaderoFalsoPenalidadTest {
     }
 
     @Test
-    public void alAplicarMultiplicadorDebeMultiplicarLosPuntos() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+    public void alAplicarMultiplicadorDebeMultiplicarLosPuntos() throws ParametrosInvalidosExcepcion {
         String preguntaTexto = "La banda Kiss tiene 6 integrantes";
         Boolean esCorrecta = Boolean.TRUE;
         Opcion opcionIncorrecta = new Opcion("Verdadero", !esCorrecta);
@@ -123,7 +119,7 @@ public class VerdaderoFalsoPenalidadTest {
     }
 
     @Test
-    public void alAplicarMultiplicadorDebeMultiplicarLosPuntosNegativos() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+    public void alAplicarMultiplicadorDebeMultiplicarLosPuntosNegativos() throws ParametrosInvalidosExcepcion {
         String preguntaTexto = "La banda Kiss tiene 6 integrantes";
         Boolean esCorrecta = Boolean.TRUE;
         Opcion opcionIncorrecta = new Opcion("Verdadero", !esCorrecta);

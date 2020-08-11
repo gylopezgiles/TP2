@@ -1,8 +1,6 @@
 package edu.fiuba.algo3.modelo.pregunta.multiplechoice;
 
-import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
-import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 import org.junit.Test;
@@ -34,7 +32,7 @@ public class GroupChoiceTest {
     }
 
     @Test
-    public void groupChoiceDebeTenerAlMenosUnaOpcionDeGruposDiferentes() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+    public void groupChoiceDebeTenerAlMenosUnaOpcionDeGruposDiferentes() throws ParametrosInvalidosExcepcion {
 
         String preguntaTexto = "¿Cuales ciudades pertenecen a Nueva Zelanda y cuales no?";
 
@@ -108,7 +106,7 @@ public class GroupChoiceTest {
 
 
     @Test
-    public void groupChoiceEstablecePuntuacionCorrectamente() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+    public void groupChoiceEstablecePuntuacionCorrectamente() throws ParametrosInvalidosExcepcion {
 
         String preguntaTexto = "¿Cuales ciudades pertenecen a Nueva Zelanda y cuales no?";
 
@@ -132,7 +130,7 @@ public class GroupChoiceTest {
     }
 
     @Test
-    public void groupChoiceEstablecePuntuacionCorrectamenteConGruposDeDiferenteTamanio() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+    public void groupChoiceEstablecePuntuacionCorrectamenteConGruposDeDiferenteTamanio() throws ParametrosInvalidosExcepcion {
 
         String preguntaTexto = "¿Cuales ciudades pertenecen a Nueva Zelanda y cuales no?";
 
@@ -155,7 +153,7 @@ public class GroupChoiceTest {
     }
 
     @Test
-    public void groupChoiceNoAsignaPuntosSiAlgunElementoNopertenecePrimerGrupoAlGrupo() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+    public void groupChoiceNoAsignaPuntosSiAlgunElementoNopertenecePrimerGrupoAlGrupo() throws ParametrosInvalidosExcepcion {
 
         String preguntaTexto = "¿Cuales ciudades pertenecen a Nueva Zelanda y cuales no?";
 
@@ -178,7 +176,7 @@ public class GroupChoiceTest {
     }
 
     @Test
-    public void groupChoiceNoAsignaPuntosSiVariosElementosNopertenecePrimerGruponAlGrupo() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+    public void groupChoiceNoAsignaPuntosSiVariosElementosNopertenecePrimerGruponAlGrupo() throws ParametrosInvalidosExcepcion {
 
         String preguntaTexto = "¿Cuales ciudades pertenecen a Nueva Zelanda y cuales no?";
 
@@ -202,7 +200,7 @@ public class GroupChoiceTest {
 
 
     @Test
-    public void groupChoiceNoAsignaPuntosSiNoSeAgrupanTodosLosElementosDeCadaGrupo() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+    public void groupChoiceNoAsignaPuntosSiNoSeAgrupanTodosLosElementosDeCadaGrupo() throws ParametrosInvalidosExcepcion {
 
         String preguntaTexto = "¿Cuales ciudades pertenecen a Nueva Zelanda y cuales no?";
 
@@ -225,7 +223,7 @@ public class GroupChoiceTest {
     }
 
     @Test
-    public void groupChoiceAsignaPuntosCuandoLasRespuestasEstanDesordenadasPeroEnLosGruposCorrectos() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+    public void groupChoiceAsignaPuntosCuandoLasRespuestasEstanDesordenadasPeroEnLosGruposCorrectos() throws ParametrosInvalidosExcepcion {
 
         String preguntaTexto = "¿Cuales ciudades pertenecen a Nueva Zelanda y cuales no?";
 
@@ -246,9 +244,6 @@ public class GroupChoiceTest {
 
         Assertions.assertEquals(1, pregunta.establecerPuntuacion(respuestas));
     }
-
-    //Todas las opciones pertenecen a un grupo.
-    // Se crearon solamente 2 grupos
     
     @Test
     public void AlPasarleUnMultiplicadorPorDosEntoncesLanzaExcepcion() throws ParametrosInvalidosExcepcion {
@@ -266,8 +261,7 @@ public class GroupChoiceTest {
         List<Opcion> respuestasSegundoGrupo  = Arrays.asList(opcion2);
         List<List<Opcion>> respuestas = Arrays.asList(respuestasPrimerGrupo, respuestasSegundoGrupo );
 
-        Assertions.assertThrows(MultiplicadorExcepcion.class,
-                () -> pregunta.establecerPuntuacion(respuestas, Multiplicador.PorDos) );
+        Assertions.assertEquals(1, pregunta.establecerPuntuacion(respuestas));
     }
 
     @Test
@@ -286,8 +280,7 @@ public class GroupChoiceTest {
         List<Opcion> respuestasSegundoGrupo  = Arrays.asList(opcion2);
         List<List<Opcion>> respuestas = Arrays.asList(respuestasPrimerGrupo, respuestasSegundoGrupo );
 
-        Assertions.assertThrows(MultiplicadorExcepcion.class,
-                () -> pregunta.establecerPuntuacion(respuestas, Multiplicador.PorTres) );
+        Assertions.assertEquals(1, pregunta.establecerPuntuacion(respuestas));
     }
 
 }

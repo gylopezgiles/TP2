@@ -1,9 +1,7 @@
 package edu.fiuba.algo3.modelo.pregunta.multiplechoice;
 
-import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.exclusividad.Exclusividad;
-import edu.fiuba.algo3.modelo.multiplicador.MultiplicableStrategy;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
@@ -42,7 +40,7 @@ public abstract class MultipleChoice implements Preguntable<List<Opcion>> {
     }
 
     @Override
-    public int establecerPuntuacion(List<Opcion> opciones) throws MultiplicadorExcepcion{
+    public int establecerPuntuacion(List<Opcion> opciones) {
         Exclusividad exclusividad = new Exclusividad();
         return establecerPuntuacion(opciones, Multiplicador.PorDefecto, exclusividad);
     }
@@ -56,6 +54,5 @@ public abstract class MultipleChoice implements Preguntable<List<Opcion>> {
     public String obtenerPregunta(){
         return pregunta;
     }
-
 
 }

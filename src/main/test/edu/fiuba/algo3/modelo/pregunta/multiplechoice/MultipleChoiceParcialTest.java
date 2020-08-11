@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo.pregunta.multiplechoice;
 
-import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
@@ -81,7 +80,7 @@ public class MultipleChoiceParcialTest {
     }
 
     @Test
-    public void debeEstablecerPuntuacionCorrectamenteEligiendoTodasRespuestasCorrectasSinIncorrectas() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion  {
+    public void debeEstablecerPuntuacionCorrectamenteEligiendoTodasRespuestasCorrectasSinIncorrectas() throws ParametrosInvalidosExcepcion {
 
         String preguntaTexto = "¿Cuales son gases nobles?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -95,14 +94,13 @@ public class MultipleChoiceParcialTest {
         Preguntable multipleChoiceParcial = new MultipleChoiceParcial(preguntaTexto, opciones);
         List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta);
 
-        Exclusividad exclusividad = new Exclusividad();
-        int puntuacion = multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDefecto, exclusividad);
+        int puntuacion = multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas);
 
         Assertions.assertEquals(3, puntuacion);
     }
 
     @Test
-    public void debeEstablecerPuntuacionCorrectamenteEligiendoAlgunasRespuestasCorrectasSinIncorrectas() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion  {
+    public void debeEstablecerPuntuacionCorrectamenteEligiendoAlgunasRespuestasCorrectasSinIncorrectas() throws ParametrosInvalidosExcepcion {
 
         String preguntaTexto = "¿Cuales son gases nobles?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -116,14 +114,13 @@ public class MultipleChoiceParcialTest {
         Preguntable multipleChoiceParcial = new MultipleChoiceParcial(preguntaTexto, opciones);
         List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta, opcion3Correcta);
 
-        Exclusividad exclusividad = new Exclusividad();
-        int puntuacion = multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDefecto, exclusividad);
+        int puntuacion = multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas);
 
         Assertions.assertEquals(2, puntuacion);
     }
 
     @Test
-    public void debeEstablecerPuntuacionCorrectamenteEligiendoAlgunasRespuestasCorrectasYUnaIncorrecta() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion  {
+    public void debeEstablecerPuntuacionCorrectamenteEligiendoAlgunasRespuestasCorrectasYUnaIncorrecta() throws ParametrosInvalidosExcepcion {
 
         String preguntaTexto = "¿Cuales son gases nobles?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -137,26 +134,25 @@ public class MultipleChoiceParcialTest {
         Preguntable multipleChoiceParcial = new MultipleChoiceParcial(preguntaTexto, opciones);
         List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta, opcion3Correcta, opcion4Incorrecta);
 
-        Exclusividad exclusividad = new Exclusividad();
-        int puntuacion = multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDefecto, exclusividad);
+        int puntuacion = multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas);
 
         Assertions.assertEquals(0, puntuacion);
     }
 
     @Test
-    public void alAplicarMultiplicadorDebeLanzarUnaExcepcion() throws ParametrosInvalidosExcepcion {
+    public void alEstablecerPuntuacionConMultiplicadorNoLoDebeAplicar() throws ParametrosInvalidosExcepcion {
         String preguntaTexto = "La canción Sinnerman corresponde a qué artista";
         Boolean esCorrecta = Boolean.TRUE;
         Opcion opcionCorrecta1 = new Opcion("Nina Simone", esCorrecta);
         Opcion opcionIncorrecta2 = new Opcion("Tom Ellis", !esCorrecta);
         Opcion opcionIncorrecta3 = new Opcion("Ella Fitzgerald", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcionCorrecta1, opcionIncorrecta2, opcionIncorrecta3);
-        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcionCorrecta1, opcionIncorrecta2, opcionIncorrecta3);
+        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcionCorrecta1);
         Exclusividad exclusividad = new Exclusividad();
-
         Preguntable multipleChoiceParcial = new MultipleChoiceParcial(preguntaTexto, opciones);
 
-        Assertions.assertThrows(MultiplicadorExcepcion.class, () -> multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDos, exclusividad));
+        Assertions.assertEquals(1, multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDos, exclusividad));
+        Assertions.assertEquals(1, multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorTres, exclusividad));
 
     }
 

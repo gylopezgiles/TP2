@@ -4,7 +4,6 @@ import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Ronda;
 import edu.fiuba.algo3.modelo.excepciones.*;
 import edu.fiuba.algo3.modelo.exclusividad.Exclusividad;
-import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.CreadorPregunta;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
@@ -33,7 +32,6 @@ public class Entrega1Test {
         Preguntable verdaderoFalsoPenalidad = CreadorPregunta.crearPregunta(TipoPregunta.VerdaderoFalsoPenalidad, preguntaTexto, opciones);
 
         //Then
-        List<Opcion> opcionesEnPregunta = (List<Opcion>) verdaderoFalsoPenalidad.obtenerOpciones();
         Assertions.assertEquals(VerdaderoFalsoPenalidad.class, verdaderoFalsoPenalidad.getClass());
     }
 
@@ -54,7 +52,6 @@ public class Entrega1Test {
         Preguntable multipleChoiceClasico = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceClasico, preguntaTexto, opciones);
 
         //Then
-        List<Opcion> opcionesEnPregunta = (List<Opcion>) multipleChoiceClasico.obtenerOpciones();
         Assertions.assertEquals(MultipleChoiceClasico.class, multipleChoiceClasico.getClass());
     }
 
@@ -72,12 +69,11 @@ public class Entrega1Test {
         Preguntable multipleChoiceParcial = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceParcial, preguntaTexto, opciones);
 
         //Then
-        List<Opcion> opcionesEnPregunta = (List<Opcion>) multipleChoiceParcial.obtenerOpciones();
         Assertions.assertEquals(MultipleChoiceParcial.class, multipleChoiceParcial.getClass());
     }
 
     @Test
-    public void preguntaVerdaderoFalsoConPenalidadSumaPuntosAJugadoresRespondenCorrectamente() throws RondaSinPreguntaExcepcion, ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException, MultiplicadorExcepcion  {
+    public void preguntaVerdaderoFalsoConPenalidadSumaPuntosAJugadoresRespondenCorrectamente() throws RondaSinPreguntaExcepcion, ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException  {
         //Give
         String preguntaTexto = "¿Sydney es la capital de Australia?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -241,7 +237,7 @@ public class Entrega1Test {
         Ronda ronda = new Ronda(jugadores, multipleChoiceParcial);
 
         //When
-        ronda.responder(jugador, opcionesSeleccionadas, Multiplicador.PorDefecto);
+        ronda.responder(jugador, opcionesSeleccionadas);
 
         //Then
         Assertions.assertEquals(0, jugador.obtenerPuntos());
