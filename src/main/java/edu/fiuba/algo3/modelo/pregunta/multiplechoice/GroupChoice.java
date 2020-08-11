@@ -1,13 +1,11 @@
 package edu.fiuba.algo3.modelo.pregunta.multiplechoice;
 
-import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.multiplicador.MultiplicableStrategy;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -62,16 +60,12 @@ public class GroupChoice implements Preguntable < List<List<Opcion> >>{
     }
 
     @Override
-    public int establecerPuntuacion(List<List<Opcion>> grupos) throws MultiplicadorExcepcion {
+    public int establecerPuntuacion(List<List<Opcion>> grupos) {
         return establecerPuntuacion(grupos, Multiplicador.PorDefecto);
     }
 
     @Override
-    public int establecerPuntuacion(List<List<Opcion>> grupos, MultiplicableStrategy multiplicador) throws MultiplicadorExcepcion {
-        if (multiplicador != Multiplicador.PorDefecto){
-            throw new MultiplicadorExcepcion("");
-        }
-
+    public int establecerPuntuacion(List<List<Opcion>> grupos, MultiplicableStrategy multiplicador) {
         List<Opcion> respuestasPrimerGrupo = grupos.get(0);
         List<Opcion> respuestasSegundoGrupo = grupos.get(1);
 

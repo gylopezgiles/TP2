@@ -1,14 +1,11 @@
 package edu.fiuba.algo3.modelo.pregunta;
 
-import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.multiplicador.MultiplicableStrategy;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class OrderedChoice implements Preguntable <List<Opcion>>{
 
@@ -36,17 +33,13 @@ public class OrderedChoice implements Preguntable <List<Opcion>>{
     }
 
     @Override
-    public int establecerPuntuacion(List<Opcion> opciones) throws MultiplicadorExcepcion {
+    public int establecerPuntuacion(List<Opcion> opciones) {
         return establecerPuntuacion(opciones, Multiplicador.PorDefecto);
     }
 
     @Override
-    public int establecerPuntuacion(List<Opcion> opciones, MultiplicableStrategy multiplicador) throws MultiplicadorExcepcion {
-        if(!multiplicador.equals(Multiplicador.PorDefecto)){
-            throw new MultiplicadorExcepcion("Solo se puede aplicar multiplicadores a preguntas con penalidad");
-        }
-
-        return tieneElOrdenAdecuado(opciones.iterator(),this.opciones.iterator()) ? 1: 0;
+    public int establecerPuntuacion(List<Opcion> opciones, MultiplicableStrategy multiplicador) {
+        return tieneElOrdenAdecuado(opciones.iterator(),this.obtenerOpciones().iterator()) ? 1: 0;
     }
 
     boolean tieneElOrdenAdecuado(Iterator<Opcion> opcionesSeleccionadas, Iterator<Opcion> opcionesOrdenadas){
@@ -68,5 +61,4 @@ public class OrderedChoice implements Preguntable <List<Opcion>>{
     public String obtenerPregunta(){
         return pregunta;
     }
-
 }

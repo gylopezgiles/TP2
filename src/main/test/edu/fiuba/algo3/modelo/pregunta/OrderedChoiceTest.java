@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo.pregunta;
 
-import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -52,7 +51,7 @@ public class OrderedChoiceTest {
 
     @Test
 
-    public void debeAsignarPuntajeCorrectamenteConOpcionesOrdenadas() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+    public void debeAsignarPuntajeCorrectamenteConOpcionesOrdenadas() throws ParametrosInvalidosExcepcion {
         boolean esCorrecta = Boolean.TRUE;
         Opcion opcion1 = new Opcion("A", esCorrecta);
         Opcion opcion2 = new Opcion("E",esCorrecta);
@@ -69,7 +68,7 @@ public class OrderedChoiceTest {
 
     }
     @Test
-    public void debeAsignarPuntajeCorrectamenteConOpcionesDesrdenadas() throws ParametrosInvalidosExcepcion, MultiplicadorExcepcion {
+    public void debeAsignarPuntajeCorrectamenteConOpcionesDesrdenadas() throws ParametrosInvalidosExcepcion {
         boolean esCorrecta = Boolean.TRUE;
         Opcion opcion1 = new Opcion("A", esCorrecta);
         Opcion opcion2 = new Opcion("E",esCorrecta);

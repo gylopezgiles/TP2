@@ -1,11 +1,9 @@
 package edu.fiuba.algo3.modelo.pregunta.verdaderofalso;
 
-import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
-import edu.fiuba.algo3.modelo.pregunta.multiplechoice.MultipleChoiceParcial;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -75,7 +73,7 @@ public class VerdaderoFalsoClasicoTest {
     }
 
     @Test
-    public void alAplicarMultiplicadorDebeLanzarUnaExcepcion() throws ParametrosInvalidosExcepcion {
+    public void alEstablecerPuntuacionConMultiplicadorNoLoDebeAplicar() throws ParametrosInvalidosExcepcion {
         String preguntaTexto = "La canción Feelling Good fue escrita por Muse";
         Boolean esCorrecta = Boolean.TRUE;
         Opcion opcionIncorrecta = new Opcion("Verdadero", !esCorrecta);
@@ -85,7 +83,9 @@ public class VerdaderoFalsoClasicoTest {
 
         Preguntable verdaderoFalsoClasico = new VerdaderoFalsoClasico(preguntaTexto, opciones);
 
-        Assertions.assertThrows(MultiplicadorExcepcion.class, () -> verdaderoFalsoClasico.establecerPuntuacion(opcionSeleccionada, Multiplicador.PorDos));
+        Assertions.assertEquals(1, verdaderoFalsoClasico.establecerPuntuacion(opcionSeleccionada, Multiplicador.PorDos));
+        Assertions.assertEquals(1, verdaderoFalsoClasico.establecerPuntuacion(opcionSeleccionada, Multiplicador.PorTres));
+
     }
 
 }

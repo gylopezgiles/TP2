@@ -1,9 +1,7 @@
 package edu.fiuba.algo3.modelo.pregunta.multiplechoice;
 
-import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.multiplicador.MultiplicableStrategy;
-import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import java.util.List;
 
@@ -16,15 +14,9 @@ public class MultipleChoiceClasico extends MultipleChoice {
     }
 
     @Override
-    public int establecerPuntuacion(List<Opcion> opciones, MultiplicableStrategy multiplicador) throws MultiplicadorExcepcion {
-        if(!multiplicador.equals(Multiplicador.PorDefecto)){
-            throw new MultiplicadorExcepcion("Solo se puede aplicar multiplicadores a preguntas con penalidad");
-        }
-        if(tieneOpcionesIncorrectas(opciones)){//esto debe estar sino falla test linea 206
-            return 0;
-        }
+    public int establecerPuntuacion(List<Opcion> opciones, MultiplicableStrategy multiplicador) {
         boolean sonTodasCorrectas = cantidadDeOpcionesCorrectas(opciones) == cantidadDeOpcionesCorrectas(this.opciones);
-        return sonTodasCorrectas ? 1 : 0;
+        return !tieneOpcionesIncorrectas(opciones) && sonTodasCorrectas ? 1 : 0;
     }
 
     private int cantidadDeOpcionesCorrectas(List<Opcion> opciones){
@@ -32,6 +24,5 @@ public class MultipleChoiceClasico extends MultipleChoice {
                 .filter(opcion -> opcion.esCorrecta())
                 .count();
     }
-
 
 }

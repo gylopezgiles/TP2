@@ -34,7 +34,7 @@ public class Entrega0Test {
     }
 
     @Test
-    public void preguntaVerdaderoFalsoClasicoAsignaPuntajeCorrectamente() throws RondaSinPreguntaExcepcion, ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException, MultiplicadorExcepcion {
+    public void preguntaVerdaderoFalsoClasicoAsignaPuntajeCorrectamente() throws RondaSinPreguntaExcepcion, ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
         //Given
         String preguntaTexto = "¿Los Elefantes son los mamiferos mas grandes del mundo?";
         Boolean esCorrecta = Boolean.TRUE;
