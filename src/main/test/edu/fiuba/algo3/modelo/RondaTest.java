@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.excepciones.*;
+import edu.fiuba.algo3.modelo.exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.CreadorPregunta;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
@@ -16,8 +17,9 @@ public class RondaTest {
 
     @Test
     public void debeCrearUnaRondaConJugadoresParaUnaPregunta() throws ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
-        Jugador jugador1 = new Jugador("jugador1");
-        Jugador jugador2 = new Jugador("jugador2");
+        Exclusividad exclusividad = new Exclusividad();
+        Jugador jugador1 = new Jugador("jugador1", exclusividad);
+        Jugador jugador2 = new Jugador("jugador2", exclusividad);
         List<Jugador> jugadores = Arrays.asList(jugador1, jugador2);
 
         Opcion opcionCorrecta = new Opcion("opcion", Boolean.TRUE);
@@ -33,8 +35,9 @@ public class RondaTest {
 
     @Test
     public void debeResponderUnaPreguntaParaUnJugador() throws RondaSinPreguntaExcepcion, ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException, MultiplicadorExcepcion {
-        Jugador jugador1 = new Jugador("jugador1");
-        Jugador jugador2 = new Jugador("jugador2");
+        Exclusividad exclusividad = new Exclusividad();
+        Jugador jugador1 = new Jugador("jugador1", exclusividad);
+        Jugador jugador2 = new Jugador("jugador2", exclusividad);
         List<Jugador> jugadores = Arrays.asList(jugador1, jugador2);
 
         Opcion opcionCorrecta = new Opcion("opcion", Boolean.TRUE);
@@ -51,8 +54,9 @@ public class RondaTest {
 
     @Test
     public void debeLanzarExcepcionResponderConRespuestaNull() {
-        Jugador jugador1 = new Jugador("jugador1");
-        Jugador jugador2 = new Jugador("jugador2");
+        Exclusividad exclusividad = new Exclusividad();
+        Jugador jugador1 = new Jugador("jugador1", exclusividad);
+        Jugador jugador2 = new Jugador("jugador2", exclusividad);
         List<Jugador> jugadores = Arrays.asList(jugador1, jugador2);
 
         Opcion opcion = new Opcion("opcion", Boolean.TRUE);
@@ -66,8 +70,9 @@ public class RondaTest {
 
     @Test
     public void debeResponderUnaPreguntaParaUnJugadorConMultiplicadores() throws RondaSinPreguntaExcepcion, ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException, MultiplicadorExcepcion {
-        Jugador jugador1 = new Jugador("jugador1");
-        Jugador jugador2 = new Jugador("jugador2");
+        Exclusividad exclusividad = new Exclusividad();
+        Jugador jugador1 = new Jugador("jugador1", exclusividad);
+        Jugador jugador2 = new Jugador("jugador2", exclusividad);
         List<Jugador> jugadores = Arrays.asList(jugador1, jugador2);
 
         Boolean esCorrecta = Boolean.TRUE;

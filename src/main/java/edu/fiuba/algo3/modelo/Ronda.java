@@ -2,11 +2,13 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.RondaSinPreguntaExcepcion;
+import edu.fiuba.algo3.modelo.exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.multiplicador.MultiplicableStrategy;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Ronda {
@@ -35,6 +37,17 @@ public class Ronda {
         if(pregunta == null){
             throw new RondaSinPreguntaExcepcion("No se puede responder sin una pregunta");
         }
-        jugador.sumarPuntos(pregunta.establecerPuntuacion(opciones, multiplicador));
+        Exclusividad exclusividad = new Exclusividad();
+        jugador.sumarPuntos(pregunta.establecerPuntuacion(opciones, multiplicador, exclusividad));
+    }
+
+    public void responderConExclusividad(List<Opcion> opciones1, List<Opcion> opciones2, Exclusividad exclusividad) throws RondaSinPreguntaExcepcion, MultiplicadorExcepcion {
+        if(pregunta == null){
+            throw new RondaSinPreguntaExcepcion("No se puede responder sin una pregunta");
+        }
+        int puntaje1 = pregunta.establecerPuntuacion(opciones1, Multiplicador.PorDefecto, exclusividad);
+        int puntaje2 = pregunta.establecerPuntuacion(opciones2, Multiplicador.PorDefecto, exclusividad);
+
+        exclusividad.aplicarExclusividad(jugadores.get(0), puntaje1, jugadores.get(1), puntaje2);
     }
 }

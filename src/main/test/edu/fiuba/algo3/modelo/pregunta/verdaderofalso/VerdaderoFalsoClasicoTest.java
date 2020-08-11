@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.pregunta.verdaderofalso;
 
 import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
+import edu.fiuba.algo3.modelo.exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
@@ -82,10 +83,11 @@ public class VerdaderoFalsoClasicoTest {
         Opcion opcionCorrecta = new Opcion("Falso", esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
         List<Opcion> opcionSeleccionada = Arrays.asList(opcionCorrecta);
+        Exclusividad exclusividad = new Exclusividad();
 
         Preguntable verdaderoFalsoClasico = new VerdaderoFalsoClasico(preguntaTexto, opciones);
 
-        Assertions.assertThrows(MultiplicadorExcepcion.class, () -> verdaderoFalsoClasico.establecerPuntuacion(opcionSeleccionada, Multiplicador.PorDos));
+        Assertions.assertThrows(MultiplicadorExcepcion.class, () -> verdaderoFalsoClasico.establecerPuntuacion(opcionSeleccionada, Multiplicador.PorDos, exclusividad));
     }
 
 }

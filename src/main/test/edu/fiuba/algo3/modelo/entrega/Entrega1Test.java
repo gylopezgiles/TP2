@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo.entrega;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Ronda;
 import edu.fiuba.algo3.modelo.excepciones.*;
+import edu.fiuba.algo3.modelo.exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.CreadorPregunta;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
@@ -86,7 +87,8 @@ public class Entrega1Test {
         Preguntable verdaderoFalsoPenalidad = CreadorPregunta.crearPregunta(TipoPregunta.VerdaderoFalsoPenalidad, preguntaTexto, opciones);
 
         List<Opcion> opcionSeleccionada = Arrays.asList(opcionCorrecta);
-        Jugador jugador = new Jugador("Diego");
+        Exclusividad exclusividad = new Exclusividad();
+        Jugador jugador = new Jugador("Diego", exclusividad);
         List<Jugador> jugadores = Arrays.asList(jugador);
         Ronda ronda = new Ronda(jugadores, verdaderoFalsoPenalidad);
 
@@ -108,7 +110,8 @@ public class Entrega1Test {
         Preguntable verdaderoFalsoPenalidad = CreadorPregunta.crearPregunta(TipoPregunta.VerdaderoFalsoPenalidad, preguntaTexto, opciones);
 
         List<Opcion> opcionSeleccionada = Arrays.asList(opcionIncorrecta);
-        Jugador jugador = new Jugador("Diego");
+        Exclusividad exclusividad = new Exclusividad();
+        Jugador jugador = new Jugador("Diego", exclusividad);
         List<Jugador> jugadores = Arrays.asList(jugador);
         Ronda ronda = new Ronda(jugadores, verdaderoFalsoPenalidad);
 
@@ -133,7 +136,8 @@ public class Entrega1Test {
         Preguntable multipleChoiceClasico = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceClasico, preguntaTexto, opciones);
 
         List<Opcion> opcionSeleccionada = Arrays.asList(opcion1Correcta, opcion2Correcta);
-        Jugador jugador = new Jugador("Diego");
+        Exclusividad exclusividad = new Exclusividad();
+        Jugador jugador = new Jugador("Diego", exclusividad);
         List<Jugador> jugadores = Arrays.asList(jugador);
         Ronda ronda = new Ronda(jugadores, multipleChoiceClasico);
 
@@ -158,7 +162,8 @@ public class Entrega1Test {
         Preguntable multipleChoiceClasico = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceClasico, preguntaTexto, opciones);
 
         List<Opcion> opcionSeleccionada = Arrays.asList(opcion1Correcta, opcion3Incorrecta);
-        Jugador jugador = new Jugador("Diego");
+        Exclusividad exclusividad = new Exclusividad();
+        Jugador jugador = new Jugador("Diego", exclusividad);
         List<Jugador> jugadores = Arrays.asList(jugador);
         Ronda ronda = new Ronda(jugadores, multipleChoiceClasico);
 
@@ -181,7 +186,8 @@ public class Entrega1Test {
         Preguntable multipleChoiceParcial = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceParcial, preguntaTexto, opciones);
 
         List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta, opcion2Correcta);
-        Jugador jugador = new Jugador("Diego");
+        Exclusividad exclusividad = new Exclusividad();
+        Jugador jugador = new Jugador("Diego", exclusividad);
         List<Jugador> jugadores = Arrays.asList(jugador);
         Ronda ronda = new Ronda(jugadores, multipleChoiceParcial);
 
@@ -204,7 +210,8 @@ public class Entrega1Test {
         Preguntable multipleChoiceParcial = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceParcial, preguntaTexto, opciones);
 
         List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta);
-        Jugador jugador = new Jugador("jugador");
+        Exclusividad exclusividad = new Exclusividad();
+        Jugador jugador = new Jugador("jugador", exclusividad);
         List<Jugador> jugadores = Arrays.asList(jugador);
         Ronda ronda = new Ronda(jugadores, multipleChoiceParcial);
 
@@ -227,7 +234,8 @@ public class Entrega1Test {
         Preguntable multipleChoiceParcial = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceParcial, preguntaTexto, opciones);
 
         List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta);
-        Jugador jugador = new Jugador("Diego");
+        Exclusividad exclusividad = new Exclusividad();
+        Jugador jugador = new Jugador("Diego", exclusividad);
         List<Jugador> jugadores = Arrays.asList(jugador);
         Ronda ronda = new Ronda(jugadores, multipleChoiceParcial);
 

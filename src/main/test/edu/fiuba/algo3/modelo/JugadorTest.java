@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.exclusividad.Exclusividad;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -7,7 +8,8 @@ public class JugadorTest {
 
     @Test
     public void debeCrearJugadorConNombreYPuntaje0(){
-        Jugador jugador = new Jugador("Diego");
+        Exclusividad exclusividad = new Exclusividad();
+        Jugador jugador = new Jugador("Diego", exclusividad);
 
         Assertions.assertEquals("Diego", jugador.obtenerNombre());
         Assertions.assertEquals(0, jugador.obtenerPuntos());
@@ -15,7 +17,8 @@ public class JugadorTest {
 
     @Test
     public void debeSumar1PuntoAJugador(){
-        Jugador jugador = new Jugador("Diego");
+        Exclusividad exclusividad = new Exclusividad();
+        Jugador jugador = new Jugador("Diego", exclusividad);
 
         Assertions.assertEquals(0, jugador.obtenerPuntos());
 
@@ -26,7 +29,8 @@ public class JugadorTest {
 
     @Test
     public void debeSumar1PuntoNegativoAJugador(){
-        Jugador jugador = new Jugador("Diego");
+        Exclusividad exclusividad = new Exclusividad();
+        Jugador jugador = new Jugador("Diego", exclusividad);
 
         Assertions.assertEquals(0, jugador.obtenerPuntos());
 

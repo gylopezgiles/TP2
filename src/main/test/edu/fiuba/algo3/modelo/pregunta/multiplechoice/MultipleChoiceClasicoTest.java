@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.pregunta.multiplechoice;
 
 import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
+import edu.fiuba.algo3.modelo.exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
@@ -48,11 +49,13 @@ public class MultipleChoiceClasicoTest {
         List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcion2, opcion3, opcion4, opcion5);
         List<Opcion> opcionesCorrectas = Arrays.asList(opcionCorrecta);
 
+        Exclusividad exclusividad = new Exclusividad();
+
         //When
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
 
         //Then
-        Assertions.assertEquals( 1 , multipleChoiceClasico.establecerPuntuacion(opcionesCorrectas, Multiplicador.PorDefecto));
+        Assertions.assertEquals( 1 , multipleChoiceClasico.establecerPuntuacion(opcionesCorrectas, Multiplicador.PorDefecto, exclusividad));
 
     }
 
@@ -68,12 +71,13 @@ public class MultipleChoiceClasicoTest {
         Opcion opcion5Incorrecta = new Opcion("Un pueblo ignorante es un instrumento ciego de su propia destrucción", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta, opcion4Incorrecta, opcion5Incorrecta);
         List<Opcion> opcionesCorrectas = Arrays.asList(opcion1Correcta, opcion2Correcta);
+        Exclusividad exclusividad = new Exclusividad();
 
         //When
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
 
         //Then
-        Assertions.assertEquals(1, multipleChoiceClasico.establecerPuntuacion(opcionesCorrectas, Multiplicador.PorDefecto));
+        Assertions.assertEquals(1, multipleChoiceClasico.establecerPuntuacion(opcionesCorrectas, Multiplicador.PorDefecto, exclusividad));
 
     }
 
@@ -89,12 +93,13 @@ public class MultipleChoiceClasicoTest {
         Opcion opcion5 = new Opcion("5", esCorrecta);
 
         List<Opcion> opciones = Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5);
+        Exclusividad exclusividad = new Exclusividad();
 
         //When
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
 
         //Then
-        Assertions.assertEquals(1, multipleChoiceClasico.establecerPuntuacion(opciones, Multiplicador.PorDefecto));
+        Assertions.assertEquals(1, multipleChoiceClasico.establecerPuntuacion(opciones, Multiplicador.PorDefecto, exclusividad));
 
     }
 
@@ -160,11 +165,12 @@ public class MultipleChoiceClasicoTest {
         Opcion opcion4Incorrecta = new Opcion("El dinero no comprará la felicidad a quien no sabe qué desea", !esCorrecta);
         Opcion opcion5Incorrecta = new Opcion("Un pueblo ignorante es un instrumento ciego de su propia destrucción", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta, opcion4Incorrecta, opcion5Incorrecta);
+        Exclusividad exclusividad = new Exclusividad();
 
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
         List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta, opcion2Correcta);
 
-        Assertions.assertEquals(1,multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDefecto));
+        Assertions.assertEquals(1,multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDefecto, exclusividad));
     }
 
     @Test
@@ -178,11 +184,12 @@ public class MultipleChoiceClasicoTest {
         Opcion opcion4Incorrecta = new Opcion("El dinero no comprará la felicidad a quien no sabe qué desea", !esCorrecta);
         Opcion opcion5Incorrecta = new Opcion("Un pueblo ignorante es un instrumento ciego de su propia destrucción", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta, opcion4Incorrecta, opcion5Incorrecta);
+        Exclusividad exclusividad = new Exclusividad();
 
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
         List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion4Incorrecta,opcion5Incorrecta);
 
-        Assertions.assertEquals(0,multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDefecto));
+        Assertions.assertEquals(0,multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDefecto, exclusividad));
     }
 
     @Test
@@ -195,11 +202,12 @@ public class MultipleChoiceClasicoTest {
         Opcion opcion4Incorrecta = new Opcion("El dinero no comprará la felicidad a quien no sabe qué desea", !esCorrecta);
         Opcion opcion5Incorrecta = new Opcion("Un pueblo ignorante es un instrumento ciego de su propia destrucción", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta, opcion4Incorrecta, opcion5Incorrecta);
+        Exclusividad exclusividad = new Exclusividad();
 
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
         List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta);
 
-        Assertions.assertEquals(0,multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDefecto));
+        Assertions.assertEquals(0,multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDefecto, exclusividad));
     }
 
     @Test
@@ -212,11 +220,12 @@ public class MultipleChoiceClasicoTest {
         Opcion opcion4Incorrecta = new Opcion("El dinero no comprará la felicidad a quien no sabe qué desea", !esCorrecta);
         Opcion opcion5Incorrecta = new Opcion("Un pueblo ignorante es un instrumento ciego de su propia destrucción", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta, opcion4Incorrecta, opcion5Incorrecta);
+        Exclusividad exclusividad = new Exclusividad();
 
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
         List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta,opcion2Correcta,opcion4Incorrecta);
 
-        Assertions.assertEquals(0,multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDefecto));
+        Assertions.assertEquals(0,multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDefecto, exclusividad));
     }
 
     @Test
@@ -228,10 +237,11 @@ public class MultipleChoiceClasicoTest {
         Opcion opcionIncorrecta3 = new Opcion("Radiohead", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcionCorrecta1, opcionCorrecta2, opcionIncorrecta3);
         List<Opcion> opcionesSeleccionadas = Arrays.asList(opcionCorrecta1, opcionCorrecta2, opcionIncorrecta3);
+        Exclusividad exclusividad = new Exclusividad();
 
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
 
-        Assertions.assertThrows(MultiplicadorExcepcion.class, () -> multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDos));
+        Assertions.assertThrows(MultiplicadorExcepcion.class, () -> multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDos, exclusividad));
 
     }
 

@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo.entrega;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Ronda;
 import edu.fiuba.algo3.modelo.excepciones.*;
+import edu.fiuba.algo3.modelo.exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.pregunta.CreadorPregunta;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
@@ -43,7 +44,8 @@ public class Entrega0Test {
         Preguntable verdaderoFalsoClasico = CreadorPregunta.crearPregunta(TipoPregunta.VerdaderoFalsoClasico, preguntaTexto, opciones);
 
         List<Opcion> opcionSeleccionada = Arrays.asList(opcionCorrecta);
-        Jugador jugador = new Jugador("Diego");
+        Exclusividad exclusividad = new Exclusividad();
+        Jugador jugador = new Jugador("Diego", exclusividad);
         List<Jugador> jugadores = Arrays.asList(jugador);
         Ronda ronda = new Ronda(jugadores, verdaderoFalsoClasico);
 

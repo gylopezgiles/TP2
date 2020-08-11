@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.RondaSinPreguntaExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.TipoPreguntaNoImplementadaException;
 import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
+import edu.fiuba.algo3.modelo.exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.CreadorPregunta;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
@@ -50,7 +51,8 @@ public class Entrega2Test {
         Preguntable multipleChoiceConPenalidad = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceConPenalidad, preguntaTexto, opciones);
 
         List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta, opcion5Correcta);
-        Jugador jugador = new Jugador("jugador");
+        Exclusividad exclusividad = new Exclusividad();
+        Jugador jugador = new Jugador("Jugador1", exclusividad);
         List<Jugador> jugadores = Arrays.asList(jugador);
         Ronda ronda = new Ronda(jugadores, multipleChoiceConPenalidad);
 
@@ -75,7 +77,8 @@ public class Entrega2Test {
         Preguntable multipleChoiceConPenalidad = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceConPenalidad, preguntaTexto, opciones);
 
         List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta, opcion3Correcta);
-        Jugador jugador = new Jugador("jugador");
+        Exclusividad exclusividad = new Exclusividad();
+        Jugador jugador = new Jugador("Jugador1", exclusividad);
         List<Jugador> jugadores = Arrays.asList(jugador);
         Ronda ronda = new Ronda(jugadores, multipleChoiceConPenalidad);
 
@@ -100,7 +103,8 @@ public class Entrega2Test {
         Preguntable multipleChoiceConPenalidad = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceConPenalidad, preguntaTexto, opciones);
 
         List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta, opcion3Correcta, opcion4Incorrecta);
-        Jugador jugador = new Jugador("jugador");
+        Exclusividad exclusividad = new Exclusividad();
+        Jugador jugador = new Jugador("Jugador1", exclusividad);
         List<Jugador> jugadores = Arrays.asList(jugador);
         Ronda ronda = new Ronda(jugadores, multipleChoiceConPenalidad);
 
@@ -125,7 +129,8 @@ public class Entrega2Test {
         Preguntable multipleChoiceConPenalidad = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceConPenalidad, preguntaTexto, opciones);
 
         List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion2Incorrecta, opcion4Incorrecta, opcion5Incorrecta);
-        Jugador jugador = new Jugador("jugador");
+        Exclusividad exclusividad = new Exclusividad();
+        Jugador jugador = new Jugador("Jugador1", exclusividad);
         List<Jugador> jugadores = Arrays.asList(jugador);
         Ronda ronda = new Ronda(jugadores, multipleChoiceConPenalidad);
 
@@ -145,7 +150,8 @@ public class Entrega2Test {
         Opcion opcionCorrecta = new Opcion("Verdadero", esCorrecta);
         Opcion opcionIncorrecta = new Opcion("Falso", !esCorrecta);
         Preguntable verdaderoFalsoClasico = CreadorPregunta.crearPregunta(TipoPregunta.VerdaderoFalsoPenalidad, preguntaTexto ,Arrays.asList(opcionCorrecta, opcionIncorrecta));
-        Jugador jugador = new Jugador("Jugador1");
+        Exclusividad exclusividad = new Exclusividad();
+        Jugador jugador = new Jugador("Jugador1", exclusividad);
         Ronda ronda = new Ronda(Arrays.asList(jugador), verdaderoFalsoClasico);
 
         //When
@@ -164,7 +170,8 @@ public class Entrega2Test {
         Opcion opcionIncorrecta = new Opcion("Verdadero", !esCorrecta);
         Opcion opcionCorrecta = new Opcion("Falso", esCorrecta);
         Preguntable verdaderoFalsoClasico = CreadorPregunta.crearPregunta(TipoPregunta.VerdaderoFalsoPenalidad, preguntaTexto ,Arrays.asList(opcionCorrecta, opcionIncorrecta));
-        Jugador jugador = new Jugador("Jugador1");
+        Exclusividad exclusividad = new Exclusividad();
+        Jugador jugador = new Jugador("Jugador1", exclusividad);
         Ronda ronda = new Ronda(Arrays.asList(jugador), verdaderoFalsoClasico);
 
         //When
@@ -183,7 +190,8 @@ public class Entrega2Test {
         Opcion opcionIncorrecta = new Opcion("Verdadero", !esCorrecta);
         Opcion opcionCorrecta = new Opcion("Falso", esCorrecta);
         Preguntable verdaderoFalsoClasico = CreadorPregunta.crearPregunta(TipoPregunta.VerdaderoFalsoPenalidad, preguntaTexto ,Arrays.asList(opcionCorrecta, opcionIncorrecta));
-        Jugador jugador = new Jugador("Jugador1");
+        Exclusividad exclusividad = new Exclusividad();
+        Jugador jugador = new Jugador("Jugador1", exclusividad);
         Ronda ronda = new Ronda(Arrays.asList(jugador), verdaderoFalsoClasico);
 
         //When
@@ -202,7 +210,8 @@ public class Entrega2Test {
         Opcion opcionCorrecta = new Opcion("Verdadero", esCorrecta);
         Opcion opcionIncorrecta = new Opcion("Falso", !esCorrecta);
         Preguntable verdaderoFalsoClasico = CreadorPregunta.crearPregunta(TipoPregunta.VerdaderoFalsoPenalidad, preguntaTexto ,Arrays.asList(opcionCorrecta, opcionIncorrecta));
-        Jugador jugador = new Jugador("Jugador1");
+        Exclusividad exclusividad = new Exclusividad();
+        Jugador jugador = new Jugador("Jugador1", exclusividad);
         Ronda ronda = new Ronda(Arrays.asList(jugador), verdaderoFalsoClasico);
 
         //When
@@ -223,7 +232,8 @@ public class Entrega2Test {
         Opcion opcion3Correcta = new Opcion("Bad Company", esCorrecta);
         Opcion opcion4Incorrecta = new Opcion("After Dark", !esCorrecta);
         Preguntable multipleChoicePenalidad = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceConPenalidad, preguntaTexto ,Arrays.asList(opcion1Incorrecta, opcion2Correcta, opcion3Correcta, opcion4Incorrecta));
-        Jugador jugador = new Jugador("Jugador1");
+        Exclusividad exclusividad = new Exclusividad();
+        Jugador jugador = new Jugador("Jugador1", exclusividad);
         Ronda ronda = new Ronda(Arrays.asList(jugador), multipleChoicePenalidad);
 
         //When
@@ -245,7 +255,8 @@ public class Entrega2Test {
         Opcion opcion4Incorrecta = new Opcion("Bob Dylan", !esCorrecta);
         Opcion opcion5Correcta = new Opcion("Dusty Hill", esCorrecta);
         Preguntable multipleChoicePenalidad = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceConPenalidad, preguntaTexto ,Arrays.asList(opcion1Incorrecta, opcion2Correcta, opcion3Correcta, opcion4Incorrecta, opcion5Correcta));
-        Jugador jugador = new Jugador("Jugador1");
+        Exclusividad exclusividad = new Exclusividad();
+        Jugador jugador = new Jugador("Jugador1", exclusividad);
         Ronda ronda = new Ronda(Arrays.asList(jugador), multipleChoicePenalidad);
 
         //When
@@ -266,7 +277,8 @@ public class Entrega2Test {
         Opcion opcion3Incorrecta = new Opcion("The Doors", !esCorrecta);
         Opcion opcion4Incorrecta = new Opcion("Eagles", !esCorrecta);
         Preguntable multipleChoicePenalidad = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceConPenalidad, preguntaTexto ,Arrays.asList(opcion1Incorrecta, opcion2Correcta, opcion3Incorrecta, opcion4Incorrecta));
-        Jugador jugador = new Jugador("Jugador1");
+        Exclusividad exclusividad = new Exclusividad();
+        Jugador jugador = new Jugador("Jugador1", exclusividad);
         Ronda ronda = new Ronda(Arrays.asList(jugador), multipleChoicePenalidad);
 
         //When
@@ -288,7 +300,8 @@ public class Entrega2Test {
         Opcion opcion4Incorrecta = new Opcion("1972", !esCorrecta);
         Opcion opcion5Incorrecta = new Opcion("1975", !esCorrecta);
         Preguntable multipleChoicePenalidad = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceConPenalidad, preguntaTexto ,Arrays.asList(opcion1Incorrecta, opcion2Correcta, opcion3Incorrecta, opcion4Incorrecta, opcion5Incorrecta));
-        Jugador jugador = new Jugador("Jugador1");
+        Exclusividad exclusividad = new Exclusividad();
+        Jugador jugador = new Jugador("Jugador1", exclusividad);
         Ronda ronda = new Ronda(Arrays.asList(jugador), multipleChoicePenalidad);
 
         //When
@@ -308,7 +321,8 @@ public class Entrega2Test {
         Opcion opcion2Correcta = new Opcion("Bob Seger", esCorrecta);
         Opcion opcion3Incorrecta = new Opcion("Ted Nugent", esCorrecta);
         Preguntable multipleChoiceClasico = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceClasico, preguntaTexto ,Arrays.asList(opcion1Incorrecta, opcion2Correcta, opcion3Incorrecta));
-        Jugador jugador = new Jugador("Jugador1");
+        Exclusividad exclusividad = new Exclusividad();
+        Jugador jugador = new Jugador("Jugador1", exclusividad);
         Ronda ronda = new Ronda(Arrays.asList(jugador), multipleChoiceClasico);
 
         //WhenThen
@@ -327,7 +341,8 @@ public class Entrega2Test {
         Opcion opcion3Correcta = new Opcion("Avril Lavigne", esCorrecta);
         Opcion opcion4Incorrecta = new Opcion("Led Zeppelin", !esCorrecta);
         Preguntable multipleChoiceParcial = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceParcial, preguntaTexto ,Arrays.asList(opcion1Incorrecta, opcion2Correcta, opcion3Correcta, opcion4Incorrecta));
-        Jugador jugador = new Jugador("Jugador1");
+        Exclusividad exclusividad = new Exclusividad();
+        Jugador jugador = new Jugador("Jugador1", exclusividad);
         Ronda ronda = new Ronda(Arrays.asList(jugador), multipleChoiceParcial);
 
         //WhenThen
@@ -350,7 +365,8 @@ public class Entrega2Test {
         List<Opcion> opciones = Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5);
         Preguntable orderedChoice = CreadorPregunta.crearPregunta(TipoPregunta.OrderedChoice,preguntaTexto,opciones);
         List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5);
-        Jugador jugador = new Jugador("Jugador1");
+        Exclusividad exclusividad = new Exclusividad();
+        Jugador jugador = new Jugador("Jugador1", exclusividad);
         Ronda ronda = new Ronda(Arrays.asList(jugador), orderedChoice);
 
         ronda.responder(jugador,opcionesSeleccionadas);
@@ -370,7 +386,8 @@ public class Entrega2Test {
         List<Opcion> opciones = Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5);
         Preguntable orderedChoice = CreadorPregunta.crearPregunta(TipoPregunta.OrderedChoice,preguntaTexto,opciones);
         List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion4, opcion5, opcion2, opcion1, opcion3);
-        Jugador jugador = new Jugador("Jugador1");
+        Exclusividad exclusividad = new Exclusividad();
+        Jugador jugador = new Jugador("Jugador1", exclusividad);
         Ronda ronda = new Ronda(Arrays.asList(jugador), orderedChoice);
 
         ronda.responder(jugador,opcionesSeleccionadas);
