@@ -7,7 +7,7 @@ import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import java.util.Iterator;
 import java.util.List;
 
-public class OrderedChoice implements Preguntable{
+public class OrderedChoice implements Preguntable <List<Opcion>>{
 
     private static final int CANTIDAD_OPCIONES_MINIMO = 2;
     private static final int CANTIDAD_OPCIONES_MAXIMO = 5;
@@ -15,10 +15,10 @@ public class OrderedChoice implements Preguntable{
     private String pregunta;
     private List<Opcion> opciones;
 
-    public OrderedChoice(String pregunta, List<Opcion> opciones) throws ParametrosInvalidosExcepcion {
-        validarOpciones(opciones);
+    public <T> OrderedChoice(String pregunta, T opciones) throws ParametrosInvalidosExcepcion {
+        validarOpciones((List<Opcion>)opciones);
         this.pregunta = pregunta;
-        this.opciones = opciones;
+        this.opciones = (List<Opcion>) opciones;
     }
 
     private void validarOpciones(List<Opcion> opciones) throws ParametrosInvalidosExcepcion {
@@ -30,12 +30,6 @@ public class OrderedChoice implements Preguntable{
 
     private Boolean tieneCantidadOpcionesValida(List<Opcion> opciones){
         return !opciones.isEmpty() && opciones.size() >= CANTIDAD_OPCIONES_MINIMO && opciones.size() <= CANTIDAD_OPCIONES_MAXIMO;
-    }
-
-
-    @Override
-    public List<Opcion> obtenerOpciones() {
-        return this.opciones;
     }
 
     @Override
@@ -59,7 +53,12 @@ public class OrderedChoice implements Preguntable{
     }
 
     @Override
-    public String obtenerPregunta() {
-        return this.pregunta;
+    public List<Opcion> obtenerOpciones(){
+        return opciones;
+    }
+
+    @Override
+    public String obtenerPregunta(){
+        return pregunta;
     }
 }

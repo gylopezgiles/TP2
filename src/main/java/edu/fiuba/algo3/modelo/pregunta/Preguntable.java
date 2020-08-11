@@ -4,13 +4,13 @@ import edu.fiuba.algo3.modelo.multiplicador.MultiplicableStrategy;
 
 import java.util.List;
 
-public interface Preguntable {
+public interface Preguntable<T> {
 
     List<Opcion> obtenerOpciones();
 
-    int establecerPuntuacion(List<Opcion> opciones);
+    int establecerPuntuacion(T opciones);
 
-    int establecerPuntuacion(List<Opcion> opciones, MultiplicableStrategy multiplicador);
+    int establecerPuntuacion(T opciones, MultiplicableStrategy multiplicador);
 
     String obtenerPregunta();
 

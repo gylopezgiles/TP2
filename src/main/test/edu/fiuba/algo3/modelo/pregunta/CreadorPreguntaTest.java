@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.pregunta;
 
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.TipoPreguntaNoImplementadaException;
+import edu.fiuba.algo3.modelo.pregunta.multiplechoice.GroupChoice;
 import edu.fiuba.algo3.modelo.pregunta.multiplechoice.MultipleChoiceClasico;
 import edu.fiuba.algo3.modelo.pregunta.multiplechoice.MultipleChoiceConPenalidad;
 import edu.fiuba.algo3.modelo.pregunta.multiplechoice.MultipleChoiceParcial;
@@ -18,62 +19,69 @@ public class CreadorPreguntaTest {
 
     @Test
     public void debeCrearPreguntaVerdaderoFalsoClasico() throws ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
-        Opcion opcionCorrecta = new Opcion("opcion", Boolean.TRUE);
-        Opcion opcionIncorrecta = new Opcion("opcion", Boolean.FALSE);
+
+        String preguntaTexto = "¿Los Elefantes son los mamiferos TERRESTRES mas grandes del mundo?";
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcionCorrecta = new Opcion("Verdadero", esCorrecta);
+        Opcion opcionIncorrecta = new Opcion("Falso", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
-        String preguntaTexto = "pregunta?";
         VerdaderoFalsoClasico preguntaEsperada = new VerdaderoFalsoClasico(preguntaTexto, opciones);
 
         Preguntable pregunta = CreadorPregunta.crearPregunta(TipoPregunta.VerdaderoFalsoClasico, preguntaTexto, opciones);
 
         Assertions.assertEquals(preguntaEsperada.getClass(), pregunta.getClass());
-        Assertions.assertEquals(preguntaEsperada.obtenerOpciones(), pregunta.obtenerOpciones());
-        Assertions.assertEquals(preguntaEsperada.obtenerPregunta(), pregunta.obtenerPregunta());
+
     }
 
     @Test
     public void debeCrearPreguntaVerdaderoFalsoPenalidad() throws ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
-        Opcion opcionCorrecta = new Opcion("opcion", Boolean.TRUE);
-        Opcion opcionIncorrecta = new Opcion("opcion", Boolean.FALSE);
+
+        String preguntaTexto = "¿Sydney es la capital de Australia?";
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcionCorrecta = new Opcion("Falso", esCorrecta);
+        Opcion opcionIncorrecta = new Opcion("Verdadero", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
-        String preguntaTexto = "pregunta?";
         VerdaderoFalsoPenalidad preguntaEsperada = new VerdaderoFalsoPenalidad(preguntaTexto, opciones);
 
         Preguntable pregunta = CreadorPregunta.crearPregunta(TipoPregunta.VerdaderoFalsoPenalidad, preguntaTexto, opciones);
 
         Assertions.assertEquals(preguntaEsperada.getClass(), pregunta.getClass());
-        Assertions.assertEquals(preguntaEsperada.obtenerOpciones(), pregunta.obtenerOpciones());
-        Assertions.assertEquals(preguntaEsperada.obtenerPregunta(), pregunta.obtenerPregunta());
     }
 
     @Test
     public void debeCrearPreguntaMultipleChoiceClasico() throws ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
-        Opcion opcionCorrecta = new Opcion("opcion", Boolean.TRUE);
-        Opcion opcionIncorrecta = new Opcion("opcion", Boolean.FALSE);
-        List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
-        String preguntaTexto = "pregunta?";
+
+        String preguntaTexto = "¿Donde nacio Simon Bolivar?";
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcionCorrecta = new Opcion("Venezuela", esCorrecta);
+        Opcion opcion2 = new Opcion("España", !esCorrecta);
+        Opcion opcion3 = new Opcion("Colombia", !esCorrecta);
+        Opcion opcion4 = new Opcion("Bolivia", !esCorrecta);
+        Opcion opcion5 = new Opcion("Ecuador", !esCorrecta);
+        List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcion2, opcion3, opcion4, opcion5);
         MultipleChoiceClasico preguntaEsperada = new MultipleChoiceClasico(preguntaTexto, opciones);
 
         Preguntable pregunta = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceClasico, preguntaTexto, opciones);
 
         Assertions.assertEquals(preguntaEsperada.getClass(), pregunta.getClass());
-        Assertions.assertEquals(preguntaEsperada.obtenerOpciones(), pregunta.obtenerOpciones());
-        Assertions.assertEquals(preguntaEsperada.obtenerPregunta(), pregunta.obtenerPregunta());
+
     }
 
     @Test
     public void debeCrearPreguntaMultipleChoiceParcial() throws ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
-        Opcion opcionCorrecta = new Opcion("opcion", Boolean.TRUE);
-        Opcion opcionIncorrecta = new Opcion("opcion", Boolean.FALSE);
-        List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
-        String preguntaTexto = "pregunta?";
+
+        String preguntaTexto = "¿Cuales ciudades pertenecen a Nueva Zelanda?";
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcion1Correcta = new Opcion("Auckland", esCorrecta);
+        Opcion opcion2Correcta = new Opcion("Wellington", esCorrecta);
+        Opcion opcion3Incorrecta = new Opcion("Canberra", !esCorrecta);
+        List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta);
         MultipleChoiceParcial preguntaEsperada = new MultipleChoiceParcial(preguntaTexto, opciones);
 
         Preguntable pregunta = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceParcial, preguntaTexto, opciones);
 
         Assertions.assertEquals(preguntaEsperada.getClass(), pregunta.getClass());
-        Assertions.assertEquals(preguntaEsperada.obtenerOpciones(), pregunta.obtenerOpciones());
-        Assertions.assertEquals(preguntaEsperada.obtenerPregunta(), pregunta.obtenerPregunta());
+
     }
 
     @Test
@@ -104,6 +112,24 @@ public class CreadorPreguntaTest {
         Preguntable pregunta = CreadorPregunta.crearPregunta(TipoPregunta.OrderedChoice, preguntaTexto, opciones);
 
         Assertions.assertEquals(OrderedChoice.class, pregunta.getClass());
+    }
+
+    @Test
+    public void debeCrearPreguntaGroupChoice() throws ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
+        String preguntaTexto = "¿Cuales ciudades pertenecen a Nueva Zelanda y cuales no?";
+
+        Boolean pertenecePrimerGrupo  = Boolean.TRUE;
+        Opcion opcion1 = new Opcion("Auckland", pertenecePrimerGrupo );
+        Opcion opcion2 = new Opcion("Wellington", pertenecePrimerGrupo );
+        Opcion opcion3 = new Opcion("Hamilton", pertenecePrimerGrupo );
+        Opcion opcion4 = new Opcion("Canberra", !pertenecePrimerGrupo );
+        Opcion opcion5 = new Opcion("Hawaii", !pertenecePrimerGrupo );
+        Opcion opcion6 = new Opcion("Oslo", !pertenecePrimerGrupo );
+        List<Opcion> opciones = Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5, opcion6);
+
+        Preguntable pregunta = CreadorPregunta.crearPregunta(TipoPregunta.GroupChoice, preguntaTexto, opciones);
+
+        Assertions.assertEquals(GroupChoice.class, pregunta.getClass());
     }
 
     @Test
