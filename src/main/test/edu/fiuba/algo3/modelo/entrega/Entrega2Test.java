@@ -340,7 +340,8 @@ public class Entrega2Test {
         Opcion opcion2Correcta = new Opcion("Bob Seger", esCorrecta);
         Opcion opcion3Incorrecta = new Opcion("Ted Nugent", !esCorrecta);
         Preguntable multipleChoiceClasico = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceClasico, preguntaTexto ,Arrays.asList(opcion1Incorrecta, opcion2Correcta, opcion3Incorrecta));
-        Jugador jugador = new Jugador("Jugador1");
+        Exclusividad exclusividad = new Exclusividad();
+        Jugador jugador = new Jugador("Jugador1", exclusividad);
         Ronda ronda = new Ronda(Arrays.asList(jugador), multipleChoiceClasico);
 
         //When
@@ -360,7 +361,8 @@ public class Entrega2Test {
         Opcion opcion3Correcta = new Opcion("Avril Lavigne", esCorrecta);
         Opcion opcion4Incorrecta = new Opcion("Led Zeppelin", !esCorrecta);
         Preguntable multipleChoiceParcial = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceParcial, preguntaTexto ,Arrays.asList(opcion1Incorrecta, opcion2Correcta, opcion3Correcta, opcion4Incorrecta));
-        Jugador jugador = new Jugador("Jugador1");
+        Exclusividad exclusividad = new Exclusividad();
+        Jugador jugador = new Jugador("Jugador1", exclusividad);
         Ronda ronda = new Ronda(Arrays.asList(jugador), multipleChoiceParcial);
 
         //When

@@ -40,7 +40,7 @@ public class Ronda {
         jugador.sumarPuntos(pregunta.establecerPuntuacion(opciones, multiplicador, exclusividad));
     }
 
-    public void responderConExclusividad(List<Opcion> opciones1, List<Opcion> opciones2, Exclusividad exclusividad) throws RondaSinPreguntaExcepcion, MultiplicadorExcepcion {
+    public void responderConExclusividad(List<Opcion> opciones1, List<Opcion> opciones2, Exclusividad exclusividad) throws RondaSinPreguntaExcepcion {
         if(pregunta == null){
             throw new RondaSinPreguntaExcepcion("No se puede responder sin una pregunta");
         }

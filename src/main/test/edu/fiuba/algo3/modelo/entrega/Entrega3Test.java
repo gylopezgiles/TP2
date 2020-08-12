@@ -2,7 +2,6 @@ package edu.fiuba.algo3.modelo.entrega;
 
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Ronda;
-import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.RondaSinPreguntaExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.TipoPreguntaNoImplementadaException;
@@ -20,7 +19,7 @@ import java.util.List;
 public class Entrega3Test {
 
     @Test
-    public void seleccionarExclusividadConVerdaderoFalsoPenalidadNoModificaPuntaje() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion, MultiplicadorExcepcion {
+    public void seleccionarExclusividadConVerdaderoFalsoPenalidadNoModificaPuntaje() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion {
         //Given
         String preguntaTexto = "¿5+9?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -43,7 +42,7 @@ public class Entrega3Test {
     }
 
     @Test
-    public void seleccionarExclusividadConMultipleChoicePenalidadNoModificaPuntaje() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion, MultiplicadorExcepcion {
+    public void seleccionarExclusividadConMultipleChoicePenalidadNoModificaPuntaje() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion {
         //Given
         String preguntaTexto = "¿En qué países se habla español?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -71,7 +70,7 @@ public class Entrega3Test {
     }
 
     @Test
-    public void seleccionarUnaVezExclusividadConMultipleChoiceClasicoDuplicaSoloElPuntajeDelJugadorQueRespondeCorrectamente() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion, MultiplicadorExcepcion {
+    public void seleccionarUnaVezExclusividadConMultipleChoiceClasicoDuplicaSoloElPuntajeDelJugadorQueRespondeCorrectamente() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion {
         //Given
         String preguntaTexto = "¿En qué países se habla español?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -99,7 +98,7 @@ public class Entrega3Test {
     }
 
     @Test
-    public void seleccionarDosVecesExclusividadConMultipleChoiceClasicoCuadruplicaSoloElPuntajeDelJugadorQueRespondeCorrectamente() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion, MultiplicadorExcepcion {
+    public void seleccionarDosVecesExclusividadConMultipleChoiceClasicoCuadruplicaSoloElPuntajeDelJugadorQueRespondeCorrectamente() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion {
         //Given
         String preguntaTexto = "¿En qué países se habla español?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -128,7 +127,7 @@ public class Entrega3Test {
     }
 
     @Test
-    public void seleccionarExclusividadConMultipleChoiceClasicoNoSumaPuntajesSiAmbosRespondenCorrectamente() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion, MultiplicadorExcepcion {
+    public void seleccionarExclusividadConMultipleChoiceClasicoNoSumaPuntajesSiAmbosRespondenCorrectamente() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion {
         //Given
         String preguntaTexto = "¿En qué países se habla español?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -157,7 +156,7 @@ public class Entrega3Test {
     }
 
     @Test
-    public void seleccionarUnaVezExclusividadConMultipleChoiceParcialDuplicaSoloElPuntajeDelJugadorQueRespondeCorrectamente() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion, MultiplicadorExcepcion {
+    public void seleccionarUnaVezExclusividadConMultipleChoiceParcialDuplicaSoloElPuntajeDelJugadorQueRespondeCorrectamente() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion {
         //Given
         String preguntaTexto = "¿En qué países se habla español?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -185,7 +184,7 @@ public class Entrega3Test {
     }
 
     @Test
-    public void seleccionarDosVecesExclusividadConMultipleChoiceParcialCuadruplicaSoloElPuntajeDelJugadorQueRespondeCorrectamente() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion, MultiplicadorExcepcion {
+    public void seleccionarDosVecesExclusividadConMultipleChoiceParcialCuadruplicaSoloElPuntajeDelJugadorQueRespondeCorrectamente() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion {
         //Given
         String preguntaTexto = "¿En qué países se habla español?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -214,7 +213,7 @@ public class Entrega3Test {
     }
 
     @Test
-    public void seleccionarExclusividadConMultipleChoiceParcialNoSumaPuntajesSiAmbosRespondenCorrectamente() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion, MultiplicadorExcepcion {
+    public void seleccionarExclusividadConMultipleChoiceParcialNoSumaPuntajesSiAmbosRespondenCorrectamente() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion {
         //Given
         String preguntaTexto = "¿En qué países se habla español?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -243,7 +242,7 @@ public class Entrega3Test {
     }
 
     @Test
-    public void seleccionarUnaVezExclusividadConVerdaderoFalsoClasicoDuplicaSoloElPuntajeDelJugadorQueRespondeCorrectamente() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion, MultiplicadorExcepcion {
+    public void seleccionarUnaVezExclusividadConVerdaderoFalsoClasicoDuplicaSoloElPuntajeDelJugadorQueRespondeCorrectamente() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion {
         //Given
         String preguntaTexto = "¿5+9?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -266,7 +265,7 @@ public class Entrega3Test {
     }
 
     @Test
-    public void seleccionarDosVecesExclusividadConVerdaderoFalsoClasicoCuadruplicaSoloElPuntajeDelJugadorQueRespondeCorrectamente() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion, MultiplicadorExcepcion {
+    public void seleccionarDosVecesExclusividadConVerdaderoFalsoClasicoCuadruplicaSoloElPuntajeDelJugadorQueRespondeCorrectamente() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion {
         //Given
         String preguntaTexto = "¿5+9?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -290,7 +289,7 @@ public class Entrega3Test {
     }
 
     @Test
-    public void seleccionarExclusividadConVerdaderoFalsoClasicoNoSumaPuntajesSiAmbosRespondenCorrectamente() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion, MultiplicadorExcepcion {
+    public void seleccionarExclusividadConVerdaderoFalsoClasicoNoSumaPuntajesSiAmbosRespondenCorrectamente() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion {
         //Given
         String preguntaTexto = "¿5+9?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -314,7 +313,7 @@ public class Entrega3Test {
     }
 
     @Test
-    public void seleccionarUnaVezExclusividadConOrderedChoiceDuplicaSoloElPuntajeDelJugadorQueRespondeCorrectamente() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion, MultiplicadorExcepcion {
+    public void seleccionarUnaVezExclusividadConOrderedChoiceDuplicaSoloElPuntajeDelJugadorQueRespondeCorrectamente() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion {
         //Given
         String preguntaTexto = "Ordenar las palabras alfabéticamente";
         Boolean esCorrecta = Boolean.TRUE;
@@ -343,7 +342,7 @@ public class Entrega3Test {
     }
 
     @Test
-    public void seleccionarDosVecesExclusividadConOrderedChoiceCuadruplicaSoloElPuntajeDelJugadorQueRespondeCorrectamente() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion, MultiplicadorExcepcion {
+    public void seleccionarDosVecesExclusividadConOrderedChoiceCuadruplicaSoloElPuntajeDelJugadorQueRespondeCorrectamente() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion {
         //Given
         String preguntaTexto = "Ordenar las palabras alfabéticamente";
         Boolean esCorrecta = Boolean.TRUE;
@@ -373,7 +372,7 @@ public class Entrega3Test {
     }
 
     @Test
-    public void seleccionarExclusividadConOrderedChoiceNoSumaPuntajesSiAmbosRespondenCorrectamente() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion, MultiplicadorExcepcion {
+    public void seleccionarExclusividadConOrderedChoiceNoSumaPuntajesSiAmbosRespondenCorrectamente() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion {
         //Given
         String preguntaTexto = "Ordenar las palabras alfabéticamente";
         Boolean esCorrecta = Boolean.TRUE;
