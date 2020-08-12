@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo.pregunta.multiplechoice;
 
-import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
@@ -9,7 +8,7 @@ import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public abstract class MultipleChoice implements Preguntable {
+public abstract class MultipleChoice implements Preguntable<List<Opcion>> {
 
     private static final int CANTIDAD_OPCIONES_MINIMO = 2;
     private static final int CANTIDAD_OPCIONES_MAXIMO = 5;
@@ -26,6 +25,10 @@ public abstract class MultipleChoice implements Preguntable {
         }
     }
 
+    protected boolean tieneOpcionesIncorrectas(List<Opcion> opciones){
+        return (opciones.stream().filter(opcion -> !opcion.esCorrecta()).count() > 0);
+    }
+
     private Boolean tieneCantidadOpcionesValida(List<Opcion> opciones){
         return !opciones.isEmpty() && opciones.size() >= CANTIDAD_OPCIONES_MINIMO && opciones.size() <= CANTIDAD_OPCIONES_MAXIMO;
     }
@@ -36,17 +39,17 @@ public abstract class MultipleChoice implements Preguntable {
     }
 
     @Override
-    public List<Opcion> obtenerOpciones() {
-        return this.opciones;
+    public List<Opcion> obtenerOpciones(){
+        return opciones;
     }
 
     @Override
-    public String obtenerPregunta() {
+    public String obtenerPregunta(){
         return pregunta;
     }
 
     @Override
-    public int establecerPuntuacion(List<Opcion> opciones) throws MultiplicadorExcepcion {
+    public int establecerPuntuacion(List<Opcion> opciones) {
         return establecerPuntuacion(opciones, Multiplicador.PorDefecto);
     }
 

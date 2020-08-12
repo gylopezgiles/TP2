@@ -6,7 +6,6 @@ import edu.fiuba.algo3.modelo.pregunta.CreadorPregunta;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 import edu.fiuba.algo3.modelo.pregunta.TipoPregunta;
-import edu.fiuba.algo3.modelo.pregunta.multiplechoice.MultipleChoiceClasico;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -33,7 +32,7 @@ public class RondaTest {
     }
 
     @Test
-    public void debeResponderUnaPreguntaParaUnJugador() throws RondaSinPreguntaExcepcion, ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException, MultiplicadorExcepcion {
+    public void debeResponderUnaPreguntaParaUnJugador() throws RondaSinPreguntaExcepcion, ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
         Jugador jugador1 = new Jugador("jugador1");
         Jugador jugador2 = new Jugador("jugador2");
         List<Jugador> jugadores = Arrays.asList(jugador1, jugador2);
@@ -66,7 +65,7 @@ public class RondaTest {
     }
 
     @Test
-    public void debeResponderUnaPreguntaParaUnJugadorConMultiplicadores() throws RondaSinPreguntaExcepcion, ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException, MultiplicadorExcepcion {
+    public void debeResponderUnaPreguntaParaUnJugadorConMultiplicadores() throws RondaSinPreguntaExcepcion, ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
         Jugador jugador1 = new Jugador("jugador1");
         Jugador jugador2 = new Jugador("jugador2");
         List<Jugador> jugadores = Arrays.asList(jugador1, jugador2);
@@ -119,7 +118,7 @@ public class RondaTest {
     }
 
     @Test
-    public void respondeHastaFinalizarRonda() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, MultiplicadorExcepcion, RondaSinPreguntaExcepcion {
+    public void respondeHastaFinalizarRonda() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion {
         Jugador jugador1 = new Jugador("jugador1");
         Jugador jugador2 = new Jugador("jugador2");
         List<Jugador> jugadores = Arrays.asList(jugador1, jugador2);

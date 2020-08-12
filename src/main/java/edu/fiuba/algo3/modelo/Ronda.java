@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.RondaSinPreguntaExcepcion;
 import edu.fiuba.algo3.modelo.multiplicador.MultiplicableStrategy;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
@@ -38,11 +37,11 @@ public class Ronda {
         return pregunta;
     }
 
-    public void responder(List<Opcion> opciones) throws RondaSinPreguntaExcepcion, MultiplicadorExcepcion {
+    public void responder(List<Opcion> opciones) throws RondaSinPreguntaExcepcion {
         responder(opciones, Multiplicador.PorDefecto);
     }
 
-    public void responder(List<Opcion> opciones, MultiplicableStrategy multiplicador) throws RondaSinPreguntaExcepcion, MultiplicadorExcepcion {
+    public void responder(List<Opcion> opciones, MultiplicableStrategy multiplicador) throws RondaSinPreguntaExcepcion {
         if(pregunta == null){
             throw new RondaSinPreguntaExcepcion("No se puede responder sin una pregunta");
         }

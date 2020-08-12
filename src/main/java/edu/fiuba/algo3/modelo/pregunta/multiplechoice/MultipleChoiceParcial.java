@@ -1,9 +1,7 @@
 package edu.fiuba.algo3.modelo.pregunta.multiplechoice;
 
-import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.multiplicador.MultiplicableStrategy;
-import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.TipoPregunta;
 
@@ -12,17 +10,14 @@ import java.util.Optional;
 
 public class MultipleChoiceParcial extends MultipleChoice {
 
-    public  MultipleChoiceParcial(String pregunta, List<Opcion> opciones) throws ParametrosInvalidosExcepcion {
-        validarOpciones(opciones);
-        this.opciones = opciones;
+    public <T> MultipleChoiceParcial(String pregunta, T opciones) throws ParametrosInvalidosExcepcion {
+        validarOpciones((List<Opcion>) opciones);
+        this.opciones = (List<Opcion>) opciones;
         this.pregunta = pregunta;
     }
 
     @Override
-    public int establecerPuntuacion(List<Opcion> opciones, MultiplicableStrategy multiplicador) throws MultiplicadorExcepcion {
-        if(!multiplicador.equals(Multiplicador.PorDefecto)){
-            throw new MultiplicadorExcepcion("Solo se puede aplicar multiplicadores a preguntas con penalidad");
-        }
+    public int establecerPuntuacion(List<Opcion> opciones, MultiplicableStrategy multiplicador) {
         Optional<Opcion> opcion = opciones.stream()
                 .filter(op -> !op.esCorrecta())
                 .findAny();

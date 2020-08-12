@@ -1,17 +1,15 @@
 package edu.fiuba.algo3.modelo.pregunta;
 
-import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.multiplicador.MultiplicableStrategy;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class OrderedChoice implements Preguntable{
+public class OrderedChoice implements Preguntable <List<Opcion>>{
 
     private static final int CANTIDAD_OPCIONES_MINIMO = 2;
     private static final int CANTIDAD_OPCIONES_MAXIMO = 5;
@@ -19,10 +17,10 @@ public class OrderedChoice implements Preguntable{
     private String pregunta;
     private List<Opcion> opciones;
 
-    public OrderedChoice(String pregunta, List<Opcion> opciones) throws ParametrosInvalidosExcepcion {
-        validarOpciones(opciones);
+    public <T> OrderedChoice(String pregunta, T opciones) throws ParametrosInvalidosExcepcion {
+        validarOpciones((List<Opcion>)opciones);
         this.pregunta = pregunta;
-        this.opciones = opciones;
+        this.opciones = (List<Opcion>) opciones;
     }
 
     private void validarOpciones(List<Opcion> opciones) throws ParametrosInvalidosExcepcion {
@@ -36,23 +34,13 @@ public class OrderedChoice implements Preguntable{
         return !opciones.isEmpty() && opciones.size() >= CANTIDAD_OPCIONES_MINIMO && opciones.size() <= CANTIDAD_OPCIONES_MAXIMO;
     }
 
-
     @Override
-    public List<Opcion> obtenerOpciones() {
-        return this.opciones;
-    }
-
-    @Override
-    public int establecerPuntuacion(List<Opcion> opciones) throws MultiplicadorExcepcion {
+    public int establecerPuntuacion(List<Opcion> opciones) {
         return establecerPuntuacion(opciones, Multiplicador.PorDefecto);
     }
 
     @Override
-    public int establecerPuntuacion(List<Opcion> opciones, MultiplicableStrategy multiplicador) throws MultiplicadorExcepcion {
-        if(!multiplicador.equals(Multiplicador.PorDefecto)){
-            throw new MultiplicadorExcepcion("Solo se puede aplicar multiplicadores a preguntas con penalidad");
-        }
-
+    public int establecerPuntuacion(List<Opcion> opciones, MultiplicableStrategy multiplicador) {
         return tieneElOrdenAdecuado(opciones.iterator(),this.obtenerOpciones().iterator()) ? 1: 0;
     }
 
@@ -72,8 +60,13 @@ public class OrderedChoice implements Preguntable{
     }
 
     @Override
-    public String obtenerPregunta() {
-        return this.pregunta;
+    public List<Opcion> obtenerOpciones(){
+        return opciones;
+    }
+
+    @Override
+    public String obtenerPregunta(){
+        return pregunta;
     }
 
     @Override

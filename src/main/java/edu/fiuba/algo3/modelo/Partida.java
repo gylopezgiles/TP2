@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.excepciones.MultiplicadorExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.RondaSinPreguntaExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.TipoPreguntaNoImplementadaException;
@@ -77,8 +76,6 @@ public class Partida {
             ronda.responder(opciones);
         } catch (RondaSinPreguntaExcepcion rondaSinPreguntaExcepcion) {
             rondaSinPreguntaExcepcion.printStackTrace();
-        } catch (MultiplicadorExcepcion multiplicadorExcepcion) {
-            multiplicadorExcepcion.printStackTrace();
         }
     }
 
