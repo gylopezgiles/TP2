@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo.pregunta.multiplechoice;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
+import edu.fiuba.algo3.modelo.pregunta.TipoPregunta;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -81,6 +82,7 @@ public class MultipleChoiceConPenalidadTest {
         int puntuacion = multipleChoiceConPenalidad.establecerPuntuacion(opcionesSeleccionadas);
 
         Assertions.assertEquals(3, puntuacion);
+        Assertions.assertEquals(TipoPregunta.MultipleChoiceConPenalidad, multipleChoiceConPenalidad.obtenerTipoPregunta());
     }
 
     @Test
@@ -151,6 +153,22 @@ public class MultipleChoiceConPenalidadTest {
         int puntuacion = multipleChoiceConPenalidad.establecerPuntuacion(opcionesSeleccionadas);
 
         Assertions.assertEquals(-3, puntuacion);
+    }
+
+    @Test
+    public void obtenerOpcionesPorNombreTest() throws ParametrosInvalidosExcepcion {
+        String preguntaTexto = "Cuáles de los siguientes artistas interpretaron la canción Proud Mary";
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcionCorrecta1 = new Opcion("Creedence Clearwater Revival", esCorrecta);
+        Opcion opcionCorrecta2 = new Opcion("Tina Turner", esCorrecta);
+        Opcion opcionIncorrecta3 = new Opcion("Radiohead", !esCorrecta);
+        List<Opcion> opciones = Arrays.asList(opcionCorrecta1, opcionCorrecta2, opcionIncorrecta3);
+        List<String> opcionesPorNombre = Arrays.asList("Creedence Clearwater Revival", "Tina Turner", "Radiohead");
+        Preguntable multipleChoiceConPenalidad = new MultipleChoiceConPenalidad(preguntaTexto, opciones);
+
+        List<Opcion> opcionesObtenidas = multipleChoiceConPenalidad.obtenerOpcionesPorNombre(opcionesPorNombre);
+
+        Assertions.assertEquals(opciones, opcionesObtenidas);
     }
 
 }
