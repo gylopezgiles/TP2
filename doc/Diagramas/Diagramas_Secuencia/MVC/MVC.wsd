@@ -1,10 +1,11 @@
 @startuml
-title Diagrama de secuencia del juego
+title Diagrama de clase del modelo MVC
 skinparam classAttributeIconSize 0
+hide circle
 
 
 class ModeloKahoot{
-
+    
 }
 
 class VistaKahoot{
@@ -16,6 +17,9 @@ class Controlador{
 }
 
 
+VistaKahoot <-> Controlador
+Controlador --> ModeloKahoot
+VistaKahoot --> ModeloKahoot
 
 
 

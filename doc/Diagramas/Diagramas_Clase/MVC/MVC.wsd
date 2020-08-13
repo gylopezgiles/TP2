@@ -10,7 +10,7 @@ Kahoot -> Kahoot: iniciar()
 
 
 create "pantallaPrincal:PantallaPrincipal" as PantallaPrincipal
-Kahoot -> PantallaPrincipal: <<create()>>
+Kahoot -> PantallaPrincipal: <<create>>
 
 create ":PanelInicial" as PanelInicial
 PantallaPrincipal -> PanelInicial: <<create>>
