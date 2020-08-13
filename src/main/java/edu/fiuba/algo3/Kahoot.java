@@ -30,7 +30,6 @@ public class Kahoot {
         controladorPanel = new ControladorPanel(pantallaPrincipal);
 
         pantallaPrincipal.conectaControladorPrincipal(controladorPanel);
-
     }
 
 }
