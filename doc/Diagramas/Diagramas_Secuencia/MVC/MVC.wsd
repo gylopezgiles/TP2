@@ -1,26 +1,29 @@
 @startuml
-title Diagrama de clase del modelo MVC
-skinparam classAttributeIconSize 0
-hide circle
+title Diagrama de secuencia conectando Vista con Controlador
+hide footbox
+
+create App
+create ":Kahoot" as Kahoot
+App -> Kahoot
+
+Kahoot -> Kahoot: iniciar()
 
 
-class ModeloKahoot{
-    
-}
+create "pantallaPrincal:PantallaPrincipal" as PantallaPrincipal
+Kahoot -> PantallaPrincipal: <<create>>
 
-class VistaKahoot{
+create ":PanelInicial" as PanelInicial
+PantallaPrincipal -> PanelInicial: <<create>>
 
-}
-
-class Controlador{
-
-}
+create ":PanelPregunta" as PanelPregunta
+PantallaPrincipal -> PanelPregunta: <<create>>
 
 
-VistaKahoot <-> Controlador
-Controlador --> ModeloKahoot
-VistaKahoot --> ModeloKahoot
+PantallaPrincipal -> PantallaPrincipal: configurarPantallaPrincipal()
 
+create ":ControladorPanel" as ControladorPanel
+Kahoot -> ControladorPanel: << create(pantallaPrincipal) >>
 
+PantallaPrincipal -> PantallaPrincipal: conectaControladorPrincipal(controladorPanel)
 
 @enduml
