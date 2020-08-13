@@ -6,6 +6,8 @@ import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class OrderedChoice implements Preguntable <List<Opcion>>{
 
@@ -42,6 +44,11 @@ public class OrderedChoice implements Preguntable <List<Opcion>>{
         return tieneElOrdenAdecuado(opciones.iterator(),this.obtenerOpciones().iterator()) ? 1: 0;
     }
 
+    @Override
+    public TipoPregunta obtenerTipoPregunta() {
+        return TipoPregunta.OrderedChoice;
+    }
+
     boolean tieneElOrdenAdecuado(Iterator<Opcion> opcionesSeleccionadas, Iterator<Opcion> opcionesOrdenadas){
         Opcion opcionSeleccionada = opcionesSeleccionadas.next();
         Opcion opcionOrdenada = opcionesOrdenadas.next();
@@ -60,5 +67,17 @@ public class OrderedChoice implements Preguntable <List<Opcion>>{
     @Override
     public String obtenerPregunta(){
         return pregunta;
+    }
+
+    @Override
+    public List<Opcion> obtenerOpcionesPorNombre(List<String> opcionesSeleccionadas) {
+        return opcionesSeleccionadas.stream().map(opcionSeleccionada -> obtenerOpcionPorNombre(opcionSeleccionada)).collect(Collectors.toList());
+    }
+
+    private Opcion obtenerOpcionPorNombre(String nombre){
+        Optional<Opcion> opcion = opciones.stream()
+                .filter(op -> op.obtenerTexto().compareTo(nombre) == 0)
+                .findFirst();
+        return opcion.get();
     }
 }
