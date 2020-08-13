@@ -1,0 +1,22 @@
+@startuml
+title Diagrama de secuencia del juego
+skinparam classAttributeIconSize 0
+
+
+class ModeloKahoot{
+
+}
+
+class VistaKahoot{
+
+}
+
+class Controlador{
+
+}
+
+
+
+
+
+@enduml
