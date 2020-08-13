@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.multiplicador.MultiplicableStrategy;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
+import edu.fiuba.algo3.modelo.pregunta.TipoPregunta;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,6 +24,11 @@ public class MultipleChoiceConPenalidad extends MultipleChoice {
                 .findAny();
         int puntosObtenidos = opcion.isPresent() ? puntajeOpcionesIncorrectas(opciones) : puntajeOpcionesCorrectas(opciones);
         return multiplicador.aplicarMultiplicador(puntosObtenidos);
+    }
+
+    @Override
+    public TipoPregunta obtenerTipoPregunta() {
+        return TipoPregunta.MultipleChoiceConPenalidad;
     }
 
     private int puntajeOpcionesCorrectas(List<Opcion> opciones) {

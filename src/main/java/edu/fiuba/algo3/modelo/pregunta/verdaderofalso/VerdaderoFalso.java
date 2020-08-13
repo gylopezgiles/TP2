@@ -50,4 +50,10 @@ public abstract class VerdaderoFalso implements Preguntable<List<Opcion>> {
     public String obtenerPregunta() {
         return pregunta;
     }
+
+    @Override
+    public List<Opcion> obtenerOpcionesPorNombre(List<String> opcionesSeleccionadas) {
+        return opciones.stream().filter(op -> opcionesSeleccionadas.contains(op.obtenerTexto())).collect(Collectors.toList());
+    }
+
 }

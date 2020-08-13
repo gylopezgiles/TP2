@@ -51,7 +51,7 @@ public class Entrega0Test {
         Ronda ronda = new Ronda(jugadores, verdaderoFalsoClasico);
 
         //When
-        ronda.responder(jugador, opcionSeleccionada);
+        ronda.responder(opcionSeleccionada);
 
         //Then
         Assertions.assertEquals(1, jugador.obtenerPuntos());

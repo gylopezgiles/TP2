@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
+import edu.fiuba.algo3.modelo.pregunta.TipoPregunta;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -29,7 +30,7 @@ public class MultipleChoiceClasicoTest {
         //When
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
 
-        Assertions.assertEquals(MultipleChoiceClasico.class, multipleChoiceClasico.getClass());
+        Assertions.assertEquals(TipoPregunta.MultipleChoiceClasico, multipleChoiceClasico.obtenerTipoPregunta());
     }
 
     @Test
@@ -229,6 +230,22 @@ public class MultipleChoiceClasicoTest {
         Assertions.assertEquals(1, multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDos, exclusividad));
         Assertions.assertEquals(1, multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorTres, exclusividad));
 
+    }
+
+    @Test
+    public void obtenerOpcionesPorNombreTest() throws ParametrosInvalidosExcepcion {
+        String preguntaTexto = "Cuáles de los siguientes artistas interpretaron la canción Proud Mary";
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcionCorrecta1 = new Opcion("Creedence Clearwater Revival", esCorrecta);
+        Opcion opcionCorrecta2 = new Opcion("Tina Turner", esCorrecta);
+        Opcion opcionIncorrecta3 = new Opcion("Radiohead", !esCorrecta);
+        List<Opcion> opciones = Arrays.asList(opcionCorrecta1, opcionCorrecta2, opcionIncorrecta3);
+        List<String> opcionesPorNombre = Arrays.asList("Creedence Clearwater Revival", "Tina Turner", "Radiohead");
+        Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
+
+        List<Opcion> opcionesObtenidas = multipleChoiceClasico.obtenerOpcionesPorNombre(opcionesPorNombre);
+
+        Assertions.assertEquals(opciones, opcionesObtenidas);
     }
 
 }

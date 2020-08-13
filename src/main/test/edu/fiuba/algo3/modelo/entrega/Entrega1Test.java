@@ -90,7 +90,7 @@ public class Entrega1Test {
         Ronda ronda = new Ronda(jugadores, verdaderoFalsoPenalidad);
 
         //When
-        ronda.responder(jugador, opcionSeleccionada);
+        ronda.responder(opcionSeleccionada);
 
         //Then
         Assertions.assertEquals(1, jugador.obtenerPuntos());
@@ -113,7 +113,7 @@ public class Entrega1Test {
         Ronda ronda = new Ronda(jugadores, verdaderoFalsoPenalidad);
 
         //When
-        ronda.responder(jugador, opcionSeleccionada);
+        ronda.responder(opcionSeleccionada);
 
         //Then
         Assertions.assertEquals(-1, jugador.obtenerPuntos());
@@ -139,7 +139,7 @@ public class Entrega1Test {
         Ronda ronda = new Ronda(jugadores, multipleChoiceClasico);
 
         //When
-        ronda.responder(jugador, opcionSeleccionada);
+        ronda.responder(opcionSeleccionada);
 
         //Then
         Assertions.assertEquals(1, jugador.obtenerPuntos());
@@ -165,7 +165,7 @@ public class Entrega1Test {
         Ronda ronda = new Ronda(jugadores, multipleChoiceClasico);
 
         //When
-        ronda.responder(jugador, opcionSeleccionada);
+        ronda.responder(opcionSeleccionada);
 
         //Then
         Assertions.assertEquals(0, jugador.obtenerPuntos());
@@ -189,7 +189,7 @@ public class Entrega1Test {
         Ronda ronda = new Ronda(jugadores, multipleChoiceParcial);
 
         //When
-        ronda.responder(jugador, opcionesSeleccionadas);
+        ronda.responder(opcionesSeleccionadas);
 
         //Then
         Assertions.assertEquals(2, jugador.obtenerPuntos());
@@ -213,7 +213,7 @@ public class Entrega1Test {
         Ronda ronda = new Ronda(jugadores, multipleChoiceParcial);
 
         //When
-        ronda.responder(jugador, opcionesSeleccionadas);
+        ronda.responder(opcionesSeleccionadas);
 
         //Then
         Assertions.assertEquals(1, jugador.obtenerPuntos());
@@ -237,7 +237,7 @@ public class Entrega1Test {
         Ronda ronda = new Ronda(jugadores, multipleChoiceParcial);
 
         //When
-        ronda.responder(jugador, opcionesSeleccionadas);
+        ronda.responder(opcionesSeleccionadas);
 
         //Then
         Assertions.assertEquals(0, jugador.obtenerPuntos());

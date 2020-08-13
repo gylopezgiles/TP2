@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
+import edu.fiuba.algo3.modelo.pregunta.TipoPregunta;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -25,7 +26,9 @@ public class VerdaderoFalsoClasicoTest {
 
         Preguntable verdaderoFalsoClasico = new VerdaderoFalsoClasico(preguntaTexto, opciones);
 
-        Assertions.assertEquals(VerdaderoFalsoClasico.class, verdaderoFalsoClasico.getClass());
+        Assertions.assertEquals(opciones, verdaderoFalsoClasico.obtenerOpciones());
+        Assertions.assertEquals(preguntaTexto, verdaderoFalsoClasico.obtenerPregunta());
+        Assertions.assertEquals(TipoPregunta.VerdaderoFalsoClasico, verdaderoFalsoClasico.obtenerTipoPregunta());
     }
 
     @Test
@@ -87,6 +90,20 @@ public class VerdaderoFalsoClasicoTest {
 
         Assertions.assertEquals(1, verdaderoFalsoClasico.establecerPuntuacion(opcionSeleccionada, Multiplicador.PorDos, exclusividad));
         Assertions.assertEquals(1, verdaderoFalsoClasico.establecerPuntuacion(opcionSeleccionada, Multiplicador.PorTres, exclusividad));
+    }
+
+    @Test
+    public void obtenerOpcionesPorNombreTest() throws ParametrosInvalidosExcepcion {
+        Opcion opcionCorrecta = new Opcion("Verdadero", Boolean.TRUE);
+        Opcion opcionIncorrecta = new Opcion("Falso", Boolean.FALSE);
+        List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
+        String preguntaTexto = "pregunta?";
+        List<String> opcionesPorNombre = Arrays.asList("Verdadero", "Falso");
+        Preguntable verdaderoFalsoClasico = new VerdaderoFalsoClasico(preguntaTexto, opciones);
+
+        List<Opcion> opcionesObtenidas = verdaderoFalsoClasico.obtenerOpcionesPorNombre(opcionesPorNombre);
+
+        Assertions.assertEquals(opciones, opcionesObtenidas);
     }
 
 }

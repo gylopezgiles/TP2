@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
+import edu.fiuba.algo3.modelo.pregunta.TipoPregunta;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -24,7 +25,9 @@ public class VerdaderoFalsoPenalidadTest {
 
         Preguntable verdaderoFalsoPenalidad = new VerdaderoFalsoPenalidad(preguntaTexto, opciones);
 
-        Assertions.assertEquals(VerdaderoFalsoPenalidad.class, verdaderoFalsoPenalidad.getClass());
+        Assertions.assertEquals(opciones, verdaderoFalsoPenalidad.obtenerOpciones());
+        Assertions.assertEquals(preguntaTexto, verdaderoFalsoPenalidad.obtenerPregunta());
+        Assertions.assertEquals(TipoPregunta.VerdaderoFalsoPenalidad, verdaderoFalsoPenalidad.obtenerTipoPregunta());
     }
 
     @Test
@@ -133,4 +136,17 @@ public class VerdaderoFalsoPenalidadTest {
         Assertions.assertEquals(-2, verdaderoFalsoConPenalidad.establecerPuntuacion(opcionSeleccionada, Multiplicador.PorDos, exclusividad));
     }
 
+    @Test
+    public void obtenerOpcionesPorNombreTest() throws ParametrosInvalidosExcepcion {
+        Opcion opcionCorrecta = new Opcion("Verdadero", Boolean.TRUE);
+        Opcion opcionIncorrecta = new Opcion("Falso", Boolean.FALSE);
+        List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
+        String preguntaTexto = "pregunta?";
+        List<String> opcionesPorNombre = Arrays.asList("Verdadero", "Falso");
+        Preguntable verdaderoFalsoConPenalidad = new VerdaderoFalsoPenalidad(preguntaTexto, opciones);
+
+        List<Opcion> opcionesObtenidas = verdaderoFalsoConPenalidad.obtenerOpcionesPorNombre(opcionesPorNombre);
+
+        Assertions.assertEquals(opciones, opcionesObtenidas);
+    }
 }

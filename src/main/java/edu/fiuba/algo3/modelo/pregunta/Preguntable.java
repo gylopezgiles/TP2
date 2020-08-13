@@ -12,6 +12,9 @@ public interface Preguntable<T> {
 
     int establecerPuntuacion(T opciones, MultiplicableStrategy multiplicador, Exclusividad exclusividad);
 
+    TipoPregunta obtenerTipoPregunta();
+
     String obtenerPregunta();
 
+    List<Opcion> obtenerOpcionesPorNombre(List<String> opcionesSeleccionadas);
 }

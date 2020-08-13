@@ -55,4 +55,14 @@ public abstract class MultipleChoice implements Preguntable<List<Opcion>> {
         return pregunta;
     }
 
+    @Override
+    public int establecerPuntuacion(List<Opcion> opciones) {
+        return establecerPuntuacion(opciones, Multiplicador.PorDefecto);
+    }
+
+    @Override
+    public List<Opcion> obtenerOpcionesPorNombre(List<String> opcionesSeleccionadas) {
+        return opciones.stream().filter(op -> opcionesSeleccionadas.contains(op.obtenerTexto())).collect(Collectors.toList());
+    }
+
 }
