@@ -41,6 +41,11 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.10.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-swing</artifactId>
+            <version>16-ea+1</version>
+        </dependency>
     </dependencies>
     <build>
         <testSourceDirectory>src/main/test</testSourceDirectory>
@@ -73,6 +78,9 @@
                 <configuration>
                     <excludes>
                         <exclude>**/edu/fiuba/algo3/interfazGrafica/*</exclude>
+                        <exclude>**/edu/fiuba/algo3/App.java</exclude>
+                        <exclude>**/edu/fiuba/algo3/Kahoot.java</exclude>
+                        <exclude>**/edu/fiuba/algo3/controlador/*</exclude>
                     </excludes>
                 </configuration>
 

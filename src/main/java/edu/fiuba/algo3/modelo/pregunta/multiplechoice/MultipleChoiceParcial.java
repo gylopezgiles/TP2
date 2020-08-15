@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo.pregunta.multiplechoice;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.multiplicador.MultiplicableStrategy;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
+import edu.fiuba.algo3.modelo.pregunta.TipoPregunta;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,6 +22,11 @@ public class MultipleChoiceParcial extends MultipleChoice {
                 .filter(op -> !op.esCorrecta())
                 .findAny();
         return opcion.isPresent() ? 0 : puntajeOpcionesCorrectas(opciones);
+    }
+
+    @Override
+    public TipoPregunta obtenerTipoPregunta() {
+        return TipoPregunta.MultipleChoiceParcial;
     }
 
     private int puntajeOpcionesCorrectas(List<Opcion> opciones) {
