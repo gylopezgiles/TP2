@@ -4,6 +4,7 @@ import edu.fiuba.algo3.interfazGrafica.PantallaPrincipal;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Partida;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
+import edu.fiuba.algo3.modelo.pregunta.cargador.CargadorPreguntas;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -34,7 +35,7 @@ public class ControladorPanel implements ActionListener {
 
     private void jugar(){
         List<String> nombresJugadores = pantallaPrincipal.obtenerJugadores();
-        partida = new Partida(nombresJugadores);
+        partida = new Partida(nombresJugadores, CargadorPreguntas.obtenerInstancia().obtenerPreguntas());
         pantallaPrincipal.iniciarPartida();
         establecerTurno();
     }
@@ -51,7 +52,6 @@ public class ControladorPanel implements ActionListener {
     }
 
     private void establecerTurno(){
-        partida.establecerTurno();
         Preguntable pregunta = partida.obtenerPreguntaTurno();
         Jugador jugador = partida.obtenerJugadorTurno();
         pantallaPrincipal.establecerTurno(pregunta, jugador);
