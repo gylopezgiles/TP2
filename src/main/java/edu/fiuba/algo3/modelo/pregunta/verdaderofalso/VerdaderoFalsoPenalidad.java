@@ -10,14 +10,15 @@ import java.util.Optional;
 
 public class VerdaderoFalsoPenalidad extends VerdaderoFalso {
 
-    public <T> VerdaderoFalsoPenalidad(String pregunta, T opciones) throws ParametrosInvalidosExcepcion {
-        validarOpciones((List<Opcion>) opciones);
+    public VerdaderoFalsoPenalidad(String pregunta, List<Opcion> opciones) throws ParametrosInvalidosExcepcion {
+        validarOpciones(opciones);
         this.pregunta = pregunta;
-        this.opciones = (List<Opcion>) opciones;
+        this.opciones = opciones;
     }
 
     @Override
-    public int establecerPuntuacion(List<Opcion> opciones, MultiplicableStrategy multiplicador) {
+    public int establecerPuntuacion(List<String> nombresOpcionesSeleccionadas, MultiplicableStrategy multiplicador) {
+        List<Opcion> opciones = obtenerOpcionesPorNombre(nombresOpcionesSeleccionadas);
         Optional<Opcion> opcion = opciones.stream()
                 .filter(op -> op.esCorrecta())
                 .findAny();

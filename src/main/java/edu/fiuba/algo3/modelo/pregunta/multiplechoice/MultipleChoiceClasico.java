@@ -9,14 +9,15 @@ import java.util.List;
 
 public class MultipleChoiceClasico extends MultipleChoice {
 
-    public <T>  MultipleChoiceClasico(String pregunta, T opciones) throws ParametrosInvalidosExcepcion {
-        validarOpciones((List<Opcion>) opciones);
-        this.opciones = (List<Opcion>) opciones;
+    public MultipleChoiceClasico(String pregunta, List<Opcion> opciones) throws ParametrosInvalidosExcepcion {
+        validarOpciones(opciones);
+        this.opciones = opciones;
         this.pregunta = pregunta;
     }
 
     @Override
-    public int establecerPuntuacion(List<Opcion> opciones, MultiplicableStrategy multiplicador) {
+    public int establecerPuntuacion(List<String> opcionesSeleccionadas, MultiplicableStrategy multiplicador) {
+        List<Opcion> opciones = obtenerOpcionesPorNombre(opcionesSeleccionadas);
         boolean sonTodasCorrectas = cantidadDeOpcionesCorrectas(opciones) == cantidadDeOpcionesCorrectas(this.opciones);
         return !tieneOpcionesIncorrectas(opciones) && sonTodasCorrectas ? 1 : 0;
     }

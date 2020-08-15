@@ -40,11 +40,12 @@ public class RondaTest {
         Opcion opcionCorrecta = new Opcion("opcion", Boolean.TRUE);
         Opcion opcionIncorrecta = new Opcion("opcion", Boolean.FALSE);
         List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
+        List<String> opcionesSeleccionadas = Arrays.asList("opcion", "opcion");
         Preguntable pregunta = CreadorPregunta.crearPregunta(TipoPregunta.VerdaderoFalsoClasico, "pregunta" ,opciones);
 
         Ronda ronda = new Ronda(jugadores, pregunta);
 
-        ronda.responder(opciones);
+        ronda.responder(opcionesSeleccionadas);
 
         Assertions.assertEquals(1, jugador1.obtenerPuntos());
     }
@@ -55,12 +56,11 @@ public class RondaTest {
         Jugador jugador2 = new Jugador("jugador2");
         List<Jugador> jugadores = Arrays.asList(jugador1, jugador2);
 
-        Opcion opcion = new Opcion("opcion", Boolean.TRUE);
-        List<Opcion> opciones = Arrays.asList(opcion);
+        List<String> opcionesSeleccionadas = Arrays.asList("opcion");
 
         Ronda ronda = new Ronda(jugadores, null);
 
-        Assertions.assertThrows(RondaSinPreguntaExcepcion.class, () -> ronda.responder(opciones));
+        Assertions.assertThrows(RondaSinPreguntaExcepcion.class, () -> ronda.responder(opcionesSeleccionadas));
 
     }
 
@@ -76,10 +76,11 @@ public class RondaTest {
         Opcion opcionIncorrecta = new Opcion("Falso", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
         Preguntable pregunta = CreadorPregunta.crearPregunta(TipoPregunta.VerdaderoFalsoPenalidad, textoPregunta ,opciones);
+        List<String> opcionesSeleccionadas = Arrays.asList("Verdadero");
 
         Ronda ronda = new Ronda(jugadores, pregunta);
 
-        ronda.responder(opciones, Multiplicador.PorDos);
+        ronda.responder(opcionesSeleccionadas, Multiplicador.PorDos);
 
         Assertions.assertEquals(2, jugador1.obtenerPuntos());
         Assertions.assertEquals(Boolean.FALSE, ronda.esRondaFinalizada());
@@ -135,11 +136,11 @@ public class RondaTest {
 
         Assertions.assertEquals(Boolean.FALSE, ronda.esRondaFinalizada());
 
-        ronda.responder(Arrays.asList(opcionCorrecta));
+        ronda.responder(Arrays.asList("Verdadero"));
 
         Assertions.assertEquals(Boolean.FALSE, ronda.esRondaFinalizada());
 
-        ronda.responder(Arrays.asList(opcionIncorrecta));
+        ronda.responder(Arrays.asList("Falso"));
 
         Assertions.assertEquals(Boolean.TRUE, ronda.esRondaFinalizada());
 

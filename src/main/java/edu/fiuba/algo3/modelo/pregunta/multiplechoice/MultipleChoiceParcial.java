@@ -10,18 +10,19 @@ import java.util.Optional;
 
 public class MultipleChoiceParcial extends MultipleChoice {
 
-    public <T> MultipleChoiceParcial(String pregunta, T opciones) throws ParametrosInvalidosExcepcion {
-        validarOpciones((List<Opcion>) opciones);
-        this.opciones = (List<Opcion>) opciones;
+    public MultipleChoiceParcial(String pregunta, List<Opcion> opciones) throws ParametrosInvalidosExcepcion {
+        validarOpciones(opciones);
+        this.opciones = opciones;
         this.pregunta = pregunta;
     }
 
     @Override
-    public int establecerPuntuacion(List<Opcion> opciones, MultiplicableStrategy multiplicador) {
-        Optional<Opcion> opcion = opciones.stream()
+    public int establecerPuntuacion(List<String> nombresOpcionesSeleccionadas, MultiplicableStrategy multiplicador) {
+        List<Opcion> opcionesSeleccionadas = obtenerOpcionesPorNombre(nombresOpcionesSeleccionadas);
+        Optional<Opcion> opcion = opcionesSeleccionadas.stream()
                 .filter(op -> !op.esCorrecta())
                 .findAny();
-        return opcion.isPresent() ? 0 : puntajeOpcionesCorrectas(opciones);
+        return opcion.isPresent() ? 0 : puntajeOpcionesCorrectas(opcionesSeleccionadas);
     }
 
     @Override

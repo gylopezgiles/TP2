@@ -1,6 +1,7 @@
-package edu.fiuba.algo3.modelo.pregunta.multiplechoice;
+package edu.fiuba.algo3.modelo.pregunta;
 
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
+import edu.fiuba.algo3.modelo.pregunta.GroupChoice;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 import edu.fiuba.algo3.modelo.pregunta.TipoPregunta;
@@ -45,9 +46,9 @@ public class GroupChoiceTest {
 
         Preguntable pregunta = new GroupChoice(preguntaTexto, opciones);
 
-        List<Opcion> respuestasPrimerGrupo = Arrays.asList(opcion1);
-        List<Opcion> respuestasSegundoGrupo  = Arrays.asList(opcion2);
-        List<List<Opcion>> respuestas = Arrays.asList(respuestasPrimerGrupo, respuestasSegundoGrupo );
+        List<String> respuestasPrimerGrupo = Arrays.asList("Auckland");
+        List<String> respuestasSegundoGrupo  = Arrays.asList("Oslo");
+        List<List<String>> respuestas = Arrays.asList(respuestasPrimerGrupo, respuestasSegundoGrupo );
 
         Assertions.assertEquals(1 , pregunta.establecerPuntuacion(respuestas));
     }
@@ -123,9 +124,9 @@ public class GroupChoiceTest {
 
         Preguntable pregunta= new GroupChoice(preguntaTexto, opciones);
 
-        List<Opcion> respuestasPrimerGrupo = Arrays.asList(opcion1, opcion2, opcion3);
-        List<Opcion> respuestasSegundoGrupo  = Arrays.asList(opcion4, opcion5, opcion6);
-        List<List<Opcion>> respuestas = Arrays.asList(respuestasPrimerGrupo, respuestasSegundoGrupo );
+        List<String> respuestasPrimerGrupo = Arrays.asList("Auckland", "Wellington", "Hamilton");
+        List<String> respuestasSegundoGrupo  = Arrays.asList("Canberra", "Hawaii", "Oslo");
+        List<List<String>> respuestas = Arrays.asList(respuestasPrimerGrupo, respuestasSegundoGrupo );
 
         Assertions.assertEquals(1, pregunta.establecerPuntuacion(respuestas));
     }
@@ -145,9 +146,9 @@ public class GroupChoiceTest {
 
         Preguntable pregunta= new GroupChoice(preguntaTexto, opciones);
 
-        List<Opcion> respuestasPrimerGrupo = Arrays.asList(opcion1, opcion2, opcion3);
-        List<Opcion> respuestasSegundoGrupo  = Arrays.asList(opcion4, opcion5);
-        List<List<Opcion>> respuestas = Arrays.asList(respuestasPrimerGrupo, respuestasSegundoGrupo );
+        List<String> respuestasPrimerGrupo = Arrays.asList("Auckland", "Wellington", "Hamilton");
+        List<String> respuestasSegundoGrupo  = Arrays.asList("Canberra", "Hawaii");
+        List<List<String>> respuestas = Arrays.asList(respuestasPrimerGrupo, respuestasSegundoGrupo );
 
 
         Assertions.assertEquals(1, pregunta.establecerPuntuacion(respuestas));
@@ -169,9 +170,9 @@ public class GroupChoiceTest {
 
         Preguntable pregunta= new GroupChoice(preguntaTexto, opciones);
 
-        List<Opcion> respuestasPrimerGrupo = Arrays.asList(opcion1, opcion2, opcion4);
-        List<Opcion> respuestasSegundoGrupo  = Arrays.asList(opcion3, opcion5, opcion6);
-        List<List<Opcion>> respuestas = Arrays.asList(respuestasPrimerGrupo, respuestasSegundoGrupo );
+        List<String> respuestasPrimerGrupo = Arrays.asList("Auckland", "Wellington", "Canberra");
+        List<String> respuestasSegundoGrupo  = Arrays.asList("Hamilton", "Hawaii", "Oslo");
+        List<List<String>> respuestas = Arrays.asList(respuestasPrimerGrupo, respuestasSegundoGrupo );
 
         Assertions.assertEquals(0, pregunta.establecerPuntuacion(respuestas));
     }
@@ -192,9 +193,9 @@ public class GroupChoiceTest {
 
         Preguntable pregunta= new GroupChoice(preguntaTexto, opciones);
 
-        List<Opcion> respuestasPrimerGrupo = Arrays.asList(opcion5, opcion2, opcion4);
-        List<Opcion> respuestasSegundoGrupo  = Arrays.asList(opcion3, opcion5, opcion1);
-        List<List<Opcion>> respuestas = Arrays.asList(respuestasPrimerGrupo, respuestasSegundoGrupo );
+        List<String> respuestasPrimerGrupo = Arrays.asList("Hawaii", "Wellington", "Canberra");
+        List<String> respuestasSegundoGrupo  = Arrays.asList("Hamilton", "Hawaii", "Auckland");
+        List<List<String>> respuestas = Arrays.asList(respuestasPrimerGrupo, respuestasSegundoGrupo );
 
         Assertions.assertEquals(0, pregunta.establecerPuntuacion(respuestas));
     }
@@ -216,9 +217,9 @@ public class GroupChoiceTest {
 
         Preguntable pregunta= new GroupChoice(preguntaTexto, opciones);
 
-        List<Opcion> respuestasPrimerGrupo = Arrays.asList(opcion1, opcion2, opcion3);
-        List<Opcion> respuestasSegundoGrupo  = Arrays.asList(opcion4, opcion5);
-        List<List<Opcion>> respuestas = Arrays.asList(respuestasPrimerGrupo, respuestasSegundoGrupo );
+        List<String> respuestasPrimerGrupo = Arrays.asList("Auckland", "Wellington", "Hamilton");
+        List<String> respuestasSegundoGrupo  = Arrays.asList("Canberra", "Hawaii");
+        List<List<String>> respuestas = Arrays.asList(respuestasPrimerGrupo, respuestasSegundoGrupo );
 
         Assertions.assertEquals(0, pregunta.establecerPuntuacion(respuestas));
     }
@@ -239,9 +240,9 @@ public class GroupChoiceTest {
 
         Preguntable pregunta= new GroupChoice(preguntaTexto, opciones);
 
-        List<Opcion> respuestasPrimerGrupo = Arrays.asList(opcion3, opcion2, opcion1);
-        List<Opcion> respuestasSegundoGrupo  = Arrays.asList(opcion6, opcion4, opcion5);
-        List<List<Opcion>> respuestas = Arrays.asList(respuestasPrimerGrupo, respuestasSegundoGrupo );
+        List<String> respuestasPrimerGrupo = Arrays.asList("Hamilton", "Wellington", "Auckland");
+        List<String> respuestasSegundoGrupo  = Arrays.asList("Oslo", "Canberra", "Hawaii");
+        List<List<String>> respuestas = Arrays.asList(respuestasPrimerGrupo, respuestasSegundoGrupo );
 
         Assertions.assertEquals(1, pregunta.establecerPuntuacion(respuestas));
     }
@@ -258,9 +259,9 @@ public class GroupChoiceTest {
 
         Preguntable pregunta= new GroupChoice(preguntaTexto, opciones);
 
-        List<Opcion> respuestasPrimerGrupo = Arrays.asList(opcion1);
-        List<Opcion> respuestasSegundoGrupo  = Arrays.asList(opcion2);
-        List<List<Opcion>> respuestas = Arrays.asList(respuestasPrimerGrupo, respuestasSegundoGrupo );
+        List<String> respuestasPrimerGrupo = Arrays.asList("Auckland");
+        List<String> respuestasSegundoGrupo  = Arrays.asList("Hawaii");
+        List<List<String>> respuestas = Arrays.asList(respuestasPrimerGrupo, respuestasSegundoGrupo );
 
         Assertions.assertEquals(1, pregunta.establecerPuntuacion(respuestas));
     }
@@ -268,7 +269,7 @@ public class GroupChoiceTest {
     @Test
     public void AlPasarleUnMultiplicadorPorTresEntoncesLanzaExcepcion() throws ParametrosInvalidosExcepcion {
 
-        String preguntaTexto = "¿Cuales ciudades pertenecePrimerGrupon a Nueva Zelanda y cuales no?";
+        String preguntaTexto = "¿Cuales ciudades pertenecen a Nueva Zelanda y cuales no?";
 
         Boolean pertenecePrimerGrupo = Boolean.TRUE;
         Opcion opcion1 = new Opcion("Auckland", pertenecePrimerGrupo);
@@ -277,26 +278,11 @@ public class GroupChoiceTest {
 
         Preguntable pregunta= new GroupChoice(preguntaTexto, opciones);
 
-        List<Opcion> respuestasPrimerGrupo = Arrays.asList(opcion1);
-        List<Opcion> respuestasSegundoGrupo  = Arrays.asList(opcion2);
-        List<List<Opcion>> respuestas = Arrays.asList(respuestasPrimerGrupo, respuestasSegundoGrupo );
+        List<String> respuestasPrimerGrupo = Arrays.asList("Auckland");
+        List<String> respuestasSegundoGrupo  = Arrays.asList("Hawaii");
+        List<List<String>> respuestas = Arrays.asList(respuestasPrimerGrupo, respuestasSegundoGrupo );
 
         Assertions.assertEquals(1, pregunta.establecerPuntuacion(respuestas));
     }
 
-    @org.junit.jupiter.api.Test
-    public void obtenerOpcionesPorNombreTest() throws ParametrosInvalidosExcepcion {
-        String preguntaTexto = "Cuáles de los siguientes artistas interpretaron la canción Proud Mary";
-        Boolean esCorrecta = Boolean.TRUE;
-        Opcion opcionCorrecta1 = new Opcion("Creedence Clearwater Revival", esCorrecta);
-        Opcion opcionCorrecta2 = new Opcion("Tina Turner", esCorrecta);
-        Opcion opcionIncorrecta3 = new Opcion("Radiohead", !esCorrecta);
-        List<Opcion> opciones = Arrays.asList(opcionCorrecta1, opcionCorrecta2, opcionIncorrecta3);
-        List<String> opcionesPorNombre = Arrays.asList("Creedence Clearwater Revival", "Tina Turner", "Radiohead");
-        Preguntable pregunta= new GroupChoice(preguntaTexto, opciones);
-
-        List<Opcion> opcionesObtenidas = pregunta.obtenerOpcionesPorNombre(opcionesPorNombre);
-
-        Assertions.assertEquals(opciones, opcionesObtenidas);
-    }
 }

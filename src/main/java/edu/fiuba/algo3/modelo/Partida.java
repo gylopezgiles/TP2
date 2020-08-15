@@ -68,12 +68,10 @@ public class Partida {
         return ronda.obtenerJugadorTurno();
     }
 
-    public void responder(List<String> opcionesSeleccionadas){
+    public <T> void responder(T opcionesSeleccionadas){
         //TODO: Manejar las excepciones
-        Preguntable pregunta = ronda.obtenerPregunta();
-        List<Opcion> opciones = pregunta.obtenerOpcionesPorNombre(opcionesSeleccionadas);
         try {
-            ronda.responder(opciones);
+            ronda.responder(opcionesSeleccionadas);
         } catch (RondaSinPreguntaExcepcion rondaSinPreguntaExcepcion) {
             rondaSinPreguntaExcepcion.printStackTrace();
         }

@@ -1,17 +1,14 @@
-package edu.fiuba.algo3.modelo.pregunta.multiplechoice;
+package edu.fiuba.algo3.modelo.pregunta;
 
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.multiplicador.MultiplicableStrategy;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
-import edu.fiuba.algo3.modelo.pregunta.Opcion;
-import edu.fiuba.algo3.modelo.pregunta.Preguntable;
-import edu.fiuba.algo3.modelo.pregunta.TipoPregunta;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 
-public class GroupChoice implements Preguntable <List<List<Opcion>>>{
+public class GroupChoice implements Preguntable <List<List<String>>>{
 
     private static final int CANTIDAD_OPCIONES_MINIMO = 2;
     private static final int CANTIDAD_OPCIONES_MAXIMO = 6;
@@ -61,15 +58,14 @@ public class GroupChoice implements Preguntable <List<List<Opcion>>>{
     }
 
     @Override
-    public int establecerPuntuacion(List<List<Opcion>> grupos) {
-        return establecerPuntuacion(grupos, Multiplicador.PorDefecto);
+    public int establecerPuntuacion(List<List<String>> nombresOpcionesSeleccionadas) {
+        return establecerPuntuacion(nombresOpcionesSeleccionadas, Multiplicador.PorDefecto);
     }
 
     @Override
-    public int establecerPuntuacion(List<List<Opcion>> grupos, MultiplicableStrategy multiplicador) {
-        List<Opcion> respuestasPrimerGrupo = grupos.get(0);
-        List<Opcion> respuestasSegundoGrupo = grupos.get(1);
-
+    public int establecerPuntuacion(List<List<String>> nombresOpcionesSeleccionadas, MultiplicableStrategy multiplicador) {
+        List<Opcion> respuestasPrimerGrupo = obtenerOpcionesPorNombre(nombresOpcionesSeleccionadas.get(0));
+        List<Opcion> respuestasSegundoGrupo = obtenerOpcionesPorNombre(nombresOpcionesSeleccionadas.get(1));
         return ( esIgual(opcionesPrimerGrupo, respuestasPrimerGrupo) &&
                 esIgual(opcionesSegundoGrupo, respuestasSegundoGrupo ) ) ? PUNTACION_CORRECTA : PUNTACION_INCORRECTA;
     }
@@ -93,8 +89,7 @@ public class GroupChoice implements Preguntable <List<List<Opcion>>>{
         return this.pregunta;
     }
 
-    @Override
-    public List<Opcion> obtenerOpcionesPorNombre(List<String> opcionesSeleccionadas) {
+    private List<Opcion> obtenerOpcionesPorNombre(List<String> opcionesSeleccionadas) {
         return opciones.stream().filter(op -> opcionesSeleccionadas.contains(op.obtenerTexto())).collect(Collectors.toList());
     }
 }

@@ -77,7 +77,7 @@ public class MultipleChoiceConPenalidadTest {
         Opcion opcion4Incorrecta = new Opcion("España", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta, opcion4Incorrecta);
         Preguntable multipleChoiceConPenalidad = new MultipleChoiceConPenalidad(preguntaTexto, opciones);
-        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta);
+        List<String> opcionesSeleccionadas = Arrays.asList("China", "India", "Japón");
 
         int puntuacion = multipleChoiceConPenalidad.establecerPuntuacion(opcionesSeleccionadas);
 
@@ -95,7 +95,7 @@ public class MultipleChoiceConPenalidadTest {
         Opcion opcion4Incorrecta = new Opcion("Ecuador", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta, opcion4Incorrecta);
         Preguntable multipleChoiceConPenalidad = new MultipleChoiceConPenalidad(preguntaTexto, opciones);
-        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta, opcion3Correcta);
+        List<String> opcionesSeleccionadas = Arrays.asList("España", "Alemania");
 
         int puntuacion = multipleChoiceConPenalidad.establecerPuntuacion(opcionesSeleccionadas);
 
@@ -112,7 +112,7 @@ public class MultipleChoiceConPenalidadTest {
         Opcion opcion4Incorrecta = new Opcion("Estonia", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta, opcion4Incorrecta);
         Preguntable multipleChoiceConPenalidad = new MultipleChoiceConPenalidad(preguntaTexto, opciones);
-        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta);
+        List<String> opcionesSeleccionadas = Arrays.asList("Egipto", "Kenia", "Brasil");
 
         int puntuacion = multipleChoiceConPenalidad.establecerPuntuacion(opcionesSeleccionadas);
 
@@ -130,7 +130,7 @@ public class MultipleChoiceConPenalidadTest {
         Opcion opcion5Incorrecta = new Opcion("Estados Unidos", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta, opcion4Incorrecta, opcion5Incorrecta);
         Preguntable multipleChoiceConPenalidad = new MultipleChoiceConPenalidad(preguntaTexto, opciones);
-        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta, opcion3Incorrecta, opcion4Incorrecta);
+        List<String> opcionesSeleccionadas = Arrays.asList("Chile", "México", "Panamá");
 
         int puntuacion = multipleChoiceConPenalidad.establecerPuntuacion(opcionesSeleccionadas);
 
@@ -148,27 +148,11 @@ public class MultipleChoiceConPenalidadTest {
         Opcion opcion5Incorrecta = new Opcion("Estados Unidos", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta, opcion4Incorrecta, opcion5Incorrecta);
         Preguntable multipleChoiceConPenalidad = new MultipleChoiceConPenalidad(preguntaTexto, opciones);
-        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion3Incorrecta, opcion4Incorrecta, opcion5Incorrecta);
+        List<String> opcionesSeleccionadas = Arrays.asList("Rusia", "Lituania", "Estados Unidos");
 
         int puntuacion = multipleChoiceConPenalidad.establecerPuntuacion(opcionesSeleccionadas);
 
         Assertions.assertEquals(-3, puntuacion);
-    }
-
-    @Test
-    public void obtenerOpcionesPorNombreTest() throws ParametrosInvalidosExcepcion {
-        String preguntaTexto = "Cuáles de los siguientes artistas interpretaron la canción Proud Mary";
-        Boolean esCorrecta = Boolean.TRUE;
-        Opcion opcionCorrecta1 = new Opcion("Creedence Clearwater Revival", esCorrecta);
-        Opcion opcionCorrecta2 = new Opcion("Tina Turner", esCorrecta);
-        Opcion opcionIncorrecta3 = new Opcion("Radiohead", !esCorrecta);
-        List<Opcion> opciones = Arrays.asList(opcionCorrecta1, opcionCorrecta2, opcionIncorrecta3);
-        List<String> opcionesPorNombre = Arrays.asList("Creedence Clearwater Revival", "Tina Turner", "Radiohead");
-        Preguntable multipleChoiceConPenalidad = new MultipleChoiceConPenalidad(preguntaTexto, opciones);
-
-        List<Opcion> opcionesObtenidas = multipleChoiceConPenalidad.obtenerOpcionesPorNombre(opcionesPorNombre);
-
-        Assertions.assertEquals(opciones, opcionesObtenidas);
     }
 
 }

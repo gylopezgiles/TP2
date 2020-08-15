@@ -8,7 +8,7 @@ import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public abstract class MultipleChoice implements Preguntable<List<Opcion>> {
+public abstract class MultipleChoice implements Preguntable<List<String>> {
 
     private static final int CANTIDAD_OPCIONES_MINIMO = 2;
     private static final int CANTIDAD_OPCIONES_MAXIMO = 5;
@@ -49,13 +49,12 @@ public abstract class MultipleChoice implements Preguntable<List<Opcion>> {
     }
 
     @Override
-    public int establecerPuntuacion(List<Opcion> opciones) {
-        return establecerPuntuacion(opciones, Multiplicador.PorDefecto);
+    public int establecerPuntuacion(List<String> nombresOpcionesSeleccionadas) {
+        return establecerPuntuacion(nombresOpcionesSeleccionadas, Multiplicador.PorDefecto);
     }
 
-    @Override
-    public List<Opcion> obtenerOpcionesPorNombre(List<String> opcionesSeleccionadas) {
-        return opciones.stream().filter(op -> opcionesSeleccionadas.contains(op.obtenerTexto())).collect(Collectors.toList());
+    protected List<Opcion> obtenerOpcionesPorNombre(List<String> nombresOpcionesSeleccionadas) {
+        return opciones.stream().filter(op -> nombresOpcionesSeleccionadas.contains(op.obtenerTexto())).collect(Collectors.toList());
     }
 
 }
