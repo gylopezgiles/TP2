@@ -1,0 +1,44 @@
+package edu.fiuba.algo3.interfazGrafica.pregunta;
+
+import edu.fiuba.algo3.modelo.pregunta.Opcion;
+import edu.fiuba.algo3.modelo.pregunta.OrderedChoice;
+
+import javax.swing.*;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class OrderedChoicePanel extends JPanel implements JPanelPregunta{
+    private ButtonGroup opcionesButtonGroup;
+
+    public OrderedChoicePanel(List<Opcion> opciones){
+
+        opcionesButtonGroup = new ButtonGroup();
+        opciones.stream().forEach(opcion -> agregarOpcion(opcion));
+
+    }
+
+    private void agregarOpcion(Opcion opcion) {
+        JButton opcionButton = new JButton();
+        opcionButton.setText(opcion.obtenerTexto());
+        add(opcionButton);
+        opcionesButtonGroup.add(opcionButton);
+    }
+
+    @Override
+    public List<String> obtenerOpcionesSeleccionadas() {
+        List<AbstractButton> botonesSeleccionados = obtenerBotonesSeleccionados(Collections.list(opcionesButtonGroup.getElements()));
+        return botonesSeleccionados.stream()
+                .map(button -> button.getText())
+                .collect(Collectors.toList());
+    }
+
+    private List<AbstractButton> obtenerBotonesSeleccionados(List<AbstractButton> botones){
+        return botones.stream().filter(radioButton -> radioButton.isSelected()).collect(Collectors.toList());
+    }
+
+    @Override
+    public void agregarA(PanelPregunta panelPregunta) {
+        panelPregunta.add(this);
+    }
+}
