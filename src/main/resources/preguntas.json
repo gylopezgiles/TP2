@@ -1,0 +1,93 @@
+[{
+	"tipoPregunta": "VerdaderoFalsoClasico",
+	"datoPregunta": {
+		"texto": "La canción Feelling Good fue escrita por Muse",
+		"opciones": [
+			{
+				"texto": "Verdadero",
+				"esCorrecta": false
+			},
+			{
+				"texto": "Falso",
+				"esCorrecta": true
+			}
+		]
+	}
+},
+{
+	"tipoPregunta": "MultipleChoiceClasico",
+	"datoPregunta": {
+		"texto": "Cuáles de los siguientes artistas interpretaron la canción Proud Mary",
+		"opciones":[
+			{
+				"texto": "Creedence Clearwater Revival",
+				"esCorrecta": true
+			},
+			{
+				"texto": "Tina Turner",
+				"esCorrecta": true
+			},
+			{
+				"texto": "Radiohead",
+				"esCorrecta": false
+			}
+		]
+	}
+},
+{
+	"tipoPregunta": "OrderedChoice",
+	"datoPregunta": {
+		"texto": "Ordenar los siguientes albums de Guns N' Roses en orden de lanzamiento",
+		"opciones":[
+			{
+				"texto": "Apetite For Destruction",
+				"esCorrecta": true
+			},
+			{
+				"texto": "Use Your Illusion I",
+				"esCorrecta": true
+			},
+			{
+				"texto": "Use Your Illusion II",
+				"esCorrecta": true
+			},
+			{
+				"texto": "The Spaghetti Incident",
+				"esCorrecta": true
+			}
+		]
+	}
+},
+{
+	"tipoPregunta": "GroupChoice",
+	"datoPregunta": {
+		"texto": "Indicar cuales de las siguientes canciones de Divididos pertenecen al disco Vengo del Placard De Otro (izquierda) y cuales a Gol de Mujer (derecha)",
+		"opciones":[
+			{
+				"texto": "Pepe Lui",
+				"esCorrecta": true
+			},
+			{
+				"texto": "Aburridos Peligrosos",
+				"esCorrecta": true
+			},
+			{
+				"texto": "Guanuqueando",
+				"esCorrecta": true
+			},
+			{
+				"texto": "Vientito de Tucumán",
+				"esCorrecta": false
+			},
+			{
+				"texto": "Nene de Antes",
+				"esCorrecta": false
+			},
+			{
+				"texto": "Salgan al Sol",
+				"esCorrecta": false
+			}
+		]
+	}
+}]
+

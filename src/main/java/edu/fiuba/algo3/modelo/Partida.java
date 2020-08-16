@@ -1,14 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.RondaSinPreguntaExcepcion;
-import edu.fiuba.algo3.modelo.excepciones.TipoPreguntaNoImplementadaException;
 import edu.fiuba.algo3.modelo.multiplicador.MultiplicableStrategy;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
-import edu.fiuba.algo3.modelo.pregunta.CreadorPregunta;
-import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
-import edu.fiuba.algo3.modelo.pregunta.TipoPregunta;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -16,15 +11,14 @@ import java.util.stream.Collectors;
 public class Partida {
 
     private static final Integer MAX_EXCLUSIVIDAD_POR_JUGADOR = 2;
+
     private List<Jugador> jugadores;
-    private List<Preguntable> preguntas;
     private Iterator<Preguntable> preguntasIterator;
     private Map<Jugador, Integer> exclusividadPorJugador;
     private Ronda ronda;
 
-    public Partida(List<String> nombresJugadores){
+    public Partida(List<String> nombresJugadores, List<Preguntable> preguntas){
         this.jugadores = generarJugadores(nombresJugadores);
-        cargarPreguntas();
         this.preguntasIterator = preguntas.iterator();
         this.ronda = new Ronda(jugadores, preguntasIterator.next());
         this.exclusividadPorJugador = new HashMap<>();
@@ -42,24 +36,6 @@ public class Partida {
         jugadores.stream().forEach(jugador -> exclusividadPorJugador.put(jugador, 0));
     }
 
-    private void cargarPreguntas(){
-        //TODO: Carga de preguntas a traves de un json
-        String preguntaTexto = "La canción Hazy Shade of Winter de Simon & Garfunkel tuvo un cover en 2019 para una serie de Netflix";
-        Boolean esCorrecta = Boolean.TRUE;
-        Opcion opcionCorrecta = new Opcion("Verdadero", esCorrecta);
-        Opcion opcionIncorrecta = new Opcion("Falso", !esCorrecta);
-        List<Preguntable> preguntables = new LinkedList<>();
-        try {
-            Preguntable verdaderoFalsoClasico = CreadorPregunta.crearPregunta(TipoPregunta.VerdaderoFalsoClasico, preguntaTexto , Arrays.asList(opcionCorrecta, opcionIncorrecta));
-            preguntables.add(verdaderoFalsoClasico);
-        } catch (ParametrosInvalidosExcepcion parametrosInvalidosExcepcion) {
-            parametrosInvalidosExcepcion.printStackTrace();
-        } catch (TipoPreguntaNoImplementadaException e) {
-            e.printStackTrace();
-        }
-        this.preguntas = preguntables;
-    }
-
     public Boolean esPartidaFinalizada(){
         return ronda.esRondaFinalizada() && !preguntasIterator.hasNext();
     }
@@ -68,8 +44,8 @@ public class Partida {
         return ronda.obtenerPreguntaTurno();
     }
 
-    public void establecerTurno(){
-        if(ronda.esRondaFinalizada()){
+    private void actualizarTurno(){
+        if(ronda.esRondaFinalizada() && !esPartidaFinalizada()){
             ronda.aplicarPuntajes();
             ronda.restablecerRonda(preguntasIterator.next());
         }
@@ -101,6 +77,7 @@ public class Partida {
         } catch (RondaSinPreguntaExcepcion rondaSinPreguntaExcepcion) {
             rondaSinPreguntaExcepcion.printStackTrace();
         }
+        actualizarTurno();
     }
 
     public List<Jugador> obtenerJugadores() {
