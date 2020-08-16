@@ -22,10 +22,10 @@ public class GroupChoice implements Preguntable <List<List<String>>>{
     private List<Opcion> opcionesPrimerGrupo;
     private List<Opcion> opcionesSegundoGrupo;
 
-    public <T> GroupChoice(String preguntaTexto, T opciones) throws ParametrosInvalidosExcepcion {
-        separarOpcionesPorGrupo((List<Opcion>)opciones);
-        validarOpciones((List<Opcion>)opciones);
-        this.opciones = (List<Opcion>)opciones;
+    public GroupChoice(String preguntaTexto, List<Opcion> opciones) throws ParametrosInvalidosExcepcion {
+        separarOpcionesPorGrupo(opciones);
+        validarOpciones(opciones);
+        this.opciones = opciones;
         this.pregunta = preguntaTexto;
     }
 
