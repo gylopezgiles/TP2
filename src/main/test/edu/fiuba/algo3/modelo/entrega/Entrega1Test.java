@@ -82,13 +82,14 @@ public class Entrega1Test {
         List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
         Preguntable verdaderoFalsoPenalidad = CreadorPregunta.crearPregunta(TipoPregunta.VerdaderoFalsoPenalidad, preguntaTexto, opciones);
 
-        List<Opcion> opcionSeleccionada = Arrays.asList(opcionCorrecta);
+        List<String> opcionSeleccionada = Arrays.asList("Falso");
         Jugador jugador = new Jugador("Diego");
         List<Jugador> jugadores = Arrays.asList(jugador);
         Ronda ronda = new Ronda(jugadores, verdaderoFalsoPenalidad);
 
         //When
         ronda.responder(opcionSeleccionada);
+        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(1, jugador.obtenerPuntos());
@@ -104,13 +105,14 @@ public class Entrega1Test {
         List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
         Preguntable verdaderoFalsoPenalidad = CreadorPregunta.crearPregunta(TipoPregunta.VerdaderoFalsoPenalidad, preguntaTexto, opciones);
 
-        List<Opcion> opcionSeleccionada = Arrays.asList(opcionIncorrecta);
+        List<String> opcionSeleccionada = Arrays.asList("Verdadero");
         Jugador jugador = new Jugador("Diego");
         List<Jugador> jugadores = Arrays.asList(jugador);
         Ronda ronda = new Ronda(jugadores, verdaderoFalsoPenalidad);
 
         //When
         ronda.responder(opcionSeleccionada);
+        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(-1, jugador.obtenerPuntos());
@@ -129,13 +131,14 @@ public class Entrega1Test {
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta, opcion4Incorrecta, opcion5Incorrecta);
         Preguntable multipleChoiceClasico = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceClasico, preguntaTexto, opciones);
 
-        List<Opcion> opcionSeleccionada = Arrays.asList(opcion1Correcta, opcion2Correcta);
+        List<String> opcionSeleccionada = Arrays.asList("Yo no manejo el rating, yo manejo un Rolls Royce", "MAIAMEEEEEEEEE!!!");
         Jugador jugador = new Jugador("Diego");
         List<Jugador> jugadores = Arrays.asList(jugador);
         Ronda ronda = new Ronda(jugadores, multipleChoiceClasico);
 
         //When
         ronda.responder(opcionSeleccionada);
+        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(1, jugador.obtenerPuntos());
@@ -154,13 +157,14 @@ public class Entrega1Test {
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta, opcion4Incorrecta, opcion5Incorrecta);
         Preguntable multipleChoiceClasico = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceClasico, preguntaTexto, opciones);
 
-        List<Opcion> opcionSeleccionada = Arrays.asList(opcion1Correcta, opcion3Incorrecta);
+        List<String> opcionSeleccionada = Arrays.asList("Yo no manejo el rating, yo manejo un Rolls Royce", "El amor es mejor maestro que el deber");
         Jugador jugador = new Jugador("Diego");
         List<Jugador> jugadores = Arrays.asList(jugador);
         Ronda ronda = new Ronda(jugadores, multipleChoiceClasico);
 
         //When
         ronda.responder(opcionSeleccionada);
+        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(0, jugador.obtenerPuntos());
@@ -177,13 +181,14 @@ public class Entrega1Test {
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta);
         Preguntable multipleChoiceParcial = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceParcial, preguntaTexto, opciones);
 
-        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta, opcion2Correcta);
+        List<String> opcionesSeleccionadas = Arrays.asList("Auckland", "Wellington");
         Jugador jugador = new Jugador("Diego");
         List<Jugador> jugadores = Arrays.asList(jugador);
         Ronda ronda = new Ronda(jugadores, multipleChoiceParcial);
 
         //When
         ronda.responder(opcionesSeleccionadas);
+        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(2, jugador.obtenerPuntos());
@@ -200,13 +205,14 @@ public class Entrega1Test {
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta);
         Preguntable multipleChoiceParcial = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceParcial, preguntaTexto, opciones);
 
-        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta);
+        List<String> opcionesSeleccionadas = Arrays.asList("Auckland");
         Jugador jugador = new Jugador("jugador");
         List<Jugador> jugadores = Arrays.asList(jugador);
         Ronda ronda = new Ronda(jugadores, multipleChoiceParcial);
 
         //When
         ronda.responder(opcionesSeleccionadas);
+        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(1, jugador.obtenerPuntos());
@@ -223,13 +229,14 @@ public class Entrega1Test {
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta);
         Preguntable multipleChoiceParcial = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceParcial, preguntaTexto, opciones);
 
-        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta);
+        List<String> opcionesSeleccionadas = Arrays.asList("Auckland", "Wellington", "Canberra");
         Jugador jugador = new Jugador("Diego");
         List<Jugador> jugadores = Arrays.asList(jugador);
         Ronda ronda = new Ronda(jugadores, multipleChoiceParcial);
 
         //When
         ronda.responder(opcionesSeleccionadas);
+        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(0, jugador.obtenerPuntos());

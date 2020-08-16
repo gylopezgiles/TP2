@@ -64,7 +64,7 @@ public class OrderedChoiceTest {
         List<Opcion> opciones = Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5);
 
         OrderedChoice orderedChoice = new OrderedChoice("Orden de las letras vocales", opciones);
-        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5);
+        List<String> opcionesSeleccionadas = Arrays.asList("A", "E", "I", "O", "U");
 
         Assertions.assertEquals(1, orderedChoice.establecerPuntuacion(opcionesSeleccionadas));
 
@@ -80,27 +80,9 @@ public class OrderedChoiceTest {
         List<Opcion> opciones = Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5);
 
         OrderedChoice orderedChoice = new OrderedChoice("Orden de las letras vocales", opciones);
-        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion4, opcion3, opcion2, opcion1, opcion5);
+        List<String> opcionesSeleccionadas = Arrays.asList("O", "I", "E", "A", "U");
 
         Assertions.assertEquals(0, orderedChoice.establecerPuntuacion(opcionesSeleccionadas));
     }
 
-    @Test
-    public void obtenerOpcionesPorNombreTest() throws ParametrosInvalidosExcepcion {
-        String preguntaTexto = "Orden de las letras vocales";
-        Boolean esCorrecta = Boolean.TRUE;
-        Opcion opcion1 = new Opcion("A", esCorrecta);
-        Opcion opcion2 = new Opcion("E",esCorrecta);
-        Opcion opcion3 = new Opcion("I", esCorrecta);
-        Opcion opcion4 = new Opcion("O", esCorrecta);
-        Opcion opcion5 = new Opcion("U", esCorrecta);
-        List<Opcion> opciones = Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5);
-        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion4, opcion3, opcion2, opcion1, opcion5);
-        List<String> opcionesPorNombre = Arrays.asList("O", "I", "E", "A", "U");
-        Preguntable orderedChoice = new OrderedChoice(preguntaTexto, opciones);
-
-        List<Opcion> opcionesObtenidas = orderedChoice.obtenerOpcionesPorNombre(opcionesPorNombre);
-
-        Assertions.assertEquals(opcionesSeleccionadas, opcionesObtenidas);
-    }
 }

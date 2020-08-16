@@ -43,13 +43,14 @@ public class Entrega0Test {
         List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
         Preguntable verdaderoFalsoClasico = CreadorPregunta.crearPregunta(TipoPregunta.VerdaderoFalsoClasico, preguntaTexto, opciones);
 
-        List<Opcion> opcionSeleccionada = Arrays.asList(opcionCorrecta);
+        List<String> opcionSeleccionada = Arrays.asList("Falso");
         Jugador jugador = new Jugador("Diego");
         List<Jugador> jugadores = Arrays.asList(jugador);
         Ronda ronda = new Ronda(jugadores, verdaderoFalsoClasico);
 
         //When
         ronda.responder(opcionSeleccionada);
+        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(1, jugador.obtenerPuntos());

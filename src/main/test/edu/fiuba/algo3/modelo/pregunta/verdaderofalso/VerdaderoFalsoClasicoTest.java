@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.pregunta.verdaderofalso;
 
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
+import edu.fiuba.algo3.modelo.exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
@@ -76,33 +77,49 @@ public class VerdaderoFalsoClasicoTest {
     }
 
     @Test
+    public void establecerPuntuacionRespondiendoCorrectamente() throws ParametrosInvalidosExcepcion {
+        String preguntaTexto = "La canción Feelling Good fue escrita por Muse";
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcionIncorrecta = new Opcion("Verdadero", !esCorrecta);
+        Opcion opcionCorrecta = new Opcion("Falso", esCorrecta);
+        List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
+        List<String> opcionSeleccionada = Arrays.asList("Falso");
+
+        Preguntable verdaderoFalsoClasico = new VerdaderoFalsoClasico(preguntaTexto, opciones);
+
+        Assertions.assertEquals(1, verdaderoFalsoClasico.establecerPuntuacion(opcionSeleccionada));
+    }
+
+    @Test
+    public void establecerPuntuacionRespondiendoIncorrectamente() throws ParametrosInvalidosExcepcion {
+        String preguntaTexto = "La canción Feelling Good fue escrita por Muse";
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcionIncorrecta = new Opcion("Verdadero", !esCorrecta);
+        Opcion opcionCorrecta = new Opcion("Falso", esCorrecta);
+        List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
+        List<String> opcionSeleccionada = Arrays.asList("Verdadero");
+
+        Preguntable verdaderoFalsoClasico = new VerdaderoFalsoClasico(preguntaTexto, opciones);
+
+        Assertions.assertEquals(0, verdaderoFalsoClasico.establecerPuntuacion(opcionSeleccionada));
+    }
+
+    @Test
     public void alEstablecerPuntuacionConMultiplicadorNoLoDebeAplicar() throws ParametrosInvalidosExcepcion {
         String preguntaTexto = "La canción Feelling Good fue escrita por Muse";
         Boolean esCorrecta = Boolean.TRUE;
         Opcion opcionIncorrecta = new Opcion("Verdadero", !esCorrecta);
         Opcion opcionCorrecta = new Opcion("Falso", esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
-        List<Opcion> opcionSeleccionada = Arrays.asList(opcionCorrecta);
+        List<String> opcionSeleccionada = Arrays.asList("Falso");
+        Exclusividad exclusividad = new Exclusividad();
 
         Preguntable verdaderoFalsoClasico = new VerdaderoFalsoClasico(preguntaTexto, opciones);
 
-        Assertions.assertEquals(1, verdaderoFalsoClasico.establecerPuntuacion(opcionSeleccionada, Multiplicador.PorDos));
-        Assertions.assertEquals(1, verdaderoFalsoClasico.establecerPuntuacion(opcionSeleccionada, Multiplicador.PorTres));
+        Assertions.assertEquals(1, verdaderoFalsoClasico.establecerPuntuacion(opcionSeleccionada, Multiplicador.PorDos, exclusividad));
+        Assertions.assertEquals(1, verdaderoFalsoClasico.establecerPuntuacion(opcionSeleccionada, Multiplicador.PorTres, exclusividad));
 
     }
 
-    @Test
-    public void obtenerOpcionesPorNombreTest() throws ParametrosInvalidosExcepcion {
-        Opcion opcionCorrecta = new Opcion("Verdadero", Boolean.TRUE);
-        Opcion opcionIncorrecta = new Opcion("Falso", Boolean.FALSE);
-        List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
-        String preguntaTexto = "pregunta?";
-        List<String> opcionesPorNombre = Arrays.asList("Verdadero", "Falso");
-        Preguntable verdaderoFalsoClasico = new VerdaderoFalsoClasico(preguntaTexto, opciones);
-
-        List<Opcion> opcionesObtenidas = verdaderoFalsoClasico.obtenerOpcionesPorNombre(opcionesPorNombre);
-
-        Assertions.assertEquals(opciones, opcionesObtenidas);
-    }
 
 }

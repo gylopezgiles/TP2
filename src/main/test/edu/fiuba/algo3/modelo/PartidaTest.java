@@ -15,6 +15,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class PartidaTest {
+
     private List<Preguntable> preguntas;
     Preguntable verdaderoFalsoClasico;
 
@@ -50,11 +51,11 @@ public class PartidaTest {
 
         Assertions.assertEquals(Boolean.FALSE, partida.esPartidaFinalizada());
 
-        partida.responder(Arrays.asList("Verdadero"));
+        partida.responder(Arrays.asList("Verdadero"), Boolean.FALSE);
 
         Assertions.assertEquals(Boolean.FALSE, partida.esPartidaFinalizada());
 
-        partida.responder(Arrays.asList("Falso"));
+        partida.responder(Arrays.asList("Falso"), Boolean.FALSE);
 
         Assertions.assertEquals(Boolean.TRUE, partida.esPartidaFinalizada());
 
@@ -73,11 +74,11 @@ public class PartidaTest {
 
         Assertions.assertEquals(Boolean.FALSE, partida.esPartidaFinalizada());
 
-        partida.responder(Arrays.asList("Verdadero"));
+        partida.responder(Arrays.asList("Verdadero"), Boolean.FALSE);
 
         Assertions.assertEquals(Boolean.FALSE, partida.esPartidaFinalizada());
 
-        partida.responder(Arrays.asList("Falso"));
+        partida.responder(Arrays.asList("Falso"), Boolean.FALSE);
 
         Assertions.assertEquals(Boolean.FALSE, partida.esPartidaFinalizada());
         Assertions.assertEquals(siguientePregunta, partida.obtenerPreguntaTurno());
