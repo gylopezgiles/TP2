@@ -9,5 +9,4 @@ public interface EstadoExclusividad {
 
     Map<Jugador, Integer> utilizarExclusividad(List<Jugador> jugadores, Map<Jugador, Integer> puntajesRonda, int modificador);
 
-    public Boolean estaActivada();
 }

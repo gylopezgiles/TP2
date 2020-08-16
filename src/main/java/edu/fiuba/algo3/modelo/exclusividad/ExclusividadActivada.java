@@ -24,8 +24,4 @@ public class ExclusividadActivada implements EstadoExclusividad {
         return puntajesRonda;
     }
 
-    public Boolean estaActivada(){
-        return true;
-    }
-
 }

@@ -68,6 +68,4 @@ public class PanelPregunta extends JPanel {
         responder.addActionListener(controlador);
         responder.setActionCommand("RESPONDER");
     }
-
-
 }
