@@ -23,13 +23,13 @@ public class GroupChoice implements Preguntable <List<List<String>>>{
     private List<Opcion> opcionesSegundoGrupo;
 
     public <T> GroupChoice(String preguntaTexto, T opciones) throws ParametrosInvalidosExcepcion {
-        separarOpcionesVerdaderoFalso((List<Opcion>)opciones);
+        separarOpcionesPorGrupo((List<Opcion>)opciones);
         validarOpciones((List<Opcion>)opciones);
         this.opciones = (List<Opcion>)opciones;
         this.pregunta = preguntaTexto;
     }
 
-    private void separarOpcionesVerdaderoFalso(List<Opcion> opciones){
+    private void separarOpcionesPorGrupo(List<Opcion> opciones){
         this.opcionesPrimerGrupo = opciones.stream().filter(op -> op.esCorrecta()).collect(Collectors.toList());
         this.opcionesSegundoGrupo = opciones.stream().filter(op -> !op.esCorrecta()).collect(Collectors.toList());
     }
