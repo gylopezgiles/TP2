@@ -45,9 +45,11 @@ public class Partida {
     }
 
     private void actualizarTurno(){
-        if(ronda.esRondaFinalizada() && !esPartidaFinalizada()){
+        if(ronda.esRondaFinalizada()){
             ronda.aplicarPuntajes();
-            ronda.restablecerRonda(preguntasIterator.next());
+            if(!esPartidaFinalizada()){
+                ronda.restablecerRonda(preguntasIterator.next());
+            }
         }
     }
 
@@ -68,16 +70,16 @@ public class Partida {
         } else {
             responder(opcionesSeleccionadas, Multiplicador.PorDefecto);
         }
+        actualizarTurno();
     }
 
     public <T> void responder(T opcionesSeleccionadas, MultiplicableStrategy multiplicador){
         //TODO: Manejar las excepciones
         try {
-            ronda.responder(opcionesSeleccionadas);
+            ronda.responder(opcionesSeleccionadas, multiplicador);
         } catch (RondaSinPreguntaExcepcion rondaSinPreguntaExcepcion) {
             rondaSinPreguntaExcepcion.printStackTrace();
         }
-        actualizarTurno();
     }
 
     public List<Jugador> obtenerJugadores() {

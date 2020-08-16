@@ -26,10 +26,4 @@ public class Exclusividad {
         modificador = 2 * (int)aplicanExclusividad.stream().count();
     }
 
-/*
-
-        public static void aplicarExclusividad(Map<Jugador, Integer> puntajesRonda){
-            //implementar exclusividad aca
-        }*/
-
 }

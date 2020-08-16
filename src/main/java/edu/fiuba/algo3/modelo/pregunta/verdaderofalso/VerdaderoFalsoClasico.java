@@ -25,8 +25,8 @@ public class VerdaderoFalsoClasico extends VerdaderoFalso {
     @Override
     public int establecerPuntuacion(List<String> nombresOpcionesSeleccionadas, MultiplicableStrategy multiplicador, Exclusividad exclusividad) {
         exclusividad.activarExclusividad();
-        List<Opcion> opciones = obtenerOpcionesPorNombre(nombresOpcionesSeleccionadas);
-        Optional<Opcion> opcion = opciones.stream()
+        List<Opcion> opcionesSeleccionadas = obtenerOpcionesPorNombre(nombresOpcionesSeleccionadas);
+        Optional<Opcion> opcion = opcionesSeleccionadas.stream()
                 .filter(op -> op.esCorrecta())
                 .findAny();
         return opcion.isPresent() ? 1 : 0;

@@ -25,9 +25,8 @@ public class Ronda {
         this.pregunta = pregunta;
         this.jugadorIterator = jugadores.iterator();
         this.jugadorTurno = jugadorIterator.next();
-
-        aplicanExclusividad = new ArrayList<>();
-        puntajesRonda = new HashMap<>();
+        this.aplicanExclusividad = new ArrayList<>();
+        this.puntajesRonda = new HashMap<>();
 
     }
 
