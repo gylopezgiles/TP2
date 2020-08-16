@@ -1,16 +1,14 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.excepciones.RondaSinPreguntaExcepcion;
+import edu.fiuba.algo3.modelo.exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.multiplicador.MultiplicableStrategy;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.EstadoRonda;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Ronda {
 
@@ -21,12 +19,17 @@ public class Ronda {
     private Map<Jugador, Integer> puntajesRonda;
     private EstadoRonda estadoRonda;
     private List<Jugador> aplicanExclusividad;
+    private Exclusividad exclusividad;
 
     public Ronda(List<Jugador> jugadores, Preguntable pregunta){
         this.jugadores = jugadores;
         this.pregunta = pregunta;
         this.jugadorIterator = jugadores.iterator();
         this.jugadorTurno = jugadorIterator.next();
+
+        aplicanExclusividad = new ArrayList<>();
+        puntajesRonda = new HashMap<>();
+
     }
 
     public void restablecerRonda(Preguntable pregunta){
@@ -61,7 +64,8 @@ public class Ronda {
             throw new RondaSinPreguntaExcepcion("No se puede responder sin una pregunta");
         }
         estadoRonda = EstadoRonda.RESPONDIENDO;
-        puntajesRonda.put(jugadorTurno, pregunta.establecerPuntuacion(opciones, multiplicador));
+        exclusividad = new Exclusividad();
+        puntajesRonda.put(jugadorTurno, pregunta.establecerPuntuacion(opciones, multiplicador, exclusividad));
         cambiarJugadorTurno();
         actualizarEstadoRonda();
     }
@@ -89,7 +93,7 @@ public class Ronda {
     }
 
     public void aplicarPuntajes(){
-        //llamar a pregunta aplicarExclusividad o algo asi
+        puntajesRonda = exclusividad.aplicarExclusividad(jugadores, puntajesRonda, aplicanExclusividad);
         jugadores.stream().forEach(jugador -> jugador.sumarPuntos(puntajesRonda.get(jugador)));
     }
 }

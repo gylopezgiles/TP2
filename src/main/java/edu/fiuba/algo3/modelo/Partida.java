@@ -79,13 +79,17 @@ public class Partida {
         return ronda.obtenerJugadorTurno();
     }
 
-    public void responder(List<String> opcionesSeleccionadas, Boolean aplicaExclusividad) throws RondaSinPreguntaExcepcion {
+    public void responder(List<String> opcionesSeleccionadas, Boolean aplicaExclusividad) {
         Jugador jugadorTurno = obtenerJugadorTurno();
         if (aplicaExclusividad && exclusividadPorJugador.get(jugadorTurno) < MAX_EXCLUSIVIDAD_POR_JUGADOR) {
             Preguntable pregunta = ronda.obtenerPregunta();
             List<Opcion> opciones = pregunta.obtenerOpcionesPorNombre(opcionesSeleccionadas);
             exclusividadPorJugador.replace(jugadorTurno, exclusividadPorJugador.get(jugadorTurno)+1);
-            ronda.responder(opciones, aplicaExclusividad);
+            try {
+                ronda.responder(opciones, aplicaExclusividad);
+            } catch (RondaSinPreguntaExcepcion rondaSinPreguntaExcepcion) {
+                rondaSinPreguntaExcepcion.printStackTrace();
+            }
         }else {
             responder(opcionesSeleccionadas, Multiplicador.PorDefecto);
         }
