@@ -17,7 +17,6 @@ public class PanelPregunta extends JPanel {
     private JPanelPregunta opciones;
 
     private JToggleButton exclusividad;
-    private int contadorExclusividad = 0;
 
     public PanelPregunta(){
         responder = new JButton("Responder");
@@ -66,9 +65,10 @@ public class PanelPregunta extends JPanel {
     public void conectaControlador(ControladorPanel controlador){
         responder.addActionListener(controlador);
         responder.setActionCommand("RESPONDER");
+
+        exclusividad.addActionListener(controlador);
+        exclusividad.setActionCommand("EXCLUSIVIDAD");
     }
-
-
 
 
 }

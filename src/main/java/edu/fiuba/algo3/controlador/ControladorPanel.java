@@ -3,6 +3,9 @@ package edu.fiuba.algo3.controlador;
 import edu.fiuba.algo3.interfazGrafica.PantallaPrincipal;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Partida;
+import edu.fiuba.algo3.modelo.exclusividad.Exclusividad;
+import edu.fiuba.algo3.modelo.exclusividad.ExclusividadActivada;
+import edu.fiuba.algo3.modelo.exclusividad.ExclusividadDesactivada;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 
 import java.awt.event.ActionEvent;
@@ -13,6 +16,7 @@ public class ControladorPanel implements ActionListener {
 
     private PantallaPrincipal pantallaPrincipal;
     private Partida partida;
+    private Exclusividad exclusividad = new Exclusividad();;
 
     public ControladorPanel(PantallaPrincipal pantallaPrincipal){
         this.pantallaPrincipal = pantallaPrincipal;
@@ -28,8 +32,16 @@ public class ControladorPanel implements ActionListener {
             case "RESPONDER":
                 responder();
                 break;
+            case "EXCLUSIVIDAD":
+                exclusividad();
         }
 
+    }
+
+    private void exclusividad(){
+        if(!exclusividad.estaActivada()){
+            exclusividad.activarExclusividad();
+        }
     }
 
     private void jugar(){
@@ -41,13 +53,12 @@ public class ControladorPanel implements ActionListener {
 
     private void responder(){
         List<String> opcionesSeleccionadas = pantallaPrincipal.obtenerOpcionesSeleccionadas();
-        partida.responder(opcionesSeleccionadas, Boolean.FALSE);
+        partida.responder(opcionesSeleccionadas, exclusividad.estaActivada());
         if(partida.esPartidaFinalizada()){
             pantallaPrincipal.finalizarPartida(partida.obtenerJugadores());
         } else {
             establecerTurno();
         }
-
     }
 
     private void establecerTurno(){

@@ -11,4 +11,8 @@ public class ExclusividadDesactivada implements EstadoExclusividad {
     public Map<Jugador, Integer> utilizarExclusividad(List<Jugador> jugadores, Map<Jugador, Integer> puntajesRonda, int modificador) {
         return puntajesRonda;
     }
+
+    public Boolean estaActivada(){
+        return false;
+    }
 }
