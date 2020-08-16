@@ -15,18 +15,16 @@ public class PanelPregunta extends JPanel {
 
     private JButton responder;
     private JPanelPregunta opciones;
-
-    private JToggleButton exclusividad;
+    private JCheckBox exclusividad;
 
     public PanelPregunta(){
         responder = new JButton("Responder");
-        exclusividad =  new JToggleButton("Exclusividad", false);
+        exclusividad = new JCheckBox();
     }
 
     public void establecerTurno(Preguntable pregunta, Jugador jugador){
         agregarTextoPregunta(jugador.obtenerNombre(), pregunta);
         agregarOpciones(pregunta);
-        agregarExclusividad(pregunta);
         agregarBotonResponder();
     }
 
@@ -41,6 +39,11 @@ public class PanelPregunta extends JPanel {
         return (tipoPregunta != VerdaderoFalsoPenalidad) && (tipoPregunta != MultipleChoiceConPenalidad);
     }
 
+    public Boolean seleccionoExclusividad(){
+        return exclusividad.isSelected();
+    }
+
+    
 
     private void agregarTextoPregunta(String nombreJugador, Preguntable pregunta) {
         String texto = String.format("%s: %s", nombreJugador, pregunta.obtenerPregunta());
@@ -65,9 +68,6 @@ public class PanelPregunta extends JPanel {
     public void conectaControlador(ControladorPanel controlador){
         responder.addActionListener(controlador);
         responder.setActionCommand("RESPONDER");
-
-        exclusividad.addActionListener(controlador);
-        exclusividad.setActionCommand("EXCLUSIVIDAD");
     }
 
 
