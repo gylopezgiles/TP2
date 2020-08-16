@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.pregunta.verdaderofalso;
 
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
+import edu.fiuba.algo3.modelo.exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
@@ -36,7 +37,8 @@ public abstract class VerdaderoFalso implements Preguntable<List<String>> {
 
     @Override
     public int establecerPuntuacion(List<String> nombresOpcionesSeleccionadas) {
-        return establecerPuntuacion(nombresOpcionesSeleccionadas, Multiplicador.PorDefecto);
+        Exclusividad exclusividad = new Exclusividad();
+        return establecerPuntuacion(nombresOpcionesSeleccionadas, Multiplicador.PorDefecto, exclusividad);
     }
 
     @Override

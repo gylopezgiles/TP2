@@ -33,11 +33,11 @@ public class PartidaTest {
         Preguntable pregunta = partida.obtenerPreguntaTurno();
         List<Opcion> opciones = pregunta.obtenerOpciones();
 
-        partida.responder(Arrays.asList(opciones.get(0).obtenerTexto()));
+        partida.responder(Arrays.asList(opciones.get(0).obtenerTexto()), Boolean.FALSE);
 
         Assertions.assertEquals(Boolean.FALSE, partida.esPartidaFinalizada());
 
-        partida.responder(Arrays.asList(opciones.get(0).obtenerTexto()));
+        partida.responder(Arrays.asList(opciones.get(0).obtenerTexto()), Boolean.FALSE);
 
         Assertions.assertEquals(Boolean.TRUE, partida.esPartidaFinalizada());
 

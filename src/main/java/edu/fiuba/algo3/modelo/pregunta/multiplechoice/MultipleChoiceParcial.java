@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.pregunta.multiplechoice;
 
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
+import edu.fiuba.algo3.modelo.exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.multiplicador.MultiplicableStrategy;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.TipoPregunta;
@@ -17,7 +18,8 @@ public class MultipleChoiceParcial extends MultipleChoice {
     }
 
     @Override
-    public int establecerPuntuacion(List<String> nombresOpcionesSeleccionadas, MultiplicableStrategy multiplicador) {
+    public int establecerPuntuacion(List<String> nombresOpcionesSeleccionadas, MultiplicableStrategy multiplicador, Exclusividad exclusividad) {
+        exclusividad.activarExclusividad();
         List<Opcion> opcionesSeleccionadas = obtenerOpcionesPorNombre(nombresOpcionesSeleccionadas);
         Optional<Opcion> opcion = opcionesSeleccionadas.stream()
                 .filter(op -> !op.esCorrecta())

@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.pregunta.verdaderofalso;
 
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
+import edu.fiuba.algo3.modelo.exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.multiplicador.MultiplicableStrategy;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.TipoPregunta;
@@ -22,7 +23,8 @@ public class VerdaderoFalsoClasico extends VerdaderoFalso {
     }
 
     @Override
-    public int establecerPuntuacion(List<String> nombresOpcionesSeleccionadas, MultiplicableStrategy multiplicador) {
+    public int establecerPuntuacion(List<String> nombresOpcionesSeleccionadas, MultiplicableStrategy multiplicador, Exclusividad exclusividad) {
+        exclusividad.activarExclusividad();
         List<Opcion> opciones = obtenerOpcionesPorNombre(nombresOpcionesSeleccionadas);
         Optional<Opcion> opcion = opciones.stream()
                 .filter(op -> op.esCorrecta())

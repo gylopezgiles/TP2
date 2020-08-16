@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.pregunta;
 
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
+import edu.fiuba.algo3.modelo.exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.multiplicador.MultiplicableStrategy;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 
@@ -36,11 +37,13 @@ public class OrderedChoice implements Preguntable <List<String>>{
 
     @Override
         public int establecerPuntuacion(List<String> nombresOpcionesSeleccionadas) {
-        return establecerPuntuacion(nombresOpcionesSeleccionadas, Multiplicador.PorDefecto);
+        Exclusividad exclusividad = new Exclusividad();
+        return establecerPuntuacion(nombresOpcionesSeleccionadas, Multiplicador.PorDefecto, exclusividad);
     }
 
     @Override
-    public int establecerPuntuacion(List<String> nombresOpcionesSeleccionadas, MultiplicableStrategy multiplicador) {
+    public int establecerPuntuacion(List<String> nombresOpcionesSeleccionadas, MultiplicableStrategy multiplicador, Exclusividad exclusividad) {
+        exclusividad.activarExclusividad();
         List<Opcion> opcionesSeleccionadas = obtenerOpcionesPorNombre(nombresOpcionesSeleccionadas);
         return tieneElOrdenAdecuado(opcionesSeleccionadas.iterator(),this.obtenerOpciones().iterator()) ? 1: 0;
     }

@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.pregunta.multiplechoice;
 
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
+import edu.fiuba.algo3.modelo.exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
@@ -150,11 +151,12 @@ public class MultipleChoiceParcialTest {
         Opcion opcionIncorrecta3 = new Opcion("Ella Fitzgerald", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcionCorrecta1, opcionIncorrecta2, opcionIncorrecta3);
         List<String> opcionesSeleccionadas = Arrays.asList("Nina Simone");
+        Exclusividad exclusividad = new Exclusividad();
 
         Preguntable multipleChoiceParcial = new MultipleChoiceParcial(preguntaTexto, opciones);
 
-        Assertions.assertEquals(1, multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDos));
-        Assertions.assertEquals(1, multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorTres));
+        Assertions.assertEquals(1, multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDos, exclusividad));
+        Assertions.assertEquals(1, multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorTres, exclusividad));
 
     }
 

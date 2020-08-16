@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.pregunta;
 
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
+import edu.fiuba.algo3.modelo.exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.multiplicador.MultiplicableStrategy;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 
@@ -59,11 +60,13 @@ public class GroupChoice implements Preguntable <List<List<String>>>{
 
     @Override
     public int establecerPuntuacion(List<List<String>> nombresOpcionesSeleccionadas) {
-        return establecerPuntuacion(nombresOpcionesSeleccionadas, Multiplicador.PorDefecto);
+        Exclusividad exclusividad = new Exclusividad();
+        return establecerPuntuacion(nombresOpcionesSeleccionadas, Multiplicador.PorDefecto, exclusividad);
     }
 
     @Override
-    public int establecerPuntuacion(List<List<String>> nombresOpcionesSeleccionadas, MultiplicableStrategy multiplicador) {
+    public int establecerPuntuacion(List<List<String>> nombresOpcionesSeleccionadas, MultiplicableStrategy multiplicador, Exclusividad exclusividad) {
+        exclusividad.activarExclusividad();
         List<Opcion> respuestasPrimerGrupo = obtenerOpcionesPorNombre(nombresOpcionesSeleccionadas.get(0));
         List<Opcion> respuestasSegundoGrupo = obtenerOpcionesPorNombre(nombresOpcionesSeleccionadas.get(1));
         return ( esIgual(opcionesPrimerGrupo, respuestasPrimerGrupo) &&
