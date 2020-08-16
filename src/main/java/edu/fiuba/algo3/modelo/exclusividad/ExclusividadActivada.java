@@ -23,4 +23,5 @@ public class ExclusividadActivada implements EstadoExclusividad {
         puntajesRonda.put(jugadores.get(1), modificador * (puntajesRonda.get(jugadores.get(1))));
         return puntajesRonda;
     }
+
 }

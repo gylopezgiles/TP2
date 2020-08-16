@@ -15,7 +15,6 @@ public class VerdaderoFalsoPanel extends JPanel implements JPanelPregunta{
 
         opcionesButtonGroup = new ButtonGroup();
         opciones.stream().forEach(opcion -> agregarOpcion(opcion));
-
     }
 
     private void agregarOpcion(Opcion opcion) {
