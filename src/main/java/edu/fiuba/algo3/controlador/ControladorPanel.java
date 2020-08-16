@@ -41,7 +41,7 @@ public class ControladorPanel implements ActionListener {
 
     private void responder(){
         List<String> opcionesSeleccionadas = pantallaPrincipal.obtenerOpcionesSeleccionadas();
-        partida.responder(opcionesSeleccionadas);
+        partida.responder(opcionesSeleccionadas, Boolean.FALSE);
         if(partida.esPartidaFinalizada()){
             pantallaPrincipal.finalizarPartida(partida.obtenerJugadores());
         } else {
