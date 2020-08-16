@@ -25,6 +25,7 @@ public class PanelPregunta extends JPanel {
     public void establecerTurno(Preguntable pregunta, Jugador jugador){
         agregarTextoPregunta(jugador.obtenerNombre(), pregunta);
         agregarOpciones(pregunta);
+        agregarExclusividad(pregunta);
         agregarBotonResponder();
     }
 
@@ -39,11 +40,11 @@ public class PanelPregunta extends JPanel {
         return (tipoPregunta != VerdaderoFalsoPenalidad) && (tipoPregunta != MultipleChoiceConPenalidad);
     }
 
-    public Boolean seleccionoExclusividad(){
+    public Boolean obtenerExclusividad(){
         return exclusividad.isSelected();
     }
 
-    
+
 
     private void agregarTextoPregunta(String nombreJugador, Preguntable pregunta) {
         String texto = String.format("%s: %s", nombreJugador, pregunta.obtenerPregunta());

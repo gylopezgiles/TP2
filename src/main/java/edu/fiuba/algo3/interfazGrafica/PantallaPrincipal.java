@@ -3,6 +3,7 @@ package edu.fiuba.algo3.interfazGrafica;
 import edu.fiuba.algo3.controlador.ControladorPanel;
 import edu.fiuba.algo3.interfazGrafica.pregunta.PanelPregunta;
 import edu.fiuba.algo3.modelo.Jugador;
+import edu.fiuba.algo3.modelo.exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 
 import javax.swing.*;
@@ -48,5 +49,9 @@ public class PantallaPrincipal extends JFrame {
         panelPregunta.setVisible(Boolean.FALSE);
         panelFinJuego = new PanelFinJuego(jugadores);
         add(panelFinJuego);
+    }
+
+    public Boolean obtenerExclusividad() {
+        return panelPregunta.obtenerExclusividad();
     }
 }
