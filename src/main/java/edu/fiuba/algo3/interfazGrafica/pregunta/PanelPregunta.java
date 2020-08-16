@@ -44,8 +44,6 @@ public class PanelPregunta extends JPanel {
         return exclusividad.isSelected();
     }
 
-
-
     private void agregarTextoPregunta(String nombreJugador, Preguntable pregunta) {
         String texto = String.format("%s: %s", nombreJugador, pregunta.obtenerPregunta());
         JLabel textoPregunta = new JLabel(texto);
