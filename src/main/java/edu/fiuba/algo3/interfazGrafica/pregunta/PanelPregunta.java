@@ -3,24 +3,45 @@ package edu.fiuba.algo3.interfazGrafica.pregunta;
 import edu.fiuba.algo3.controlador.ControladorPanel;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
+import edu.fiuba.algo3.modelo.pregunta.TipoPregunta;
 
 import javax.swing.*;
 import java.util.List;
+
+import static edu.fiuba.algo3.modelo.pregunta.TipoPregunta.MultipleChoiceConPenalidad;
+import static edu.fiuba.algo3.modelo.pregunta.TipoPregunta.VerdaderoFalsoPenalidad;
 
 public class PanelPregunta extends JPanel {
 
     private JButton responder;
     private JPanelPregunta opciones;
 
+    private JToggleButton exclusividad;
+    private int contadorExclusividad = 0;
+
     public PanelPregunta(){
         responder = new JButton("Responder");
+        exclusividad =  new JToggleButton("Exclusividad", false);
     }
 
     public void establecerTurno(Preguntable pregunta, Jugador jugador){
         agregarTextoPregunta(jugador.obtenerNombre(), pregunta);
         agregarOpciones(pregunta);
+        agregarExclusividad(pregunta);
         agregarBotonResponder();
     }
+
+
+    public void agregarExclusividad(Preguntable pregunta) {
+        if(esPreguntaSinPenalidad(pregunta.obtenerTipoPregunta())) {
+            add(exclusividad);
+        }
+    }
+
+    private boolean esPreguntaSinPenalidad(TipoPregunta tipoPregunta) {
+        return (tipoPregunta != VerdaderoFalsoPenalidad) && (tipoPregunta != MultipleChoiceConPenalidad);
+    }
+
 
     private void agregarTextoPregunta(String nombreJugador, Preguntable pregunta) {
         String texto = String.format("%s: %s", nombreJugador, pregunta.obtenerPregunta());
@@ -35,7 +56,6 @@ public class PanelPregunta extends JPanel {
     }
 
     private void agregarBotonResponder() {
-
         add(responder);
     }
 
@@ -47,6 +67,8 @@ public class PanelPregunta extends JPanel {
         responder.addActionListener(controlador);
         responder.setActionCommand("RESPONDER");
     }
+
+
 
 
 }
