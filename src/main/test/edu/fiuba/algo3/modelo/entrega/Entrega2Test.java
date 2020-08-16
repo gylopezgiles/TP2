@@ -48,7 +48,7 @@ public class Entrega2Test {
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta, opcion4Incorrecta, opcion5Correcta);
         Preguntable multipleChoiceConPenalidad = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceConPenalidad, preguntaTexto, opciones);
 
-        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta, opcion5Correcta);
+        List<String> opcionesSeleccionadas = Arrays.asList("China", "India", "Japón", "Tailandia");
         Jugador jugador = new Jugador("jugador");
         List<Jugador> jugadores = Arrays.asList(jugador);
         Ronda ronda = new Ronda(jugadores, multipleChoiceConPenalidad);
@@ -74,7 +74,7 @@ public class Entrega2Test {
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta, opcion4Incorrecta, opcion5Correcta);
         Preguntable multipleChoiceConPenalidad = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceConPenalidad, preguntaTexto, opciones);
 
-        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta, opcion3Correcta);
+        List<String> opcionesSeleccionadas = Arrays.asList("China", "Japón");
         Jugador jugador = new Jugador("jugador");
         List<Jugador> jugadores = Arrays.asList(jugador);
         Ronda ronda = new Ronda(jugadores, multipleChoiceConPenalidad);
@@ -100,7 +100,7 @@ public class Entrega2Test {
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta, opcion4Incorrecta, opcion5Correcta);
         Preguntable multipleChoiceConPenalidad = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceConPenalidad, preguntaTexto, opciones);
 
-        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta, opcion3Correcta, opcion4Incorrecta);
+        List<String> opcionesSeleccionadas = Arrays.asList("China", "Japón", "España");
         Jugador jugador = new Jugador("jugador");
         List<Jugador> jugadores = Arrays.asList(jugador);
         Ronda ronda = new Ronda(jugadores, multipleChoiceConPenalidad);
@@ -126,7 +126,7 @@ public class Entrega2Test {
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Incorrecta, opcion3Correcta, opcion4Incorrecta, opcion5Incorrecta);
         Preguntable multipleChoiceConPenalidad = CreadorPregunta.crearPregunta(TipoPregunta.MultipleChoiceConPenalidad, preguntaTexto, opciones);
 
-        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion2Incorrecta, opcion4Incorrecta, opcion5Incorrecta);
+        List<String> opcionesSeleccionadas = Arrays.asList("Portugal", "España", "Francia");
         Jugador jugador = new Jugador("jugador");
         List<Jugador> jugadores = Arrays.asList(jugador);
         Ronda ronda = new Ronda(jugadores, multipleChoiceConPenalidad);
@@ -152,7 +152,7 @@ public class Entrega2Test {
         Ronda ronda = new Ronda(Arrays.asList(jugador), verdaderoFalsoClasico);
 
         //When
-        ronda.responder(Arrays.asList(opcionCorrecta), Multiplicador.PorDos);
+        ronda.responder(Arrays.asList("Verdadero"), Multiplicador.PorDos);
         ronda.aplicarPuntajes();
 
         // Then
@@ -172,7 +172,7 @@ public class Entrega2Test {
         Ronda ronda = new Ronda(Arrays.asList(jugador), verdaderoFalsoClasico);
 
         //When
-        ronda.responder(Arrays.asList(opcionCorrecta), Multiplicador.PorTres);
+        ronda.responder(Arrays.asList("Falso"), Multiplicador.PorTres);
         ronda.aplicarPuntajes();
 
         // Then
@@ -192,7 +192,7 @@ public class Entrega2Test {
         Ronda ronda = new Ronda(Arrays.asList(jugador), verdaderoFalsoClasico);
 
         //When
-        ronda.responder(Arrays.asList(opcionIncorrecta), Multiplicador.PorDos);
+        ronda.responder(Arrays.asList("Verdadero"), Multiplicador.PorDos);
         ronda.aplicarPuntajes();
 
         // Then
@@ -212,7 +212,7 @@ public class Entrega2Test {
         Ronda ronda = new Ronda(Arrays.asList(jugador), verdaderoFalsoClasico);
 
         //When
-        ronda.responder(Arrays.asList(opcionIncorrecta), Multiplicador.PorTres);
+        ronda.responder(Arrays.asList("Falso"), Multiplicador.PorTres);
         ronda.aplicarPuntajes();
 
         // Then
@@ -234,7 +234,7 @@ public class Entrega2Test {
         Ronda ronda = new Ronda(Arrays.asList(jugador), multipleChoicePenalidad);
 
         //When
-        ronda.responder(Arrays.asList(opcion2Correcta, opcion3Correcta), Multiplicador.PorDos);
+        ronda.responder(Arrays.asList("Ready for Love", "Bad Company"), Multiplicador.PorDos);
         ronda.aplicarPuntajes();
 
         //Then
@@ -257,7 +257,7 @@ public class Entrega2Test {
         Ronda ronda = new Ronda(Arrays.asList(jugador), multipleChoicePenalidad);
 
         //When
-        ronda.responder(Arrays.asList(opcion2Correcta, opcion3Correcta, opcion5Correcta), Multiplicador.PorTres);
+        ronda.responder(Arrays.asList("Billy Gibbons", "Frank Beard", "Dusty Hill"), Multiplicador.PorTres);
         ronda.aplicarPuntajes();
 
         //Then
@@ -279,7 +279,7 @@ public class Entrega2Test {
         Ronda ronda = new Ronda(Arrays.asList(jugador), multipleChoicePenalidad);
 
         //When
-        ronda.responder(Arrays.asList(opcion3Incorrecta), Multiplicador.PorDos);
+        ronda.responder(Arrays.asList("The Doors"), Multiplicador.PorDos);
         ronda.aplicarPuntajes();
 
         //Then
@@ -302,7 +302,7 @@ public class Entrega2Test {
         Ronda ronda = new Ronda(Arrays.asList(jugador), multipleChoicePenalidad);
 
         //When
-        ronda.responder(Arrays.asList(opcion1Incorrecta), Multiplicador.PorTres);
+        ronda.responder(Arrays.asList("1978"), Multiplicador.PorTres);
         ronda.aplicarPuntajes();
 
         //Then
@@ -323,7 +323,7 @@ public class Entrega2Test {
         Ronda ronda = new Ronda(Arrays.asList(jugador), multipleChoiceClasico);
 
         //When
-        ronda.responder(Arrays.asList(opcion2Correcta), Multiplicador.PorDos);
+        ronda.responder(Arrays.asList("Bob Seger"), Multiplicador.PorDos);
         ronda.aplicarPuntajes();
 
         //Then
@@ -343,7 +343,7 @@ public class Entrega2Test {
         Ronda ronda = new Ronda(Arrays.asList(jugador), multipleChoiceClasico);
 
         //When
-        ronda.responder(Arrays.asList(opcion2Correcta), Multiplicador.PorTres);
+        ronda.responder(Arrays.asList("Bob Seger"), Multiplicador.PorTres);
         ronda.aplicarPuntajes();
 
         //Then
@@ -365,7 +365,7 @@ public class Entrega2Test {
 
         //When
 
-        ronda.responder(Arrays.asList(opcion2Correcta), Multiplicador.PorDos);
+        ronda.responder(Arrays.asList("Guns N' Roses"), Multiplicador.PorDos);
         ronda.aplicarPuntajes();
 
         //Then
@@ -388,7 +388,7 @@ public class Entrega2Test {
 
         //When
 
-        ronda.responder(Arrays.asList(opcion2Correcta), Multiplicador.PorTres);
+        ronda.responder(Arrays.asList("Guns N' Roses"), Multiplicador.PorTres);
         ronda.aplicarPuntajes();
 
         //Then
@@ -409,7 +409,7 @@ public class Entrega2Test {
         Opcion opcion5 = new Opcion("U", esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5);
         Preguntable orderedChoice = CreadorPregunta.crearPregunta(TipoPregunta.OrderedChoice,preguntaTexto,opciones);
-        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5);
+        List<String> opcionesSeleccionadas = Arrays.asList("A", "E", "I", "O", "U");
         Jugador jugador = new Jugador("Jugador1");
         Ronda ronda = new Ronda(Arrays.asList(jugador), orderedChoice);
 
@@ -430,7 +430,7 @@ public class Entrega2Test {
         Opcion opcion5 = new Opcion("U", esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5);
         Preguntable orderedChoice = CreadorPregunta.crearPregunta(TipoPregunta.OrderedChoice,preguntaTexto,opciones);
-        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion4, opcion5, opcion2, opcion1, opcion3);
+        List<String> opcionesSeleccionadas = Arrays.asList("O", "U", "E", "A", "I");
         Jugador jugador = new Jugador("Jugador1");
         Ronda ronda = new Ronda(Arrays.asList(jugador), orderedChoice);
 

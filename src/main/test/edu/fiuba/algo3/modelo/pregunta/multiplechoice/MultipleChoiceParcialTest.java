@@ -95,7 +95,7 @@ public class MultipleChoiceParcialTest {
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta, opcion4Incorrecta);
 
         Preguntable multipleChoiceParcial = new MultipleChoiceParcial(preguntaTexto, opciones);
-        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta);
+        List<String> opcionesSeleccionadas = Arrays.asList("Helio", "Neon", "Kripton");
 
         int puntuacion = multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas);
 
@@ -115,7 +115,7 @@ public class MultipleChoiceParcialTest {
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta, opcion4Incorrecta);
 
         Preguntable multipleChoiceParcial = new MultipleChoiceParcial(preguntaTexto, opciones);
-        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta, opcion3Correcta);
+        List<String> opcionesSeleccionadas = Arrays.asList("Helio", "Kripton");
 
         int puntuacion = multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas);
 
@@ -135,7 +135,7 @@ public class MultipleChoiceParcialTest {
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta, opcion4Incorrecta);
 
         Preguntable multipleChoiceParcial = new MultipleChoiceParcial(preguntaTexto, opciones);
-        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta, opcion3Correcta, opcion4Incorrecta);
+        List<String> opcionesSeleccionadas = Arrays.asList("Helio", "Kripton", "Oxigeno");
 
         int puntuacion = multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas);
 
@@ -150,7 +150,7 @@ public class MultipleChoiceParcialTest {
         Opcion opcionIncorrecta2 = new Opcion("Tom Ellis", !esCorrecta);
         Opcion opcionIncorrecta3 = new Opcion("Ella Fitzgerald", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcionCorrecta1, opcionIncorrecta2, opcionIncorrecta3);
-        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcionCorrecta1);
+        List<String> opcionesSeleccionadas = Arrays.asList("Nina Simone");
         Exclusividad exclusividad = new Exclusividad();
 
         Preguntable multipleChoiceParcial = new MultipleChoiceParcial(preguntaTexto, opciones);
@@ -158,22 +158,6 @@ public class MultipleChoiceParcialTest {
         Assertions.assertEquals(1, multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDos, exclusividad));
         Assertions.assertEquals(1, multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorTres, exclusividad));
 
-    }
-
-    @Test
-    public void obtenerOpcionesPorNombreTest() throws ParametrosInvalidosExcepcion {
-        String preguntaTexto = "Cuáles de los siguientes artistas interpretaron la canción Proud Mary";
-        Boolean esCorrecta = Boolean.TRUE;
-        Opcion opcionCorrecta1 = new Opcion("Creedence Clearwater Revival", esCorrecta);
-        Opcion opcionCorrecta2 = new Opcion("Tina Turner", esCorrecta);
-        Opcion opcionIncorrecta3 = new Opcion("Radiohead", !esCorrecta);
-        List<Opcion> opciones = Arrays.asList(opcionCorrecta1, opcionCorrecta2, opcionIncorrecta3);
-        List<String> opcionesPorNombre = Arrays.asList("Creedence Clearwater Revival", "Tina Turner", "Radiohead");
-        Preguntable multipleChoiceParcial = new MultipleChoiceParcial(preguntaTexto, opciones);
-
-        List<Opcion> opcionesObtenidas = multipleChoiceParcial.obtenerOpcionesPorNombre(opcionesPorNombre);
-
-        Assertions.assertEquals(opciones, opcionesObtenidas);
     }
 
 }

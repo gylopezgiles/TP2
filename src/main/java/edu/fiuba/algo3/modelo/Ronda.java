@@ -5,7 +5,6 @@ import edu.fiuba.algo3.modelo.exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.multiplicador.MultiplicableStrategy;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.EstadoRonda;
-import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 
 import java.util.*;
@@ -48,24 +47,24 @@ public class Ronda {
         return pregunta;
     }
 
-    public void responder(List<Opcion> opciones) throws RondaSinPreguntaExcepcion {
+    public <T> void responder(T opciones) throws RondaSinPreguntaExcepcion {
         responder(opciones, Multiplicador.PorDefecto);
     }
 
-    public void responder(List<Opcion> opciones, Boolean aplicaExclusividad) throws RondaSinPreguntaExcepcion {
+    public <T> void responder(T opciones, Boolean aplicaExclusividad) throws RondaSinPreguntaExcepcion {
         if(aplicaExclusividad){
             aplicanExclusividad.add(jugadorTurno);
         }
         responder(opciones, Multiplicador.PorDefecto);
     }
 
-    public void responder(List<Opcion> opciones, MultiplicableStrategy multiplicador) throws RondaSinPreguntaExcepcion {
+    public <T> void responder(T nombresOpcionesSeleccionadas, MultiplicableStrategy multiplicador) throws RondaSinPreguntaExcepcion {
         if(pregunta == null){
             throw new RondaSinPreguntaExcepcion("No se puede responder sin una pregunta");
         }
         estadoRonda = EstadoRonda.RESPONDIENDO;
         exclusividad = new Exclusividad();
-        puntajesRonda.put(jugadorTurno, pregunta.establecerPuntuacion(opciones, multiplicador, exclusividad));
+        puntajesRonda.put(jugadorTurno, pregunta.establecerPuntuacion(nombresOpcionesSeleccionadas, multiplicador, exclusividad));
         cambiarJugadorTurno();
         actualizarEstadoRonda();
     }

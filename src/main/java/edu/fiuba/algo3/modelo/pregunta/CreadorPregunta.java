@@ -5,7 +5,6 @@ import edu.fiuba.algo3.modelo.excepciones.TipoPreguntaNoImplementadaException;
 import edu.fiuba.algo3.modelo.pregunta.multiplechoice.MultipleChoiceClasico;
 import edu.fiuba.algo3.modelo.pregunta.multiplechoice.MultipleChoiceConPenalidad;
 import edu.fiuba.algo3.modelo.pregunta.multiplechoice.MultipleChoiceParcial;
-import edu.fiuba.algo3.modelo.pregunta.multiplechoice.GroupChoice;
 import edu.fiuba.algo3.modelo.pregunta.verdaderofalso.VerdaderoFalsoClasico;
 import edu.fiuba.algo3.modelo.pregunta.verdaderofalso.VerdaderoFalsoPenalidad;
 
@@ -14,7 +13,7 @@ import java.util.List;
 
 public class CreadorPregunta {
 
-    public static <T> Preguntable crearPregunta(TipoPregunta tipoPregunta, String pregunta, T opciones) throws ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
+    public static Preguntable crearPregunta(TipoPregunta tipoPregunta, String pregunta, List<Opcion> opciones) throws ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
         switch (tipoPregunta) {
             case VerdaderoFalsoClasico:
                 return new VerdaderoFalsoClasico(pregunta, opciones);

@@ -45,7 +45,7 @@ public class MultipleChoiceClasicoTest {
         Opcion opcion5 = new Opcion("Ecuador", !esCorrecta);
 
         List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcion2, opcion3, opcion4, opcion5);
-        List<Opcion> opcionesCorrectas = Arrays.asList(opcionCorrecta);
+        List<String> opcionesCorrectas = Arrays.asList("Venezuela");
 
         //When
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
@@ -64,13 +64,13 @@ public class MultipleChoiceClasicoTest {
         Opcion opcion4Incorrecta = new Opcion("El dinero no comprará la felicidad a quien no sabe qué desea", !esCorrecta);
         Opcion opcion5Incorrecta = new Opcion("Un pueblo ignorante es un instrumento ciego de su propia destrucción", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta, opcion4Incorrecta, opcion5Incorrecta);
-        List<Opcion> opcionesCorrectas = Arrays.asList(opcion1Correcta, opcion2Correcta);
+        List<String> opcionesSeleccionadas = Arrays.asList("Yo no manejo el rating, yo manejo un Rolls Royce", "MAIAMEEEEEEEEE!!!");
 
         //When
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
 
         //Then
-        Assertions.assertEquals(1, multipleChoiceClasico.establecerPuntuacion(opcionesCorrectas));
+        Assertions.assertEquals(1, multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas));
     }
 
     @Test
@@ -85,12 +85,13 @@ public class MultipleChoiceClasicoTest {
         Opcion opcion5 = new Opcion("5", esCorrecta);
 
         List<Opcion> opciones = Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5);
+        List<String> opcionesSeleccionadas = Arrays.asList("1", "2", "3", "4", "5");
 
         //When
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
 
         //Then
-        Assertions.assertEquals(1, multipleChoiceClasico.establecerPuntuacion(opciones));
+        Assertions.assertEquals(1, multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas));
     }
 
     @Test
@@ -157,7 +158,7 @@ public class MultipleChoiceClasicoTest {
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta, opcion4Incorrecta, opcion5Incorrecta);
 
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
-        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta, opcion2Correcta);
+        List<String> opcionesSeleccionadas = Arrays.asList("Yo no manejo el rating, yo manejo un Rolls Royce", "MAIAMEEEEEEEEE!!!");
 
         Assertions.assertEquals(1,multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas));
     }
@@ -175,7 +176,7 @@ public class MultipleChoiceClasicoTest {
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta, opcion4Incorrecta, opcion5Incorrecta);
 
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
-        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion4Incorrecta,opcion5Incorrecta);
+        List<String> opcionesSeleccionadas = Arrays.asList("El dinero no comprará la felicidad a quien no sabe qué desea","Un pueblo ignorante es un instrumento ciego de su propia destrucción");
 
         Assertions.assertEquals(0,multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas));
     }
@@ -192,7 +193,7 @@ public class MultipleChoiceClasicoTest {
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta, opcion4Incorrecta, opcion5Incorrecta);
 
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
-        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta);
+        List<String> opcionesSeleccionadas = Arrays.asList("Yo no manejo el rating, yo manejo un Rolls Royce");
 
         Assertions.assertEquals(0,multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas));
     }
@@ -209,7 +210,7 @@ public class MultipleChoiceClasicoTest {
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Incorrecta, opcion4Incorrecta, opcion5Incorrecta);
 
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
-        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcion1Correcta,opcion2Correcta,opcion4Incorrecta);
+        List<String> opcionesSeleccionadas = Arrays.asList("Yo no manejo el rating, yo manejo un Rolls Royce","MAIAMEEEEEEEEE!!!","El dinero no comprará la felicidad a quien no sabe qué desea");
 
         Assertions.assertEquals(0,multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas));
     }
@@ -222,30 +223,14 @@ public class MultipleChoiceClasicoTest {
         Opcion opcionCorrecta2 = new Opcion("Tina Turner", esCorrecta);
         Opcion opcionIncorrecta3 = new Opcion("Radiohead", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcionCorrecta1, opcionCorrecta2, opcionIncorrecta3);
-        List<Opcion> opcionesSeleccionadas = Arrays.asList(opcionCorrecta1, opcionCorrecta2);
+        List<String> nombresOpcionesSeleccionadas = Arrays.asList("Creedence Clearwater Revival", "Tina Turner");
         Exclusividad exclusividad = new Exclusividad();
 
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
 
-        Assertions.assertEquals(1, multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDos, exclusividad));
-        Assertions.assertEquals(1, multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorTres, exclusividad));
+        Assertions.assertEquals(1, multipleChoiceClasico.establecerPuntuacion(nombresOpcionesSeleccionadas, Multiplicador.PorDos, exclusividad));
+        Assertions.assertEquals(1, multipleChoiceClasico.establecerPuntuacion(nombresOpcionesSeleccionadas, Multiplicador.PorTres, exclusividad));
 
-    }
-
-    @Test
-    public void obtenerOpcionesPorNombreTest() throws ParametrosInvalidosExcepcion {
-        String preguntaTexto = "Cuáles de los siguientes artistas interpretaron la canción Proud Mary";
-        Boolean esCorrecta = Boolean.TRUE;
-        Opcion opcionCorrecta1 = new Opcion("Creedence Clearwater Revival", esCorrecta);
-        Opcion opcionCorrecta2 = new Opcion("Tina Turner", esCorrecta);
-        Opcion opcionIncorrecta3 = new Opcion("Radiohead", !esCorrecta);
-        List<Opcion> opciones = Arrays.asList(opcionCorrecta1, opcionCorrecta2, opcionIncorrecta3);
-        List<String> opcionesPorNombre = Arrays.asList("Creedence Clearwater Revival", "Tina Turner", "Radiohead");
-        Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
-
-        List<Opcion> opcionesObtenidas = multipleChoiceClasico.obtenerOpcionesPorNombre(opcionesPorNombre);
-
-        Assertions.assertEquals(opciones, opcionesObtenidas);
     }
 
 }

@@ -79,28 +79,25 @@ public class Partida {
         return ronda.obtenerJugadorTurno();
     }
 
-    public void responder(List<String> opcionesSeleccionadas, Boolean aplicaExclusividad) {
+    public <T> void responder(T opcionesSeleccionadas, Boolean aplicaExclusividad){
+        //TODO: Manejar las excepciones
         Jugador jugadorTurno = obtenerJugadorTurno();
         if (aplicaExclusividad && exclusividadPorJugador.get(jugadorTurno) < MAX_EXCLUSIVIDAD_POR_JUGADOR) {
-            Preguntable pregunta = ronda.obtenerPregunta();
-            List<Opcion> opciones = pregunta.obtenerOpcionesPorNombre(opcionesSeleccionadas);
             exclusividadPorJugador.replace(jugadorTurno, exclusividadPorJugador.get(jugadorTurno)+1);
             try {
-                ronda.responder(opciones, aplicaExclusividad);
+                ronda.responder(opcionesSeleccionadas, aplicaExclusividad);
             } catch (RondaSinPreguntaExcepcion rondaSinPreguntaExcepcion) {
                 rondaSinPreguntaExcepcion.printStackTrace();
             }
-        }else {
+        } else {
             responder(opcionesSeleccionadas, Multiplicador.PorDefecto);
         }
     }
 
-    public void responder(List<String> opcionesSeleccionadas, MultiplicableStrategy multiplicador){
+    public <T> void responder(T opcionesSeleccionadas, MultiplicableStrategy multiplicador){
         //TODO: Manejar las excepciones
-        Preguntable pregunta = ronda.obtenerPregunta();
-        List<Opcion> opciones = pregunta.obtenerOpcionesPorNombre(opcionesSeleccionadas);
         try {
-            ronda.responder(opciones);
+            ronda.responder(opcionesSeleccionadas);
         } catch (RondaSinPreguntaExcepcion rondaSinPreguntaExcepcion) {
             rondaSinPreguntaExcepcion.printStackTrace();
         }

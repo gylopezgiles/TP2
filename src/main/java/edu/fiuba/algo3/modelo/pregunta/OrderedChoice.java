@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class OrderedChoice implements Preguntable <List<Opcion>>{
+public class OrderedChoice implements Preguntable <List<String>>{
 
     private static final int CANTIDAD_OPCIONES_MINIMO = 2;
     private static final int CANTIDAD_OPCIONES_MAXIMO = 5;
@@ -18,10 +18,10 @@ public class OrderedChoice implements Preguntable <List<Opcion>>{
     private String pregunta;
     private List<Opcion> opciones;
 
-    public <T> OrderedChoice(String pregunta, T opciones) throws ParametrosInvalidosExcepcion {
-        validarOpciones((List<Opcion>)opciones);
+    public OrderedChoice(String pregunta, List<Opcion> opciones) throws ParametrosInvalidosExcepcion {
+        validarOpciones(opciones);
         this.pregunta = pregunta;
-        this.opciones = (List<Opcion>) opciones;
+        this.opciones = opciones;
     }
 
     private void validarOpciones(List<Opcion> opciones) throws ParametrosInvalidosExcepcion {
@@ -36,15 +36,16 @@ public class OrderedChoice implements Preguntable <List<Opcion>>{
     }
 
     @Override
-    public int establecerPuntuacion(List<Opcion> opciones) {
+        public int establecerPuntuacion(List<String> nombresOpcionesSeleccionadas) {
         Exclusividad exclusividad = new Exclusividad();
-        return establecerPuntuacion(opciones, Multiplicador.PorDefecto, exclusividad);
+        return establecerPuntuacion(nombresOpcionesSeleccionadas, Multiplicador.PorDefecto, exclusividad);
     }
 
     @Override
-    public int establecerPuntuacion(List<Opcion> opciones, MultiplicableStrategy multiplicador, Exclusividad exclusividad) {
+    public int establecerPuntuacion(List<String> nombresOpcionesSeleccionadas, MultiplicableStrategy multiplicador, Exclusividad exclusividad) {
         exclusividad.activarExclusividad();
-        return tieneElOrdenAdecuado(opciones.iterator(),this.obtenerOpciones().iterator()) ? 1: 0;
+        List<Opcion> opcionesSeleccionadas = obtenerOpcionesPorNombre(nombresOpcionesSeleccionadas);
+        return tieneElOrdenAdecuado(opcionesSeleccionadas.iterator(),this.obtenerOpciones().iterator()) ? 1: 0;
     }
 
     @Override
@@ -72,8 +73,7 @@ public class OrderedChoice implements Preguntable <List<Opcion>>{
         return pregunta;
     }
 
-    @Override
-    public List<Opcion> obtenerOpcionesPorNombre(List<String> opcionesSeleccionadas) {
+    private List<Opcion> obtenerOpcionesPorNombre(List<String> opcionesSeleccionadas) {
         return opcionesSeleccionadas.stream().map(opcionSeleccionada -> obtenerOpcionPorNombre(opcionSeleccionada)).collect(Collectors.toList());
     }
 

@@ -86,7 +86,7 @@ public class VerdaderoFalsoPenalidadTest {
 
         Preguntable verdaderoFalsoConPenalidad = new VerdaderoFalsoPenalidad(preguntaTexto, opciones);
 
-        Assertions.assertEquals(1, verdaderoFalsoConPenalidad.establecerPuntuacion(Arrays.asList(opcionCorrecta)));
+        Assertions.assertEquals(1, verdaderoFalsoConPenalidad.establecerPuntuacion(Arrays.asList("Falso")));
     }
 
 
@@ -102,7 +102,7 @@ public class VerdaderoFalsoPenalidadTest {
 
         Preguntable verdaderoFalsoConPenalidad = new VerdaderoFalsoPenalidad(preguntaTexto, opciones);
 
-        Assertions.assertEquals(-1, verdaderoFalsoConPenalidad.establecerPuntuacion(Arrays.asList(opcionIncorrecta)));
+        Assertions.assertEquals(-1, verdaderoFalsoConPenalidad.establecerPuntuacion(Arrays.asList("Verdadero")));
 
     }
 
@@ -113,7 +113,7 @@ public class VerdaderoFalsoPenalidadTest {
         Opcion opcionIncorrecta = new Opcion("Verdadero", !esCorrecta);
         Opcion opcionCorrecta = new Opcion("Falso", esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
-        List<Opcion> opcionSeleccionada = Arrays.asList(opcionCorrecta);
+        List<String> opcionSeleccionada = Arrays.asList("Falso");
         Exclusividad exclusividad = new Exclusividad();
 
         Preguntable verdaderoFalsoConPenalidad = new VerdaderoFalsoPenalidad(preguntaTexto, opciones);
@@ -128,7 +128,7 @@ public class VerdaderoFalsoPenalidadTest {
         Opcion opcionIncorrecta = new Opcion("Verdadero", !esCorrecta);
         Opcion opcionCorrecta = new Opcion("Falso", esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
-        List<Opcion> opcionSeleccionada = Arrays.asList(opcionIncorrecta);
+        List<String> opcionSeleccionada = Arrays.asList("Verdadero");
         Exclusividad exclusividad = new Exclusividad();
 
         Preguntable verdaderoFalsoConPenalidad = new VerdaderoFalsoPenalidad(preguntaTexto, opciones);
@@ -136,17 +136,4 @@ public class VerdaderoFalsoPenalidadTest {
         Assertions.assertEquals(-2, verdaderoFalsoConPenalidad.establecerPuntuacion(opcionSeleccionada, Multiplicador.PorDos, exclusividad));
     }
 
-    @Test
-    public void obtenerOpcionesPorNombreTest() throws ParametrosInvalidosExcepcion {
-        Opcion opcionCorrecta = new Opcion("Verdadero", Boolean.TRUE);
-        Opcion opcionIncorrecta = new Opcion("Falso", Boolean.FALSE);
-        List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
-        String preguntaTexto = "pregunta?";
-        List<String> opcionesPorNombre = Arrays.asList("Verdadero", "Falso");
-        Preguntable verdaderoFalsoConPenalidad = new VerdaderoFalsoPenalidad(preguntaTexto, opciones);
-
-        List<Opcion> opcionesObtenidas = verdaderoFalsoConPenalidad.obtenerOpcionesPorNombre(opcionesPorNombre);
-
-        Assertions.assertEquals(opciones, opcionesObtenidas);
-    }
 }

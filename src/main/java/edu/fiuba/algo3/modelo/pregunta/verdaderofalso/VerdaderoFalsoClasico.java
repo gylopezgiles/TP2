@@ -11,10 +11,10 @@ import java.util.Optional;
 
 public class VerdaderoFalsoClasico extends VerdaderoFalso {
 
-    public <T> VerdaderoFalsoClasico(String pregunta, T opciones) throws ParametrosInvalidosExcepcion {
-        validarOpciones((List<Opcion>) opciones);
+    public VerdaderoFalsoClasico(String pregunta, List<Opcion> opciones) throws ParametrosInvalidosExcepcion {
+        validarOpciones(opciones);
         this.pregunta = pregunta;
-        this.opciones = (List<Opcion>) opciones;
+        this.opciones = opciones;
     }
 
     @Override
@@ -23,8 +23,9 @@ public class VerdaderoFalsoClasico extends VerdaderoFalso {
     }
 
     @Override
-    public int establecerPuntuacion(List<Opcion> opciones, MultiplicableStrategy multiplicador, Exclusividad exclusividad) {
+    public int establecerPuntuacion(List<String> nombresOpcionesSeleccionadas, MultiplicableStrategy multiplicador, Exclusividad exclusividad) {
         exclusividad.activarExclusividad();
+        List<Opcion> opciones = obtenerOpcionesPorNombre(nombresOpcionesSeleccionadas);
         Optional<Opcion> opcion = opciones.stream()
                 .filter(op -> op.esCorrecta())
                 .findAny();

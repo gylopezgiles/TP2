@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo.entrega;
 
 import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.modelo.Partida;
 import edu.fiuba.algo3.modelo.Ronda;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.RondaSinPreguntaExcepcion;
@@ -10,7 +9,6 @@ import edu.fiuba.algo3.modelo.pregunta.CreadorPregunta;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 import edu.fiuba.algo3.modelo.pregunta.TipoPregunta;
-import edu.fiuba.algo3.modelo.pregunta.multiplechoice.GroupChoice;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -32,8 +30,8 @@ public class Entrega3Test {
         Jugador jugador2 = new Jugador("Jugador2");
         List<Jugador> jugadores = Arrays.asList(jugador1, jugador2);
         Ronda ronda = new Ronda(jugadores, verdaderoFalsoPenalidad);
-        List<Opcion> opcionSeleccionada1 = Arrays.asList(opcionCorrecta);
-        List<Opcion> opcionSeleccionada2 = Arrays.asList(opcionIncorrecta);
+        List<String> opcionSeleccionada1 = Arrays.asList("14");
+        List<String> opcionSeleccionada2 = Arrays.asList("8");
         Boolean aplicaExclusividad = Boolean.TRUE;
 
         //When
@@ -62,8 +60,8 @@ public class Entrega3Test {
         Jugador jugador2 = new Jugador("Jugador2");
         List<Jugador> jugadores = Arrays.asList(jugador1, jugador2);
         Ronda ronda = new Ronda(jugadores, multipleChoiceConPenalidad);
-        List<Opcion> opcionesSeleccionadas1 = Arrays.asList(opcion1Correcta, opcion3Correcta);
-        List<Opcion> opcionesSeleccionadas2 = Arrays.asList(opcion1Correcta, opcion4Incorrecta);
+        List<String> opcionesSeleccionadas1 = Arrays.asList("España", "Argentina");
+        List<String> opcionesSeleccionadas2 = Arrays.asList("España", "Portugal");
         Boolean aplicaExclusividad = Boolean.TRUE;
 
         //When
@@ -92,8 +90,8 @@ public class Entrega3Test {
         Jugador jugador2 = new Jugador("Jugador2");
         List<Jugador> jugadores = Arrays.asList(jugador1, jugador2);
         Ronda ronda = new Ronda(jugadores, multipleChoiceClasico);
-        List<Opcion> opcionesSeleccionadas1 = Arrays.asList(opcion1Correcta, opcion3Correcta);
-        List<Opcion> opcionesSeleccionadas2 = Arrays.asList(opcion1Correcta, opcion4Incorrecta);
+        List<String> opcionesSeleccionadas1 = Arrays.asList("España", "Argentina");
+        List<String> opcionesSeleccionadas2 = Arrays.asList("España", "Portugal");
         Boolean aplicaExclusividad = Boolean.TRUE;
 
         //When
@@ -122,8 +120,8 @@ public class Entrega3Test {
         Jugador jugador2 = new Jugador("Jugador2");
         List<Jugador> jugadores = Arrays.asList(jugador1, jugador2);
         Ronda ronda = new Ronda(jugadores, multipleChoiceClasico);
-        List<Opcion> opcionesSeleccionadas1 = Arrays.asList(opcion1Correcta, opcion4Incorrecta);
-        List<Opcion> opcionesSeleccionadas2 = Arrays.asList(opcion1Correcta, opcion3Correcta);
+        List<String> opcionesSeleccionadas1 = Arrays.asList("España", "Portugal");
+        List<String> opcionesSeleccionadas2 = Arrays.asList("España", "Argentina");
         Boolean aplicaExclusividad = Boolean.TRUE;
 
         //When
@@ -152,8 +150,8 @@ public class Entrega3Test {
         Jugador jugador2 = new Jugador("Jugador2");
         List<Jugador> jugadores = Arrays.asList(jugador1, jugador2);
         Ronda ronda = new Ronda(jugadores, multipleChoiceClasico);
-        List<Opcion> opcionesSeleccionadas1 = Arrays.asList(opcion1Correcta, opcion3Correcta);
-        List<Opcion> opcionesSeleccionadas2 = Arrays.asList(opcion1Correcta, opcion3Correcta);
+        List<String> opcionesSeleccionadas1 = Arrays.asList("España", "Argentina");
+        List<String> opcionesSeleccionadas2 = Arrays.asList("España", "Argentina");
         Boolean aplicaExclusividad = Boolean.TRUE;
 
         //When
@@ -182,8 +180,8 @@ public class Entrega3Test {
         Jugador jugador2 = new Jugador("Jugador2");
         List<Jugador> jugadores = Arrays.asList(jugador1, jugador2);
         Ronda ronda = new Ronda(jugadores, multipleChoiceParcial);
-        List<Opcion> opcionesSeleccionadas1 = Arrays.asList(opcion1Correcta, opcion3Correcta);
-        List<Opcion> opcionesSeleccionadas2 = Arrays.asList(opcion4Incorrecta);
+        List<String> opcionesSeleccionadas1 = Arrays.asList("España", "Argentina");
+        List<String> opcionesSeleccionadas2 = Arrays.asList("Portugal");
         Boolean aplicaExclusividad = Boolean.TRUE;
 
         //When
@@ -212,8 +210,8 @@ public class Entrega3Test {
         Jugador jugador2 = new Jugador("Jugador2");
         List<Jugador> jugadores = Arrays.asList(jugador1, jugador2);
         Ronda ronda = new Ronda(jugadores, multipleChoiceParcial);
-        List<Opcion> opcionesSeleccionadas1 = Arrays.asList(opcion1Correcta, opcion4Incorrecta);
-        List<Opcion> opcionesSeleccionadas2 = Arrays.asList(opcion1Correcta);
+        List<String> opcionesSeleccionadas1 = Arrays.asList("España", "Portugal");
+        List<String> opcionesSeleccionadas2 = Arrays.asList("España");
         Boolean aplicaExclusividad = Boolean.TRUE;
 
         //When
@@ -242,8 +240,8 @@ public class Entrega3Test {
         Jugador jugador2 = new Jugador("Jugador2");
         List<Jugador> jugadores = Arrays.asList(jugador1, jugador2);
         Ronda ronda = new Ronda(jugadores, multipleChoiceParcial);
-        List<Opcion> opcionesSeleccionadas1 = Arrays.asList(opcion1Correcta, opcion3Correcta);
-        List<Opcion> opcionesSeleccionadas2 = Arrays.asList(opcion1Correcta);
+        List<String> opcionesSeleccionadas1 = Arrays.asList("España", "Argentina");
+        List<String> opcionesSeleccionadas2 = Arrays.asList("España");
         Boolean aplicaExclusividad = Boolean.TRUE;
 
         //When
@@ -269,8 +267,8 @@ public class Entrega3Test {
         Jugador jugador2 = new Jugador("Jugador2");
         List<Jugador> jugadores = Arrays.asList(jugador1, jugador2);
         Ronda ronda = new Ronda(jugadores, verdaderoFalsoClasico);
-        List<Opcion> opcionesSeleccionadas1 = Arrays.asList(opcionIncorrecta);
-        List<Opcion> opcionesSeleccionadas2 = Arrays.asList(opcionCorrecta);
+        List<String> opcionesSeleccionadas1 = Arrays.asList("8");
+        List<String> opcionesSeleccionadas2 = Arrays.asList("14");
         Boolean aplicaExclusividad = Boolean.TRUE;
 
         //When
@@ -296,8 +294,8 @@ public class Entrega3Test {
         Jugador jugador2 = new Jugador("Jugador2");
         List<Jugador> jugadores = Arrays.asList(jugador1, jugador2);
         Ronda ronda = new Ronda(jugadores, verdaderoFalsoClasico);
-        List<Opcion> opcionesSeleccionadas1 = Arrays.asList(opcionCorrecta);
-        List<Opcion> opcionesSeleccionadas2 = Arrays.asList(opcionIncorrecta);
+        List<String> opcionesSeleccionadas1 = Arrays.asList("14");
+        List<String> opcionesSeleccionadas2 = Arrays.asList("8");
         Boolean aplicaExclusividad = Boolean.TRUE;
 
         //When
@@ -323,8 +321,8 @@ public class Entrega3Test {
         Jugador jugador2 = new Jugador("Jugador2");
         List<Jugador> jugadores = Arrays.asList(jugador1, jugador2);
         Ronda ronda = new Ronda(jugadores, verdaderoFalsoClasico);
-        List<Opcion> opcionesSeleccionadas1 = Arrays.asList(opcionCorrecta);
-        List<Opcion> opcionesSeleccionadas2 = Arrays.asList(opcionCorrecta);
+        List<String> opcionesSeleccionadas1 = Arrays.asList("14");
+        List<String> opcionesSeleccionadas2 = Arrays.asList("14");
         Boolean aplicaExclusividad = Boolean.TRUE;
 
         //When
@@ -353,8 +351,8 @@ public class Entrega3Test {
         Jugador jugador2 = new Jugador("Jugador2");
         List<Jugador> jugadores = Arrays.asList(jugador1, jugador2);
         Ronda ronda = new Ronda(jugadores, orderedChoice);
-        List<Opcion> opcionesSeleccionadas1 = Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5);
-        List<Opcion> opcionesSeleccionadas2 = Arrays.asList(opcion2, opcion5, opcion3, opcion4, opcion1);
+        List<String> opcionesSeleccionadas1 = Arrays.asList("Amigo", "Esposa", "Imán", "Ola", "Urraca");
+        List<String> opcionesSeleccionadas2 = Arrays.asList("Esposa", "Urraca", "Imán", "Ola", "Amigo");
         Boolean aplicaExclusividad = Boolean.TRUE;
 
         //When
@@ -383,8 +381,8 @@ public class Entrega3Test {
         Jugador jugador2 = new Jugador("Jugador2");
         List<Jugador> jugadores = Arrays.asList(jugador1, jugador2);
         Ronda ronda = new Ronda(jugadores, orderedChoice);
-        List<Opcion> opcionesSeleccionadas1 = Arrays.asList(opcion2, opcion5, opcion3, opcion4, opcion1);
-        List<Opcion> opcionesSeleccionadas2 = Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5);
+        List<String> opcionesSeleccionadas1 = Arrays.asList("Esposa", "Urraca", "Imán", "Ola", "Amigo");
+        List<String> opcionesSeleccionadas2 = Arrays.asList("Amigo", "Esposa", "Imán", "Ola", "Urraca");
         Boolean aplicaExclusividad = Boolean.TRUE;
 
         //When
@@ -413,8 +411,8 @@ public class Entrega3Test {
         Jugador jugador2 = new Jugador("Jugador2");
         List<Jugador> jugadores = Arrays.asList(jugador1, jugador2);
         Ronda ronda = new Ronda(jugadores, orderedChoice);
-        List<Opcion> opcionesSeleccionadas1 = Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5);
-        List<Opcion> opcionesSeleccionadas2 = Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5);
+        List<String> opcionesSeleccionadas1 = Arrays.asList("Amigo", "Esposa", "Imán", "Ola", "Urraca");
+        List<String> opcionesSeleccionadas2 = Arrays.asList("Amigo", "Esposa", "Imán", "Ola", "Urraca");
         Boolean aplicaExclusividad = Boolean.TRUE;
 
         //When
