@@ -33,11 +33,14 @@ public class PantallaPrincipal extends JFrame {
 
     public void iniciarPartida() {
         panelInicial.setVisible(Boolean.FALSE);
+        add(panelPregunta);
     }
 
     public void establecerTurno(Preguntable pregunta, Jugador jugador) {
+        panelPregunta.removeAll();
         panelPregunta.establecerTurno(pregunta, jugador);
-        add(panelPregunta);
+        panelPregunta.revalidate();
+        panelPregunta.repaint();
     }
 
     public List<String> obtenerOpcionesSeleccionadas(){
