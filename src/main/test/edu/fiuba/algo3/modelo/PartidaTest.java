@@ -30,7 +30,7 @@ public class PartidaTest {
     }
 
     @Test
-    public void debeCrearUnaNuevaPartidaEnBaseANombresDeJugadores(){
+    public void debeCrearUnaNuevaPartidaEnBaseANombresDeJugadores() throws ParametrosInvalidosExcepcion {
         List<String> nombresJugadores = Arrays.asList("Cecilia", "Leandro");
 
         Partida partida = new Partida(nombresJugadores, preguntas);
@@ -44,7 +44,7 @@ public class PartidaTest {
     }
 
     @Test
-    public void responderHastaFinalDePartida(){
+    public void responderHastaFinalDePartida() throws ParametrosInvalidosExcepcion {
         List<String> nombresJugadores = Arrays.asList("Cecilia", "Leandro");
 
         Partida partida = new Partida(nombresJugadores, preguntas);

@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo.pregunta;
+package edu.fiuba.algo3.modelo;
 
 public enum EstadoRonda {
     INICIA,

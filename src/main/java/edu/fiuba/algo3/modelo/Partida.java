@@ -1,8 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.excepciones.RondaSinPreguntaExcepcion;
+import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.multiplicador.MultiplicableStrategy;
-import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 
 import java.util.*;
@@ -17,7 +16,7 @@ public class Partida {
     private Map<Jugador, Integer> exclusividadPorJugador;
     private Ronda ronda;
 
-    public Partida(List<String> nombresJugadores, List<Preguntable> preguntas){
+    public Partida(List<String> nombresJugadores, List<Preguntable> preguntas) throws ParametrosInvalidosExcepcion {
         this.jugadores = generarJugadores(nombresJugadores);
         this.preguntasIterator = preguntas.iterator();
         this.ronda = new Ronda(jugadores, preguntasIterator.next());
@@ -58,32 +57,18 @@ public class Partida {
     }
 
     public <T> void responder(T opcionesSeleccionadas, Boolean aplicaExclusividad){
-        //TODO: Manejar las excepciones
         Jugador jugadorTurno = obtenerJugadorTurno();
         if (aplicaExclusividad && exclusividadPorJugador.get(jugadorTurno) < MAX_EXCLUSIVIDAD_POR_JUGADOR) {
             exclusividadPorJugador.replace(jugadorTurno, exclusividadPorJugador.get(jugadorTurno)+1);
-            try {
-                ronda.responder(opcionesSeleccionadas, aplicaExclusividad);
-            } catch (RondaSinPreguntaExcepcion rondaSinPreguntaExcepcion) {
-                rondaSinPreguntaExcepcion.printStackTrace();
-            }
+            ronda.responder(opcionesSeleccionadas, aplicaExclusividad);
         } else {
-            try {
-                ronda.responder(opcionesSeleccionadas);
-            } catch (RondaSinPreguntaExcepcion rondaSinPreguntaExcepcion) {
-                rondaSinPreguntaExcepcion.printStackTrace();
-            }
+            ronda.responder(opcionesSeleccionadas);
         }
         actualizarTurno();
     }
 
     public <T> void responder(T opcionesSeleccionadas, MultiplicableStrategy multiplicador){
-        //TODO: Manejar las excepciones
-        try {
-            ronda.responder(opcionesSeleccionadas, multiplicador);
-        } catch (RondaSinPreguntaExcepcion rondaSinPreguntaExcepcion) {
-            rondaSinPreguntaExcepcion.printStackTrace();
-        }
+        ronda.responder(opcionesSeleccionadas, multiplicador);
         actualizarTurno();
     }
 

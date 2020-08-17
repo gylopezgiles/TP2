@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class RondaTest {
@@ -32,41 +33,48 @@ public class RondaTest {
     }
 
     @Test
-    public void debeResponderUnaPreguntaParaUnJugador() throws RondaSinPreguntaExcepcion, ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
+    public void debeResponderUnaPreguntaParaUnJugador() throws ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
         Jugador jugador1 = new Jugador("jugador1");
         List<Jugador> jugadores = Arrays.asList(jugador1);
 
-        Opcion opcionCorrecta = new Opcion("opcion", Boolean.TRUE);
-        Opcion opcionIncorrecta = new Opcion("opcion", Boolean.FALSE);
+        Opcion opcionCorrecta = new Opcion("opcion 1", Boolean.TRUE);
+        Opcion opcionIncorrecta = new Opcion("opcion 2", Boolean.FALSE);
         List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
-        List<String> opcionesSeleccionadas = Arrays.asList("opcion", "opcion");
         Preguntable pregunta = CreadorPregunta.crearPregunta(TipoPregunta.VerdaderoFalsoClasico, "pregunta" ,opciones);
-        List<Opcion> opcionSeleccionada = Arrays.asList(opcionCorrecta);
+        List<String> opcionSeleccionada = Arrays.asList("opcion 1");
 
         Ronda ronda = new Ronda(jugadores, pregunta);
 
-        ronda.responder(opcionesSeleccionadas);
+        ronda.responder(opcionSeleccionada);
         ronda.aplicarPuntajes();
 
         Assertions.assertEquals(1, jugador1.obtenerPuntos());
     }
 
     @Test
-    public void debeLanzarExcepcionResponderConRespuestaNull() {
+    public void debeLanzarExcepcionCrearRondaConRespuestaNull() {
         Jugador jugador1 = new Jugador("jugador1");
         Jugador jugador2 = new Jugador("jugador2");
         List<Jugador> jugadores = Arrays.asList(jugador1, jugador2);
 
-        List<String> opcionesSeleccionadas = Arrays.asList("opcion");
-
-        Ronda ronda = new Ronda(jugadores, null);
-
-        Assertions.assertThrows(RondaSinPreguntaExcepcion.class, () -> ronda.responder(opcionesSeleccionadas));
+        Assertions.assertThrows(ParametrosInvalidosExcepcion.class, () -> new Ronda(jugadores, null));
 
     }
 
     @Test
-    public void debeResponderUnaPreguntaParaUnJugadorConMultiplicadores() throws RondaSinPreguntaExcepcion, ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
+    public void debeLanzarExcepcionCrearRondaConJugadoresVacio() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion {
+        Opcion opcionCorrecta = new Opcion("opcion 1", Boolean.TRUE);
+        Opcion opcionIncorrecta = new Opcion("opcion 2", Boolean.FALSE);
+        List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
+        Preguntable pregunta = CreadorPregunta.crearPregunta(TipoPregunta.VerdaderoFalsoClasico, "pregunta" ,opciones);
+
+
+        Assertions.assertThrows(ParametrosInvalidosExcepcion.class, () -> new Ronda(Collections.emptyList(), pregunta));
+
+    }
+
+    @Test
+    public void debeResponderUnaPreguntaParaUnJugadorConMultiplicadores() throws ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
         Jugador jugador1 = new Jugador("jugador1");
         Jugador jugador2 = new Jugador("jugador2");
         List<Jugador> jugadores = Arrays.asList(jugador1, jugador2);
@@ -125,7 +133,7 @@ public class RondaTest {
     }
 
     @Test
-    public void respondeHastaFinalizarRonda() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion {
+    public void respondeHastaFinalizarRonda() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion {
         Jugador jugador1 = new Jugador("jugador1");
         Jugador jugador2 = new Jugador("jugador2");
         List<Jugador> jugadores = Arrays.asList(jugador1, jugador2);

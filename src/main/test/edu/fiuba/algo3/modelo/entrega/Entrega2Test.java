@@ -3,7 +3,6 @@ package edu.fiuba.algo3.modelo.entrega;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Ronda;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
-import edu.fiuba.algo3.modelo.excepciones.RondaSinPreguntaExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.TipoPreguntaNoImplementadaException;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.CreadorPregunta;
@@ -36,7 +35,7 @@ public class Entrega2Test {
     }
 
     @Test
-    public void preguntaMultipleChoiceConPenalidadAsignaPuntajeCorrectamenteEligiendoTodasCorrectas() throws ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion, TipoPreguntaNoImplementadaException {
+    public void preguntaMultipleChoiceConPenalidadAsignaPuntajeCorrectamenteEligiendoTodasCorrectas() throws ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
         //Given
         String preguntaTexto = "Qué países se encuentran en Asia?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -62,7 +61,7 @@ public class Entrega2Test {
     }
 
     @Test
-    public void preguntaMultipleChoiceConPenalidadAsignaPuntajeCorrectamenteEligiendoAlgunasCorrectas() throws ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion, TipoPreguntaNoImplementadaException {
+    public void preguntaMultipleChoiceConPenalidadAsignaPuntajeCorrectamenteEligiendoAlgunasCorrectas() throws ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
         //Given
         String preguntaTexto = "Qué países se encuentran en Asia?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -88,7 +87,7 @@ public class Entrega2Test {
     }
 
     @Test
-    public void preguntaMultipleChoiceConPenalidadAsignaPuntajeCorrectamenteEligiendoAlgunasCorrectasYUnaIncorrecta() throws ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion, TipoPreguntaNoImplementadaException {
+    public void preguntaMultipleChoiceConPenalidadAsignaPuntajeCorrectamenteEligiendoAlgunasCorrectasYUnaIncorrecta() throws ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
         //Given
         String preguntaTexto = "Qué países se encuentran en Asia?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -114,7 +113,7 @@ public class Entrega2Test {
     }
 
     @Test
-    public void preguntaMultipleChoiceConPenalidadAsignaPuntajeCorrectamenteEligiendoIncorrectas() throws ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion, TipoPreguntaNoImplementadaException {
+    public void preguntaMultipleChoiceConPenalidadAsignaPuntajeCorrectamenteEligiendoIncorrectas() throws ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException {
         //Given
         String preguntaTexto = "Qué países se encuentran en Asia?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -141,7 +140,7 @@ public class Entrega2Test {
 
     // Tests de Multiplicadores
     @Test
-    public void responderConMultiplicadorCorrectamentePorDosAVerdaderoFalsoPenalidadAplicaCorrectamenteElMultiplicador() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion {
+    public void responderConMultiplicadorCorrectamentePorDosAVerdaderoFalsoPenalidadAplicaCorrectamenteElMultiplicador() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion {
         //Given
         String preguntaTexto = "La canción Dancing with Myself fue escrita por Billy Idol y Tony James";
         Boolean esCorrecta = Boolean.TRUE;
@@ -161,7 +160,7 @@ public class Entrega2Test {
     }
 
     @Test
-    public void responderConMultiplicadorCorrectamentePorTresAVerdaderoFalsoPenalidadAplicaCorrectamenteElMultiplicador() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion {
+    public void responderConMultiplicadorCorrectamentePorTresAVerdaderoFalsoPenalidadAplicaCorrectamenteElMultiplicador() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion {
         //Given
         String preguntaTexto = "Smoke on the Water es una canción de Blue Oyster Cult";
         Boolean esCorrecta = Boolean.TRUE;
@@ -181,7 +180,7 @@ public class Entrega2Test {
     }
 
     @Test
-    public void responderConMultiplicadorIncorrectamentePorDosAVerdaderoFalsoPenalidadAplicaCorrectamenteElMultiplicador() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion {
+    public void responderConMultiplicadorIncorrectamentePorDosAVerdaderoFalsoPenalidadAplicaCorrectamenteElMultiplicador() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion {
         //Given
         String preguntaTexto = "La canción Wicked Game fue lanzada en 2011";
         Boolean esCorrecta = Boolean.TRUE;
@@ -201,7 +200,7 @@ public class Entrega2Test {
     }
 
     @Test
-    public void responderConMultiplicadorIncorrectamentePorTresAVerdaderoFalsoPenalidadAplicaCorrectamenteElMultiplicador() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion {
+    public void responderConMultiplicadorIncorrectamentePorTresAVerdaderoFalsoPenalidadAplicaCorrectamenteElMultiplicador() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion {
         //Given
         String preguntaTexto = "La canción Hazy Shade of Winter de Simon & Garfunkel tuvo un cover en 2019 para una serie de Netflix";
         Boolean esCorrecta = Boolean.TRUE;
@@ -221,7 +220,7 @@ public class Entrega2Test {
     }
 
     @Test
-    public void responderConMultiplicadorCorrectamentePorDosAMultipleChoicePenalidadAplicaCorrectamenteElMultiplicador() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion {
+    public void responderConMultiplicadorCorrectamentePorDosAMultipleChoicePenalidadAplicaCorrectamenteElMultiplicador() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion {
         //Given
         String preguntaTexto = "¿Cuáles de las siguientes canciones pertenecen a Bad Company?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -243,7 +242,7 @@ public class Entrega2Test {
     }
 
     @Test
-    public void responderConMultiplicadorCorrectamentePorTresAMultipleChoicePenalidadAplicaCorrectamenteElMultiplicador() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion {
+    public void responderConMultiplicadorCorrectamentePorTresAMultipleChoicePenalidadAplicaCorrectamenteElMultiplicador() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion {
         //Given
         String preguntaTexto = "¿Cuáles de los siguientes artistas pertenecen al grupo ZZ Top?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -266,7 +265,7 @@ public class Entrega2Test {
     }
 
     @Test
-    public void responderConMultiplicadorCorrectamentePorDosAMultipleChoicePenalidadAplicaIncorrectamenteElMultiplicador() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion {
+    public void responderConMultiplicadorCorrectamentePorDosAMultipleChoicePenalidadAplicaIncorrectamenteElMultiplicador() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion {
         //Given
         String preguntaTexto = "A cual de las siguientes bandas pertenece la canción (Don't Fear) The Reaper";
         Boolean esCorrecta = Boolean.TRUE;
@@ -288,7 +287,7 @@ public class Entrega2Test {
     }
 
     @Test
-    public void responderConMultiplicadorCorrectamentePorTresAMultipleChoicePenalidadAplicaIncorrectamenteElMultiplicador() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion {
+    public void responderConMultiplicadorCorrectamentePorTresAMultipleChoicePenalidadAplicaIncorrectamenteElMultiplicador() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion {
         //Given
         String preguntaTexto = "En qué año se lanzó la canción Paradise by the Dashboard Light";
         Boolean esCorrecta = Boolean.TRUE;
@@ -311,7 +310,7 @@ public class Entrega2Test {
     }
 
     @Test
-    public void responderConMultiplicadorPorDosAMultipleChoiceClasicoNoLoDebeAplicar() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion {
+    public void responderConMultiplicadorPorDosAMultipleChoiceClasicoNoLoDebeAplicar() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion {
         //Given
         String preguntaTexto = "¿A qué cantante pertenece la canción Night Moves?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -331,7 +330,7 @@ public class Entrega2Test {
     }
 
     @Test
-    public void responderConMultiplicadorPorTresAMultipleChoiceClasicoNoLoDebeAplicar() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion {
+    public void responderConMultiplicadorPorTresAMultipleChoiceClasicoNoLoDebeAplicar() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion {
         //Given
         String preguntaTexto = "¿A qué cantante pertenece la canción Night Moves?";
         Boolean esCorrecta = Boolean.TRUE;
@@ -351,7 +350,7 @@ public class Entrega2Test {
     }
 
     @Test
-    public void responderConMultiplicadorPorDosAMultipleChoiceParcialNoLoDebeAplicar() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion {
+    public void responderConMultiplicadorPorDosAMultipleChoiceParcialNoLoDebeAplicar() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion {
         //Given
         String preguntaTexto = "La canción Knockin' on Heaven's Door del cantante Bob Dylan, fue versionada por cuáles de las siguientes bandas/cantantes.";
         Boolean esCorrecta = Boolean.TRUE;
@@ -374,7 +373,7 @@ public class Entrega2Test {
     }
 
     @Test
-    public void responderConMultiplicadorPorTresAMultipleChoiceParcialNoLoDebeAplicar() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion {
+    public void responderConMultiplicadorPorTresAMultipleChoiceParcialNoLoDebeAplicar() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion {
         //Given
         String preguntaTexto = "La canción Knockin' on Heaven's Door del cantante Bob Dylan, fue versionada por cuáles de las siguientes bandas/cantantes.";
         Boolean esCorrecta = Boolean.TRUE;
@@ -399,7 +398,7 @@ public class Entrega2Test {
 
 
     @Test
-    public void OrderedChoiceAsignaPuntajeCorrectamenteConOpcionesOrdenadas() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion {
+    public void OrderedChoiceAsignaPuntajeCorrectamenteConOpcionesOrdenadas() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion {
         String preguntaTexto = "Orden de las letras vocales";
         boolean esCorrecta = Boolean.TRUE;
         Opcion opcion1 = new Opcion("A", esCorrecta);
@@ -420,7 +419,7 @@ public class Entrega2Test {
     }
 
     @Test
-    public void OrderedChoiceAsignaPuntajeCorrectamenteConOpcionesDesrdenadas() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion, RondaSinPreguntaExcepcion {
+    public void OrderedChoiceAsignaPuntajeCorrectamenteConOpcionesDesrdenadas() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion {
         String preguntaTexto = "Orden de las letras vocales";
         boolean esCorrecta = Boolean.TRUE;
         Opcion opcion1 = new Opcion("A", esCorrecta);
