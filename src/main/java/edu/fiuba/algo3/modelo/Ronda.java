@@ -25,7 +25,7 @@ public class Ronda {
         this.pregunta = pregunta;
         this.jugadorIterator = jugadores.iterator();
         this.jugadorTurno = jugadorIterator.next();
-        this.aplicanExclusividad = new ArrayList<>();
+        this.aplicanExclusividad = new LinkedList<>();
         this.puntajesRonda = new HashMap<>();
 
     }
@@ -35,7 +35,8 @@ public class Ronda {
         this.jugadorIterator = jugadores.iterator();
         this.jugadorTurno = jugadorIterator.next();
         this.puntajesRonda = new HashMap<>();
-        this.estadoRonda = EstadoRonda.INICIA;
+        aplicanExclusividad.removeAll(aplicanExclusividad);
+        estadoRonda = EstadoRonda.INICIA;
     }
 
     public List<Jugador> obtenerJugadores(){
