@@ -9,6 +9,10 @@ public class CreadorPanelOpciones {
             case VerdaderoFalsoClasico:
             case VerdaderoFalsoPenalidad:
                 return new VerdaderoFalsoPanel(pregunta.obtenerOpciones());
+            case MultipleChoiceClasico:
+            case MultipleChoiceParcial:
+            case MultipleChoiceConPenalidad:
+                return new MultipleChoicePanel(pregunta.obtenerOpciones());
         }
         return null;
     }
