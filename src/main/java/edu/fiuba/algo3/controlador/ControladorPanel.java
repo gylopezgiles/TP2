@@ -7,6 +7,7 @@ import edu.fiuba.algo3.modelo.Partida;
 import edu.fiuba.algo3.modelo.exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.exclusividad.ExclusividadActivada;
 import edu.fiuba.algo3.modelo.exclusividad.ExclusividadDesactivada;
+import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 import edu.fiuba.algo3.modelo.pregunta.cargador.CargadorPreguntas;
 
@@ -47,9 +48,15 @@ public class ControladorPanel implements ActionListener {
     private void responder(){
 
         List<String> opcionesSeleccionadas = pantallaPrincipal.obtenerOpcionesSeleccionadas();
-        Boolean exclusividadSeleccionada = pantallaPrincipal.obtenerExclusividad();
+       Boolean exclusividadSeleccionada = pantallaPrincipal.obtenerExclusividad();
+       if(exclusividadSeleccionada){
+           partida.responder(opcionesSeleccionadas, exclusividadSeleccionada);
+       }else{
+           Multiplicador multiplicador = pantallaPrincipal.obtenerMultiplicador();
+           partida.responder(opcionesSeleccionadas, multiplicador);
+       }
 
-        partida.responder(opcionesSeleccionadas, exclusividadSeleccionada);
+
         if(partida.esPartidaFinalizada()){
             pantallaPrincipal.finalizarPartida(partida.obtenerJugadores());
         } else {
