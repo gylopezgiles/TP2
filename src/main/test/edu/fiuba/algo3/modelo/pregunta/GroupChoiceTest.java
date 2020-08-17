@@ -1,11 +1,8 @@
 package edu.fiuba.algo3.modelo.pregunta;
 
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
-import edu.fiuba.algo3.modelo.pregunta.GroupChoice;
-import edu.fiuba.algo3.modelo.pregunta.Opcion;
-import edu.fiuba.algo3.modelo.pregunta.Preguntable;
-import edu.fiuba.algo3.modelo.pregunta.TipoPregunta;
-import org.junit.Test;
+
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
 import java.util.Arrays;
@@ -28,43 +25,11 @@ public class GroupChoiceTest {
         Opcion opcion6 = new Opcion("Oslo", !pertenecePrimerGrupo );
         List<Opcion> opciones = Arrays.asList(opcion1, opcion2, opcion3, opcion4, opcion5, opcion6);
 
-        Preguntable pregunta= new GroupChoice(preguntaTexto, opciones);
-
-        Assertions.assertEquals(TipoPregunta.GroupChoice, pregunta.obtenerTipoPregunta());
-    }
-
-    @Test
-    public void groupChoiceDebeTenerAlMenosUnaOpcionDeGruposDiferentes() throws ParametrosInvalidosExcepcion {
-
-        String preguntaTexto = "¿Cuales ciudades pertenecen a Nueva Zelanda y cuales no?";
-
-        Boolean pertenecePrimerGrupo  = Boolean.TRUE;
-        Opcion opcion1 = new Opcion("Auckland", pertenecePrimerGrupo );
-        Opcion opcion2 = new Opcion("Oslo", !pertenecePrimerGrupo );
-
-        List<Opcion> opciones = Arrays.asList(opcion1, opcion2);
-
         Preguntable pregunta = new GroupChoice(preguntaTexto, opciones);
 
-        List<String> respuestasPrimerGrupo = Arrays.asList("Auckland");
-        List<String> respuestasSegundoGrupo  = Arrays.asList("Oslo");
-        List<List<String>> respuestas = Arrays.asList(respuestasPrimerGrupo, respuestasSegundoGrupo );
-
-        Assertions.assertEquals(1 , pregunta.establecerPuntuacion(respuestas));
-    }
-
-    @Test
-    public void groupChoiceDebeTenerAlMenosUnaOpcionDeCadaGrupo(){
-
-        String preguntaTexto = "¿Cuales ciudades pertenecen a Nueva Zelanda y cuales no?";
-
-        Boolean pertenecePrimerGrupo = Boolean.TRUE;
-        Opcion opcion1 = new Opcion("Auckland", pertenecePrimerGrupo);
-        Opcion opcion2 = new Opcion("Wellington", pertenecePrimerGrupo);
-        List<Opcion> opciones = Arrays.asList(opcion1, opcion2);
-
-        Assertions.assertThrows(ParametrosInvalidosExcepcion.class,
-                () -> new GroupChoice(preguntaTexto, opciones));
+        Assertions.assertEquals(TipoPregunta.GroupChoice, pregunta.obtenerTipoPregunta());
+        Assertions.assertEquals(opciones, pregunta.obtenerOpciones());
+        Assertions.assertEquals(preguntaTexto, pregunta.obtenerPregunta());
     }
 
     @Test
@@ -104,6 +69,54 @@ public class GroupChoiceTest {
 
         Assertions.assertThrows(ParametrosInvalidosExcepcion.class,
                 () -> new GroupChoice(preguntaTexto, opciones));
+    }
+
+    @Test
+    public void groupChoiceDebeTenerAlMenosUnaOpcionDeCadaGrupo_grupo1Vacio(){
+
+        String preguntaTexto = "¿Cuales ciudades pertenecen a Nueva Zelanda y cuales no?";
+
+        Boolean pertenecePrimerGrupo = Boolean.TRUE;
+        Opcion opcion1 = new Opcion("Auckland", !pertenecePrimerGrupo);
+        Opcion opcion2 = new Opcion("Wellington", !pertenecePrimerGrupo);
+        List<Opcion> opciones = Arrays.asList(opcion1, opcion2);
+
+        Assertions.assertThrows(ParametrosInvalidosExcepcion.class,
+                () -> new GroupChoice(preguntaTexto, opciones));
+    }
+
+    @Test
+    public void groupChoiceDebeTenerAlMenosUnaOpcionDeCadaGrupo_grupo2Vacio(){
+
+        String preguntaTexto = "¿Cuales ciudades pertenecen a Nueva Zelanda y cuales no?";
+
+        Boolean pertenecePrimerGrupo = Boolean.TRUE;
+        Opcion opcion1 = new Opcion("Auckland", pertenecePrimerGrupo);
+        Opcion opcion2 = new Opcion("Wellington", pertenecePrimerGrupo);
+        List<Opcion> opciones = Arrays.asList(opcion1, opcion2);
+
+        Assertions.assertThrows(ParametrosInvalidosExcepcion.class,
+                () -> new GroupChoice(preguntaTexto, opciones));
+    }
+
+    @Test
+    public void groupChoiceDebeTenerAlMenosUnaOpcionDeGruposDiferentes() throws ParametrosInvalidosExcepcion {
+
+        String preguntaTexto = "¿Cuales ciudades pertenecen a Nueva Zelanda y cuales no?";
+
+        Boolean pertenecePrimerGrupo  = Boolean.TRUE;
+        Opcion opcion1 = new Opcion("Auckland", pertenecePrimerGrupo );
+        Opcion opcion2 = new Opcion("Oslo", !pertenecePrimerGrupo );
+
+        List<Opcion> opciones = Arrays.asList(opcion1, opcion2);
+
+        Preguntable pregunta = new GroupChoice(preguntaTexto, opciones);
+
+        List<String> respuestasPrimerGrupo = Arrays.asList("Auckland");
+        List<String> respuestasSegundoGrupo  = Arrays.asList("Oslo");
+        List<List<String>> respuestas = Arrays.asList(respuestasPrimerGrupo, respuestasSegundoGrupo );
+
+        Assertions.assertEquals(1 , pregunta.establecerPuntuacion(respuestas));
     }
 
 

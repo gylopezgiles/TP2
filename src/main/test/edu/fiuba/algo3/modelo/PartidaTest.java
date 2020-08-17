@@ -84,4 +84,37 @@ public class PartidaTest {
         Assertions.assertEquals(siguientePregunta, partida.obtenerPreguntaTurno());
     }
 
+    @Test
+    public void responderConExclusividadMasDeDosVecesNoDebeAplicar() throws TipoPreguntaNoImplementadaException, ParametrosInvalidosExcepcion {
+        Boolean esCorrecta = Boolean.TRUE;
+        Opcion opcionIncorrecta = new Opcion("Verdadero", !esCorrecta);
+        Opcion opcionCorrecta = new Opcion("Falso", esCorrecta);
+        Preguntable preguntaRondaDos = CreadorPregunta.crearPregunta(TipoPregunta.VerdaderoFalsoClasico, "La banda Kiss tiene 6 integrantes", Arrays.asList(opcionIncorrecta, opcionCorrecta));
+        Preguntable preguntaRondaTres = CreadorPregunta.crearPregunta(TipoPregunta.VerdaderoFalsoClasico, "La banda Kiss tiene 6 integrantes", Arrays.asList(opcionIncorrecta, opcionCorrecta));
+        preguntas.add(preguntaRondaDos);
+        preguntas.add(preguntaRondaTres);
+        List<String> nombresJugadores = Arrays.asList("Cecilia", "Leandro");
+
+        Partida partida = new Partida(nombresJugadores, preguntas);
+
+        //ronda 1
+        partida.responder(Arrays.asList("Falso"), Boolean.TRUE);
+        partida.responder(Arrays.asList("Verdadero"), Boolean.FALSE);
+
+        //ronda 2
+        partida.responder(Arrays.asList("Falso"), Boolean.TRUE);
+        partida.responder(Arrays.asList("Verdadero"), Boolean.FALSE);
+
+        //ronda 3
+        partida.responder(Arrays.asList("Falso"), Boolean.TRUE);
+        partida.responder(Arrays.asList("Verdadero"), Boolean.FALSE);
+
+        List<Jugador> jugadores = partida.obtenerJugadores();
+        Jugador jugador1 = jugadores.get(0);
+
+        Assertions.assertEquals("Cecilia", jugador1.obtenerNombre());
+        Assertions.assertEquals(5, jugador1.obtenerPuntos());
+
+    }
+
 }
