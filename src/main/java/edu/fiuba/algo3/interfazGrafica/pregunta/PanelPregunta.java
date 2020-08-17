@@ -89,7 +89,7 @@ public class PanelPregunta extends JPanel {
         add(responder);
     }
 
-    public List<String> obtenerOpcionesSeleccionadas(){
+    public Object obtenerOpcionesSeleccionadas(){
         return opciones.obtenerOpcionesSeleccionadas();
     }
 

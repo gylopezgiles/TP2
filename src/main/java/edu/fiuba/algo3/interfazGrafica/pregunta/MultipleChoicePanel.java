@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class MultipleChoicePanel extends JPanel implements JPanelPregunta{
+public class MultipleChoicePanel extends JPanel implements JPanelPregunta<List<String>>{
 
     private LinkedList<JCheckBox> opcionesEnPantalla;
 

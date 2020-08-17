@@ -48,17 +48,14 @@ public class ControladorPanel implements ActionListener {
     }
 
     private void responder(){
-
-        List<String> opcionesSeleccionadas = pantallaPrincipal.obtenerOpcionesSeleccionadas();
-       Boolean exclusividadSeleccionada = pantallaPrincipal.obtenerExclusividad();
-       if(exclusividadSeleccionada){
+        Object opcionesSeleccionadas = pantallaPrincipal.obtenerOpcionesSeleccionadas();
+        Boolean exclusividadSeleccionada = pantallaPrincipal.obtenerExclusividad();
+        if(exclusividadSeleccionada){
            partida.responder(opcionesSeleccionadas, exclusividadSeleccionada);
-       }else{
+        } else {
            Multiplicador multiplicador = pantallaPrincipal.obtenerMultiplicador();
            partida.responder(opcionesSeleccionadas, multiplicador);
-       }
-
-
+        }
         if(partida.esPartidaFinalizada()){
             pantallaPrincipal.finalizarPartida(partida.obtenerJugadores());
         } else {
