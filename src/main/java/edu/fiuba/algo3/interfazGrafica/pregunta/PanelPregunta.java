@@ -52,11 +52,11 @@ public class PanelPregunta extends JPanel {
 
     private void agregarOpciones(Preguntable pregunta) {
         opciones = CreadorPanelOpciones.crearPanelOpcionesPorTipoPregunta(pregunta);
-
         opciones.agregarA(this);
     }
 
     private void agregarBotonResponder() {
+
         add(responder);
     }
 
