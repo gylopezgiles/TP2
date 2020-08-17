@@ -4,24 +4,31 @@ import edu.fiuba.algo3.modelo.Jugador;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class ExclusividadActivada implements EstadoExclusividad {
 
     @Override
     public Map<Jugador, Integer> utilizarExclusividad(List<Jugador> jugadores, Map<Jugador, Integer> puntajesRonda, int modificador) {
-        int puntaje1 = puntajesRonda.get(jugadores.get(0));
-        int puntaje2 = puntajesRonda.get(jugadores.get(1));
-        if((puntaje1 == puntaje2) || ((puntaje1 != 0) && (puntaje2 != 0))) {
-            puntajesRonda.put(jugadores.get(0), 0);
-            puntajesRonda.put(jugadores.get(1), 0);
+        if(jugadoresRespondieronIgual(jugadores, puntajesRonda) || todosJugadoresRespondieronBien(jugadores, puntajesRonda)) {
+            jugadores.stream().forEach(jugador -> puntajesRonda.put(jugador, 0));
         }
         return (aplicarModificador(jugadores, puntajesRonda, modificador));
     }
 
     private Map<Jugador, Integer> aplicarModificador(List<Jugador> jugadores, Map<Jugador, Integer> puntajesRonda, int modificador) {
-        puntajesRonda.put(jugadores.get(0), modificador * (puntajesRonda.get(jugadores.get(0))));
-        puntajesRonda.put(jugadores.get(1), modificador * (puntajesRonda.get(jugadores.get(1))));
+        jugadores.stream().forEach(jugador -> puntajesRonda.put(jugador, modificador * (puntajesRonda.get(jugador))));
         return puntajesRonda;
+    }
+
+    private Boolean todosJugadoresRespondieronBien(List<Jugador> jugadores, Map<Jugador, Integer> puntajesRonda){
+        Long cantidadJugadoresRespondieronBien = jugadores.stream().filter(jugador -> puntajesRonda.get(jugador) > 0).count();
+        return jugadores.size() == cantidadJugadoresRespondieronBien;
+    }
+
+    private Boolean jugadoresRespondieronIgual(List<Jugador> jugadores, Map<Jugador, Integer> puntajesRonda){
+        List<Integer> puntajes = jugadores.stream().map(jugador -> puntajesRonda.get(jugador)).collect(Collectors.toList());
+        return puntajes.stream().distinct().count() == 1;
     }
 
 }
