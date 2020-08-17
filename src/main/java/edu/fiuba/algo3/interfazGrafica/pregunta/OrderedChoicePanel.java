@@ -40,7 +40,7 @@ public class OrderedChoicePanel extends JPanel implements JPanelPregunta{
 
     @Override
     public List<String> obtenerOpcionesSeleccionadas() {
-        List opcionesOrdenadas = new ArrayList(opcionesEnPantalla.getModel().getSize());
+        List opcionesOrdenadas = new LinkedList();
         for (int i = 0; i < opcionesEnPantalla.getModel().getSize(); i++) {
             opcionesOrdenadas.add(opcionesEnPantalla.getModel().getElementAt(i));
         }

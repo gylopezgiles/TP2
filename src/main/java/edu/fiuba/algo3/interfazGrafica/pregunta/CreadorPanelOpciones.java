@@ -16,8 +16,6 @@ public class CreadorPanelOpciones {
                 return new MultipleChoicePanel(pregunta.obtenerOpciones());
             case OrderedChoice:
                 return new OrderedChoicePanel(pregunta.obtenerOpciones());
-            //case GroupChoice:
-              //  return new GroupChoicePanel(pregunta.obtenerOpciones());
         }
         return null;
     }
