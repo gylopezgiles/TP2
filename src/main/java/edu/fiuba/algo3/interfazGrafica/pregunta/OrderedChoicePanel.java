@@ -7,7 +7,9 @@ import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Transferable;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.swing.TransferHandler;
@@ -15,36 +17,34 @@ import javax.swing.TransferHandler;
 
 
 public class OrderedChoicePanel extends JPanel implements JPanelPregunta{
-    private Box opcionesEnPantalla;
-    private ButtonGroup opcionesButtonGroup;
+    private JList<String> opcionesEnPantalla;
+
     public OrderedChoicePanel(List<Opcion> opciones){
-        opcionesEnPantalla = Box.createVerticalBox();
-        //opcionesEnPantalla = new JList<>(new DefaultListModel<>());
-        /*opcionesEnPantalla.setDragEnabled(true);
+        //opcionesEnPantalla = new JTable();
+        opcionesEnPantalla = new JList<>(new DefaultListModel<>());
+        opcionesEnPantalla.setDragEnabled(true);
         opcionesEnPantalla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         opcionesEnPantalla.setDropMode(DropMode.INSERT);
-        opcionesEnPantalla.setTransferHandler(new ListTransferHandler());*/
-        opciones.stream().forEach(opcion -> agregarOpcion(opcion));
-        add(opcionesEnPantalla);
+        opcionesEnPantalla.setTransferHandler(new ListTransferHandler());
+        int i = 0;
+        opciones.stream().forEach(opcion -> agregarOpcion(opcion, i));
+        add(new JScrollPane(opcionesEnPantalla));
 
     }
 
-    private void agregarOpcion(Opcion opcion) {
-        JLabel opcionButton = new JLabel();
-        opcionButton.setText(opcion.obtenerTexto());
-        opcionesEnPantalla.add(opcionButton);
+    private void agregarOpcion(Opcion opcion, int i) {
+        ((DefaultListModel<String>) opcionesEnPantalla.getModel()).add(i ,opcion.obtenerTexto());
+        i++;
+
     }
 
     @Override
     public List<String> obtenerOpcionesSeleccionadas() {
-        List<AbstractButton> botonesSeleccionados = obtenerBotonesSeleccionados(Collections.list(opcionesButtonGroup.getElements()));
-        return botonesSeleccionados.stream()
-                .map(button -> button.getText())
-                .collect(Collectors.toList());
-    }
-
-    private List<AbstractButton> obtenerBotonesSeleccionados(List<AbstractButton> botones){
-        return botones.stream().filter(radioButton -> radioButton.isSelected()).collect(Collectors.toList());
+        List opcionesOrdenadas = new ArrayList(opcionesEnPantalla.getModel().getSize());
+        for (int i = 0; i < opcionesEnPantalla.getModel().getSize(); i++) {
+            opcionesOrdenadas.add(opcionesEnPantalla.getModel().getElementAt(i));
+        }
+        return opcionesOrdenadas;
     }
 
     @Override
