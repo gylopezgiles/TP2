@@ -68,7 +68,11 @@ public class Partida {
                 rondaSinPreguntaExcepcion.printStackTrace();
             }
         } else {
-            responder(opcionesSeleccionadas, Multiplicador.PorDefecto);
+            try {
+                ronda.responder(opcionesSeleccionadas);
+            } catch (RondaSinPreguntaExcepcion rondaSinPreguntaExcepcion) {
+                rondaSinPreguntaExcepcion.printStackTrace();
+            }
         }
         actualizarTurno();
     }
@@ -80,6 +84,7 @@ public class Partida {
         } catch (RondaSinPreguntaExcepcion rondaSinPreguntaExcepcion) {
             rondaSinPreguntaExcepcion.printStackTrace();
         }
+        actualizarTurno();
     }
 
     public List<Jugador> obtenerJugadores() {
