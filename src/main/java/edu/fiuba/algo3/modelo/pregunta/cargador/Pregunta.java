@@ -33,6 +33,8 @@ public class Pregunta {
         return datoPregunta;
     }
 
+    public String obtenerTextoPregunta() {return datoPregunta.obtenerTexto();}
+
     public void setDatoPregunta(DatoPregunta datoPregunta) {
         this.datoPregunta = datoPregunta;
     }

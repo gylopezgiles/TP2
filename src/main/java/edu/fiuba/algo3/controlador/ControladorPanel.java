@@ -1,12 +1,9 @@
 package edu.fiuba.algo3.controlador;
 
 import edu.fiuba.algo3.interfazGrafica.PantallaPrincipal;
-import edu.fiuba.algo3.interfazGrafica.pregunta.PanelPregunta;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Partida;
-import edu.fiuba.algo3.modelo.exclusividad.Exclusividad;
-import edu.fiuba.algo3.modelo.exclusividad.ExclusividadActivada;
-import edu.fiuba.algo3.modelo.exclusividad.ExclusividadDesactivada;
+import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 import edu.fiuba.algo3.modelo.pregunta.cargador.CargadorPreguntas;
@@ -40,7 +37,12 @@ public class ControladorPanel implements ActionListener {
 
     private void jugar(){
         List<String> nombresJugadores = pantallaPrincipal.obtenerJugadores();
-        partida = new Partida(nombresJugadores, CargadorPreguntas.obtenerInstancia().obtenerPreguntas());
+        //TODO: VALIDAR QUE HAYA PREGUNTAS, AGREGAR MENSAJE AL USUARIO SI NO HAY PREGUNTAS O RONDA TIRO UNA EXCEPCION
+        try {
+            partida = new Partida(nombresJugadores, CargadorPreguntas.obtenerInstancia().obtenerPreguntas());
+        } catch (ParametrosInvalidosExcepcion parametrosInvalidosExcepcion) {
+            parametrosInvalidosExcepcion.printStackTrace();
+        }
         pantallaPrincipal.iniciarPartida();
         establecerTurno();
     }

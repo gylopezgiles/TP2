@@ -1,10 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.excepciones.RondaSinPreguntaExcepcion;
+import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.multiplicador.MultiplicableStrategy;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
-import edu.fiuba.algo3.modelo.pregunta.EstadoRonda;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 
 import java.util.*;
@@ -20,7 +19,8 @@ public class Ronda {
     private List<Jugador> aplicanExclusividad;
     private Exclusividad exclusividad;
 
-    public Ronda(List<Jugador> jugadores, Preguntable pregunta){
+    public Ronda(List<Jugador> jugadores, Preguntable pregunta) throws ParametrosInvalidosExcepcion {
+        validarRonda(jugadores, pregunta);
         this.jugadores = jugadores;
         this.pregunta = pregunta;
         this.jugadorIterator = jugadores.iterator();
@@ -39,6 +39,12 @@ public class Ronda {
         estadoRonda = EstadoRonda.INICIA;
     }
 
+    private void validarRonda(List<Jugador> jugadores, Preguntable pregunta) throws ParametrosInvalidosExcepcion {
+        if (jugadores.isEmpty() || pregunta == null){
+            throw new ParametrosInvalidosExcepcion("No se puede crear una ronda sin jugadores o pregunta");
+        }
+    }
+
     public List<Jugador> obtenerJugadores(){
         return jugadores;
     }
@@ -47,21 +53,18 @@ public class Ronda {
         return pregunta;
     }
 
-    public <T> void responder(T opciones) throws RondaSinPreguntaExcepcion {
+    public <T> void responder(T opciones) {
         responder(opciones, Multiplicador.PorDefecto);
     }
 
-    public <T> void responder(T opciones, Boolean aplicaExclusividad) throws RondaSinPreguntaExcepcion {
+    public <T> void responder(T opciones, Boolean aplicaExclusividad) {
         if(aplicaExclusividad){
             aplicanExclusividad.add(jugadorTurno);
         }
         responder(opciones, Multiplicador.PorDefecto);
     }
 
-    public <T> void responder(T nombresOpcionesSeleccionadas, MultiplicableStrategy multiplicador) throws RondaSinPreguntaExcepcion {
-        if(pregunta == null){
-            throw new RondaSinPreguntaExcepcion("No se puede responder sin una pregunta");
-        }
+    public <T> void responder(T nombresOpcionesSeleccionadas, MultiplicableStrategy multiplicador) {
         estadoRonda = EstadoRonda.RESPONDIENDO;
         exclusividad = new Exclusividad();
         puntajesRonda.put(jugadorTurno, pregunta.establecerPuntuacion(nombresOpcionesSeleccionadas, multiplicador, exclusividad));

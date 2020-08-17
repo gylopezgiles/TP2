@@ -72,7 +72,7 @@ public class Entrega1Test {
     }
 
     @Test
-    public void preguntaVerdaderoFalsoConPenalidadSumaPuntosAJugadoresRespondenCorrectamente() throws RondaSinPreguntaExcepcion, ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException  {
+    public void preguntaVerdaderoFalsoConPenalidadSumaPuntosAJugadoresRespondenCorrectamente() throws ParametrosInvalidosExcepcion, TipoPreguntaNoImplementadaException  {
         //Give
         String preguntaTexto = "¿Sydney es la capital de Australia?";
         Boolean esCorrecta = Boolean.TRUE;
