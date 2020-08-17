@@ -17,7 +17,7 @@ import javax.swing.TransferHandler;
 
 
 
-public class OrderedChoicePanel extends JPanel implements JPanelPregunta{
+public class OrderedChoicePanel extends JPanel implements JPanelPregunta<List<String>>{
     private JList<String> opcionesEnPantalla;
 
     public OrderedChoicePanel(List<Opcion> opciones){

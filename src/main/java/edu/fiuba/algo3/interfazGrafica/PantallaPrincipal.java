@@ -45,7 +45,7 @@ public class PantallaPrincipal extends JFrame {
         panelPregunta.repaint();
     }
 
-    public List<String> obtenerOpcionesSeleccionadas(){
+    public Object obtenerOpcionesSeleccionadas(){
         return panelPregunta.obtenerOpcionesSeleccionadas();
     }
 

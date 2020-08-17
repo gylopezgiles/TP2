@@ -1,10 +1,8 @@
 package edu.fiuba.algo3.interfazGrafica.pregunta;
 
-import java.util.List;
+public interface JPanelPregunta<T> {
 
-public interface JPanelPregunta {
-
-    List<String> obtenerOpcionesSeleccionadas();
+    <T> T obtenerOpcionesSeleccionadas();
 
     void agregarA(PanelPregunta panelPregunta);
 }

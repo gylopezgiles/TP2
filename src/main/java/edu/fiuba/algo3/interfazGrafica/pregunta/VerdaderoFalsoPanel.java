@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class VerdaderoFalsoPanel extends JPanel implements JPanelPregunta{
+public class VerdaderoFalsoPanel extends JPanel implements JPanelPregunta<List<String>>{
 
     private ButtonGroup opcionesButtonGroup;
 
