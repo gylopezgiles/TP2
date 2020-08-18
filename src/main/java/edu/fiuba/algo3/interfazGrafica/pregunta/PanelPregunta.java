@@ -42,6 +42,7 @@ public class PanelPregunta extends JPanel {
     }
 
     private void agregarTemporizador(Preguntable pregunta) {
+        temporizador.comenzar();
         add(temporizador.obtenerVisual());
     }
 

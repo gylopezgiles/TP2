@@ -8,16 +8,14 @@ import java.awt.event.ActionListener;
 public class Temporizador {
 
     private final static int UN_SEGUNDO = 1000;
-    private final static int MILISEGUNDOS_ESPERA = 10000;
+    private final static int MILISEGUNDOS_ESPERA = 10;
 
     private int contador = MILISEGUNDOS_ESPERA;
     private JLabel timerLabel = new JLabel();
     private Timer timer;
 
     public Temporizador(){
-        timer = new Timer(UN_SEGUNDO, new TemporizadorEventListener() );
-        timer.start();
-        timerLabel.setText(Integer.toString(contador));
+        timer = new Timer(UN_SEGUNDO, new TemporizadorEventListener());
     }
 
     public class TemporizadorEventListener implements ActionListener {
@@ -25,13 +23,18 @@ public class Temporizador {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            if (contador == 0) {
+            if (contador > -1) {
 
             } else {
                 timerLabel.setText("Contador: " + Integer.toString(contador));
                 contador--;
             }
         }
+    }
+
+    public void comenzar() {
+        timer.setInitialDelay(0);
+        timer.start();
     }
 
     public Component obtenerVisual(){
