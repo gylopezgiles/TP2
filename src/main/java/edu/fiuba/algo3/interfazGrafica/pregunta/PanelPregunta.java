@@ -105,11 +105,12 @@ public class PanelPregunta extends JPanel {
     }
 
     public void conectaControlador(ControladorPanel controlador){
+        temporizador.conectaControlador(controlador);
         responder.addActionListener(controlador);
         responder.setActionCommand("RESPONDER");
     }
 
-    public void reestablecerTemporizador() {
-        temporizador.reestablecerTemporizador();
+    public void establecerVisualTemporizador(int contador){
+        temporizador.establecerVisual(contador);
     }
 }

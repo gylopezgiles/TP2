@@ -60,7 +60,8 @@ public class PantallaPrincipal extends JFrame {
     }
     public Multiplicador obtenerMultiplicador(){ return  panelPregunta.obtenerMultiplicador();}
 
-    public void reestablecerTemporizador() {
-        panelPregunta.reestablecerTemporizador();
+    public void establecerVisualTemporizador(int contador){
+        panelPregunta.establecerVisualTemporizador(contador);
+
     }
 }

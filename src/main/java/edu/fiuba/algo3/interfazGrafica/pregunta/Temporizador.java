@@ -1,16 +1,14 @@
 package edu.fiuba.algo3.interfazGrafica.pregunta;
 
+import edu.fiuba.algo3.controlador.ControladorPanel;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Temporizador {
 
     private final static int UN_SEGUNDO = 1000;
-    private final static int TIEMPO_MAX = 10;
 
-    private int contador = TIEMPO_MAX;
 
     private JLabel visualTemporizador;
     private Timer timer;
@@ -18,26 +16,10 @@ public class Temporizador {
 
     public Temporizador(){
         visualTemporizador = new JLabel();
-        timer = new Timer(UN_SEGUNDO, new TemporizadorEventListener());
     }
 
-    public class TemporizadorEventListener implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-
-            if (contador == -1) {
-                contador = TIEMPO_MAX;
-
-            } else {
-                establecerVisual();
-                contador--;
-            }
-        }
-    }
-
-    private void establecerVisual() {
-        visualTemporizador.setText("Contador: " + Integer.toString(contador));
+    public void establecerVisual(int contador) {
+        visualTemporizador.setText("Contador: " + contador);
     }
 
     public void comenzar() {
@@ -49,8 +31,9 @@ public class Temporizador {
         return visualTemporizador;
     }
 
-    public void reestablecerTemporizador(){
-        contador = TIEMPO_MAX;
+    public void conectaControlador(ControladorPanel controlador){
+        timer = new Timer(UN_SEGUNDO, controlador);
+        timer.setActionCommand("COUNTDOWN");
     }
 
 }

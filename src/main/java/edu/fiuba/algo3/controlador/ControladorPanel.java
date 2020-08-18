@@ -14,8 +14,12 @@ import java.util.List;
 
 public class ControladorPanel implements ActionListener {
 
+    private final static int TIEMPO_MAX = 10;
+
+    private int contador = TIEMPO_MAX;
     private PantallaPrincipal pantallaPrincipal;
     private Partida partida;
+
 
     public ControladorPanel(PantallaPrincipal pantallaPrincipal){
         this.pantallaPrincipal = pantallaPrincipal;
@@ -31,6 +35,9 @@ public class ControladorPanel implements ActionListener {
             case "RESPONDER":
                 responder();
                 break;
+            case "COUNTDOWN":
+                countdown();
+                break;
         }
 
     }
@@ -45,6 +52,16 @@ public class ControladorPanel implements ActionListener {
         }
         pantallaPrincipal.iniciarPartida();
         establecerTurno();
+    }
+
+    private void countdown(){
+        if (contador == -1) {
+            responder();
+            contador = TIEMPO_MAX;
+        } else {
+            pantallaPrincipal.establecerVisualTemporizador(contador);
+            contador--;
+        }
     }
 
     private void responder(){
@@ -63,13 +80,17 @@ public class ControladorPanel implements ActionListener {
             establecerTurno();
         }
 
-        pantallaPrincipal.reestablecerTemporizador();
+        reestablecerTemporizador();
     }
 
     private void establecerTurno(){
         Preguntable pregunta = partida.obtenerPreguntaTurno();
         Jugador jugador = partida.obtenerJugadorTurno();
         pantallaPrincipal.establecerTurno(pregunta, jugador);
+    }
+
+    public void reestablecerTemporizador(){
+        contador = TIEMPO_MAX;
     }
 
 }
