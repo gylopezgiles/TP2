@@ -11,14 +11,13 @@ public class Temporizador {
     private final static int TIEMPO_MAX = 10;
 
     private int contador = TIEMPO_MAX;
-    private JProgressBar  barraProgreso;
+
+    private JProgressBar  visualTemporizador;
     private Timer timer;
 
-    private PanelPregunta panelPregunta;
 
-    public Temporizador(PanelPregunta panelPregunta){
-        this.panelPregunta = panelPregunta;
-        barraProgreso = new JProgressBar(0,TIEMPO_MAX);
+    public Temporizador(){
+        visualTemporizador = new JProgressBar(0,TIEMPO_MAX);
         timer = new Timer(UN_SEGUNDO, new TemporizadorEventListener());
     }
 
@@ -31,9 +30,9 @@ public class Temporizador {
                 contador = TIEMPO_MAX;
 
             } else {
-                barraProgreso.setValue(contador);
-                barraProgreso.setStringPainted(true);
-                barraProgreso.setString("Tiempo Restante");
+                visualTemporizador.setValue(contador);
+                visualTemporizador.setStringPainted(true);
+                visualTemporizador.setString("Tiempo Restante");
                 contador--;
             }
         }
@@ -45,16 +44,11 @@ public class Temporizador {
     }
 
     public Component obtenerVisual(){
-        return barraProgreso;
+        return visualTemporizador;
     }
 
     public void reestablecerTemporizador(){
         contador = TIEMPO_MAX;
     }
 
-        /*
-        * JProgressBar  progressBar = new JProgressBar(0, MILISEGUNDOS_ESPERA);
-        progressBar.setValue(0);
-        progressBar.setStringPainted(true);
-        * */
 }
