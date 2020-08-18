@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 import edu.fiuba.algo3.modelo.pregunta.TipoPregunta;
+import javafx.scene.control.Label;
 
 import javax.swing.*;
 import java.util.Collections;
@@ -17,13 +18,18 @@ public class PanelPregunta extends JPanel {
 
     private JButton responder;
     private JPanelPregunta opciones;
+
     private JCheckBox exclusividad;
     private ButtonGroup multiplicadores;
+
+    private Temporizador temporizador;
+
 
     public PanelPregunta(){
         responder = new JButton("Responder");
         exclusividad = new JCheckBox();
         multiplicadores = new ButtonGroup();
+        temporizador = new Temporizador();
     }
 
     public void establecerTurno(Preguntable pregunta, Jugador jugador){
@@ -31,7 +37,12 @@ public class PanelPregunta extends JPanel {
         agregarOpciones(pregunta);
         agregarExclusividad(pregunta);
         agregarMultiplicadores(pregunta);
+        agregarTemporizador(pregunta);
         agregarBotonResponder();
+    }
+
+    private void agregarTemporizador(Preguntable pregunta) {
+        add(temporizador.obtenerVisual());
     }
 
 

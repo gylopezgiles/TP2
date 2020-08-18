@@ -50,6 +50,7 @@ public class ControladorPanel implements ActionListener {
     private void responder(){
         Object opcionesSeleccionadas = pantallaPrincipal.obtenerOpcionesSeleccionadas();
         Boolean exclusividadSeleccionada = pantallaPrincipal.obtenerExclusividad();
+
         if(exclusividadSeleccionada){
            partida.responder(opcionesSeleccionadas, exclusividadSeleccionada);
         } else {
