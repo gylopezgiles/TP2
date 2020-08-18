@@ -30,10 +30,14 @@ public class Temporizador {
                 contador = TIEMPO_MAX;
 
             } else {
-                visualTemporizador.setText("Contador: " + Integer.toString(contador));
+                establecerVisual();
                 contador--;
             }
         }
+    }
+
+    private void establecerVisual() {
+        visualTemporizador.setText("Contador: " + Integer.toString(contador));
     }
 
     public void comenzar() {
