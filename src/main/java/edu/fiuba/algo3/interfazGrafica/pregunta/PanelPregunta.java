@@ -23,6 +23,7 @@ public class PanelPregunta extends JPanel {
     public PanelPregunta(){
         responder = new JButton("Responder");
         exclusividad = new JCheckBox();
+        exclusividad.setText("Exclusividad");
         multiplicadores = new ButtonGroup();
     }
 
