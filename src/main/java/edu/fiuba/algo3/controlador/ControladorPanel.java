@@ -15,6 +15,7 @@ import java.util.List;
 public class ControladorPanel implements ActionListener {
 
     private final static int TIEMPO_MAX = 10;
+    private static final int FIN_TURNO = -1;
 
     private int contador = TIEMPO_MAX;
     private PantallaPrincipal pantallaPrincipal;
@@ -55,9 +56,9 @@ public class ControladorPanel implements ActionListener {
     }
 
     private void countdown(){
-        if (contador == -1) {
+        if (contador == FIN_TURNO) {
             responder();
-            contador = TIEMPO_MAX;
+            reestablecerTemporizador();
         } else {
             pantallaPrincipal.establecerVisualTemporizador(contador);
             contador--;
