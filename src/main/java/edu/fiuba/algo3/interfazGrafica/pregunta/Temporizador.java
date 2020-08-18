@@ -8,16 +8,17 @@ import java.awt.event.ActionListener;
 public class Temporizador {
 
     private final static int UN_SEGUNDO = 1000;
-    private final static int SEGUNDOS_ESPERA = 10;
+    private final static int TIEMPO_MAX = 10;
 
-    private int contador = SEGUNDOS_ESPERA;
-    private JLabel timerLabel = new JLabel();
+    private int contador = TIEMPO_MAX;
+    private JProgressBar  barraProgreso;
     private Timer timer;
 
     private PanelPregunta panelPregunta;
 
     public Temporizador(PanelPregunta panelPregunta){
         this.panelPregunta = panelPregunta;
+        barraProgreso = new JProgressBar(0,TIEMPO_MAX);
         timer = new Timer(UN_SEGUNDO, new TemporizadorEventListener());
     }
 
@@ -27,10 +28,12 @@ public class Temporizador {
         public void actionPerformed(ActionEvent e) {
 
             if (contador == -1) {
-                contador = SEGUNDOS_ESPERA;
+                contador = TIEMPO_MAX;
 
             } else {
-                timerLabel.setText("Contador: " + Integer.toString(contador));
+                barraProgreso.setValue(contador);
+                barraProgreso.setStringPainted(true);
+                barraProgreso.setString("Tiempo Restante");
                 contador--;
             }
         }
@@ -42,11 +45,11 @@ public class Temporizador {
     }
 
     public Component obtenerVisual(){
-        return timerLabel;
+        return barraProgreso;
     }
 
     public void reestablecerTemporizador(){
-        contador = SEGUNDOS_ESPERA;
+        contador = TIEMPO_MAX;
     }
 
         /*
