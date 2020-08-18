@@ -8,9 +8,9 @@ import java.awt.event.ActionListener;
 public class Temporizador {
 
     private final static int UN_SEGUNDO = 1000;
-    private final static int MILISEGUNDOS_ESPERA = 10;
+    private final static int SEGUNDOS_ESPERA = 10;
 
-    private int contador = MILISEGUNDOS_ESPERA;
+    private int contador = SEGUNDOS_ESPERA;
     private JLabel timerLabel = new JLabel();
     private Timer timer;
 
@@ -23,8 +23,8 @@ public class Temporizador {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            if (contador > -1) {
-
+            if (contador == -1) {
+                contador = SEGUNDOS_ESPERA;
             } else {
                 timerLabel.setText("Contador: " + Integer.toString(contador));
                 contador--;

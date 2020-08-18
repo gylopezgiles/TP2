@@ -5,7 +5,6 @@ import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 import edu.fiuba.algo3.modelo.pregunta.TipoPregunta;
-import javafx.scene.control.Label;
 
 import javax.swing.*;
 import java.util.Collections;
