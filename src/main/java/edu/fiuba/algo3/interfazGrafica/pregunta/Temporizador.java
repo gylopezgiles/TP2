@@ -8,18 +8,21 @@ import java.awt.*;
 public class Temporizador {
 
     private final static int UN_SEGUNDO = 1000;
+    private static final int TIEMPO_MAX = 10;
 
 
-    private JLabel visualTemporizador;
+    private JProgressBar visualTemporizador;
     private Timer timer;
 
 
     public Temporizador(){
-        visualTemporizador = new JLabel();
+        visualTemporizador  = new JProgressBar(0,TIEMPO_MAX);
     }
 
     public void establecerVisual(int contador) {
-        visualTemporizador.setText("Contador: " + contador);
+        visualTemporizador.setValue(contador);
+        visualTemporizador.setStringPainted(true);
+        visualTemporizador.setString("Tiempo Restante");
     }
 
     public void comenzar() {
