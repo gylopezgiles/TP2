@@ -51,6 +51,8 @@ public class ControladorPanel implements ActionListener {
         Object opcionesSeleccionadas = pantallaPrincipal.obtenerOpcionesSeleccionadas();
         Boolean exclusividadSeleccionada = pantallaPrincipal.obtenerExclusividad();
 
+        pantallaPrincipal.reestablecerTemporizador();
+
         if(exclusividadSeleccionada){
            partida.responder(opcionesSeleccionadas, exclusividadSeleccionada);
         } else {
@@ -63,7 +65,6 @@ public class ControladorPanel implements ActionListener {
             establecerTurno();
         }
 
-        pantallaPrincipal.reestablecerTemporizador();
     }
 
     private void establecerTurno(){

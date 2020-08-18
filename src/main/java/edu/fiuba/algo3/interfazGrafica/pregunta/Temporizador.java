@@ -22,7 +22,6 @@ public class Temporizador {
     }
 
     public class TemporizadorEventListener implements ActionListener {
-
         @Override
         public void actionPerformed(ActionEvent e) {
 
@@ -30,12 +29,16 @@ public class Temporizador {
                 contador = TIEMPO_MAX;
 
             } else {
-                visualTemporizador.setValue(contador);
-                visualTemporizador.setStringPainted(true);
-                visualTemporizador.setString("Tiempo Restante");
+                establecerVisual();
                 contador--;
             }
         }
+    }
+
+    private void establecerVisual() {
+        visualTemporizador.setValue(contador);
+        visualTemporizador.setStringPainted(true);
+        visualTemporizador.setString("Tiempo Restante");
     }
 
     public void comenzar() {
