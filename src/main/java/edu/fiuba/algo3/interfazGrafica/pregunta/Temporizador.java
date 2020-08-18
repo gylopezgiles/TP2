@@ -14,7 +14,10 @@ public class Temporizador {
     private JLabel timerLabel = new JLabel();
     private Timer timer;
 
-    public Temporizador(){
+    private PanelPregunta panelPregunta;
+
+    public Temporizador(PanelPregunta panelPregunta){
+        this.panelPregunta = panelPregunta;
         timer = new Timer(UN_SEGUNDO, new TemporizadorEventListener());
     }
 
@@ -25,6 +28,7 @@ public class Temporizador {
 
             if (contador == -1) {
                 contador = SEGUNDOS_ESPERA;
+
             } else {
                 timerLabel.setText("Contador: " + Integer.toString(contador));
                 contador--;
@@ -41,11 +45,13 @@ public class Temporizador {
         return timerLabel;
     }
 
+    public void reestablecerTemporizador(){
+        contador = SEGUNDOS_ESPERA;
+    }
 
         /*
         * JProgressBar  progressBar = new JProgressBar(0, MILISEGUNDOS_ESPERA);
         progressBar.setValue(0);
         progressBar.setStringPainted(true);
         * */
-
 }

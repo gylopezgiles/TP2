@@ -62,6 +62,8 @@ public class ControladorPanel implements ActionListener {
         } else {
             establecerTurno();
         }
+
+        pantallaPrincipal.reestablecerTemporizador();
     }
 
     private void establecerTurno(){

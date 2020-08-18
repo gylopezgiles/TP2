@@ -28,7 +28,7 @@ public class PanelPregunta extends JPanel {
         responder = new JButton("Responder");
         exclusividad = new JCheckBox();
         multiplicadores = new ButtonGroup();
-        temporizador = new Temporizador();
+        temporizador = new Temporizador(this);
     }
 
     public void establecerTurno(Preguntable pregunta, Jugador jugador){
@@ -107,5 +107,9 @@ public class PanelPregunta extends JPanel {
     public void conectaControlador(ControladorPanel controlador){
         responder.addActionListener(controlador);
         responder.setActionCommand("RESPONDER");
+    }
+
+    public void reestablecerTemporizador() {
+        temporizador.reestablecerTemporizador();
     }
 }
