@@ -1,0 +1,22 @@
+@startuml components_diagram
+
+'skinparam componentStyle uml2
+skinparam monochrome true
+skinparam classAttributeIconSize 0
+
+skinparam class {
+  FontSize 13
+  FontName Verdana
+}
+
+skinparam interface {
+  FontSize 13
+  FontName Verdana
+}
+
+skinparam enum {
+  FontSize 13
+  FontName Verdana
+}
+
+@enduml

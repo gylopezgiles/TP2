@@ -1,0 +1,58 @@
+@startuml
+!include vista.iuml
+title Modelo de CargadorPreguntas
+
+class Kahoot {
+    - controladorPanel: ControladorPanel
+    + iniciar()
+    - cargarPantallaPrincipal()
+}
+
+class CargadorPreguntas <<Singleton>> {
+    - instancia: CargadorPreguntas
+    - preguntas: List<Preguntable>
+    + {static} obtenerInstancia(): CargadorPreguntas
+    + {static} obtenerInstancia(rutaArchivo: String)
+    - CargadorPreguntas(rutaArchivo: String)
+    + obtenerPreguntas(): List<Preguntable>
+}
+
+class Pregunta {
+    - tipoPregunta: TipoPregunta
+    - datoPregunta: DatoPregunta
+    + parsearPregunta(): Preguntable
+    + getTipoPregunta(): TipoPregunta
+    + setTipoPregunta(tipoPregunta: TipoPregunta)
+    + getDatoPregunta(): DatoPregunta
+    + setDatoPregunta(datoPregunta: DatoPregunta)
+}
+
+class PreguntaCreador{
+    + crearPregunta(tipoPregunta: TipoPregunta): Preguntable
+}
+
+interface Preguntable{
+    + obtenerOpciones():List
+    + obtenerPregunta():str
+    + obtenerTipoPregunta(): TipoPregunta
+    + establecerPuntuacion(opciones:List): int
+    + establecerPuntuacion(opciones: List<Opcion>, multiplicador: MultiplicableStrategy, exclusividad: Exclusividad): int
+}
+
+enum TipoPreguntaConcreta{
+    VerdaderoFalsoClasico
+    VerdaderoFalsoPenalidad
+    MultipleChoiceClasico
+    MultipleChoiceParcial
+    MultipleChoiceConPenalidad
+    OrderedChoice
+    GroupChoice
+}
+
+Kahoot -down-> CargadorPreguntas
+CargadorPreguntas -> Pregunta
+Pregunta -> PreguntaCreador
+PreguntaCreador -up->TipoPreguntaConcreta
+PreguntaCreador -down-> Preguntable
+
+@enduml

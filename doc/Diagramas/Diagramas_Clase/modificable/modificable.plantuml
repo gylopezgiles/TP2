@@ -1,16 +1,12 @@
 @startuml
+!include vista.iuml
 title Modelo de Multiplicador
-skinparam classAttributeIconSize 0
 
-
-class Ronda{
-    - jugadores: List<Jugador>
-    - pregunta: Preguntable
-
-    + obtenerJugadores(): List<Jugador>
-    + obtenerPregunta():Preguntable
-    + responder(jugador: Jugador, opciones: List<Opcion>):void
-    + responder(jugador: Jugador, opciones: List<Opcion>, multiplicador: MultiplicableStrategy):void
+interface Preguntable{
+    + obtenerOpciones():List
+    + establecerPuntuacion(opciones:List): int
+    + establecerPuntuacion(opciones: List<Opcion>, multiplicador: MultiplicableStrategy): int
+    + obtenerPregunta():str
 }
 
 interface MultiplicableStrategy{
@@ -24,7 +20,7 @@ enum Multiplicador{
 }
 
 
-Ronda --> MultiplicableStrategy
+Preguntable --> MultiplicableStrategy
 
 MultiplicableStrategy <|.. Multiplicador
 

@@ -1,0 +1,51 @@
+@startuml
+!include vista.iuml
+title Modelo Exclusividad
+
+class Ronda{
+    - jugadorIterator: Iterator<Jugador>
+    - jugadorTurno: Jugador
+    - puntajesRonda Map<Jugador, Integer>
+    - aplicanExclusividad: List<Jugador>
+    + restablecerRonda(pregunta: Preguntable)
+    + obtenerJugadores(): List<Jugador>
+    + obtenerPregunta(): Preguntable
+    + obtenerJugadorTurno(): Jugador
+    + responder(opcionesSeleccionadas: T)
+    + responder(jugador: Jugador, opciones: List<Opcion>):void
+    + responder(jugador: Jugador, opciones: List<Opcion>, multiplicador: MultiplicableStrategy):void
+    + esRondaFinalizada(): Boolean
+    + aplicarPuntajes()
+    - validarRonda(jugadores: List<Jugador>, pregunta: Preguntable)
+    - actualizarTurno()
+    - actualizarEstadoRonda()
+    - cambiarJugadorTurno()
+}
+
+class Exclusividad{
+    - modificador: int
+    - estado: EstadoExclusividad
+    + activarExclusividad()
+    + aplicarExclusividad(jugadores: List<Jugador>, puntajesRonda: Map<Jugador, Integer>, aplicanExclusividad: List<Jugador>)
+    - elegirTipoExclusividad(aplicanExclusividad: List<Jugador>)
+}
+
+interface EstadoExclusividad{
+    + utilizarExclusividad(jugadores: List<Jugador>, puntajesRonda: Map<Jugador, Integer>, modificador: int): Map<Jugador, Integer>
+}
+
+class ExclusividadActivada{
+    - aplicarModificador(jugadores: List<Jugador>, puntajesRonda: Map<Jugador, Integer>, modificador: int): Map<Jugador, Integer>
+    - todosJugadoresRespondieronBien(jugadores: List<Jugador>, puntajesRonda: Map<Jugador, Integer> puntajesRonda): Boolean
+    - jugadoresRespondieronIgual(jugadores: List<Jugador>, puntajesRonda: Map<Jugador, Integer> puntajesRonda): Boolean
+}
+
+class ExclusividadDesactivada{
+
+}
+
+Ronda o-right-> Exclusividad
+Exclusividad o--> EstadoExclusividad
+EstadoExclusividad <|.. ExclusividadActivada
+EstadoExclusividad <|.. ExclusividadDesactivada
+@enduml

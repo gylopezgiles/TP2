@@ -40,7 +40,7 @@ public class Partida {
     }
 
     public Preguntable obtenerPreguntaTurno(){
-        return ronda.obtenerPreguntaTurno();
+        return ronda.obtenerPregunta();
     }
 
     private void actualizarTurno(){
