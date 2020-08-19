@@ -1,2 +1,3 @@
 ignore:
-  - "src/main/java/edu/fiuba/algo3/interfazGrafica"  
+  - "src/main/java/edu/fiuba/algo3/interfazGrafica"
+  - "doc"

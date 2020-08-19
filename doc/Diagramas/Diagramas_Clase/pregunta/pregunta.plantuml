@@ -1,7 +1,7 @@
 
 @startuml
+!include vista.iuml
 title Modelo de Pregunta usando Simple Factory
-skinparam classAttributeIconSize 0
 
 class PreguntaCreador{
     + crearPregunta(tipoPregunta: TipoPregunta): Preguntable
@@ -9,9 +9,10 @@ class PreguntaCreador{
 
 interface Preguntable{
     + obtenerOpciones():List
-    + establecerPuntuacion(opciones:List): int
-    + establecerPuntuacion(opciones: List<Opcion>, multiplicador: MultiplicableStrategy): int
     + obtenerPregunta():str
+    + obtenerTipoPregunta(): TipoPregunta
+    + establecerPuntuacion(opciones:List): int
+    + establecerPuntuacion(opciones: List<Opcion>, multiplicador: MultiplicableStrategy, exclusividad: Exclusividad): int
 }
 
 enum TipoPreguntaConcreta{
@@ -20,6 +21,8 @@ enum TipoPreguntaConcreta{
     MultipleChoiceClasico
     MultipleChoiceParcial
     MultipleChoiceConPenalidad
+    OrderedChoice
+    GroupChoice
 }
 
 abstract class VerdaderoFalso{
@@ -28,6 +31,7 @@ abstract class VerdaderoFalso{
     ~ validarOpciones(opciones: List<Opcion>)
     - tieneCantidadOpcionesValida(opciones:List<Opcion>): Boolean
     - tieneOpcionesCorrectas(opciones:List<Opcion>): Boolean
+    - obtenerOpcionesPorNombre(opcionesSeleccionadas: List<String>): List<Opcion>
 }
 
 ' sin penalidad
@@ -59,9 +63,25 @@ class MultipleChoiceConPenalidad{
 
 ' Especiales
 class GroupChoice{
+    - opciones: List<Opcion>
+    - opcionesPrimerGrupo: List<Opcion>
+    - opcionesSegundoGrupo: List<Opcion>
+    - pregunta: String
+    - validarOpciones(opciones: List<Opcion>)
+    - separarOpcionesPorGrupo(opciones: List<Opcion>)
+    - tieneCantidadOpcionesValida(opciones: List<Opcion>)
+    - esIgual(opciones: List<Opcion>, respuestas: List<Opcion>)
+    - obtenerOpcionesPorNombre(opcionesSeleccionadas: List<String>): List<Opcion>
 }
 
-class OpcionesOrdenadas{
+class OrderedChoice{
+    - opciones: List<Opcion>
+    - pregunta: String
+    - validarOpciones(opciones: List<Opcion>)
+    - tieneCantidadOpcionesValida(opciones: List<Opcion>)
+    - tieneElOrdenAdecuado(opcionesSeleccionadas: Iterator<Opcion>, opcionesOrdenadas: Iterator<Opcion>)
+    - obtenerOpcionesPorNombre(opcionesSeleccionadas: List<String>): List<Opcion>
+    - obtenerOpcionPorNombre(opcionSeleccionada: String): Opcion
 }
 
 abstract class MultipleChoice{
@@ -70,6 +90,7 @@ abstract class MultipleChoice{
     ~ validarOpciones(opciones: List<Opcion>)
     - tieneCantidadOpcionesValida(opciones:List<Opcion>): Boolean
     - tieneOpcionesCorrectas(opciones:List<Opcion>): Boolean
+    - obtenerOpcionesPorNombre(opcionesSeleccionadas: List<String>): List<Opcion>
 }
 
 
@@ -90,6 +111,6 @@ MultipleChoice <|-- MultipleChoiceParcial
 MultipleChoice <|-- MultipleChoiceClasico
 
 Preguntable <|.left. GroupChoice
-Preguntable <|.right. OpcionesOrdenadas
+Preguntable <|.right. OrderedChoice
 
 @enduml

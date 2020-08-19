@@ -1,6 +1,6 @@
 @startuml
+!include vista.iuml
 title Modelo General del Juego
-skinparam classAttributeIconSize 0
 
 class Jugador{
     - puntos: int
@@ -18,21 +18,64 @@ interface Preguntable{
     + obtenerPregunta():str
 }
 
-class Ronda{
-
+class Partida {
+    - preguntasIterator: Iterator<Preguntable>
+    - exclusividadPorJugador: Map<Jugador, Integer>
+    + obtenerPreguntaTurno(): Preguntable
+    + obtenerJugadorTurno(): Jugador
     + obtenerJugadores(): List<Jugador>
-    + obtenerPregunta():Preguntable
+    + responder(opcionesSeleccionadas: T, aplicaExclusividad: Boolean)
+    + responder(opcionesSeleccionadas: T, multiplicador: MultiplicableStrategy)
+    - generarJugadores(nombresJugadores: List<String>): List<Jugador>
+    - establecerExclusividadPorJugador()
+    - esPartidaFinalizada(): Boolean
+}
+
+class Ronda{
+    - jugadorIterator: Iterator<Jugador>
+    - jugadorTurno: Jugador
+    - puntajesRonda Map<Jugador, Integer>
+    - aplicanExclusividad: List<Jugador>
+    - exclusividad: Exclusividad
+    + restablecerRonda(pregunta: Preguntable)
+    + obtenerJugadores(): List<Jugador>
+    + obtenerPregunta(): Preguntable
+    + obtenerJugadorTurno(): Jugador
+    + responder(opcionesSeleccionadas: T)
     + responder(jugador: Jugador, opciones: List<Opcion>):void
     + responder(jugador: Jugador, opciones: List<Opcion>, multiplicador: MultiplicableStrategy):void
+    + esRondaFinalizada(): Boolean
+    + aplicarPuntajes()
+    - validarRonda(jugadores: List<Jugador>, pregunta: Preguntable)
+    - actualizarTurno()
+    - actualizarEstadoRonda()
+    - cambiarJugadorTurno()
 }
 
-interface MultiplicableStrategy{
-    + aplicarMultiplicador(puntos: int): int
+enum EstadoRonda{
+    INICIA
+    RESPONDIENDO
+    FIN_RONDA
 }
 
-Ronda "1" o-down-"*" MultiplicableStrategy
-Ronda "1" o-up->"*" Preguntable
+class ControladorPanel{
+    - jugar()
+    - responder()
+    - establecerTurno()
+}
+
+interface ActionListener{
+    + actionPerformed(e: ActionEvent)
+}
+
+ActionListener <|.. ControladorPanel
+ControladorPanel o--> Partida
+Partida o--> Ronda
+Partida "1" o-right->"*" Preguntable
+Partida "1" o--> "*" Jugador
+Ronda "1" o-up->"1" Preguntable
 Ronda "1" o-left->"*"Jugador
+Ronda "1" o--> "1" EstadoRonda
 
 
 @enduml
