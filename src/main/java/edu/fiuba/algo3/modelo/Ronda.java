@@ -84,10 +84,6 @@ public class Ronda {
         return jugadorTurno;
     }
 
-    public Preguntable obtenerPreguntaTurno(){
-        return pregunta;
-    }
-
     private void actualizarEstadoRonda() {
         if(jugadorTurno == null){
             estadoRonda = EstadoRonda.FIN_RONDA;
