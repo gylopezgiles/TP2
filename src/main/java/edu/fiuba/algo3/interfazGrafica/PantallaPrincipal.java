@@ -76,4 +76,8 @@ public class PantallaPrincipal extends JFrame {
         panelInicial.repaint();
         panelInicial.setVisible(Boolean.TRUE);
     }
+  
+    public void establecerVisualTemporizador(int contador){
+        panelPregunta.establecerVisualTemporizador(contador);
+    }
 }

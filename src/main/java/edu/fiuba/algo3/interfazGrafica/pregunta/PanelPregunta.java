@@ -17,13 +17,18 @@ public class PanelPregunta extends JPanel {
 
     private JButton responder;
     private JPanelPregunta opciones;
+
     private JCheckBox exclusividad;
     private ButtonGroup multiplicadores;
+
+    private Temporizador temporizador;
+
 
     public PanelPregunta(){
         responder = new JButton("Responder");
         exclusividad = new JCheckBox();
         multiplicadores = new ButtonGroup();
+        temporizador = new Temporizador();
     }
 
     public void establecerTurno(Preguntable pregunta, Jugador jugador){
@@ -31,7 +36,13 @@ public class PanelPregunta extends JPanel {
         agregarOpciones(pregunta);
         agregarExclusividad(pregunta);
         agregarMultiplicadores(pregunta);
+        agregarTemporizador(pregunta);
         agregarBotonResponder();
+    }
+
+    private void agregarTemporizador(Preguntable pregunta) {
+        temporizador.comenzar();
+        add(temporizador.obtenerVisual());
     }
 
 
@@ -94,7 +105,12 @@ public class PanelPregunta extends JPanel {
     }
 
     public void conectaControlador(ControladorPanel controlador){
+        temporizador.conectaControlador(controlador);
         responder.addActionListener(controlador);
         responder.setActionCommand("RESPONDER");
+    }
+
+    public void establecerVisualTemporizador(int contador){
+        temporizador.establecerVisual(contador);
     }
 }
