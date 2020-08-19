@@ -14,80 +14,459 @@
 		]
 	}
 },
-{
-	"tipoPregunta": "MultipleChoiceClasico",
-	"datoPregunta": {
-		"texto": "Cuáles de los siguientes artistas interpretaron la canción Proud Mary",
-		"opciones":[
-			{
-				"texto": "Creedence Clearwater Revival",
-				"esCorrecta": true
-			},
-			{
-				"texto": "Tina Turner",
-				"esCorrecta": true
-			},
-			{
-				"texto": "Radiohead",
-				"esCorrecta": false
-			}
-		]
-	}
-},
-{
-	"tipoPregunta": "OrderedChoice",
-	"datoPregunta": {
-		"texto": "Ordenar los siguientes albums de Guns N' Roses en orden de lanzamiento",
-		"opciones":[
-			{
-				"texto": "Apetite For Destruction",
-				"esCorrecta": true
-			},
-			{
-				"texto": "Use Your Illusion I",
-				"esCorrecta": true
-			},
-			{
-				"texto": "Use Your Illusion II",
-				"esCorrecta": true
-			},
-			{
-				"texto": "The Spaghetti Incident",
-				"esCorrecta": true
-			}
-		]
-	}
-},
-{
-	"tipoPregunta": "GroupChoice",
-	"datoPregunta": {
-		"texto": "Indicar cuales de las siguientes canciones de Divididos pertenecen al disco Vengo del Placard De Otro (izquierda) y cuales a Gol de Mujer (derecha)",
-		"opciones":[
-			{
-				"texto": "Pepe Lui",
-				"esCorrecta": true
-			},
-			{
-				"texto": "Aburridos Peligrosos",
-				"esCorrecta": true
-			},
-			{
-				"texto": "Guanuqueando",
-				"esCorrecta": true
-			},
-			{
-				"texto": "Vientito de Tucumán",
-				"esCorrecta": false
-			},
-			{
-				"texto": "Nene de Antes",
-				"esCorrecta": false
-			},
-			{
-				"texto": "Salgan al Sol",
-				"esCorrecta": false
-			}
-		]
-	}
-}]
-
+	{
+		"tipoPregunta": "MultipleChoiceClasico",
+		"datoPregunta": {
+			"texto": "¿Cuáles de los siguientes artistas interpretaron la canción Proud Mary?",
+			"opciones":[
+				{
+					"texto": "Creedence Clearwater Revival",
+					"esCorrecta": true
+				},
+				{
+					"texto": "Tina Turner",
+					"esCorrecta": true
+				},
+				{
+					"texto": "Radiohead",
+					"esCorrecta": false
+				}
+			]
+		}
+	},
+	{
+		"tipoPregunta": "OrderedChoice",
+		"datoPregunta": {
+			"texto": "Ordenar los siguientes albums de Guns N' Roses en orden de lanzamiento",
+			"opciones":[
+				{
+					"texto": "Apetite For Destruction",
+					"esCorrecta": true
+				},
+				{
+					"texto": "Use Your Illusion I",
+					"esCorrecta": true
+				},
+				{
+					"texto": "Use Your Illusion II",
+					"esCorrecta": true
+				},
+				{
+					"texto": "The Spaghetti Incident",
+					"esCorrecta": true
+				}
+			]
+		}
+	},
+	{
+		"tipoPregunta": "GroupChoice",
+		"datoPregunta": {
+			"texto": "Indicar cuáles de las siguientes canciones de Divididos pertenecen al disco Vengo del Placard De Otro (izquierda) y cuáles a Gol de Mujer (derecha)",
+			"opciones":[
+				{
+					"texto": "Pepe Lui",
+					"esCorrecta": true
+				},
+				{
+					"texto": "Aburridos Peligrosos",
+					"esCorrecta": true
+				},
+				{
+					"texto": "Guanuqueando",
+					"esCorrecta": true
+				},
+				{
+					"texto": "Vientito de Tucumán",
+					"esCorrecta": false
+				},
+				{
+					"texto": "Nene de Antes",
+					"esCorrecta": false
+				},
+				{
+					"texto": "Salgan al Sol",
+					"esCorrecta": false
+				}
+			]
+		}
+	},
+	{
+		"tipoPregunta": "MultipleChoiceParcial",
+		"datoPregunta": {
+			"texto": "¿Cuáles de las siguientes canciones pertenecen a Ed Sheeran?",
+			"opciones":[
+				{
+					"texto": "Perfect",
+					"esCorrecta": true
+				},
+				{
+					"texto": "Photograph",
+					"esCorrecta": true
+				},
+				{
+					"texto": "Let Her Go",
+					"esCorrecta": false
+				},
+				{
+					"texto": "Thinking Out Loud",
+					"esCorrecta": true
+				}
+			]
+		}
+	},
+	{
+		"tipoPregunta": "MultipleChoiceConPenalidad",
+		"datoPregunta": {
+			"texto": "¿Cuáles de las siguientes canciones fueron publicadas en la década de 1980?",
+			"opciones":[
+				{
+					"texto": "Wonderwall",
+					"esCorrecta": false
+				},
+				{
+					"texto": "Girls Just Want To Have Fun",
+					"esCorrecta": true
+				},
+				{
+					"texto": "I Want To Break Free",
+					"esCorrecta": true
+				},
+				{
+					"texto": "My Heart Will Go On",
+					"esCorrecta": false
+				}
+			]
+		}
+	},
+	{
+		"tipoPregunta": "VerdaderoFalsoPenalidad",
+		"datoPregunta": {
+			"texto": "La canción Counting Stars fue realizada por la banda OneRepublic",
+			"opciones": [
+				{
+					"texto": "Falso",
+					"esCorrecta": false
+				},
+				{
+					"texto": "Verdadero",
+					"esCorrecta": true
+				}
+			]
+		}
+	},
+	{
+		"tipoPregunta": "GroupChoice",
+		"datoPregunta": {
+			"texto": "Indicar cuáles de los siguientes países pertenecen a Europa (izquierda) y cuáles a Asia (derecha)",
+			"opciones":[
+				{
+					"texto": "Francia",
+					"esCorrecta": true
+				},
+				{
+					"texto": "China",
+					"esCorrecta": false
+				},
+				{
+					"texto": "España",
+					"esCorrecta": true
+				},
+				{
+					"texto": "India",
+					"esCorrecta": false
+				},
+				{
+					"texto": "Japón",
+					"esCorrecta": false
+				},
+				{
+					"texto": "Irán",
+					"esCorrecta": false
+				}
+			]
+		}
+	},
+	{
+		"tipoPregunta": "VerdaderoFalsoPenalidad",
+		"datoPregunta": {
+			"texto": "La ciudad Sídney es la capital de Australia",
+			"opciones": [
+				{
+					"texto": "Verdadero",
+					"esCorrecta": false
+				},
+				{
+					"texto": "Falso",
+					"esCorrecta": true
+				}
+			]
+		}
+	},
+	{
+		"tipoPregunta": "VerdaderoFalsoClasico",
+		"datoPregunta": {
+			"texto": "El Océano Pacífico baña las costas argentinas",
+			"opciones": [
+				{
+					"texto": "Verdadero",
+					"esCorrecta": false
+				},
+				{
+					"texto": "Falso",
+					"esCorrecta": true
+				}
+			]
+		}
+	},
+	{
+		"tipoPregunta": "MultipleChoiceParcial",
+		"datoPregunta": {
+			"texto": "¿Cuáles de los siguientes países pertenecen a América?",
+			"opciones":[
+				{
+					"texto": "México",
+					"esCorrecta": true
+				},
+				{
+					"texto": "Estonia",
+					"esCorrecta": false
+				},
+				{
+					"texto": "Kenia",
+					"esCorrecta": false
+				},
+				{
+					"texto": "Guatemala",
+					"esCorrecta": true
+				}
+			]
+		}
+	},
+	{
+		"tipoPregunta": "MultipleChoiceClasico",
+		"datoPregunta": {
+			"texto": "¿Cuáles de los siguientes países son de habla inglesa?",
+			"opciones":[
+				{
+					"texto": "Estados Unidos",
+					"esCorrecta": true
+				},
+				{
+					"texto": "Perú",
+					"esCorrecta": false
+				},
+				{
+					"texto": "Jamaica",
+					"esCorrecta": true
+				},
+				{
+					"texto": "Canadá",
+					"esCorrecta": true
+				}
+			]
+		}
+	},
+	{
+		"tipoPregunta": "OrderedChoice",
+		"datoPregunta": {
+			"texto": "Ordenar los siguientes países en orden creciente de año de Independencia",
+			"opciones":[
+				{
+					"texto": "Estados Unidos",
+					"esCorrecta": true
+				},
+				{
+					"texto": "Argentina",
+					"esCorrecta": true
+				},
+				{
+					"texto": "Brasil",
+					"esCorrecta": true
+				},
+				{
+					"texto": "Guyana",
+					"esCorrecta": true
+				}
+			]
+		}
+	},
+	{
+		"tipoPregunta": "MultipleChoiceConPenalidad",
+		"datoPregunta": {
+			"texto": "¿Cuáles de los siguientes países pertenecen a África",
+			"opciones":[
+				{
+					"texto": "Marruecos",
+					"esCorrecta": true
+				},
+				{
+					"texto": "Emiratos Árabes Unidos",
+					"esCorrecta": false
+				},
+				{
+					"texto": "Kenia",
+					"esCorrecta": true
+				},
+				{
+					"texto": "Egipto",
+					"esCorrecta": true
+				}
+			]
+		}
+	},
+	{
+		"tipoPregunta": "VerdaderoFalsoClasico",
+		"datoPregunta": {
+			"texto": "Las banderas de Paraguay y de Francia poseen los mismos colores",
+			"opciones": [
+				{
+					"texto": "Falso",
+					"esCorrecta": false
+				},
+				{
+					"texto": "Verdadero",
+					"esCorrecta": true
+				}
+			]
+		}
+	},
+	{
+		"tipoPregunta": "MultipleChoiceClasico",
+		"datoPregunta": {
+			"texto": "¿Cuáles de los siguientes son tipos de ácidos nucleicos?",
+			"opciones":[
+				{
+					"texto": "Ademina",
+					"esCorrecta": false
+				},
+				{
+					"texto": "Guanina",
+					"esCorrecta": true
+				},
+				{
+					"texto": "Citosina ",
+					"esCorrecta": true
+				}
+			]
+		}
+	},
+	{
+		"tipoPregunta": "OrderedChoice",
+		"datoPregunta": {
+			"texto": "Ordenar los siguientes animales en orden creciente según su tamaño",
+			"opciones":[
+				{
+					"texto": "Cocodrilo",
+					"esCorrecta": true
+				},
+				{
+					"texto": "Cachalote",
+					"esCorrecta": true
+				},
+				{
+					"texto": "Ballena Azul",
+					"esCorrecta": true
+				}
+			]
+		}
+	},
+	{
+		"tipoPregunta": "MultipleChoiceParcial",
+		"datoPregunta": {
+			"texto": "¿Cuáles de los siguientes animales son ovíparos?",
+			"opciones":[
+				{
+					"texto": "Hormiga",
+					"esCorrecta": true
+				},
+				{
+					"texto": "Oso",
+					"esCorrecta": false
+				},
+				{
+					"texto": "Cóndor",
+					"esCorrecta": true
+				},
+				{
+					"texto": "Caballo",
+					"esCorrecta": false
+				},
+				{
+					"texto": "Koala",
+					"esCorrecta": false
+				}
+			]
+		}
+	},
+	{
+		"tipoPregunta": "MultipleChoiceConPenalidad",
+		"datoPregunta": {
+			"texto": "¿Cuáles de los siguientes animales son vivíparos?",
+			"opciones":[
+				{
+					"texto": "Paloma",
+					"esCorrecta": false
+				},
+				{
+					"texto": "Conejo",
+					"esCorrecta": true
+				},
+				{
+					"texto": "Elefante",
+					"esCorrecta": true
+				},
+				{
+					"texto": "Rana",
+					"esCorrecta": false
+				}
+			]
+		}
+	},
+	{
+		"tipoPregunta": "VerdaderoFalsoPenalidad",
+		"datoPregunta": {
+			"texto": "Las siglas ADN significan ácido desoxirribonucleoso",
+			"opciones": [
+				{
+					"texto": "Verdadero",
+					"esCorrecta": false
+				},
+				{
+					"texto": "Falso",
+					"esCorrecta": true
+				}
+			]
+		}
+	},
+	{
+		"tipoPregunta": "GroupChoice",
+		"datoPregunta": {
+			"texto": "Indicar cuáles de los siguientes huesos pertenecen a la muñeca (izquierda) y cuáles al pie (derecha)",
+			"opciones":[
+				{
+					"texto": "Piramidal",
+					"esCorrecta": true
+				},
+				{
+					"texto": "Semilunar",
+					"esCorrecta": true
+				},
+				{
+					"texto": "Pisiforme",
+					"esCorrecta": true
+				},
+				{
+					"texto": "Cuboides",
+					"esCorrecta": false
+				},
+				{
+					"texto": "Calcáneo",
+					"esCorrecta": false
+				},
+				{
+					"texto": "Astrágalo",
+					"esCorrecta": false
+				}
+			]
+		}
+	}]
