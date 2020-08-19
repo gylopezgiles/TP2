@@ -2,6 +2,8 @@ package edu.fiuba.algo3.interfazGrafica;
 
 
 import edu.fiuba.algo3.controlador.ControladorPanel;
+import edu.fiuba.algo3.modelo.excepciones.NombresInvalidosExcepcion;
+import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -80,6 +82,11 @@ public class PanelInicial extends JPanel {
     public void conectaControlador(ControladorPanel c){
         jugar.addActionListener(c);
         jugar.setActionCommand("JUGAR");
+    }
+
+    public void mostrarMensajeEnPantalla(String mensaje) {
+        JLabel mensajeAMostrar = new JLabel(mensaje);
+        add(mensajeAMostrar);
     }
 
 }

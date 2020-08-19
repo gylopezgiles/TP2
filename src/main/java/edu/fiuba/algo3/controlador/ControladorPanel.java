@@ -3,13 +3,18 @@ package edu.fiuba.algo3.controlador;
 import edu.fiuba.algo3.interfazGrafica.PantallaPrincipal;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Partida;
+import edu.fiuba.algo3.modelo.excepciones.NombresInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 import edu.fiuba.algo3.modelo.pregunta.cargador.CargadorPreguntas;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class ControladorPanel implements ActionListener {
@@ -26,7 +31,13 @@ public class ControladorPanel implements ActionListener {
         String comando = e.getActionCommand();
         switch(comando) {
             case "JUGAR":
-                jugar();
+                try {
+                    jugar();
+                } catch (NombresInvalidosExcepcion nombresInvalidosExcepcion) {
+                    pantallaPrincipal.mostrarMensajeNombresJugadoresInvalidos(nombresInvalidosExcepcion.obtenerDescripcion());
+                } catch (ParametrosInvalidosExcepcion noHayPreguntasCargadas) {
+                    pantallaPrincipal.mostrarMensajePreguntasNoCargadas(noHayPreguntasCargadas.obtenerDescripcion());
+                }
                 break;
             case "RESPONDER":
                 responder();
@@ -35,14 +46,12 @@ public class ControladorPanel implements ActionListener {
 
     }
 
-    private void jugar(){
+    private void jugar() throws NombresInvalidosExcepcion, ParametrosInvalidosExcepcion {
         List<String> nombresJugadores = pantallaPrincipal.obtenerJugadores();
-        //TODO: VALIDAR QUE HAYA PREGUNTAS, AGREGAR MENSAJE AL USUARIO SI NO HAY PREGUNTAS O RONDA TIRO UNA EXCEPCION
-        try {
-            partida = new Partida(nombresJugadores, CargadorPreguntas.obtenerInstancia().obtenerPreguntas());
-        } catch (ParametrosInvalidosExcepcion parametrosInvalidosExcepcion) {
-            parametrosInvalidosExcepcion.printStackTrace();
+        if(nombresJugadores.stream().anyMatch(jugador -> jugador.isEmpty())) {
+            throw new NombresInvalidosExcepcion("Deben ingresarse los nombres de ambos jugadores");
         }
+        partida = new Partida(nombresJugadores, CargadorPreguntas.obtenerInstancia().obtenerPreguntas());
         pantallaPrincipal.iniciarPartida();
         establecerTurno();
     }

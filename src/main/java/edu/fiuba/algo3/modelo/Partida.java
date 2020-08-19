@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.excepciones.NombresInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.multiplicador.MultiplicableStrategy;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
@@ -19,7 +20,11 @@ public class Partida {
     public Partida(List<String> nombresJugadores, List<Preguntable> preguntas) throws ParametrosInvalidosExcepcion {
         this.jugadores = generarJugadores(nombresJugadores);
         this.preguntasIterator = preguntas.iterator();
-        this.ronda = new Ronda(jugadores, preguntasIterator.next());
+        try {
+            this.ronda = new Ronda(jugadores, preguntasIterator.next());
+        } catch (NoSuchElementException noHayPreguntas) {
+            throw new ParametrosInvalidosExcepcion("No hay preguntas cargadas");
+        }
         this.exclusividadPorJugador = new HashMap<>();
         establecerExclusividadPorJugador();
     }

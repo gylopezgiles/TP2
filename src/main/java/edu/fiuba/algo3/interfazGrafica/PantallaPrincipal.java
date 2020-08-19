@@ -3,6 +3,8 @@ package edu.fiuba.algo3.interfazGrafica;
 import edu.fiuba.algo3.controlador.ControladorPanel;
 import edu.fiuba.algo3.interfazGrafica.pregunta.PanelPregunta;
 import edu.fiuba.algo3.modelo.Jugador;
+import edu.fiuba.algo3.modelo.excepciones.NombresInvalidosExcepcion;
+import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
@@ -59,4 +61,19 @@ public class PantallaPrincipal extends JFrame {
         return panelPregunta.obtenerExclusividad();
     }
     public Multiplicador obtenerMultiplicador(){ return  panelPregunta.obtenerMultiplicador();}
+
+    public void mostrarMensajeNombresJugadoresInvalidos(String nombresInvalidosExcepcion) {
+        panelInicial.mostrarMensajeEnPantalla(nombresInvalidosExcepcion);
+        panelInicial.setVisible(Boolean.FALSE);
+        panelInicial.repaint();
+        panelInicial.setVisible(Boolean.TRUE);
+    }
+
+    public void mostrarMensajePreguntasNoCargadas(String noHayPreguntasCargadas) {
+        panelInicial.removeAll();
+        panelInicial.mostrarMensajeEnPantalla(noHayPreguntasCargadas);
+        panelInicial.setVisible(Boolean.FALSE);
+        panelInicial.repaint();
+        panelInicial.setVisible(Boolean.TRUE);
+    }
 }
