@@ -23,7 +23,7 @@ public class PantallaPrincipal extends JFrame {
 
     public PantallaPrincipal(){
         setImagenMiniatura();
-        setTitle("Kahoot");
+        setTitle("Kahoot!");
         panelInicial = new PanelInicial();
         panelPregunta = new PanelPregunta();
         getContentPane().add(panelInicial);
@@ -72,7 +72,7 @@ public class PantallaPrincipal extends JFrame {
 
     private void setImagenMiniatura(){
         try {
-            FileInputStream entrada = new FileInputStream("doc/imagenes/logo_kahoot.jpg");
+            FileInputStream entrada = new FileInputStream("doc/imagenes/icono_kahoot.jpg");
             Image imagen = ImageIO.read(entrada);
             setIconImage(imagen);
         } catch (
