@@ -11,6 +11,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -114,6 +115,14 @@ public class PartidaTest {
 
         Assertions.assertEquals("Cecilia", jugador1.obtenerNombre());
         Assertions.assertEquals(5, jugador1.obtenerPuntos());
+
+    }
+
+    @Test
+    public void debeLanzarExcepcionCuandoSeCreaSinPreguntas() {
+        List<String> nombresJugadores = Arrays.asList("Antonella", "Rocío");
+
+        Assertions.assertThrows(ParametrosInvalidosExcepcion.class, () -> new Partida(nombresJugadores, Collections.emptyList()));
 
     }
 
