@@ -19,50 +19,48 @@ public class PanelInicial extends JPanel {
     private JButton jugar;
 
     public PanelInicial(){
-        Box layoutInicial = Box.createVerticalBox();
-        agregarImagen(layoutInicial);
-        agregarBienvenida(layoutInicial);
-        agregarIndicaciones(layoutInicial);
-        agregarJugadoresInput(layoutInicial);
-        agregarBotonJugar(layoutInicial);
-        add(layoutInicial);
+        agregarImagen();
+        agregarBienvenida();
+        agregarIndicaciones();
+        agregarJugadoresInput();
+        agregarBotonJugar();
     }
 
-    private void agregarImagen(Box layoutInicial){
+    private void agregarImagen( ){
         try {
             FileInputStream entrada = new FileInputStream("doc/imagenes/banner_kahoot.jpg");
             Image image = ImageIO.read(entrada);
             ImageIcon imagenIcon = new ImageIcon(image);
             JLabel imagen = new JLabel(imagenIcon);
-            layoutInicial.add(imagen);
+            add(imagen);
         } catch (FileNotFoundException ignoreError){
         } catch (IOException ignoreError){ }
     }
 
-    private void agregarBienvenida(Box layoutInicial){
+    private void agregarBienvenida( ){
 
-        String textoBienvenida = "Bienvenido al juego del grupo N1 turno noche!!";
+        String textoBienvenida = "¡Bienvenido al juego del grupo N1 turno noche!";
 
         JLabel bienvenida = new JLabel(textoBienvenida);
 
-        layoutInicial.add(bienvenida);
+        add(bienvenida);
     }
 
-    private void agregarIndicaciones(Box layoutInicial){
-        String textoIndicaciones = "Para empezar a jugar ingrese los nombres de los jugadores y luego presionar el boton 'Jugar'";
+    private void agregarIndicaciones( ){
+        String textoIndicaciones = "Para iniciar ingrese los nombres de los jugadores y presione el boton 'Jugar'";
 
         JLabel indicaciones = new JLabel(textoIndicaciones);
 
-       layoutInicial.add(indicaciones);
+       add(indicaciones);
     }
 
-    private void agregarJugadoresInput(Box layoutInicial){
+    private void agregarJugadoresInput( ){
         JLabel jugador1 = new JLabel("Jugador 1: ");
         nombreJugador1 = new JTextField();
-        nombreJugador1.setColumns(5);
+        nombreJugador1.setColumns(7);
         JLabel jugador2 = new JLabel("Jugador 2: ");
         nombreJugador2 = new JTextField();
-        nombreJugador2.setColumns(5);
+        nombreJugador2.setColumns(7);
 
         Box layoutJugador1 = Box.createHorizontalBox();
         Box layoutJugador2 = Box.createHorizontalBox();
@@ -72,17 +70,17 @@ public class PanelInicial extends JPanel {
         layoutJugador2.add(jugador2);
         layoutJugador2.add(nombreJugador2);
 
-        layoutInicial.add(layoutJugador1);
-        layoutInicial.add(layoutJugador2);
+        add(layoutJugador1);
+        add(layoutJugador2);
     }
 
     public List<String> obtenerNombresJugadores(){
         return Arrays.asList(nombreJugador1.getText(), nombreJugador2.getText());
     }
 
-    private void agregarBotonJugar(Box layoutInicial){
+    private void agregarBotonJugar( ){
         jugar = new JButton("Jugar");
-        layoutInicial.add(jugar);
+        add(jugar);
     }
 
     public void conectaControlador(ControladorPanel c){

@@ -8,6 +8,8 @@ import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 
 import javax.imageio.ImageIO;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
 import java.io.FileInputStream;
@@ -21,7 +23,7 @@ public class PantallaPrincipal extends JFrame {
     private PanelPregunta panelPregunta;
     private PanelFinJuego panelFinJuego;
 
-    public PantallaPrincipal(){
+    public PantallaPrincipal() throws LineUnavailableException {
         setImagenMiniatura();
         setTitle("Kahoot!");
         panelInicial = new PanelInicial();
@@ -43,7 +45,8 @@ public class PantallaPrincipal extends JFrame {
         add(panelPregunta);
     }
 
-    public void establecerTurno(Preguntable pregunta, Jugador jugador) {
+    public void establecerTurno(Preguntable pregunta, Jugador jugador) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        panelPregunta.detenerMusica();
         panelPregunta.removeAll();
         panelPregunta.establecerTurno(pregunta, jugador);
         panelPregunta.revalidate();

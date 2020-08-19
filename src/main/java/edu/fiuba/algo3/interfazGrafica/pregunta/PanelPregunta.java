@@ -6,7 +6,14 @@ import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 import edu.fiuba.algo3.modelo.pregunta.TipoPregunta;
 
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
@@ -22,16 +29,20 @@ public class PanelPregunta extends JPanel {
     private ButtonGroup multiplicadores;
 
     private Temporizador temporizador;
+    private Clip musica;
 
 
-    public PanelPregunta(){
+    public PanelPregunta() throws LineUnavailableException {
         responder = new JButton("Responder");
         exclusividad = new JCheckBox();
+        exclusividad.setText("Exclusividad");
         multiplicadores = new ButtonGroup();
+        musica = AudioSystem.getClip();
         temporizador = new Temporizador();
     }
 
-    public void establecerTurno(Preguntable pregunta, Jugador jugador){
+    public void establecerTurno(Preguntable pregunta, Jugador jugador) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
+        empezarMusica();
         agregarTextoPregunta(jugador.obtenerNombre(), pregunta);
         agregarOpciones(pregunta);
         agregarExclusividad(pregunta);
@@ -45,6 +56,14 @@ public class PanelPregunta extends JPanel {
         add(temporizador.obtenerVisual());
     }
 
+    private void empezarMusica() throws IOException, UnsupportedAudioFileException, LineUnavailableException {
+        musica.open(AudioSystem.getAudioInputStream(new File("doc/musica/countdown_kahoot.wav")));
+        musica.start();
+    }
+
+    public void detenerMusica(){
+        musica.close();
+    }
 
     public void agregarExclusividad(Preguntable pregunta) {
         if(esPreguntaSinPenalidad(pregunta.obtenerTipoPregunta())) {

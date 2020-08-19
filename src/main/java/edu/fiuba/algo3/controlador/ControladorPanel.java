@@ -8,13 +8,16 @@ import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 import edu.fiuba.algo3.modelo.pregunta.cargador.CargadorPreguntas;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.List;
 
 public class ControladorPanel implements ActionListener {
 
-    private final static int TIEMPO_MAX = 10;
+    private final static int TIEMPO_MAX = 20;
     private static final int FIN_TURNO = -1;
 
     private int contador = TIEMPO_MAX;
@@ -31,19 +34,43 @@ public class ControladorPanel implements ActionListener {
         String comando = e.getActionCommand();
         switch(comando) {
             case "JUGAR":
-                jugar();
+                try {
+                    jugar();
+                } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
+                    unsupportedAudioFileException.printStackTrace();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                } catch (LineUnavailableException lineUnavailableException) {
+                    lineUnavailableException.printStackTrace();
+                }
                 break;
             case "RESPONDER":
-                responder();
+                try {
+                    responder();
+                } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
+                    unsupportedAudioFileException.printStackTrace();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                } catch (LineUnavailableException lineUnavailableException) {
+                    lineUnavailableException.printStackTrace();
+                }
                 break;
             case "COUNTDOWN":
-                countdown();
+                try {
+                    countdown();
+                } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
+                    unsupportedAudioFileException.printStackTrace();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                } catch (LineUnavailableException lineUnavailableException) {
+                    lineUnavailableException.printStackTrace();
+                }
                 break;
         }
 
     }
 
-    private void jugar(){
+    private void jugar() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         List<String> nombresJugadores = pantallaPrincipal.obtenerJugadores();
         //TODO: VALIDAR QUE HAYA PREGUNTAS, AGREGAR MENSAJE AL USUARIO SI NO HAY PREGUNTAS O RONDA TIRO UNA EXCEPCION
         try {
@@ -55,7 +82,7 @@ public class ControladorPanel implements ActionListener {
         establecerTurno();
     }
 
-    private void countdown(){
+    private void countdown() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         if (contador == FIN_TURNO) {
             responder();
             reestablecerTemporizador();
@@ -65,7 +92,7 @@ public class ControladorPanel implements ActionListener {
         }
     }
 
-    private void responder(){
+    private void responder() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         Object opcionesSeleccionadas = pantallaPrincipal.obtenerOpcionesSeleccionadas();
         Boolean exclusividadSeleccionada = pantallaPrincipal.obtenerExclusividad();
 
@@ -84,7 +111,7 @@ public class ControladorPanel implements ActionListener {
         reestablecerTemporizador();
     }
 
-    private void establecerTurno(){
+    private void establecerTurno() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         Preguntable pregunta = partida.obtenerPreguntaTurno();
         Jugador jugador = partida.obtenerJugadorTurno();
         pantallaPrincipal.establecerTurno(pregunta, jugador);

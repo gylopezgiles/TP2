@@ -8,7 +8,7 @@ import java.awt.*;
 public class Temporizador {
 
     private final static int UN_SEGUNDO = 1000;
-    private static final int TIEMPO_MAX = 10;
+    private static final int TIEMPO_MAX = 20;
 
 
     private JProgressBar visualTemporizador;
