@@ -2,9 +2,6 @@ package edu.fiuba.algo3.interfazGrafica;
 
 
 import edu.fiuba.algo3.controlador.ControladorPanel;
-import edu.fiuba.algo3.interfazGrafica.pregunta.PanelPregunta;
-import edu.fiuba.algo3.modelo.excepciones.NombresInvalidosExcepcion;
-import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import org.apache.log4j.Logger;
 
 import javax.imageio.ImageIO;

@@ -1,6 +1,5 @@
 package edu.fiuba.algo3;
 
-import javax.sound.sampled.LineUnavailableException;
 
 /**
  * JavaFX App
