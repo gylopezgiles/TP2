@@ -81,10 +81,15 @@ Este comando crea el reporte de cobertura para CI y el reporte HTML que pueden a
 
 ## Ejecutando la aplicación
 
-Utilizando Maven: mvn exec:java
+Utilizando Maven: 
+```bash
+    mvn exec:java
+```
 
-Sin Maven: java -jar ejecutable/tp2-1.0-SNAPSHOT.jar
-
+Sin Maven: 
+```bash
+    java -jar ejecutable/tp2-1.0-SNAPSHOT.jar
+```
 
 ## Licencia
 
