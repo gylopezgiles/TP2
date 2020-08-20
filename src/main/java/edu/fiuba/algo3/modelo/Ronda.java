@@ -55,19 +55,11 @@ public class Ronda {
         return pregunta;
     }
 
-    public <T> void responder(T opciones) {
-        responder(opciones, Multiplicador.PorDefecto);
-    }
-
-    public <T> void responder(T opciones, Boolean aplicaExclusividad) {
+    public <T> void responder(T nombresOpcionesSeleccionadas, MultiplicableStrategy multiplicador, Boolean aplicaExclusividad) {
+        estadoRonda = EstadoRonda.RESPONDIENDO;
         if(aplicaExclusividad){
             aplicanExclusividad.add(jugadorTurno);
         }
-        responder(opciones, Multiplicador.PorDefecto);
-    }
-
-    public <T> void responder(T nombresOpcionesSeleccionadas, MultiplicableStrategy multiplicador) {
-        estadoRonda = EstadoRonda.RESPONDIENDO;
         puntajesRonda.put(jugadorTurno, pregunta.establecerPuntuacion(nombresOpcionesSeleccionadas, multiplicador, exclusividad));
         cambiarJugadorTurno();
         actualizarEstadoRonda();

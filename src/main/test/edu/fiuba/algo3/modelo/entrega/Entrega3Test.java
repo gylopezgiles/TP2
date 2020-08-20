@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Ronda;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.TipoPreguntaNoImplementadaException;
+import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.CreadorPregunta;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
@@ -34,8 +35,8 @@ public class Entrega3Test {
         Boolean aplicaExclusividad = Boolean.TRUE;
 
         //When
-        ronda.responder(opcionSeleccionada1, aplicaExclusividad);
-        ronda.responder(opcionSeleccionada2, !aplicaExclusividad);
+        ronda.responder(opcionSeleccionada1, Multiplicador.PorDefecto, aplicaExclusividad);
+        ronda.responder(opcionSeleccionada2, Multiplicador.PorDefecto, !aplicaExclusividad);
 
         //Then
         Assertions.assertEquals(1, jugador1.obtenerPuntos());
@@ -63,8 +64,8 @@ public class Entrega3Test {
         Boolean aplicaExclusividad = Boolean.TRUE;
 
         //When
-        ronda.responder(opcionesSeleccionadas1, aplicaExclusividad);
-        ronda.responder(opcionesSeleccionadas2, !aplicaExclusividad);
+        ronda.responder(opcionesSeleccionadas1, Multiplicador.PorDefecto, aplicaExclusividad);
+        ronda.responder(opcionesSeleccionadas2, Multiplicador.PorDefecto, !aplicaExclusividad);
 
         //Then
         Assertions.assertEquals(2, jugador1.obtenerPuntos());
@@ -92,8 +93,8 @@ public class Entrega3Test {
         Boolean aplicaExclusividad = Boolean.TRUE;
 
         //When
-        ronda.responder(opcionesSeleccionadas1, aplicaExclusividad);
-        ronda.responder(opcionesSeleccionadas2, !aplicaExclusividad);
+        ronda.responder(opcionesSeleccionadas1, Multiplicador.PorDefecto, aplicaExclusividad);
+        ronda.responder(opcionesSeleccionadas2, Multiplicador.PorDefecto, !aplicaExclusividad);
 
         //Then
         Assertions.assertEquals(2, jugador1.obtenerPuntos());
@@ -121,8 +122,8 @@ public class Entrega3Test {
         Boolean aplicaExclusividad = Boolean.TRUE;
 
         //When
-        ronda.responder(opcionesSeleccionadas1, aplicaExclusividad);
-        ronda.responder(opcionesSeleccionadas2, aplicaExclusividad);
+        ronda.responder(opcionesSeleccionadas1, Multiplicador.PorDefecto, aplicaExclusividad);
+        ronda.responder(opcionesSeleccionadas2, Multiplicador.PorDefecto, aplicaExclusividad);
 
         //Then
         Assertions.assertEquals(0, jugador1.obtenerPuntos());
@@ -150,8 +151,8 @@ public class Entrega3Test {
         Boolean aplicaExclusividad = Boolean.TRUE;
 
         //When
-        ronda.responder(opcionesSeleccionadas1, aplicaExclusividad);
-        ronda.responder(opcionesSeleccionadas2, aplicaExclusividad);
+        ronda.responder(opcionesSeleccionadas1, Multiplicador.PorDefecto, aplicaExclusividad);
+        ronda.responder(opcionesSeleccionadas2, Multiplicador.PorDefecto, aplicaExclusividad);
 
         //Then
         Assertions.assertEquals(0, jugador1.obtenerPuntos());
@@ -179,8 +180,8 @@ public class Entrega3Test {
         Boolean aplicaExclusividad = Boolean.TRUE;
 
         //When
-        ronda.responder(opcionesSeleccionadas1, !aplicaExclusividad);
-        ronda.responder(opcionesSeleccionadas2, aplicaExclusividad);
+        ronda.responder(opcionesSeleccionadas1, Multiplicador.PorDefecto, !aplicaExclusividad);
+        ronda.responder(opcionesSeleccionadas2, Multiplicador.PorDefecto, aplicaExclusividad);
 
         //Then
         Assertions.assertEquals(4, jugador1.obtenerPuntos());
@@ -208,8 +209,8 @@ public class Entrega3Test {
         Boolean aplicaExclusividad = Boolean.TRUE;
 
         //When
-        ronda.responder(opcionesSeleccionadas1, aplicaExclusividad);
-        ronda.responder(opcionesSeleccionadas2, aplicaExclusividad);
+        ronda.responder(opcionesSeleccionadas1, Multiplicador.PorDefecto, aplicaExclusividad);
+        ronda.responder(opcionesSeleccionadas2, Multiplicador.PorDefecto, aplicaExclusividad);
 
         //Then
         Assertions.assertEquals(0, jugador1.obtenerPuntos());
@@ -237,8 +238,8 @@ public class Entrega3Test {
         Boolean aplicaExclusividad = Boolean.TRUE;
 
         //When
-        ronda.responder(opcionesSeleccionadas1, aplicaExclusividad);
-        ronda.responder(opcionesSeleccionadas2, aplicaExclusividad);
+        ronda.responder(opcionesSeleccionadas1, Multiplicador.PorDefecto, aplicaExclusividad);
+        ronda.responder(opcionesSeleccionadas2, Multiplicador.PorDefecto, aplicaExclusividad);
 
         //Then
         Assertions.assertEquals(0, jugador1.obtenerPuntos());
@@ -263,8 +264,8 @@ public class Entrega3Test {
         Boolean aplicaExclusividad = Boolean.TRUE;
 
         //When
-        ronda.responder(opcionesSeleccionadas1, aplicaExclusividad);
-        ronda.responder(opcionesSeleccionadas2, !aplicaExclusividad);
+        ronda.responder(opcionesSeleccionadas1, Multiplicador.PorDefecto, aplicaExclusividad);
+        ronda.responder(opcionesSeleccionadas2, Multiplicador.PorDefecto, !aplicaExclusividad);
 
         //Then
         Assertions.assertEquals(0, jugador1.obtenerPuntos());
@@ -289,8 +290,8 @@ public class Entrega3Test {
         Boolean aplicaExclusividad = Boolean.TRUE;
 
         //When
-        ronda.responder(opcionesSeleccionadas1, aplicaExclusividad);
-        ronda.responder(opcionesSeleccionadas2, aplicaExclusividad);
+        ronda.responder(opcionesSeleccionadas1, Multiplicador.PorDefecto, aplicaExclusividad);
+        ronda.responder(opcionesSeleccionadas2, Multiplicador.PorDefecto, aplicaExclusividad);
 
         //Then
         Assertions.assertEquals(4, jugador1.obtenerPuntos());
@@ -315,8 +316,8 @@ public class Entrega3Test {
         Boolean aplicaExclusividad = Boolean.TRUE;
 
         //When
-        ronda.responder(opcionesSeleccionadas1, aplicaExclusividad);
-        ronda.responder(opcionesSeleccionadas2, !aplicaExclusividad);
+        ronda.responder(opcionesSeleccionadas1, Multiplicador.PorDefecto, aplicaExclusividad);
+        ronda.responder(opcionesSeleccionadas2, Multiplicador.PorDefecto, !aplicaExclusividad);
 
         //Then
         Assertions.assertEquals(0, jugador1.obtenerPuntos());
@@ -344,8 +345,8 @@ public class Entrega3Test {
         Boolean aplicaExclusividad = Boolean.TRUE;
 
         //When
-        ronda.responder(opcionesSeleccionadas1, aplicaExclusividad);
-        ronda.responder(opcionesSeleccionadas2, !aplicaExclusividad);
+        ronda.responder(opcionesSeleccionadas1, Multiplicador.PorDefecto, aplicaExclusividad);
+        ronda.responder(opcionesSeleccionadas2, Multiplicador.PorDefecto, !aplicaExclusividad);
 
         //Then
         Assertions.assertEquals(2,jugador1.obtenerPuntos());
@@ -373,8 +374,8 @@ public class Entrega3Test {
         Boolean aplicaExclusividad = Boolean.TRUE;
 
         //When
-        ronda.responder(opcionesSeleccionadas1, aplicaExclusividad);
-        ronda.responder(opcionesSeleccionadas2, aplicaExclusividad);
+        ronda.responder(opcionesSeleccionadas1, Multiplicador.PorDefecto, aplicaExclusividad);
+        ronda.responder(opcionesSeleccionadas2, Multiplicador.PorDefecto, aplicaExclusividad);
 
         //Then
         Assertions.assertEquals(0,jugador1.obtenerPuntos());
@@ -402,8 +403,8 @@ public class Entrega3Test {
         Boolean aplicaExclusividad = Boolean.TRUE;
 
         //When
-        ronda.responder(opcionesSeleccionadas1, aplicaExclusividad);
-        ronda.responder(opcionesSeleccionadas2, aplicaExclusividad);
+        ronda.responder(opcionesSeleccionadas1, Multiplicador.PorDefecto, aplicaExclusividad);
+        ronda.responder(opcionesSeleccionadas2, Multiplicador.PorDefecto, aplicaExclusividad);
 
         //Then
         Assertions.assertEquals(0,jugador1.obtenerPuntos());

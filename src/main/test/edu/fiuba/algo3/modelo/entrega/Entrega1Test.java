@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo.entrega;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Ronda;
 import edu.fiuba.algo3.modelo.excepciones.*;
+import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.CreadorPregunta;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
@@ -88,7 +89,7 @@ public class Entrega1Test {
         Ronda ronda = new Ronda(jugadores, verdaderoFalsoPenalidad);
 
         //When
-        ronda.responder(opcionSeleccionada);
+        ronda.responder(opcionSeleccionada, Multiplicador.PorDefecto, Boolean.FALSE);
 
         //Then
         Assertions.assertEquals(1, jugador.obtenerPuntos());
@@ -110,7 +111,7 @@ public class Entrega1Test {
         Ronda ronda = new Ronda(jugadores, verdaderoFalsoPenalidad);
 
         //When
-        ronda.responder(opcionSeleccionada);
+        ronda.responder(opcionSeleccionada, Multiplicador.PorDefecto, Boolean.FALSE);
 
         //Then
         Assertions.assertEquals(-1, jugador.obtenerPuntos());
@@ -135,7 +136,7 @@ public class Entrega1Test {
         Ronda ronda = new Ronda(jugadores, multipleChoiceClasico);
 
         //When
-        ronda.responder(opcionSeleccionada);
+        ronda.responder(opcionSeleccionada, Multiplicador.PorDefecto, Boolean.FALSE);
 
         //Then
         Assertions.assertEquals(1, jugador.obtenerPuntos());
@@ -160,7 +161,7 @@ public class Entrega1Test {
         Ronda ronda = new Ronda(jugadores, multipleChoiceClasico);
 
         //When
-        ronda.responder(opcionSeleccionada);
+        ronda.responder(opcionSeleccionada, Multiplicador.PorDefecto, Boolean.FALSE);
 
         //Then
         Assertions.assertEquals(0, jugador.obtenerPuntos());
@@ -183,7 +184,7 @@ public class Entrega1Test {
         Ronda ronda = new Ronda(jugadores, multipleChoiceParcial);
 
         //When
-        ronda.responder(opcionesSeleccionadas);
+        ronda.responder(opcionesSeleccionadas, Multiplicador.PorDefecto, Boolean.FALSE);
 
         //Then
         Assertions.assertEquals(2, jugador.obtenerPuntos());
@@ -206,7 +207,7 @@ public class Entrega1Test {
         Ronda ronda = new Ronda(jugadores, multipleChoiceParcial);
 
         //When
-        ronda.responder(opcionesSeleccionadas);
+        ronda.responder(opcionesSeleccionadas, Multiplicador.PorDefecto, Boolean.FALSE);
 
         //Then
         Assertions.assertEquals(1, jugador.obtenerPuntos());
@@ -229,7 +230,7 @@ public class Entrega1Test {
         Ronda ronda = new Ronda(jugadores, multipleChoiceParcial);
 
         //When
-        ronda.responder(opcionesSeleccionadas);
+        ronda.responder(opcionesSeleccionadas, Multiplicador.PorDefecto, Boolean.FALSE);
 
         //Then
         Assertions.assertEquals(0, jugador.obtenerPuntos());

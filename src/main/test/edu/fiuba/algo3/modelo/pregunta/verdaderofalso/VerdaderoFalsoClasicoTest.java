@@ -7,6 +7,7 @@ import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 import edu.fiuba.algo3.modelo.pregunta.TipoPregunta;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -14,6 +15,13 @@ import java.util.Collections;
 import java.util.List;
 
 public class VerdaderoFalsoClasicoTest {
+
+    private Exclusividad exclusividad;
+
+    @BeforeEach
+    public void setup(){
+        exclusividad = new Exclusividad();
+    }
 
     @Test
     public void debeCrearUnaPreguntaVerdaderFalsoConOpciones() throws ParametrosInvalidosExcepcion {
@@ -87,7 +95,7 @@ public class VerdaderoFalsoClasicoTest {
 
         Preguntable verdaderoFalsoClasico = new VerdaderoFalsoClasico(preguntaTexto, opciones);
 
-        Assertions.assertEquals(1, verdaderoFalsoClasico.establecerPuntuacion(opcionSeleccionada));
+        Assertions.assertEquals(1, verdaderoFalsoClasico.establecerPuntuacion(opcionSeleccionada, Multiplicador.PorDefecto, exclusividad));
     }
 
     @Test
@@ -101,7 +109,7 @@ public class VerdaderoFalsoClasicoTest {
 
         Preguntable verdaderoFalsoClasico = new VerdaderoFalsoClasico(preguntaTexto, opciones);
 
-        Assertions.assertEquals(0, verdaderoFalsoClasico.establecerPuntuacion(opcionSeleccionada));
+        Assertions.assertEquals(0, verdaderoFalsoClasico.establecerPuntuacion(opcionSeleccionada, Multiplicador.PorDefecto, exclusividad));
     }
 
     @Test
@@ -112,7 +120,6 @@ public class VerdaderoFalsoClasicoTest {
         Opcion opcionCorrecta = new Opcion("Falso", esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
         List<String> opcionSeleccionada = Arrays.asList("Falso");
-        Exclusividad exclusividad = new Exclusividad();
 
         Preguntable verdaderoFalsoClasico = new VerdaderoFalsoClasico(preguntaTexto, opciones);
 

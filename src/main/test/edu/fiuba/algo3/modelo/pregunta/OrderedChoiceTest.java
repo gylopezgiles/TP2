@@ -1,13 +1,24 @@
 package edu.fiuba.algo3.modelo.pregunta;
 
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
+import edu.fiuba.algo3.modelo.exclusividad.Exclusividad;
+import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class OrderedChoiceTest {
+
+    private Exclusividad exclusividad;
+
+    @BeforeEach
+    public void setup(){
+        exclusividad = new Exclusividad();
+    }
+
     @Test
     public void debeCrearUnOrderedChoiceConOpciones() throws ParametrosInvalidosExcepcion {
         boolean esCorrecta = Boolean.TRUE;
@@ -66,7 +77,7 @@ public class OrderedChoiceTest {
         OrderedChoice orderedChoice = new OrderedChoice("Orden de las letras vocales", opciones);
         List<String> opcionesSeleccionadas = Arrays.asList("A", "E", "I", "O", "U");
 
-        Assertions.assertEquals(1, orderedChoice.establecerPuntuacion(opcionesSeleccionadas));
+        Assertions.assertEquals(1, orderedChoice.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDefecto, exclusividad));
 
     }
     @Test
@@ -82,7 +93,7 @@ public class OrderedChoiceTest {
         OrderedChoice orderedChoice = new OrderedChoice("Orden de las letras vocales", opciones);
         List<String> opcionesSeleccionadas = Arrays.asList("O", "I", "E", "A", "U");
 
-        Assertions.assertEquals(0, orderedChoice.establecerPuntuacion(opcionesSeleccionadas));
+        Assertions.assertEquals(0, orderedChoice.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDefecto, exclusividad));
     }
 
 }

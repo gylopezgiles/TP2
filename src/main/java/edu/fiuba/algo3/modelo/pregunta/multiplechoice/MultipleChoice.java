@@ -49,12 +49,6 @@ public abstract class MultipleChoice implements Preguntable<List<String>> {
         return pregunta;
     }
 
-    @Override
-    public int establecerPuntuacion(List<String> nombresOpcionesSeleccionadas) {
-        Exclusividad exclusividad = new Exclusividad();
-        return establecerPuntuacion(nombresOpcionesSeleccionadas, Multiplicador.PorDefecto, exclusividad);
-    }
-
     protected List<Opcion> obtenerOpcionesPorNombre(List<String> nombresOpcionesSeleccionadas) {
         return opciones.stream().filter(op -> nombresOpcionesSeleccionadas.contains(op.obtenerTexto())).collect(Collectors.toList());
     }
