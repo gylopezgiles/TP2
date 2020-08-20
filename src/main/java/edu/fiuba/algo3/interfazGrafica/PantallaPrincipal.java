@@ -21,7 +21,7 @@ public class PantallaPrincipal extends JFrame {
     private PanelPregunta panelPregunta;
     private PanelFinJuego panelFinJuego;
 
-    public PantallaPrincipal() throws LineUnavailableException {
+    public PantallaPrincipal()  {
         setImagenMiniatura();
         setTitle("Kahoot!");
         panelInicial = new PanelInicial();

@@ -36,13 +36,17 @@ public class PanelPregunta extends JPanel {
     private Clip musica;
 
 
-    public PanelPregunta() throws LineUnavailableException {
+    public PanelPregunta(){
         responder = new JButton("Responder");
         exclusividad = new JCheckBox();
         exclusividad.setText("Exclusividad");
         multiplicadores = new ButtonGroup();
-        musica = AudioSystem.getClip();
         temporizador = new Temporizador();
+        try {
+            musica = AudioSystem.getClip();
+        } catch (LineUnavailableException lineUnavailableException){
+            log.info(String.format("Error al cargar musica"));
+        }
     }
 
     public void establecerTurno(Preguntable pregunta, Jugador jugador) {

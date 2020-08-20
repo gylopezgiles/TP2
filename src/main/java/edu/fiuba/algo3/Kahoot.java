@@ -12,7 +12,7 @@ public class Kahoot {
 
     private ControladorPanel controladorPanel;
 
-    public void iniciar() throws LineUnavailableException {
+    public void iniciar()  {
 
         CargadorPreguntas.obtenerInstancia();
 
@@ -20,7 +20,7 @@ public class Kahoot {
 
     }
 
-    private void cargarPantallaPrincipal() throws LineUnavailableException {
+    private void cargarPantallaPrincipal() {
         PantallaPrincipal pantallaPrincipal = new PantallaPrincipal();
 
         pantallaPrincipal.setSize(600, 500);
