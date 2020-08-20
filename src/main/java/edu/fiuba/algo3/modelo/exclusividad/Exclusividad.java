@@ -8,10 +8,22 @@ import java.util.Map;
 public class Exclusividad  {
 
     private int modificador;
-    private EstadoExclusividad estado = new ExclusividadDesactivada();
+    private EstadoExclusividad estado;
+    private EstadoExclusividad exclusividadDesactivada;
+    private EstadoExclusividad exclusividadActivada;
+
+    public Exclusividad(){
+        this.exclusividadActivada = new ExclusividadActivada();
+        this.exclusividadDesactivada = new ExclusividadDesactivada();
+        this.estado = exclusividadDesactivada;
+    }
 
     public void activarExclusividad() {
-        estado = new ExclusividadActivada();
+        estado = exclusividadActivada;
+    }
+
+    public void desactivarExclusividad(){
+        estado = exclusividadDesactivada;
     }
 
     public Map<Jugador, Integer> aplicarExclusividad(List<Jugador> jugadores, Map<Jugador, Integer> puntajesRonda, List<Jugador> aplicanExclusividad){

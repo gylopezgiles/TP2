@@ -49,11 +49,8 @@ public class Partida {
     }
 
     private void actualizarTurno(){
-        if(ronda.esRondaFinalizada()){
-            ronda.aplicarPuntajes();
-            if(!esPartidaFinalizada()){
-                ronda.restablecerRonda(preguntasIterator.next());
-            }
+        if(ronda.esRondaFinalizada() && !esPartidaFinalizada()){
+            ronda.restablecerRonda(preguntasIterator.next());
         }
     }
 

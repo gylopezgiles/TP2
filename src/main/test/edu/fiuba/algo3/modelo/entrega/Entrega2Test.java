@@ -54,7 +54,6 @@ public class Entrega2Test {
 
         //When
         ronda.responder(opcionesSeleccionadas);
-        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(4, jugador.obtenerPuntos());
@@ -80,7 +79,6 @@ public class Entrega2Test {
 
         //When
         ronda.responder(opcionesSeleccionadas);
-        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(2, jugador.obtenerPuntos());
@@ -106,7 +104,6 @@ public class Entrega2Test {
 
         //When
         ronda.responder(opcionesSeleccionadas);
-        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(-1, jugador.obtenerPuntos());
@@ -132,7 +129,6 @@ public class Entrega2Test {
 
         //When
         ronda.responder(opcionesSeleccionadas);
-        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(-3, jugador.obtenerPuntos());
@@ -152,7 +148,6 @@ public class Entrega2Test {
 
         //When
         ronda.responder(Arrays.asList("Verdadero"), Multiplicador.PorDos);
-        ronda.aplicarPuntajes();
 
         // Then
         Assertions.assertEquals(2, jugador.obtenerPuntos());
@@ -172,7 +167,6 @@ public class Entrega2Test {
 
         //When
         ronda.responder(Arrays.asList("Falso"), Multiplicador.PorTres);
-        ronda.aplicarPuntajes();
 
         // Then
         Assertions.assertEquals(3, jugador.obtenerPuntos());
@@ -192,7 +186,6 @@ public class Entrega2Test {
 
         //When
         ronda.responder(Arrays.asList("Verdadero"), Multiplicador.PorDos);
-        ronda.aplicarPuntajes();
 
         // Then
         Assertions.assertEquals(-2, jugador.obtenerPuntos());
@@ -212,7 +205,6 @@ public class Entrega2Test {
 
         //When
         ronda.responder(Arrays.asList("Falso"), Multiplicador.PorTres);
-        ronda.aplicarPuntajes();
 
         // Then
         Assertions.assertEquals(-3, jugador.obtenerPuntos());
@@ -234,7 +226,6 @@ public class Entrega2Test {
 
         //When
         ronda.responder(Arrays.asList("Ready for Love", "Bad Company"), Multiplicador.PorDos);
-        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(4, jugador.obtenerPuntos());
@@ -257,7 +248,6 @@ public class Entrega2Test {
 
         //When
         ronda.responder(Arrays.asList("Billy Gibbons", "Frank Beard", "Dusty Hill"), Multiplicador.PorTres);
-        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(9, jugador.obtenerPuntos());
@@ -279,7 +269,6 @@ public class Entrega2Test {
 
         //When
         ronda.responder(Arrays.asList("The Doors"), Multiplicador.PorDos);
-        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(-2, jugador.obtenerPuntos());
@@ -302,7 +291,6 @@ public class Entrega2Test {
 
         //When
         ronda.responder(Arrays.asList("1978"), Multiplicador.PorTres);
-        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(-3, jugador.obtenerPuntos());
@@ -323,7 +311,6 @@ public class Entrega2Test {
 
         //When
         ronda.responder(Arrays.asList("Bob Seger"), Multiplicador.PorDos);
-        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(1, jugador.obtenerPuntos());
@@ -343,7 +330,6 @@ public class Entrega2Test {
 
         //When
         ronda.responder(Arrays.asList("Bob Seger"), Multiplicador.PorTres);
-        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(1, jugador.obtenerPuntos());
@@ -365,7 +351,6 @@ public class Entrega2Test {
         //When
 
         ronda.responder(Arrays.asList("Guns N' Roses"), Multiplicador.PorDos);
-        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(1, jugador.obtenerPuntos());
@@ -388,7 +373,6 @@ public class Entrega2Test {
         //When
 
         ronda.responder(Arrays.asList("Guns N' Roses"), Multiplicador.PorTres);
-        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(1, jugador.obtenerPuntos());
@@ -413,7 +397,6 @@ public class Entrega2Test {
         Ronda ronda = new Ronda(Arrays.asList(jugador), orderedChoice);
 
         ronda.responder(opcionesSeleccionadas);
-        ronda.aplicarPuntajes();
 
         Assertions.assertEquals(1,jugador.obtenerPuntos());
     }
@@ -434,7 +417,6 @@ public class Entrega2Test {
         Ronda ronda = new Ronda(Arrays.asList(jugador), orderedChoice);
 
         ronda.responder(opcionesSeleccionadas);
-        ronda.aplicarPuntajes();
 
         Assertions.assertEquals(0,jugador.obtenerPuntos());
 

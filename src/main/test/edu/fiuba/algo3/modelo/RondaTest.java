@@ -46,7 +46,6 @@ public class RondaTest {
         Ronda ronda = new Ronda(jugadores, pregunta);
 
         ronda.responder(opcionSeleccionada);
-        ronda.aplicarPuntajes();
 
         Assertions.assertEquals(1, jugador1.obtenerPuntos());
     }
@@ -94,7 +93,6 @@ public class RondaTest {
         Boolean esRondaFinalizada = ronda.esRondaFinalizada();
         Jugador jugadorTurno = ronda.obtenerJugadorTurno();
         ronda.responder(opcionSeleccionada2, Multiplicador.PorDos);
-        ronda.aplicarPuntajes();
 
         Assertions.assertEquals(2, jugador1.obtenerPuntos());
         Assertions.assertEquals(Boolean.FALSE, esRondaFinalizada);

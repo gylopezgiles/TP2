@@ -36,7 +36,6 @@ public class Entrega3Test {
         //When
         ronda.responder(opcionSeleccionada1, aplicaExclusividad);
         ronda.responder(opcionSeleccionada2, !aplicaExclusividad);
-        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(1, jugador1.obtenerPuntos());
@@ -66,7 +65,6 @@ public class Entrega3Test {
         //When
         ronda.responder(opcionesSeleccionadas1, aplicaExclusividad);
         ronda.responder(opcionesSeleccionadas2, !aplicaExclusividad);
-        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(2, jugador1.obtenerPuntos());
@@ -96,7 +94,6 @@ public class Entrega3Test {
         //When
         ronda.responder(opcionesSeleccionadas1, aplicaExclusividad);
         ronda.responder(opcionesSeleccionadas2, !aplicaExclusividad);
-        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(2, jugador1.obtenerPuntos());
@@ -126,7 +123,6 @@ public class Entrega3Test {
         //When
         ronda.responder(opcionesSeleccionadas1, aplicaExclusividad);
         ronda.responder(opcionesSeleccionadas2, aplicaExclusividad);
-        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(0, jugador1.obtenerPuntos());
@@ -156,7 +152,6 @@ public class Entrega3Test {
         //When
         ronda.responder(opcionesSeleccionadas1, aplicaExclusividad);
         ronda.responder(opcionesSeleccionadas2, aplicaExclusividad);
-        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(0, jugador1.obtenerPuntos());
@@ -186,7 +181,6 @@ public class Entrega3Test {
         //When
         ronda.responder(opcionesSeleccionadas1, !aplicaExclusividad);
         ronda.responder(opcionesSeleccionadas2, aplicaExclusividad);
-        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(4, jugador1.obtenerPuntos());
@@ -216,7 +210,6 @@ public class Entrega3Test {
         //When
         ronda.responder(opcionesSeleccionadas1, aplicaExclusividad);
         ronda.responder(opcionesSeleccionadas2, aplicaExclusividad);
-        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(0, jugador1.obtenerPuntos());
@@ -246,7 +239,6 @@ public class Entrega3Test {
         //When
         ronda.responder(opcionesSeleccionadas1, aplicaExclusividad);
         ronda.responder(opcionesSeleccionadas2, aplicaExclusividad);
-        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(0, jugador1.obtenerPuntos());
@@ -273,7 +265,6 @@ public class Entrega3Test {
         //When
         ronda.responder(opcionesSeleccionadas1, aplicaExclusividad);
         ronda.responder(opcionesSeleccionadas2, !aplicaExclusividad);
-        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(0, jugador1.obtenerPuntos());
@@ -300,7 +291,6 @@ public class Entrega3Test {
         //When
         ronda.responder(opcionesSeleccionadas1, aplicaExclusividad);
         ronda.responder(opcionesSeleccionadas2, aplicaExclusividad);
-        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(4, jugador1.obtenerPuntos());
@@ -327,7 +317,6 @@ public class Entrega3Test {
         //When
         ronda.responder(opcionesSeleccionadas1, aplicaExclusividad);
         ronda.responder(opcionesSeleccionadas2, !aplicaExclusividad);
-        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(0, jugador1.obtenerPuntos());
@@ -357,7 +346,6 @@ public class Entrega3Test {
         //When
         ronda.responder(opcionesSeleccionadas1, aplicaExclusividad);
         ronda.responder(opcionesSeleccionadas2, !aplicaExclusividad);
-        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(2,jugador1.obtenerPuntos());
@@ -387,7 +375,6 @@ public class Entrega3Test {
         //When
         ronda.responder(opcionesSeleccionadas1, aplicaExclusividad);
         ronda.responder(opcionesSeleccionadas2, aplicaExclusividad);
-        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(0,jugador1.obtenerPuntos());
@@ -417,7 +404,6 @@ public class Entrega3Test {
         //When
         ronda.responder(opcionesSeleccionadas1, aplicaExclusividad);
         ronda.responder(opcionesSeleccionadas2, aplicaExclusividad);
-        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(0,jugador1.obtenerPuntos());
