@@ -50,7 +50,6 @@ public class Entrega0Test {
 
         //When
         ronda.responder(opcionSeleccionada);
-        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(1, jugador.obtenerPuntos());

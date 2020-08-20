@@ -89,7 +89,6 @@ public class Entrega1Test {
 
         //When
         ronda.responder(opcionSeleccionada);
-        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(1, jugador.obtenerPuntos());
@@ -112,7 +111,6 @@ public class Entrega1Test {
 
         //When
         ronda.responder(opcionSeleccionada);
-        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(-1, jugador.obtenerPuntos());
@@ -138,7 +136,6 @@ public class Entrega1Test {
 
         //When
         ronda.responder(opcionSeleccionada);
-        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(1, jugador.obtenerPuntos());
@@ -164,7 +161,6 @@ public class Entrega1Test {
 
         //When
         ronda.responder(opcionSeleccionada);
-        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(0, jugador.obtenerPuntos());
@@ -188,7 +184,6 @@ public class Entrega1Test {
 
         //When
         ronda.responder(opcionesSeleccionadas);
-        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(2, jugador.obtenerPuntos());
@@ -212,7 +207,6 @@ public class Entrega1Test {
 
         //When
         ronda.responder(opcionesSeleccionadas);
-        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(1, jugador.obtenerPuntos());
@@ -236,7 +230,6 @@ public class Entrega1Test {
 
         //When
         ronda.responder(opcionesSeleccionadas);
-        ronda.aplicarPuntajes();
 
         //Then
         Assertions.assertEquals(0, jugador.obtenerPuntos());
