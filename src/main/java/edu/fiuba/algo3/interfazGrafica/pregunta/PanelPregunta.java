@@ -102,6 +102,7 @@ public class PanelPregunta extends JPanel {
     }
 
     public void agregarMultiplicadores(Preguntable pregunta){
+        multiplicadores.clearSelection();
        if(!esPreguntaSinPenalidad(pregunta.obtenerTipoPregunta())){
            JRadioButton porDos = new JRadioButton("X2");
            JRadioButton porTres = new JRadioButton("X3");
