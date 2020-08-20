@@ -9,17 +9,15 @@ import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 import edu.fiuba.algo3.modelo.pregunta.cargador.CargadorPreguntas;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
+
+
 import java.util.List;
 
 public class ControladorPanel implements ActionListener {
 
-    private final static int TIEMPO_MAX = 10;
+    private final static int TIEMPO_MAX = 20;
     private static final int FIN_TURNO = -1;
 
     private int contador = TIEMPO_MAX;
@@ -45,10 +43,10 @@ public class ControladorPanel implements ActionListener {
                 }
                 break;
             case "RESPONDER":
-                responder();
+                    responder();
                 break;
             case "COUNTDOWN":
-                countdown();
+                    countdown();
                 break;
         }
 
@@ -64,7 +62,7 @@ public class ControladorPanel implements ActionListener {
         establecerTurno();
     }
 
-    private void countdown(){
+    private void countdown() {
         if (contador == FIN_TURNO) {
             responder();
             reestablecerTemporizador();
@@ -74,7 +72,7 @@ public class ControladorPanel implements ActionListener {
         }
     }
 
-    private void responder(){
+    private void responder()  {
         Object opcionesSeleccionadas = pantallaPrincipal.obtenerOpcionesSeleccionadas();
         Boolean exclusividadSeleccionada = pantallaPrincipal.obtenerExclusividad();
 

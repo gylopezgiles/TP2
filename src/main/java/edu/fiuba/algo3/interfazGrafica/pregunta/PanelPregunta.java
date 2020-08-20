@@ -5,8 +5,17 @@ import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 import edu.fiuba.algo3.modelo.pregunta.TipoPregunta;
+import edu.fiuba.algo3.modelo.pregunta.cargador.CargadorPreguntas;
+import org.apache.log4j.Logger;
 
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
@@ -15,6 +24,8 @@ import static edu.fiuba.algo3.modelo.pregunta.TipoPregunta.VerdaderoFalsoPenalid
 
 public class PanelPregunta extends JPanel {
 
+    final static Logger log = Logger.getLogger(PanelPregunta.class);
+
     private JButton responder;
     private JPanelPregunta opciones;
 
@@ -22,16 +33,24 @@ public class PanelPregunta extends JPanel {
     private ButtonGroup multiplicadores;
 
     private Temporizador temporizador;
+    private Clip musica;
 
 
     public PanelPregunta(){
         responder = new JButton("Responder");
         exclusividad = new JCheckBox();
+        exclusividad.setText("Exclusividad");
         multiplicadores = new ButtonGroup();
         temporizador = new Temporizador();
+        try {
+            musica = AudioSystem.getClip();
+        } catch (LineUnavailableException lineUnavailableException){
+            log.info(String.format("Error al cargar musica"));
+        }
     }
 
-    public void establecerTurno(Preguntable pregunta, Jugador jugador){
+    public void establecerTurno(Preguntable pregunta, Jugador jugador) {
+        empezarMusica();
         agregarTextoPregunta(jugador.obtenerNombre(), pregunta);
         agregarOpciones(pregunta);
         agregarExclusividad(pregunta);
@@ -45,6 +64,22 @@ public class PanelPregunta extends JPanel {
         add(temporizador.obtenerVisual());
     }
 
+    private void empezarMusica(){
+        try {
+            musica.open(AudioSystem.getAudioInputStream(new File("doc/musica/countdown_kahoot.wav")));
+            musica.start();
+        } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
+            log.info(String.format("Error al cargar musica"));
+        } catch (IOException ioException) {
+            log.info(String.format("Error al cargar musica"));
+        } catch (LineUnavailableException lineUnavailableException) {
+            log.info(String.format("Error al cargar musica"));
+        }
+    }
+
+    public void detenerMusica(){
+        musica.close();
+    }
 
     public void agregarExclusividad(Preguntable pregunta) {
         if(esPreguntaSinPenalidad(pregunta.obtenerTipoPregunta())) {

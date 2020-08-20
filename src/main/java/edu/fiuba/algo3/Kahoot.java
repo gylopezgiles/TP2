@@ -5,13 +5,14 @@ import edu.fiuba.algo3.controlador.ControladorPanel;
 import edu.fiuba.algo3.interfazGrafica.PantallaPrincipal;
 import edu.fiuba.algo3.modelo.pregunta.cargador.CargadorPreguntas;
 
+import javax.sound.sampled.LineUnavailableException;
 import javax.swing.*;
 
 public class Kahoot {
 
     private ControladorPanel controladorPanel;
 
-    public void iniciar(){
+    public void iniciar()  {
 
         CargadorPreguntas.obtenerInstancia();
 
@@ -19,7 +20,7 @@ public class Kahoot {
 
     }
 
-    private void cargarPantallaPrincipal(){
+    private void cargarPantallaPrincipal() {
         PantallaPrincipal pantallaPrincipal = new PantallaPrincipal();
 
         pantallaPrincipal.setSize(600, 500);
