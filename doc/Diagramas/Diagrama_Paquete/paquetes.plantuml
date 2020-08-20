@@ -1,0 +1,42 @@
+@startuml
+!include vista.iuml
+title Diagrama paquetes
+Actor jugador
+
+package "interfazgrafica" as interfaz {
+    package "pregunta" {
+    }
+}
+
+package "controlador" as controlador {
+
+}
+
+package "modelo" as modelo {
+    package "excepciones" {
+    }
+    package "exclusividad" {
+    }
+    package "multiplicador" {
+    }
+    package "pregunta" {
+        package "cargador" {
+        }
+        package "multiplechoice" {
+        }
+        package "verdaderofalso" {
+        }
+    }
+}
+
+jugador --> interfaz
+
+interfaz -up-> controlador
+
+controlador -down-> modelo
+
+controlador -down-> interfaz
+
+
+
+@enduml

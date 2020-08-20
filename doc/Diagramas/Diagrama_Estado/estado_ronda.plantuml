@@ -1,0 +1,21 @@
+@startuml
+!include vista.iuml
+
+[*] --> INICIA: crea ronda
+INICIA --> RESPONDIENDO: responde un jugador
+INICIA : jugadorTurno es el primer jugador de la lista de jugadores
+INICIA : aplicanExclusividad es una lista vacia
+INICIA : puntajesRonda es un diccionario vacia
+INICIA : exclusividad esta desactivada
+RESPONDIENDO: se agrega el puntaje obtenido para ese jugador en puntajesRonda
+RESPONDIENDO: si el jugador responde con exclusividad se agrega el jugador a la lista aplicanExclusividad
+RESPONDIENDO: a traves de la pregunta se activa la exclusividad
+RESPONDIENDO --> RESPONDIENDO: responde otro jugador
+RESPONDIENDO --> FIN_RONDA
+FIN_RONDA: jugadorTurno es null
+
+FIN_RONDA --> [*]
+
+[*] --> INICIA: restablecer ronda
+
+@enduml

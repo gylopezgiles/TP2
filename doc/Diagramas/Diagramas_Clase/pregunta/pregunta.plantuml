@@ -4,15 +4,14 @@
 title Modelo de Pregunta usando Simple Factory
 
 class PreguntaCreador{
-    + crearPregunta(tipoPregunta: TipoPregunta): Preguntable
+    + {static} crearPregunta(tipoPregunta: TipoPregunta): Preguntable
 }
 
 interface Preguntable{
     + obtenerOpciones():List
     + obtenerPregunta():str
-    + obtenerTipoPregunta(): TipoPregunta
-    + establecerPuntuacion(opciones:List): int
-    + establecerPuntuacion(opciones: List<Opcion>, multiplicador: MultiplicableStrategy, exclusividad: Exclusividad): int
+    + obtenerTipoPregunta():TipoPregunta
+    + establecerPuntuacion(opciones: T, multiplicador: MultiplicableStrategy, exclusividad: Exclusividad): int
 }
 
 enum TipoPreguntaConcreta{
@@ -36,26 +35,26 @@ abstract class VerdaderoFalso{
 
 ' sin penalidad
 class VerdaderoFalsoClasico{
-    {abstract} + establecerPuntuacion(opciones: List<Opcion>, multiplicador: MultiplicableStrategy): int
+    {abstract} + establecerPuntuacion(opciones: List<String>, multiplicador: MultiplicableStrategy, exclusividad: Exclusividad): int
 }
 
 class MultipleChoiceClasico{
-    {abstract} + establecerPuntuacion(opciones: List<Opcion>, multiplicador: MultiplicableStrategy): int
+    {abstract} + establecerPuntuacion(opciones: List<String>, multiplicador: MultiplicableStrategy, exclusividad: Exclusividad): int
     - cantidadDeOpcionesCorrectas(opciones: List<Opcion>): int
 }
 
 class MultipleChoiceParcial{
-    {abstract} + establecerPuntuacion(opciones: List<Opcion>, multiplicador: MultiplicableStrategy): int
+    {abstract} + establecerPuntuacion(opciones: List<String>, multiplicador: MultiplicableStrategy), exclusividad: Exclusividad: int
     - puntajeOpcionesCorrectas(opciones: List<Opcion>): int
 }
 
 ' con penalidad
 class VerdaderoFalsoPenalidad{
-    {abstract} + establecerPuntuacion(opciones: List<Opcion>, multiplicador: MultiplicableStrategy): int
+    {abstract} + establecerPuntuacion(opciones: List<String>, multiplicador: MultiplicableStrategy, exclusividad: Exclusividad): int
 }
 
 class MultipleChoiceConPenalidad{
-    {abstract} + establecerPuntuacion(opciones: List<Opcion>, multiplicador: MultiplicableStrategy): int
+    {abstract} + establecerPuntuacion(opciones: List<String>, multiplicador: MultiplicableStrategy, exclusividad: Exclusividad): int
     - puntajeOpcionesCorrectas(opciones:List): int
     - puntajeOpcionesIncorrectas(opciones:List): int
 }

@@ -1,0 +1,60 @@
+@startuml
+!include vista.iuml
+
+hide footbox
+
+    actor Jugador1
+
+    Jugador1 -> ControladorPanel: click en responder
+
+    ControladorPanel -> PantallaPrincipal: obtenerOpcionesSeleccionadas()
+
+    PantallaPrincipal -> PanelPregunta: obtenerOpcionesSeleccionadas()
+
+    PanelPregunta -> JPanelPregunta: obtenerOpcionesSeleccionadas()
+
+    JPanelPregunta --> PanelPregunta: opcionesSeleccionadas
+
+    PanelPregunta --> PantallaPrincipal: opcionesSeleccionadas
+
+    PantallaPrincipal --> ControladorPanel: opcionesSeleccionadas
+
+    ControladorPanel -> PantallaPrincipal: obtenerExclusividad()
+
+    PantallaPrincipal -> PanelPregunta: obtenerExclusividad()
+
+    PanelPregunta --> PantallaPrincipal: True/False
+
+    PantallaPrincipal --> ControladorPanel: True/False
+
+    ControladorPanel -> PantallaPrincipal: obtenerMultiplicador()
+
+    PantallaPrincipal -> PanelPregunta: obtenerMultiplicador()
+
+    PanelPregunta --> PantallaPrincipal: multiplicador
+
+    PantallaPrincipal --> ControladorPanel: multiplicador
+
+    ControladorPanel -> Partida: responder(opcionesSeleccionadas, multiplicador, exclusividadSeleccionada)
+    
+    ControladorPanel -> Partida: esPartidaFinalizada()
+
+    Partida --> ControladorPanel: False
+
+    activate ControladorPanel
+
+    ControladorPanel -> ControladorPanel: establecerTurno()
+
+    ControladorPanel -> Partida: obtenerPreguntaTurno()
+
+    deactivate ControladorPanel
+
+    Partida --> ControladorPanel: siguientePregunta
+
+    ControladorPanel -> Partida: obtenerJugadorTurno()
+    
+    Partida --> ControladorPanel: siguienteJugador
+
+    ControladorPanel -> PantallaPrincipal: establecerTurno(siguientePregunta, siguienteJugador)
+
+@enduml

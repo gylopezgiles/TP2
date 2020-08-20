@@ -3,10 +3,10 @@
 title Modelo de Multiplicador
 
 interface Preguntable{
-    + obtenerOpciones():List
-    + establecerPuntuacion(opciones:List): int
-    + establecerPuntuacion(opciones: List<Opcion>, multiplicador: MultiplicableStrategy): int
+    + obtenerOpciones(): List<Opcion>
     + obtenerPregunta():str
+    + obtenerTipoPregunta():TipoPregunta
+    + establecerPuntuacion(opciones: T, multiplicador: MultiplicableStrategy, exclusividad: Exclusividad): int
 }
 
 interface MultiplicableStrategy{

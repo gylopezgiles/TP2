@@ -7,25 +7,28 @@ class Ronda{
     - jugadorTurno: Jugador
     - puntajesRonda Map<Jugador, Integer>
     - aplicanExclusividad: List<Jugador>
+    - estadoRonda: EstadoRonda
+    - exclusividad: Exclusividad
     + restablecerRonda(pregunta: Preguntable)
     + obtenerJugadores(): List<Jugador>
     + obtenerPregunta(): Preguntable
     + obtenerJugadorTurno(): Jugador
-    + responder(opcionesSeleccionadas: T)
-    + responder(jugador: Jugador, opciones: List<Opcion>):void
-    + responder(jugador: Jugador, opciones: List<Opcion>, multiplicador: MultiplicableStrategy):void
+    + responder(opciones: List<Opcion>, multiplicador: MultiplicableStrategy, aplicaExclusividad: Boolean):void
     + esRondaFinalizada(): Boolean
-    + aplicarPuntajes()
     - validarRonda(jugadores: List<Jugador>, pregunta: Preguntable)
     - actualizarTurno()
     - actualizarEstadoRonda()
     - cambiarJugadorTurno()
+    - aplicarPuntajes()
 }
 
 class Exclusividad{
     - modificador: int
     - estado: EstadoExclusividad
+    - exclusividadDesactivada: EstadoExclusividad
+    - exclusividadActivada: EstadoExclusividad
     + activarExclusividad()
+    + desactivarExclusividad()
     + aplicarExclusividad(jugadores: List<Jugador>, puntajesRonda: Map<Jugador, Integer>, aplicanExclusividad: List<Jugador>)
     - elegirTipoExclusividad(aplicanExclusividad: List<Jugador>)
 }
