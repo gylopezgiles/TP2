@@ -44,8 +44,8 @@ public class PanelPregunta extends JPanel {
         temporizador = new Temporizador();
         try {
             musica = AudioSystem.getClip();
-        } catch (LineUnavailableException lineUnavailableException){
-            log.info(String.format("Error al cargar musica"));
+        } catch (LineUnavailableException lineUnavailableException) {
+            log.info(String.format("Error al cargar musica de cuenta atras"));
         }
     }
 
@@ -66,19 +66,24 @@ public class PanelPregunta extends JPanel {
 
     private void empezarMusica(){
         try {
+            musica = AudioSystem.getClip();
             musica.open(AudioSystem.getAudioInputStream(new File("doc/musica/countdown_kahoot.wav")));
             musica.start();
         } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
-            log.info(String.format("Error al cargar musica"));
+            log.info(String.format("Error al cargar musica de cuenta atras"));
         } catch (IOException ioException) {
-            log.info(String.format("Error al cargar musica"));
+            log.info(String.format("Error al cargar musica de cuenta atras"));
         } catch (LineUnavailableException lineUnavailableException) {
-            log.info(String.format("Error al cargar musica"));
+            log.info(String.format("Error al cargar musica de cuenta atras"));
         }
     }
 
     public void detenerMusica(){
         musica.close();
+    }
+
+    public void terminarMusica(){
+        musica = null;
     }
 
     public void agregarExclusividad(Preguntable pregunta) {

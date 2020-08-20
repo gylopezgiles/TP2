@@ -2,12 +2,19 @@ package edu.fiuba.algo3.interfazGrafica;
 
 
 import edu.fiuba.algo3.controlador.ControladorPanel;
+import edu.fiuba.algo3.interfazGrafica.pregunta.PanelPregunta;
 import edu.fiuba.algo3.modelo.excepciones.NombresInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
+import org.apache.log4j.Logger;
 
 import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -16,16 +23,38 @@ import java.util.List;
 
 public class PanelInicial extends JPanel {
 
+    final static Logger log = Logger.getLogger(PanelInicial.class);
+
     private JTextField nombreJugador1;
     private JTextField nombreJugador2;
     private JButton jugar;
+    private Clip musicaLobby;
 
     public PanelInicial(){
+        empezarMusica();
         agregarImagen();
         agregarBienvenida();
         agregarIndicaciones();
         agregarJugadoresInput();
         agregarBotonJugar();
+    }
+
+    private void empezarMusica(){
+        try {
+            musicaLobby = AudioSystem.getClip();
+            musicaLobby.open(AudioSystem.getAudioInputStream(new File("doc/musica/lobby_kahoot.wav")));
+            musicaLobby.loop(10);
+        } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
+            log.info(String.format("Error al cargar musica del Lobby"));
+        } catch (IOException ioException) {
+            log.info(String.format("Error al cargar musica del Lobby"));
+        } catch (LineUnavailableException lineUnavailableException) {
+            log.info(String.format("Error al cargar musica del Lobby"));
+        }
+    }
+
+    public void detenerMusica(){
+        musicaLobby.close();
     }
 
     private void agregarImagen( ){
