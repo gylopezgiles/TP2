@@ -15,4 +15,7 @@ public interface Preguntable<T> {
 
     int establecerPuntuacion(T nombresOpcionesSeleccionadas, MultiplicableStrategy multiplicador, Exclusividad exclusividad);
 
+    public void agregarDireccionImagen(String direccionImagen);
+
+    public String obtenerDireccionImagen();
 }

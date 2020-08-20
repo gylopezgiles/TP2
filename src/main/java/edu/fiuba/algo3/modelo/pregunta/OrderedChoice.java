@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class OrderedChoice implements Preguntable <List<String>>{
+public class OrderedChoice extends ImagenPregunta implements Preguntable <List<String>>{
 
     private static final int CANTIDAD_OPCIONES_MINIMO = 2;
     private static final int CANTIDAD_OPCIONES_MAXIMO = 5;
@@ -77,4 +77,5 @@ public class OrderedChoice implements Preguntable <List<String>>{
                 .findFirst();
         return opcion.get();
     }
+
 }

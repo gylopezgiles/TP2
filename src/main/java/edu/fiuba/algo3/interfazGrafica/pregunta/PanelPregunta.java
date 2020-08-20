@@ -8,6 +8,7 @@ import edu.fiuba.algo3.modelo.pregunta.TipoPregunta;
 import edu.fiuba.algo3.modelo.pregunta.cargador.CargadorPreguntas;
 import org.apache.log4j.Logger;
 
+import javax.imageio.ImageIO;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
@@ -15,6 +16,8 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
@@ -55,8 +58,20 @@ public class PanelPregunta extends JPanel {
         agregarOpciones(pregunta);
         agregarExclusividad(pregunta);
         agregarMultiplicadores(pregunta);
+        agregarImagen(pregunta);
         agregarTemporizador(pregunta);
         agregarBotonResponder();
+    }
+
+    private void agregarImagen(Preguntable pregunta) {
+        try {
+            FileInputStream direccionImagen = new FileInputStream(pregunta.obtenerDireccionImagen());
+            Image image = ImageIO.read(direccionImagen);
+            ImageIcon imagenIcon = new ImageIcon(image);
+            JLabel imagen = new JLabel(imagenIcon);
+            add(imagen);
+        } catch (FileNotFoundException ignoreError){
+        } catch (IOException ignoreError){ }
     }
 
     private void agregarTemporizador(Preguntable pregunta) {

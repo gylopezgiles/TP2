@@ -3,13 +3,14 @@ package edu.fiuba.algo3.modelo.pregunta.multiplechoice;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
+import edu.fiuba.algo3.modelo.pregunta.ImagenPregunta;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-public abstract class MultipleChoice implements Preguntable<List<String>> {
+public abstract class MultipleChoice extends ImagenPregunta implements Preguntable<List<String>> {
 
     private static final int CANTIDAD_OPCIONES_MINIMO = 2;
     private static final int CANTIDAD_OPCIONES_MAXIMO = 5;

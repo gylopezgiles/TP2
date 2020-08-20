@@ -32,4 +32,5 @@ public class VerdaderoFalsoClasico extends VerdaderoFalso {
         return opcion.isPresent() ? 1 : 0;
     }
 
+
 }

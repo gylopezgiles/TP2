@@ -43,7 +43,6 @@ public class CargadorPreguntas {
             preguntas = new LinkedList<>();
             log.info(String.format("Error al querer cargar archivo %s", rutaArchivo));
         }
-
     }
 
     public static CargadorPreguntas obtenerInstancia(){

@@ -27,6 +27,7 @@ public class VerdaderoFalsoPenalidad extends VerdaderoFalso {
         return multiplicador.aplicarMultiplicador(puntos);
     }
 
+
     @Override
     public TipoPregunta obtenerTipoPregunta() {
         return TipoPregunta.VerdaderoFalsoPenalidad;

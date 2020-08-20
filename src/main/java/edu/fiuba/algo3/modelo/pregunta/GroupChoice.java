@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-public class GroupChoice implements Preguntable <List<List<String>>>{
+public class GroupChoice extends ImagenPregunta implements Preguntable <List<List<String>>>{
 
     private static final int CANTIDAD_OPCIONES_MINIMO = 2;
     private static final int CANTIDAD_OPCIONES_MAXIMO = 6;
@@ -20,6 +20,7 @@ public class GroupChoice implements Preguntable <List<List<String>>>{
 
     private final String pregunta;
     private final List<Opcion> opciones;
+
     private List<Opcion> opcionesPrimerGrupo;
     private List<Opcion> opcionesSegundoGrupo;
 
@@ -89,4 +90,5 @@ public class GroupChoice implements Preguntable <List<List<String>>>{
     private List<Opcion> obtenerOpcionesPorNombre(List<String> opcionesSeleccionadas) {
         return opciones.stream().filter(op -> opcionesSeleccionadas.contains(op.obtenerTexto())).collect(Collectors.toList());
     }
+
 }
