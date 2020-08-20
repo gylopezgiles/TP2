@@ -24,10 +24,23 @@ enum TipoPreguntaConcreta{
     GroupChoice
 }
 
-abstract class VerdaderoFalso{}
+abstract class VerdaderoFalso{
+    ~ opciones: List<Opcion>
+    ~ pregunta: String
+    ~ validarOpciones(opciones: List<Opcion>)
+    - tieneCantidadOpcionesValida(opciones:List<Opcion>): Boolean
+    - tieneOpcionesCorrectas(opciones:List<Opcion>): Boolean
+    - obtenerOpcionesPorNombre(opcionesSeleccionadas: List<String>): List<Opcion>
+}
 
-abstract class MultipleChoice{}
-
+abstract class MultipleChoice{
+    ~ opciones: List<Opcion>
+    ~ pregunta: String
+    ~ validarOpciones(opciones: List<Opcion>)
+    - tieneCantidadOpcionesValida(opciones:List<Opcion>): Boolean
+    - tieneOpcionesCorrectas(opciones:List<Opcion>): Boolean
+    - obtenerOpcionesPorNombre(opcionesSeleccionadas: List<String>): List<Opcion>
+}
 
 class GroupChoice{
     - opciones: List<Opcion>
