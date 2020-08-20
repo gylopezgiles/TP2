@@ -37,7 +37,7 @@
 	{
 		"tipoPregunta": "OrderedChoice",
 		"datoPregunta": {
-			"texto": "Ordenar los siguientes albums de Guns N' Roses en orden de lanzamiento",
+			"texto": "Ordenar los siguientes albums de Guns N' Roses en orden de lanzamiento (de arriba hacia abajo)",
 			"opciones":[
 				{
 					"texto": "Apetite For Destruction",
@@ -269,7 +269,7 @@
 	{
 		"tipoPregunta": "OrderedChoice",
 		"datoPregunta": {
-			"texto": "Ordenar los siguientes países en orden creciente de año de Independencia",
+			"texto": "Ordenar los siguientes países en orden creciente de año de Independencia (de arriba hacia abajo)",
 			"opciones":[
 				{
 					"texto": "Estados Unidos",
@@ -353,7 +353,7 @@
 	{
 		"tipoPregunta": "OrderedChoice",
 		"datoPregunta": {
-			"texto": "Ordenar los siguientes animales en orden creciente según su tamaño",
+			"texto": "Ordenar los siguientes animales en orden creciente según su tamaño (de arriba hacia abajo)",
 			"opciones":[
 				{
 					"texto": "Cocodrilo",

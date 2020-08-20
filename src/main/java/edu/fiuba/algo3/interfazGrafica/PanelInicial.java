@@ -121,6 +121,7 @@ public class PanelInicial extends JPanel {
 
     public void mostrarMensajeEnPantalla(String mensaje) {
         JLabel mensajeAMostrar = new JLabel(mensaje);
+        mensajeAMostrar.setForeground(Color.red);
         add(mensajeAMostrar);
     }
 
