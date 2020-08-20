@@ -27,6 +27,7 @@ public class Ronda {
         this.jugadorTurno = jugadorIterator.next();
         this.aplicanExclusividad = new LinkedList<>();
         this.puntajesRonda = new HashMap<>();
+        this.exclusividad = new Exclusividad();
 
     }
 
@@ -37,6 +38,7 @@ public class Ronda {
         this.puntajesRonda = new HashMap<>();
         aplicanExclusividad.removeAll(aplicanExclusividad);
         estadoRonda = EstadoRonda.INICIA;
+        exclusividad.desactivarExclusividad();
     }
 
     private void validarRonda(List<Jugador> jugadores, Preguntable pregunta) throws ParametrosInvalidosExcepcion {
@@ -66,7 +68,6 @@ public class Ronda {
 
     public <T> void responder(T nombresOpcionesSeleccionadas, MultiplicableStrategy multiplicador) {
         estadoRonda = EstadoRonda.RESPONDIENDO;
-        exclusividad = new Exclusividad();
         puntajesRonda.put(jugadorTurno, pregunta.establecerPuntuacion(nombresOpcionesSeleccionadas, multiplicador, exclusividad));
         cambiarJugadorTurno();
         actualizarEstadoRonda();
@@ -87,10 +88,11 @@ public class Ronda {
     private void actualizarEstadoRonda() {
         if(jugadorTurno == null){
             estadoRonda = EstadoRonda.FIN_RONDA;
+            aplicarPuntajes();
         }
     }
 
-    public void aplicarPuntajes(){
+    private void aplicarPuntajes(){
         puntajesRonda = exclusividad.aplicarExclusividad(jugadores, puntajesRonda, aplicanExclusividad);
         jugadores.stream().forEach(jugador -> jugador.sumarPuntos(puntajesRonda.get(jugador)));
     }
