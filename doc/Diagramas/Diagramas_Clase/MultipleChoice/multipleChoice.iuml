@@ -1,6 +1,3 @@
-
-
-
 @startuml
 !include vista.iuml
 title Modelo de MultipleChoice

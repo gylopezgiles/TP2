@@ -23,7 +23,6 @@ class VerdaderoFalsoPenalidad{
     {abstract} + establecerPuntuacion(opciones: List<String>, multiplicador: MultiplicableStrategy, exclusividad: Exclusividad): int
 }
 
-
 VerdaderoFalso <-- VerdaderoFalsoClasico
 VerdaderoFalso <-- VerdaderoFalsoPenalidad
 @enduml
