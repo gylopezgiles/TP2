@@ -53,7 +53,7 @@ public class Entrega2Test {
         Ronda ronda = new Ronda(jugadores, multipleChoiceConPenalidad);
 
         //When
-        ronda.responder(opcionesSeleccionadas);
+        ronda.responder(opcionesSeleccionadas, Multiplicador.PorDefecto, Boolean.FALSE);
 
         //Then
         Assertions.assertEquals(4, jugador.obtenerPuntos());
@@ -78,7 +78,7 @@ public class Entrega2Test {
         Ronda ronda = new Ronda(jugadores, multipleChoiceConPenalidad);
 
         //When
-        ronda.responder(opcionesSeleccionadas);
+        ronda.responder(opcionesSeleccionadas, Multiplicador.PorDefecto, Boolean.FALSE);
 
         //Then
         Assertions.assertEquals(2, jugador.obtenerPuntos());
@@ -103,7 +103,7 @@ public class Entrega2Test {
         Ronda ronda = new Ronda(jugadores, multipleChoiceConPenalidad);
 
         //When
-        ronda.responder(opcionesSeleccionadas);
+        ronda.responder(opcionesSeleccionadas, Multiplicador.PorDefecto, Boolean.FALSE);
 
         //Then
         Assertions.assertEquals(-1, jugador.obtenerPuntos());
@@ -128,7 +128,7 @@ public class Entrega2Test {
         Ronda ronda = new Ronda(jugadores, multipleChoiceConPenalidad);
 
         //When
-        ronda.responder(opcionesSeleccionadas);
+        ronda.responder(opcionesSeleccionadas, Multiplicador.PorDefecto, Boolean.FALSE);
 
         //Then
         Assertions.assertEquals(-3, jugador.obtenerPuntos());
@@ -147,7 +147,7 @@ public class Entrega2Test {
         Ronda ronda = new Ronda(Arrays.asList(jugador), verdaderoFalsoClasico);
 
         //When
-        ronda.responder(Arrays.asList("Verdadero"), Multiplicador.PorDos);
+        ronda.responder(Arrays.asList("Verdadero"), Multiplicador.PorDos, Boolean.FALSE);
 
         // Then
         Assertions.assertEquals(2, jugador.obtenerPuntos());
@@ -166,7 +166,7 @@ public class Entrega2Test {
         Ronda ronda = new Ronda(Arrays.asList(jugador), verdaderoFalsoClasico);
 
         //When
-        ronda.responder(Arrays.asList("Falso"), Multiplicador.PorTres);
+        ronda.responder(Arrays.asList("Falso"), Multiplicador.PorTres, Boolean.FALSE);
 
         // Then
         Assertions.assertEquals(3, jugador.obtenerPuntos());
@@ -185,7 +185,7 @@ public class Entrega2Test {
         Ronda ronda = new Ronda(Arrays.asList(jugador), verdaderoFalsoClasico);
 
         //When
-        ronda.responder(Arrays.asList("Verdadero"), Multiplicador.PorDos);
+        ronda.responder(Arrays.asList("Verdadero"), Multiplicador.PorDos, Boolean.FALSE);
 
         // Then
         Assertions.assertEquals(-2, jugador.obtenerPuntos());
@@ -204,7 +204,7 @@ public class Entrega2Test {
         Ronda ronda = new Ronda(Arrays.asList(jugador), verdaderoFalsoClasico);
 
         //When
-        ronda.responder(Arrays.asList("Falso"), Multiplicador.PorTres);
+        ronda.responder(Arrays.asList("Falso"), Multiplicador.PorTres, Boolean.FALSE);
 
         // Then
         Assertions.assertEquals(-3, jugador.obtenerPuntos());
@@ -225,7 +225,7 @@ public class Entrega2Test {
         Ronda ronda = new Ronda(Arrays.asList(jugador), multipleChoicePenalidad);
 
         //When
-        ronda.responder(Arrays.asList("Ready for Love", "Bad Company"), Multiplicador.PorDos);
+        ronda.responder(Arrays.asList("Ready for Love", "Bad Company"), Multiplicador.PorDos, Boolean.FALSE);
 
         //Then
         Assertions.assertEquals(4, jugador.obtenerPuntos());
@@ -247,7 +247,7 @@ public class Entrega2Test {
         Ronda ronda = new Ronda(Arrays.asList(jugador), multipleChoicePenalidad);
 
         //When
-        ronda.responder(Arrays.asList("Billy Gibbons", "Frank Beard", "Dusty Hill"), Multiplicador.PorTres);
+        ronda.responder(Arrays.asList("Billy Gibbons", "Frank Beard", "Dusty Hill"), Multiplicador.PorTres, Boolean.FALSE);
 
         //Then
         Assertions.assertEquals(9, jugador.obtenerPuntos());
@@ -268,7 +268,7 @@ public class Entrega2Test {
         Ronda ronda = new Ronda(Arrays.asList(jugador), multipleChoicePenalidad);
 
         //When
-        ronda.responder(Arrays.asList("The Doors"), Multiplicador.PorDos);
+        ronda.responder(Arrays.asList("The Doors"), Multiplicador.PorDos, Boolean.FALSE);
 
         //Then
         Assertions.assertEquals(-2, jugador.obtenerPuntos());
@@ -290,7 +290,7 @@ public class Entrega2Test {
         Ronda ronda = new Ronda(Arrays.asList(jugador), multipleChoicePenalidad);
 
         //When
-        ronda.responder(Arrays.asList("1978"), Multiplicador.PorTres);
+        ronda.responder(Arrays.asList("1978"), Multiplicador.PorTres, Boolean.FALSE);
 
         //Then
         Assertions.assertEquals(-3, jugador.obtenerPuntos());
@@ -310,7 +310,7 @@ public class Entrega2Test {
         Ronda ronda = new Ronda(Arrays.asList(jugador), multipleChoiceClasico);
 
         //When
-        ronda.responder(Arrays.asList("Bob Seger"), Multiplicador.PorDos);
+        ronda.responder(Arrays.asList("Bob Seger"), Multiplicador.PorDos, Boolean.FALSE);
 
         //Then
         Assertions.assertEquals(1, jugador.obtenerPuntos());
@@ -329,7 +329,7 @@ public class Entrega2Test {
         Ronda ronda = new Ronda(Arrays.asList(jugador), multipleChoiceClasico);
 
         //When
-        ronda.responder(Arrays.asList("Bob Seger"), Multiplicador.PorTres);
+        ronda.responder(Arrays.asList("Bob Seger"), Multiplicador.PorTres, Boolean.FALSE);
 
         //Then
         Assertions.assertEquals(1, jugador.obtenerPuntos());
@@ -350,7 +350,7 @@ public class Entrega2Test {
 
         //When
 
-        ronda.responder(Arrays.asList("Guns N' Roses"), Multiplicador.PorDos);
+        ronda.responder(Arrays.asList("Guns N' Roses"), Multiplicador.PorDos, Boolean.FALSE);
 
         //Then
         Assertions.assertEquals(1, jugador.obtenerPuntos());
@@ -372,7 +372,7 @@ public class Entrega2Test {
 
         //When
 
-        ronda.responder(Arrays.asList("Guns N' Roses"), Multiplicador.PorTres);
+        ronda.responder(Arrays.asList("Guns N' Roses"), Multiplicador.PorTres, Boolean.FALSE);
 
         //Then
         Assertions.assertEquals(1, jugador.obtenerPuntos());
@@ -396,7 +396,7 @@ public class Entrega2Test {
         Jugador jugador = new Jugador("Jugador1");
         Ronda ronda = new Ronda(Arrays.asList(jugador), orderedChoice);
 
-        ronda.responder(opcionesSeleccionadas);
+        ronda.responder(opcionesSeleccionadas, Multiplicador.PorDefecto, Boolean.FALSE);
 
         Assertions.assertEquals(1,jugador.obtenerPuntos());
     }
@@ -416,7 +416,7 @@ public class Entrega2Test {
         Jugador jugador = new Jugador("Jugador1");
         Ronda ronda = new Ronda(Arrays.asList(jugador), orderedChoice);
 
-        ronda.responder(opcionesSeleccionadas);
+        ronda.responder(opcionesSeleccionadas, Multiplicador.PorDefecto, Boolean.FALSE);
 
         Assertions.assertEquals(0,jugador.obtenerPuntos());
 

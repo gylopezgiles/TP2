@@ -59,12 +59,6 @@ public class GroupChoice implements Preguntable <List<List<String>>>{
     }
 
     @Override
-    public int establecerPuntuacion(List<List<String>> nombresOpcionesSeleccionadas) {
-        Exclusividad exclusividad = new Exclusividad();
-        return establecerPuntuacion(nombresOpcionesSeleccionadas, Multiplicador.PorDefecto, exclusividad);
-    }
-
-    @Override
     public int establecerPuntuacion(List<List<String>> nombresOpcionesSeleccionadas, MultiplicableStrategy multiplicador, Exclusividad exclusividad) {
         exclusividad.activarExclusividad();
         List<Opcion> respuestasPrimerGrupo = obtenerOpcionesPorNombre(nombresOpcionesSeleccionadas.get(0));

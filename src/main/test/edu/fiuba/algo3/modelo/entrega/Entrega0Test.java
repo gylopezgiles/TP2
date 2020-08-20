@@ -3,6 +3,8 @@ package edu.fiuba.algo3.modelo.entrega;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Ronda;
 import edu.fiuba.algo3.modelo.excepciones.*;
+import edu.fiuba.algo3.modelo.exclusividad.Exclusividad;
+import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.CreadorPregunta;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
@@ -49,7 +51,7 @@ public class Entrega0Test {
         Ronda ronda = new Ronda(jugadores, verdaderoFalsoClasico);
 
         //When
-        ronda.responder(opcionSeleccionada);
+        ronda.responder(opcionSeleccionada, Multiplicador.PorDefecto, Boolean.FALSE);
 
         //Then
         Assertions.assertEquals(1, jugador.obtenerPuntos());

@@ -36,12 +36,6 @@ public abstract class VerdaderoFalso implements Preguntable<List<String>> {
     }
 
     @Override
-    public int establecerPuntuacion(List<String> nombresOpcionesSeleccionadas) {
-        Exclusividad exclusividad = new Exclusividad();
-        return establecerPuntuacion(nombresOpcionesSeleccionadas, Multiplicador.PorDefecto, exclusividad);
-    }
-
-    @Override
     public List<Opcion> obtenerOpciones(){
         return opciones;
     }

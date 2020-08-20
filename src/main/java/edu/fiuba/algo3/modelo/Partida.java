@@ -58,19 +58,14 @@ public class Partida {
         return ronda.obtenerJugadorTurno();
     }
 
-    public <T> void responder(T opcionesSeleccionadas, Boolean aplicaExclusividad){
+    public <T> void responder(T opcionesSeleccionadas, MultiplicableStrategy multiplicador, Boolean aplicaExclusividad){
         Jugador jugadorTurno = obtenerJugadorTurno();
         if (aplicaExclusividad && exclusividadPorJugador.get(jugadorTurno) < MAX_EXCLUSIVIDAD_POR_JUGADOR) {
             exclusividadPorJugador.replace(jugadorTurno, exclusividadPorJugador.get(jugadorTurno)+1);
-            ronda.responder(opcionesSeleccionadas, aplicaExclusividad);
         } else {
-            ronda.responder(opcionesSeleccionadas);
+            aplicaExclusividad = Boolean.FALSE;
         }
-        actualizarTurno();
-    }
-
-    public <T> void responder(T opcionesSeleccionadas, MultiplicableStrategy multiplicador){
-        ronda.responder(opcionesSeleccionadas, multiplicador);
+        ronda.responder(opcionesSeleccionadas, multiplicador, aplicaExclusividad);
         actualizarTurno();
     }
 

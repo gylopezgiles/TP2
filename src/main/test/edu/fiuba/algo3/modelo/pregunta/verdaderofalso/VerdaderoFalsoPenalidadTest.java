@@ -7,6 +7,7 @@ import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 import edu.fiuba.algo3.modelo.pregunta.TipoPregunta;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -14,6 +15,13 @@ import java.util.Collections;
 import java.util.List;
 
 public class VerdaderoFalsoPenalidadTest {
+
+    private Exclusividad exclusividad;
+
+    @BeforeEach
+    public void setup(){
+        exclusividad = new Exclusividad();
+    }
 
     @Test
     public void debeCrearUnaPreguntaVerdaderFalsoConOpciones() throws ParametrosInvalidosExcepcion {
@@ -86,7 +94,7 @@ public class VerdaderoFalsoPenalidadTest {
 
         Preguntable verdaderoFalsoConPenalidad = new VerdaderoFalsoPenalidad(preguntaTexto, opciones);
 
-        Assertions.assertEquals(1, verdaderoFalsoConPenalidad.establecerPuntuacion(Arrays.asList("Falso")));
+        Assertions.assertEquals(1, verdaderoFalsoConPenalidad.establecerPuntuacion(Arrays.asList("Falso"), Multiplicador.PorDefecto, exclusividad));
     }
 
 
@@ -102,7 +110,7 @@ public class VerdaderoFalsoPenalidadTest {
 
         Preguntable verdaderoFalsoConPenalidad = new VerdaderoFalsoPenalidad(preguntaTexto, opciones);
 
-        Assertions.assertEquals(-1, verdaderoFalsoConPenalidad.establecerPuntuacion(Arrays.asList("Verdadero")));
+        Assertions.assertEquals(-1, verdaderoFalsoConPenalidad.establecerPuntuacion(Arrays.asList("Verdadero"), Multiplicador.PorDefecto, exclusividad));
 
     }
 
@@ -114,7 +122,6 @@ public class VerdaderoFalsoPenalidadTest {
         Opcion opcionCorrecta = new Opcion("Falso", esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
         List<String> opcionSeleccionada = Arrays.asList("Falso");
-        Exclusividad exclusividad = new Exclusividad();
 
         Preguntable verdaderoFalsoConPenalidad = new VerdaderoFalsoPenalidad(preguntaTexto, opciones);
 
@@ -129,7 +136,6 @@ public class VerdaderoFalsoPenalidadTest {
         Opcion opcionCorrecta = new Opcion("Falso", esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcionCorrecta, opcionIncorrecta);
         List<String> opcionSeleccionada = Arrays.asList("Verdadero");
-        Exclusividad exclusividad = new Exclusividad();
 
         Preguntable verdaderoFalsoConPenalidad = new VerdaderoFalsoPenalidad(preguntaTexto, opciones);
 

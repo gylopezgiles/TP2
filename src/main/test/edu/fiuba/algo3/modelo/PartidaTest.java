@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.TipoPreguntaNoImplementadaException;
+import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.CreadorPregunta;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
@@ -52,11 +53,11 @@ public class PartidaTest {
 
         Assertions.assertEquals(Boolean.FALSE, partida.esPartidaFinalizada());
 
-        partida.responder(Arrays.asList("Verdadero"), Boolean.FALSE);
+        partida.responder(Arrays.asList("Verdadero"), Multiplicador.PorDefecto, Boolean.FALSE);
 
         Assertions.assertEquals(Boolean.FALSE, partida.esPartidaFinalizada());
 
-        partida.responder(Arrays.asList("Falso"), Boolean.FALSE);
+        partida.responder(Arrays.asList("Falso"), Multiplicador.PorDefecto, Boolean.FALSE);
 
         Assertions.assertEquals(Boolean.TRUE, partida.esPartidaFinalizada());
 
@@ -75,11 +76,11 @@ public class PartidaTest {
 
         Assertions.assertEquals(Boolean.FALSE, partida.esPartidaFinalizada());
 
-        partida.responder(Arrays.asList("Verdadero"), Boolean.FALSE);
+        partida.responder(Arrays.asList("Verdadero"), Multiplicador.PorDefecto, Boolean.FALSE);
 
         Assertions.assertEquals(Boolean.FALSE, partida.esPartidaFinalizada());
 
-        partida.responder(Arrays.asList("Falso"), Boolean.FALSE);
+        partida.responder(Arrays.asList("Falso"), Multiplicador.PorDefecto, Boolean.FALSE);
 
         Assertions.assertEquals(Boolean.FALSE, partida.esPartidaFinalizada());
         Assertions.assertEquals(siguientePregunta, partida.obtenerPreguntaTurno());
@@ -99,16 +100,16 @@ public class PartidaTest {
         Partida partida = new Partida(nombresJugadores, preguntas);
 
         //ronda 1
-        partida.responder(Arrays.asList("Falso"), Boolean.TRUE);
-        partida.responder(Arrays.asList("Verdadero"), Boolean.FALSE);
+        partida.responder(Arrays.asList("Falso"), Multiplicador.PorDefecto, Boolean.TRUE);
+        partida.responder(Arrays.asList("Verdadero"), Multiplicador.PorDefecto, Boolean.FALSE);
 
         //ronda 2
-        partida.responder(Arrays.asList("Falso"), Boolean.TRUE);
-        partida.responder(Arrays.asList("Verdadero"), Boolean.FALSE);
+        partida.responder(Arrays.asList("Falso"), Multiplicador.PorDefecto, Boolean.TRUE);
+        partida.responder(Arrays.asList("Verdadero"), Multiplicador.PorDefecto, Boolean.FALSE);
 
         //ronda 3
-        partida.responder(Arrays.asList("Falso"), Boolean.TRUE);
-        partida.responder(Arrays.asList("Verdadero"), Boolean.FALSE);
+        partida.responder(Arrays.asList("Falso"), Multiplicador.PorDefecto, Boolean.TRUE);
+        partida.responder(Arrays.asList("Verdadero"), Multiplicador.PorDefecto, Boolean.FALSE);
 
         List<Jugador> jugadores = partida.obtenerJugadores();
         Jugador jugador1 = jugadores.get(0);

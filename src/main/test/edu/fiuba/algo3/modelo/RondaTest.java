@@ -45,7 +45,7 @@ public class RondaTest {
 
         Ronda ronda = new Ronda(jugadores, pregunta);
 
-        ronda.responder(opcionSeleccionada);
+        ronda.responder(opcionSeleccionada, Multiplicador.PorDefecto, Boolean.FALSE);
 
         Assertions.assertEquals(1, jugador1.obtenerPuntos());
     }
@@ -89,10 +89,10 @@ public class RondaTest {
 
         Ronda ronda = new Ronda(jugadores, pregunta);
 
-        ronda.responder(opcionSeleccionada1, Multiplicador.PorDos);
+        ronda.responder(opcionSeleccionada1, Multiplicador.PorDos, Boolean.FALSE);
         Boolean esRondaFinalizada = ronda.esRondaFinalizada();
         Jugador jugadorTurno = ronda.obtenerJugadorTurno();
-        ronda.responder(opcionSeleccionada2, Multiplicador.PorDos);
+        ronda.responder(opcionSeleccionada2, Multiplicador.PorDos, Boolean.FALSE);
 
         Assertions.assertEquals(2, jugador1.obtenerPuntos());
         Assertions.assertEquals(Boolean.FALSE, esRondaFinalizada);
@@ -148,11 +148,11 @@ public class RondaTest {
 
         Assertions.assertEquals(Boolean.FALSE, ronda.esRondaFinalizada());
 
-        ronda.responder(Arrays.asList("Verdadero"));
+        ronda.responder(Arrays.asList("Verdadero"), Multiplicador.PorDefecto, Boolean.FALSE);
 
         Assertions.assertEquals(Boolean.FALSE, ronda.esRondaFinalizada());
 
-        ronda.responder(Arrays.asList("Falso"));
+        ronda.responder(Arrays.asList("Falso"), Multiplicador.PorDefecto, Boolean.FALSE);
 
         Assertions.assertEquals(Boolean.TRUE, ronda.esRondaFinalizada());
 

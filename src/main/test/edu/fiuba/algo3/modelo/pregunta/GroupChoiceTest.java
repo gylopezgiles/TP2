@@ -2,6 +2,9 @@ package edu.fiuba.algo3.modelo.pregunta;
 
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 
+import edu.fiuba.algo3.modelo.exclusividad.Exclusividad;
+import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 
@@ -10,6 +13,13 @@ import java.util.Collections;
 import java.util.List;
 
 public class GroupChoiceTest {
+
+    private Exclusividad exclusividad;
+
+    @BeforeEach
+    public void setup(){
+        exclusividad = new Exclusividad();
+    }
 
     @Test
     public void crearGroupChoiceConOpciones()throws ParametrosInvalidosExcepcion {
@@ -116,7 +126,7 @@ public class GroupChoiceTest {
         List<String> respuestasSegundoGrupo  = Arrays.asList("Oslo");
         List<List<String>> respuestas = Arrays.asList(respuestasPrimerGrupo, respuestasSegundoGrupo );
 
-        Assertions.assertEquals(1 , pregunta.establecerPuntuacion(respuestas));
+        Assertions.assertEquals(1 , pregunta.establecerPuntuacion(respuestas, Multiplicador.PorDefecto, exclusividad));
     }
 
 
@@ -141,7 +151,7 @@ public class GroupChoiceTest {
         List<String> respuestasSegundoGrupo  = Arrays.asList("Canberra", "Hawaii", "Oslo");
         List<List<String>> respuestas = Arrays.asList(respuestasPrimerGrupo, respuestasSegundoGrupo );
 
-        Assertions.assertEquals(1, pregunta.establecerPuntuacion(respuestas));
+        Assertions.assertEquals(1, pregunta.establecerPuntuacion(respuestas, Multiplicador.PorDefecto, exclusividad));
     }
 
     @Test
@@ -164,7 +174,7 @@ public class GroupChoiceTest {
         List<List<String>> respuestas = Arrays.asList(respuestasPrimerGrupo, respuestasSegundoGrupo );
 
 
-        Assertions.assertEquals(1, pregunta.establecerPuntuacion(respuestas));
+        Assertions.assertEquals(1, pregunta.establecerPuntuacion(respuestas, Multiplicador.PorDefecto, exclusividad));
     }
 
     @Test
@@ -187,7 +197,7 @@ public class GroupChoiceTest {
         List<String> respuestasSegundoGrupo  = Arrays.asList("Hamilton", "Hawaii", "Oslo");
         List<List<String>> respuestas = Arrays.asList(respuestasPrimerGrupo, respuestasSegundoGrupo );
 
-        Assertions.assertEquals(0, pregunta.establecerPuntuacion(respuestas));
+        Assertions.assertEquals(0, pregunta.establecerPuntuacion(respuestas, Multiplicador.PorDefecto, exclusividad));
     }
 
     @Test
@@ -210,7 +220,7 @@ public class GroupChoiceTest {
         List<String> respuestasSegundoGrupo  = Arrays.asList("Hamilton", "Hawaii", "Auckland");
         List<List<String>> respuestas = Arrays.asList(respuestasPrimerGrupo, respuestasSegundoGrupo );
 
-        Assertions.assertEquals(0, pregunta.establecerPuntuacion(respuestas));
+        Assertions.assertEquals(0, pregunta.establecerPuntuacion(respuestas, Multiplicador.PorDefecto, exclusividad));
     }
 
 
@@ -234,7 +244,7 @@ public class GroupChoiceTest {
         List<String> respuestasSegundoGrupo  = Arrays.asList("Canberra", "Hawaii");
         List<List<String>> respuestas = Arrays.asList(respuestasPrimerGrupo, respuestasSegundoGrupo );
 
-        Assertions.assertEquals(0, pregunta.establecerPuntuacion(respuestas));
+        Assertions.assertEquals(0, pregunta.establecerPuntuacion(respuestas, Multiplicador.PorDefecto, exclusividad));
     }
 
     @Test
@@ -257,7 +267,7 @@ public class GroupChoiceTest {
         List<String> respuestasSegundoGrupo  = Arrays.asList("Oslo", "Canberra", "Hawaii");
         List<List<String>> respuestas = Arrays.asList(respuestasPrimerGrupo, respuestasSegundoGrupo );
 
-        Assertions.assertEquals(1, pregunta.establecerPuntuacion(respuestas));
+        Assertions.assertEquals(1, pregunta.establecerPuntuacion(respuestas, Multiplicador.PorDefecto, exclusividad));
     }
     
     @Test
@@ -276,7 +286,7 @@ public class GroupChoiceTest {
         List<String> respuestasSegundoGrupo  = Arrays.asList("Hawaii");
         List<List<String>> respuestas = Arrays.asList(respuestasPrimerGrupo, respuestasSegundoGrupo );
 
-        Assertions.assertEquals(1, pregunta.establecerPuntuacion(respuestas));
+        Assertions.assertEquals(1, pregunta.establecerPuntuacion(respuestas, Multiplicador.PorDefecto, exclusividad));
     }
 
     @Test
@@ -295,7 +305,7 @@ public class GroupChoiceTest {
         List<String> respuestasSegundoGrupo  = Arrays.asList("Hawaii");
         List<List<String>> respuestas = Arrays.asList(respuestasPrimerGrupo, respuestasSegundoGrupo );
 
-        Assertions.assertEquals(1, pregunta.establecerPuntuacion(respuestas));
+        Assertions.assertEquals(1, pregunta.establecerPuntuacion(respuestas, Multiplicador.PorDefecto, exclusividad));
     }
 
 }

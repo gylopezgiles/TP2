@@ -36,12 +36,6 @@ public class OrderedChoice implements Preguntable <List<String>>{
     }
 
     @Override
-        public int establecerPuntuacion(List<String> nombresOpcionesSeleccionadas) {
-        Exclusividad exclusividad = new Exclusividad();
-        return establecerPuntuacion(nombresOpcionesSeleccionadas, Multiplicador.PorDefecto, exclusividad);
-    }
-
-    @Override
     public int establecerPuntuacion(List<String> nombresOpcionesSeleccionadas, MultiplicableStrategy multiplicador, Exclusividad exclusividad) {
         exclusividad.activarExclusividad();
         List<Opcion> opcionesSeleccionadas = obtenerOpcionesPorNombre(nombresOpcionesSeleccionadas);

@@ -1,10 +1,13 @@
 package edu.fiuba.algo3.modelo.pregunta.multiplechoice;
 
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
+import edu.fiuba.algo3.modelo.exclusividad.Exclusividad;
+import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 import edu.fiuba.algo3.modelo.pregunta.TipoPregunta;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -17,6 +20,13 @@ import java.util.List;
  */
 
 public class MultipleChoiceConPenalidadTest {
+
+    private Exclusividad exclusividad;
+
+    @BeforeEach
+    public void setup(){
+        exclusividad = new Exclusividad();
+    }
 
     @Test
     public void debeLanzarExcepcionCrearPreguntaSinOpciones() {
@@ -79,7 +89,7 @@ public class MultipleChoiceConPenalidadTest {
         Preguntable multipleChoiceConPenalidad = new MultipleChoiceConPenalidad(preguntaTexto, opciones);
         List<String> opcionesSeleccionadas = Arrays.asList("China", "India", "Japón");
 
-        int puntuacion = multipleChoiceConPenalidad.establecerPuntuacion(opcionesSeleccionadas);
+        int puntuacion = multipleChoiceConPenalidad.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDefecto, exclusividad);
 
         Assertions.assertEquals(3, puntuacion);
         Assertions.assertEquals(TipoPregunta.MultipleChoiceConPenalidad, multipleChoiceConPenalidad.obtenerTipoPregunta());
@@ -97,7 +107,7 @@ public class MultipleChoiceConPenalidadTest {
         Preguntable multipleChoiceConPenalidad = new MultipleChoiceConPenalidad(preguntaTexto, opciones);
         List<String> opcionesSeleccionadas = Arrays.asList("España", "Alemania");
 
-        int puntuacion = multipleChoiceConPenalidad.establecerPuntuacion(opcionesSeleccionadas);
+        int puntuacion = multipleChoiceConPenalidad.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDefecto, exclusividad);
 
         Assertions.assertEquals(2, puntuacion);
     }
@@ -114,7 +124,7 @@ public class MultipleChoiceConPenalidadTest {
         Preguntable multipleChoiceConPenalidad = new MultipleChoiceConPenalidad(preguntaTexto, opciones);
         List<String> opcionesSeleccionadas = Arrays.asList("Egipto", "Kenia", "Brasil");
 
-        int puntuacion = multipleChoiceConPenalidad.establecerPuntuacion(opcionesSeleccionadas);
+        int puntuacion = multipleChoiceConPenalidad.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDefecto, exclusividad);
 
         Assertions.assertEquals(-1, puntuacion);
     }
@@ -132,7 +142,7 @@ public class MultipleChoiceConPenalidadTest {
         Preguntable multipleChoiceConPenalidad = new MultipleChoiceConPenalidad(preguntaTexto, opciones);
         List<String> opcionesSeleccionadas = Arrays.asList("Chile", "México", "Panamá");
 
-        int puntuacion = multipleChoiceConPenalidad.establecerPuntuacion(opcionesSeleccionadas);
+        int puntuacion = multipleChoiceConPenalidad.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDefecto, exclusividad);
 
         Assertions.assertEquals(-2, puntuacion);
     }
@@ -150,7 +160,7 @@ public class MultipleChoiceConPenalidadTest {
         Preguntable multipleChoiceConPenalidad = new MultipleChoiceConPenalidad(preguntaTexto, opciones);
         List<String> opcionesSeleccionadas = Arrays.asList("Rusia", "Lituania", "Estados Unidos");
 
-        int puntuacion = multipleChoiceConPenalidad.establecerPuntuacion(opcionesSeleccionadas);
+        int puntuacion = multipleChoiceConPenalidad.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDefecto, exclusividad);
 
         Assertions.assertEquals(-3, puntuacion);
     }

@@ -7,6 +7,7 @@ import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 import edu.fiuba.algo3.modelo.pregunta.TipoPregunta;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -14,6 +15,14 @@ import java.util.Collections;
 import java.util.List;
 
 public class MultipleChoiceParcialTest {
+
+    private Exclusividad exclusividad;
+
+    @BeforeEach
+    public void setup(){
+        exclusividad = new Exclusividad();
+    }
+
 
     @Test
     public void debeCrearUnaPreguntaMultipleChoiceParcialConOpciones() throws ParametrosInvalidosExcepcion {
@@ -91,13 +100,14 @@ public class MultipleChoiceParcialTest {
         Opcion opcion2Correcta = new Opcion("Neon", esCorrecta);
         Opcion opcion3Correcta = new Opcion("Kripton", esCorrecta);
         Opcion opcion4Incorrecta = new Opcion("Oxigeno", !esCorrecta);
+        Exclusividad exclusividad = new Exclusividad();
 
         List<Opcion> opciones = Arrays.asList(opcion1Correcta, opcion2Correcta, opcion3Correcta, opcion4Incorrecta);
 
         Preguntable multipleChoiceParcial = new MultipleChoiceParcial(preguntaTexto, opciones);
         List<String> opcionesSeleccionadas = Arrays.asList("Helio", "Neon", "Kripton");
 
-        int puntuacion = multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas);
+        int puntuacion = multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDefecto, exclusividad);
 
         Assertions.assertEquals(3, puntuacion);
     }
@@ -117,7 +127,7 @@ public class MultipleChoiceParcialTest {
         Preguntable multipleChoiceParcial = new MultipleChoiceParcial(preguntaTexto, opciones);
         List<String> opcionesSeleccionadas = Arrays.asList("Helio", "Kripton");
 
-        int puntuacion = multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas);
+        int puntuacion = multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDefecto, exclusividad);
 
         Assertions.assertEquals(2, puntuacion);
     }
@@ -137,7 +147,7 @@ public class MultipleChoiceParcialTest {
         Preguntable multipleChoiceParcial = new MultipleChoiceParcial(preguntaTexto, opciones);
         List<String> opcionesSeleccionadas = Arrays.asList("Helio", "Kripton", "Oxigeno");
 
-        int puntuacion = multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas);
+        int puntuacion = multipleChoiceParcial.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDefecto, exclusividad);
 
         Assertions.assertEquals(0, puntuacion);
     }
@@ -151,7 +161,6 @@ public class MultipleChoiceParcialTest {
         Opcion opcionIncorrecta3 = new Opcion("Ella Fitzgerald", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcionCorrecta1, opcionIncorrecta2, opcionIncorrecta3);
         List<String> opcionesSeleccionadas = Arrays.asList("Nina Simone");
-        Exclusividad exclusividad = new Exclusividad();
 
         Preguntable multipleChoiceParcial = new MultipleChoiceParcial(preguntaTexto, opciones);
 

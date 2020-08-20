@@ -7,6 +7,7 @@ import edu.fiuba.algo3.modelo.pregunta.Opcion;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 import edu.fiuba.algo3.modelo.pregunta.TipoPregunta;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -14,6 +15,13 @@ import java.util.Collections;
 import java.util.List;
 
 public class MultipleChoiceClasicoTest {
+
+    private Exclusividad exclusividad;
+
+    @BeforeEach
+    public void setup(){
+        exclusividad = new Exclusividad();
+    }
 
     @Test
     public void crearMultipleChoiceClasicoConOpciones()throws ParametrosInvalidosExcepcion {
@@ -50,7 +58,7 @@ public class MultipleChoiceClasicoTest {
         //When
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
 
-        Assertions.assertEquals( 1 , multipleChoiceClasico.establecerPuntuacion(opcionesCorrectas));
+        Assertions.assertEquals( 1 , multipleChoiceClasico.establecerPuntuacion(opcionesCorrectas, Multiplicador.PorDefecto, exclusividad));
     }
 
     @Test
@@ -70,7 +78,7 @@ public class MultipleChoiceClasicoTest {
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
 
         //Then
-        Assertions.assertEquals(1, multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas));
+        Assertions.assertEquals(1, multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDefecto, exclusividad));
     }
 
     @Test
@@ -91,7 +99,7 @@ public class MultipleChoiceClasicoTest {
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
 
         //Then
-        Assertions.assertEquals(1, multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas));
+        Assertions.assertEquals(1, multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDefecto, exclusividad));
     }
 
     @Test
@@ -160,7 +168,7 @@ public class MultipleChoiceClasicoTest {
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
         List<String> opcionesSeleccionadas = Arrays.asList("Yo no manejo el rating, yo manejo un Rolls Royce", "MAIAMEEEEEEEEE!!!");
 
-        Assertions.assertEquals(1,multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas));
+        Assertions.assertEquals(1,multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDefecto, exclusividad));
     }
 
     @Test
@@ -178,7 +186,7 @@ public class MultipleChoiceClasicoTest {
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
         List<String> opcionesSeleccionadas = Arrays.asList("El dinero no comprará la felicidad a quien no sabe qué desea","Un pueblo ignorante es un instrumento ciego de su propia destrucción");
 
-        Assertions.assertEquals(0,multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas));
+        Assertions.assertEquals(0,multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDefecto, exclusividad));
     }
 
     @Test
@@ -195,7 +203,7 @@ public class MultipleChoiceClasicoTest {
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
         List<String> opcionesSeleccionadas = Arrays.asList("Yo no manejo el rating, yo manejo un Rolls Royce");
 
-        Assertions.assertEquals(0,multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas));
+        Assertions.assertEquals(0,multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDefecto, exclusividad));
     }
 
     @Test
@@ -212,7 +220,7 @@ public class MultipleChoiceClasicoTest {
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
         List<String> opcionesSeleccionadas = Arrays.asList("Yo no manejo el rating, yo manejo un Rolls Royce","MAIAMEEEEEEEEE!!!","El dinero no comprará la felicidad a quien no sabe qué desea");
 
-        Assertions.assertEquals(0,multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas));
+        Assertions.assertEquals(0,multipleChoiceClasico.establecerPuntuacion(opcionesSeleccionadas, Multiplicador.PorDefecto, exclusividad));
     }
 
     @Test
@@ -224,7 +232,6 @@ public class MultipleChoiceClasicoTest {
         Opcion opcionIncorrecta3 = new Opcion("Radiohead", !esCorrecta);
         List<Opcion> opciones = Arrays.asList(opcionCorrecta1, opcionCorrecta2, opcionIncorrecta3);
         List<String> nombresOpcionesSeleccionadas = Arrays.asList("Creedence Clearwater Revival", "Tina Turner");
-        Exclusividad exclusividad = new Exclusividad();
 
         Preguntable multipleChoiceClasico = new MultipleChoiceClasico(preguntaTexto, opciones);
 
