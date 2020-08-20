@@ -20,54 +20,43 @@ Corrector: **Diego Sánchez**
 
 #### Diagrama de clases
 
-![Modelo Juego](https://github.com/gylopezgiles/TP2/blob/develop/doc/Diagramas/Diagramas_Clase/Imagenes/Modelo%20General%20del%20Juego.png)
+![Modelo Juego](https://github.com/gylopezgiles/TP2/blob/develop/doc/Diagramas/Diagramas_Clase/Imagenes/partida.png)
 
-![Modelo Preguntas](https://github.com/gylopezgiles/TP2/blob/develop/doc/Diagramas/Diagramas_Clase/Imagenes/Modelo%20de%20Pregunta%20usando%20Simple%20Factory.png)
+![Modelo Cargador Preguntas](https://github.com/gylopezgiles/TP2/blob/develop/doc/Diagramas/Diagramas_Clase/Imagenes/cargador.png)
 
-![Modelo Cargador Preguntas](https://github.com/gylopezgiles/TP2/blob/develop/doc/Diagramas/Diagramas_Clase/Imagenes/Modelo%20de%20CargadorPreguntas.png)
+![Modelo Multiplicador](https://github.com/gylopezgiles/TP2/blob/develop/doc/Diagramas/Diagramas_Clase/Imagenes/modificable.png)
 
-![Modelo Multiplicador](https://github.com/gylopezgiles/TP2/blob/develop/doc/Diagramas/Diagramas_Clase/Imagenes/Modelo%20de%20Multiplicador.png)
-
-![Modelo Exclusividad](https://github.com/gylopezgiles/TP2/blob/develop/doc/Diagramas/Diagramas_Clase/Imagenes/Modelo%20Exclusividad.png)
+![Modelo Exclusividad](https://github.com/gylopezgiles/TP2/blob/develop/doc/Diagramas/Diagramas_Clase/Imagenes/exclusividad.png)
 
 #### Diagrama de secuencia
 
-##### VerdaderoFalsoClasico
+##### Responder UI
 
-![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/VerdaderoFalsoClasico/VerdaderoFalsoClasicoCreacion.plantuml)
+![responder ui](https://github.com/gylopezgiles/TP2/blob/develop/doc/Diagramas/Diagramas_Secuencia/imagenes/Responder.png)
 
-![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/VerdaderoFalsoClasico/VerdaderoClasicoResponder.plantuml)
+##### Responder sin aplicar Multiplicador ni Exclusividad backend
 
-![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/VerdaderoFalsoClasico/VerdaderoFalsoClasicoCreacionError.plantuml)
-
-##### VerdaderoFalsoPenalidad
-
-![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/VerdaderoFalsoPenalidad/CrearVerdaderoFalsoPenalidad.plantuml)
-
-![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/VerdaderoFalsoPenalidad/CrearVerdaderoFalsoPenalidadError.plantuml)
-
-![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/VerdaderoFalsoClasico/VerdaderoFalsoClasicoCreacionError.plantuml)
-
-![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/VerdaderoFalsoConPenalidad/alResponderCorrectamenteDebeSumarUnPunto.plantuml)
-
-![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/VerdaderoFalsoConPenalidad/alResponderIncorrectamenteDebeRestarUnPunto.plantuml)
-
-##### MultipleChoiceClasico
-
-![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/MultipleChoiceClasico/MultipleChoiceClasicoCreacion.plantuml)
-
-![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/MultipleChoiceClasico/MultipleChoiceClasicoCreacionError.plantuml)
+![responder sin multiplicador ni exclusividad](https://github.com/gylopezgiles/TP2/blob/develop/doc/Diagramas/Diagramas_Secuencia/imagenes/ResponderBE.png)
 
 
-##### MultipleChoiceParcial
+##### Responder aplicando Multiplicador backend
 
-![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/MultiplieChoiceParcial/MultiplieChoiceParcialCreacion.plantuml)
+![responder aplicando multiplicador](https://github.com/gylopezgiles/TP2/blob/develop/doc/Diagramas/Diagramas_Secuencia/imagenes/ResponderConMultiplcadorBE.png)
 
-![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/MultiplieChoiceParcial/MultipleChoiceParcialCreacionError.plantuml)
 
-![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/MultiplieChoiceParcial/MultipleChoiceParcialSumaPuntosSegunCantOpcionesCorrectas.plantuml)
+##### Responder aplicando Exclusividad backend
 
-![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Secuencia/MultiplieChoiceParcial/MultipleChoiceParcialNoSumaPuntosConOpcionIncorrectaSeleccionada.plantuml)
+![responder aplicando exclusividad](https://github.com/gylopezgiles/TP2/blob/develop/doc/Diagramas/Diagramas_Secuencia/imagenes/ResponderConExclusividadBE.png)
+
+##### Cargar Preguntas
+
+![cargar preguntas](https://github.com/gylopezgiles/TP2/blob/develop/doc/Diagramas/Diagramas_Secuencia/imagenes/CargadorPreguntas.png)
+
+
+##### Fin de ronda
+
+![fin ronda](https://github.com/gylopezgiles/TP2/blob/develop/doc/Diagramas/Diagramas_Secuencia/imagenes/finRonda.png)
+
 
 ### Pre-requisitos
 
@@ -76,7 +65,6 @@ Listado de software/herramientas necesarias para el proyecto
 ```
 java 11
 maven 3.6.0
-...
 ```
 
 ## Ejecutando las pruebas
