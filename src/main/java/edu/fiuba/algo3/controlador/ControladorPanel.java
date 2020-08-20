@@ -11,9 +11,6 @@ import edu.fiuba.algo3.modelo.pregunta.cargador.CargadorPreguntas;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-import java.io.IOException;
 
 
 import java.util.List;

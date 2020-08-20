@@ -50,15 +50,7 @@ public class PanelPregunta extends JPanel {
     }
 
     public void establecerTurno(Preguntable pregunta, Jugador jugador) {
-        try {
-            empezarMusica();
-        } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
-            log.info(String.format("Error al cargar musica"));
-        } catch (IOException ioException) {
-            log.info(String.format("Error al cargar musica"));
-        } catch (LineUnavailableException lineUnavailableException) {
-            log.info(String.format("Error al cargar musica"));
-        }
+        empezarMusica();
         agregarTextoPregunta(jugador.obtenerNombre(), pregunta);
         agregarOpciones(pregunta);
         agregarExclusividad(pregunta);
@@ -72,9 +64,17 @@ public class PanelPregunta extends JPanel {
         add(temporizador.obtenerVisual());
     }
 
-    private void empezarMusica() throws IOException, UnsupportedAudioFileException, LineUnavailableException {
-        musica.open(AudioSystem.getAudioInputStream(new File("doc/musica/countdown_kahoot.wav")));
-        musica.start();
+    private void empezarMusica(){
+        try {
+            musica.open(AudioSystem.getAudioInputStream(new File("doc/musica/countdown_kahoot.wav")));
+            musica.start();
+        } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
+            log.info(String.format("Error al cargar musica"));
+        } catch (IOException ioException) {
+            log.info(String.format("Error al cargar musica"));
+        } catch (LineUnavailableException lineUnavailableException) {
+            log.info(String.format("Error al cargar musica"));
+        }
     }
 
     public void detenerMusica(){

@@ -7,7 +7,7 @@ import javax.sound.sampled.LineUnavailableException;
  */
 public class App {
 
-    public static void main(String[] args) throws LineUnavailableException {
+    public static void main(String[] args) {
 
         Kahoot kahoot = new Kahoot();
         kahoot.iniciar();
