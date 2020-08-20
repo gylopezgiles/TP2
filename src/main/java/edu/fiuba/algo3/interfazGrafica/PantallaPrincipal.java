@@ -41,6 +41,7 @@ public class PantallaPrincipal extends JFrame {
     }
 
     public void iniciarPartida() {
+        panelInicial.detenerMusica();
         panelInicial.setVisible(Boolean.FALSE);
         add(panelPregunta);
     }
@@ -58,7 +59,10 @@ public class PantallaPrincipal extends JFrame {
     }
 
     public void finalizarPartida(List<Jugador> jugadores) {
+        panelPregunta.detenerMusica();
+        panelPregunta.terminarMusica();
         panelPregunta.setVisible(Boolean.FALSE);
+        panelPregunta.removeAll();
         panelFinJuego = new PanelFinJuego(jugadores);
         add(panelFinJuego);
     }
