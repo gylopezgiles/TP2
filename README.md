@@ -20,11 +20,15 @@ Corrector: **Diego Sánchez**
 
 #### Diagrama de clases
 
-![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Clase/partida/partida.plantuml)
+![Modelo Juego](https://github.com/gylopezgiles/TP2/blob/develop/doc/Diagramas/Diagramas_Clase/Imagenes/Modelo%20General%20del%20Juego.png)
 
-![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Clase/pregunta/pregunta.plantuml)
+![Modelo Preguntas](https://github.com/gylopezgiles/TP2/blob/develop/doc/Diagramas/Diagramas_Clase/Imagenes/Modelo%20de%20Pregunta%20usando%20Simple%20Factory.png)
 
-![dc](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/gylopezgiles/TP2/develop/doc/Diagramas/Diagramas_Clase/modificable/modificable.plantuml)
+![Modelo Cargador Preguntas](https://github.com/gylopezgiles/TP2/blob/develop/doc/Diagramas/Diagramas_Clase/Imagenes/Modelo%20de%20CargadorPreguntas.png)
+
+![Modelo Multiplicador](https://github.com/gylopezgiles/TP2/blob/develop/doc/Diagramas/Diagramas_Clase/Imagenes/Modelo%20de%20Multiplicador.png)
+
+![Modelo Exclusividad](https://github.com/gylopezgiles/TP2/blob/develop/doc/Diagramas/Diagramas_Clase/Imagenes/Modelo%20Exclusividad.png)
 
 #### Diagrama de secuencia
 

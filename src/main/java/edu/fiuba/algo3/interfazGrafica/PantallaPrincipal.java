@@ -3,13 +3,11 @@ package edu.fiuba.algo3.interfazGrafica;
 import edu.fiuba.algo3.controlador.ControladorPanel;
 import edu.fiuba.algo3.interfazGrafica.pregunta.PanelPregunta;
 import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.modelo.exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 
 import javax.imageio.ImageIO;
 import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
 import java.io.FileInputStream;
@@ -45,7 +43,7 @@ public class PantallaPrincipal extends JFrame {
         add(panelPregunta);
     }
 
-    public void establecerTurno(Preguntable pregunta, Jugador jugador) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+    public void establecerTurno(Preguntable pregunta, Jugador jugador) {
         panelPregunta.detenerMusica();
         panelPregunta.removeAll();
         panelPregunta.establecerTurno(pregunta, jugador);
@@ -68,9 +66,23 @@ public class PantallaPrincipal extends JFrame {
     }
     public Multiplicador obtenerMultiplicador(){ return  panelPregunta.obtenerMultiplicador();}
 
+    public void mostrarMensajeNombresJugadoresInvalidos(String nombresInvalidosExcepcion) {
+        panelInicial.mostrarMensajeEnPantalla(nombresInvalidosExcepcion);
+        panelInicial.setVisible(Boolean.FALSE);
+        panelInicial.repaint();
+        panelInicial.setVisible(Boolean.TRUE);
+    }
+
+    public void mostrarMensajePreguntasNoCargadas(String noHayPreguntasCargadas) {
+        panelInicial.removeAll();
+        panelInicial.mostrarMensajeEnPantalla(noHayPreguntasCargadas);
+        panelInicial.setVisible(Boolean.FALSE);
+        panelInicial.repaint();
+        panelInicial.setVisible(Boolean.TRUE);
+    }
+  
     public void establecerVisualTemporizador(int contador){
         panelPregunta.establecerVisualTemporizador(contador);
-
     }
 
     private void setImagenMiniatura(){

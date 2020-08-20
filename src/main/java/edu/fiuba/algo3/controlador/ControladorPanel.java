@@ -3,16 +3,15 @@ package edu.fiuba.algo3.controlador;
 import edu.fiuba.algo3.interfazGrafica.PantallaPrincipal;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Partida;
+import edu.fiuba.algo3.modelo.excepciones.NombresInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 import edu.fiuba.algo3.modelo.pregunta.cargador.CargadorPreguntas;
 
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
+
 import java.util.List;
 
 public class ControladorPanel implements ActionListener {
@@ -36,53 +35,33 @@ public class ControladorPanel implements ActionListener {
             case "JUGAR":
                 try {
                     jugar();
-                } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
-                    unsupportedAudioFileException.printStackTrace();
-                } catch (IOException ioException) {
-                    ioException.printStackTrace();
-                } catch (LineUnavailableException lineUnavailableException) {
-                    lineUnavailableException.printStackTrace();
+                } catch (NombresInvalidosExcepcion nombresInvalidosExcepcion) {
+                    pantallaPrincipal.mostrarMensajeNombresJugadoresInvalidos(nombresInvalidosExcepcion.obtenerDescripcion());
+                } catch (ParametrosInvalidosExcepcion noHayPreguntasCargadas) {
+                    pantallaPrincipal.mostrarMensajePreguntasNoCargadas(noHayPreguntasCargadas.obtenerDescripcion());
                 }
                 break;
             case "RESPONDER":
-                try {
                     responder();
-                } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
-                    unsupportedAudioFileException.printStackTrace();
-                } catch (IOException ioException) {
-                    ioException.printStackTrace();
-                } catch (LineUnavailableException lineUnavailableException) {
-                    lineUnavailableException.printStackTrace();
-                }
                 break;
             case "COUNTDOWN":
-                try {
                     countdown();
-                } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
-                    unsupportedAudioFileException.printStackTrace();
-                } catch (IOException ioException) {
-                    ioException.printStackTrace();
-                } catch (LineUnavailableException lineUnavailableException) {
-                    lineUnavailableException.printStackTrace();
-                }
                 break;
         }
 
     }
 
-    private void jugar() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+    private void jugar() throws NombresInvalidosExcepcion, ParametrosInvalidosExcepcion {
         List<String> nombresJugadores = pantallaPrincipal.obtenerJugadores();
-        //TODO: VALIDAR QUE HAYA PREGUNTAS, AGREGAR MENSAJE AL USUARIO SI NO HAY PREGUNTAS O RONDA TIRO UNA EXCEPCION
-        try {
-            partida = new Partida(nombresJugadores, CargadorPreguntas.obtenerInstancia().obtenerPreguntas());
-        } catch (ParametrosInvalidosExcepcion parametrosInvalidosExcepcion) {
-            parametrosInvalidosExcepcion.printStackTrace();
+        if(nombresJugadores.stream().anyMatch(jugador -> jugador.isEmpty())) {
+            throw new NombresInvalidosExcepcion("Deben ingresarse los nombres de ambos jugadores");
         }
+        partida = new Partida(nombresJugadores, CargadorPreguntas.obtenerInstancia().obtenerPreguntas());
         pantallaPrincipal.iniciarPartida();
         establecerTurno();
     }
 
-    private void countdown() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+    private void countdown() {
         if (contador == FIN_TURNO) {
             responder();
             reestablecerTemporizador();
@@ -92,7 +71,7 @@ public class ControladorPanel implements ActionListener {
         }
     }
 
-    private void responder() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+    private void responder()  {
         Object opcionesSeleccionadas = pantallaPrincipal.obtenerOpcionesSeleccionadas();
         Boolean exclusividadSeleccionada = pantallaPrincipal.obtenerExclusividad();
 
@@ -111,7 +90,7 @@ public class ControladorPanel implements ActionListener {
         reestablecerTemporizador();
     }
 
-    private void establecerTurno() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+    private void establecerTurno(){
         Preguntable pregunta = partida.obtenerPreguntaTurno();
         Jugador jugador = partida.obtenerJugadorTurno();
         pantallaPrincipal.establecerTurno(pregunta, jugador);

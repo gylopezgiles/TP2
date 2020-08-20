@@ -5,6 +5,8 @@ import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 import edu.fiuba.algo3.modelo.pregunta.TipoPregunta;
+import edu.fiuba.algo3.modelo.pregunta.cargador.CargadorPreguntas;
+import org.apache.log4j.Logger;
 
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -21,6 +23,8 @@ import static edu.fiuba.algo3.modelo.pregunta.TipoPregunta.MultipleChoiceConPena
 import static edu.fiuba.algo3.modelo.pregunta.TipoPregunta.VerdaderoFalsoPenalidad;
 
 public class PanelPregunta extends JPanel {
+
+    final static Logger log = Logger.getLogger(PanelPregunta.class);
 
     private JButton responder;
     private JPanelPregunta opciones;
@@ -41,8 +45,16 @@ public class PanelPregunta extends JPanel {
         temporizador = new Temporizador();
     }
 
-    public void establecerTurno(Preguntable pregunta, Jugador jugador) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
-        empezarMusica();
+    public void establecerTurno(Preguntable pregunta, Jugador jugador) {
+        try {
+            empezarMusica();
+        } catch (UnsupportedAudioFileException unsupportedAudioFileException) {
+            log.info(String.format("Error al cargar musica"));
+        } catch (IOException ioException) {
+            log.info(String.format("Error al cargar musica"));
+        } catch (LineUnavailableException lineUnavailableException) {
+            log.info(String.format("Error al cargar musica"));
+        }
         agregarTextoPregunta(jugador.obtenerNombre(), pregunta);
         agregarOpciones(pregunta);
         agregarExclusividad(pregunta);
