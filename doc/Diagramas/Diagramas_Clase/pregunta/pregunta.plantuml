@@ -24,43 +24,11 @@ enum TipoPreguntaConcreta{
     GroupChoice
 }
 
-abstract class VerdaderoFalso{
-    ~ opciones: List<Opcion>
-    ~ pregunta: String
-    ~ validarOpciones(opciones: List<Opcion>)
-    - tieneCantidadOpcionesValida(opciones:List<Opcion>): Boolean
-    - tieneOpcionesCorrectas(opciones:List<Opcion>): Boolean
-    - obtenerOpcionesPorNombre(opcionesSeleccionadas: List<String>): List<Opcion>
-}
+abstract class VerdaderoFalso{}
 
-' sin penalidad
-class VerdaderoFalsoClasico{
-    {abstract} + establecerPuntuacion(opciones: List<String>, multiplicador: MultiplicableStrategy, exclusividad: Exclusividad): int
-}
-
-class MultipleChoiceClasico{
-    {abstract} + establecerPuntuacion(opciones: List<String>, multiplicador: MultiplicableStrategy, exclusividad: Exclusividad): int
-    - cantidadDeOpcionesCorrectas(opciones: List<Opcion>): int
-}
-
-class MultipleChoiceParcial{
-    {abstract} + establecerPuntuacion(opciones: List<String>, multiplicador: MultiplicableStrategy), exclusividad: Exclusividad: int
-    - puntajeOpcionesCorrectas(opciones: List<Opcion>): int
-}
-
-' con penalidad
-class VerdaderoFalsoPenalidad{
-    {abstract} + establecerPuntuacion(opciones: List<String>, multiplicador: MultiplicableStrategy, exclusividad: Exclusividad): int
-}
-
-class MultipleChoiceConPenalidad{
-    {abstract} + establecerPuntuacion(opciones: List<String>, multiplicador: MultiplicableStrategy, exclusividad: Exclusividad): int
-    - puntajeOpcionesCorrectas(opciones:List): int
-    - puntajeOpcionesIncorrectas(opciones:List): int
-}
+abstract class MultipleChoice{}
 
 
-' Especiales
 class GroupChoice{
     - opciones: List<Opcion>
     - opcionesPrimerGrupo: List<Opcion>
@@ -83,31 +51,14 @@ class OrderedChoice{
     - obtenerOpcionPorNombre(opcionSeleccionada: String): Opcion
 }
 
-abstract class MultipleChoice{
-    ~ opciones: List<Opcion>
-    ~ pregunta: String
-    ~ validarOpciones(opciones: List<Opcion>)
-    - tieneCantidadOpcionesValida(opciones:List<Opcion>): Boolean
-    - tieneOpcionesCorrectas(opciones:List<Opcion>): Boolean
-    - obtenerOpcionesPorNombre(opcionesSeleccionadas: List<String>): List<Opcion>
-}
-
 
 PreguntaCreador -up->TipoPreguntaConcreta
 PreguntaCreador -down-> Preguntable
 
 Preguntable <|.. VerdaderoFalso
 
-' Preg_Penal
-VerdaderoFalso <|-- VerdaderoFalsoPenalidad
-MultipleChoice <|-left- MultipleChoiceConPenalidad
-
-
-' Pregun_Sin_Penal
-VerdaderoFalso <|-- VerdaderoFalsoClasico
 Preguntable <|.. MultipleChoice
-MultipleChoice <|-- MultipleChoiceParcial
-MultipleChoice <|-- MultipleChoiceClasico
+
 
 Preguntable <|.left. GroupChoice
 Preguntable <|.right. OrderedChoice

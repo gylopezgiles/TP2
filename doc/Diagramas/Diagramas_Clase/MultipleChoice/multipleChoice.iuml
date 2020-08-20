@@ -1,0 +1,41 @@
+
+
+
+@startuml
+!include vista.iuml
+title Modelo de MultipleChoice
+
+abstract class MultipleChoice{
+    ~ opciones: List<Opcion>
+    ~ pregunta: String
+    ~ validarOpciones(opciones: List<Opcion>)
+    - tieneCantidadOpcionesValida(opciones:List<Opcion>): Boolean
+    - tieneOpcionesCorrectas(opciones:List<Opcion>): Boolean
+    - obtenerOpcionesPorNombre(opcionesSeleccionadas: List<String>): List<Opcion>
+}
+
+
+class MultipleChoiceClasico{
+    {abstract} + establecerPuntuacion(opciones: List<String>, multiplicador: MultiplicableStrategy, exclusividad: Exclusividad): int
+    - cantidadDeOpcionesCorrectas(opciones: List<Opcion>): int
+}
+
+class MultipleChoiceParcial{
+    {abstract} + establecerPuntuacion(opciones: List<String>, multiplicador: MultiplicableStrategy), exclusividad: Exclusividad: int
+    - puntajeOpcionesCorrectas(opciones: List<Opcion>): int
+}
+
+class MultipleChoiceConPenalidad{
+    {abstract} + establecerPuntuacion(opciones: List<String>, multiplicador: MultiplicableStrategy, exclusividad: Exclusividad): int
+    - puntajeOpcionesCorrectas(opciones:List): int
+    - puntajeOpcionesIncorrectas(opciones:List): int
+}
+
+
+MultipleChoice <-- MultipleChoiceClasico
+
+MultipleChoice <-- MultipleChoiceConPenalidad
+
+MultipleChoice <-- MultipleChoiceParcial
+
+@enduml

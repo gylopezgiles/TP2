@@ -1,0 +1,29 @@
+
+
+@startuml
+!include vista.iuml
+title Modelo de VerderoFalso
+
+
+abstract class VerdaderoFalso{
+    ~ opciones: List<Opcion>
+    ~ pregunta: String
+    ~ validarOpciones(opciones: List<Opcion>)
+    - tieneCantidadOpcionesValida(opciones:List<Opcion>): Boolean
+    - tieneOpcionesCorrectas(opciones:List<Opcion>): Boolean
+    - obtenerOpcionesPorNombre(opcionesSeleccionadas: List<String>): List<Opcion>
+}
+
+
+class VerdaderoFalsoClasico{
+    {abstract} + establecerPuntuacion(opciones: List<String>, multiplicador: MultiplicableStrategy, exclusividad: Exclusividad): int
+}
+
+class VerdaderoFalsoPenalidad{
+    {abstract} + establecerPuntuacion(opciones: List<String>, multiplicador: MultiplicableStrategy, exclusividad: Exclusividad): int
+}
+
+
+VerdaderoFalso <-- VerdaderoFalsoClasico
+VerdaderoFalso <-- VerdaderoFalsoPenalidad
+@enduml
