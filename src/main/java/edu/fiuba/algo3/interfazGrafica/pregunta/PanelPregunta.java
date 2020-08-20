@@ -82,6 +82,7 @@ public class PanelPregunta extends JPanel {
     }
 
     public void agregarExclusividad(Preguntable pregunta) {
+        exclusividad.setSelected(Boolean.FALSE);
         if(esPreguntaSinPenalidad(pregunta.obtenerTipoPregunta())) {
             add(exclusividad);
         }
