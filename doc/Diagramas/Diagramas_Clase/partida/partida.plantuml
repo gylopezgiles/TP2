@@ -13,9 +13,9 @@ class Jugador{
 
 interface Preguntable{
     + obtenerOpciones():List
-    + establecerPuntuacion(opciones:List): int
-    + establecerPuntuacion(opciones: List<Opcion>, multiplicador: MultiplicableStrategy): int
     + obtenerPregunta():str
+    + obtenerTipoPregunta():TipoPregunta
+    + establecerPuntuacion(opciones: T, multiplicador: MultiplicableStrategy, exclusividad: Exclusividad): int
 }
 
 class Partida {
@@ -24,11 +24,11 @@ class Partida {
     + obtenerPreguntaTurno(): Preguntable
     + obtenerJugadorTurno(): Jugador
     + obtenerJugadores(): List<Jugador>
-    + responder(opcionesSeleccionadas: T, aplicaExclusividad: Boolean)
-    + responder(opcionesSeleccionadas: T, multiplicador: MultiplicableStrategy)
+    + responder(opcionesSeleccionadas: T, multiplicador: MultiplicableStrategy, aplicaExclusividad: Boolean)
     - generarJugadores(nombresJugadores: List<String>): List<Jugador>
     - establecerExclusividadPorJugador()
     - esPartidaFinalizada(): Boolean
+    - actualizarTurno()
 }
 
 class Ronda{
@@ -36,20 +36,19 @@ class Ronda{
     - jugadorTurno: Jugador
     - puntajesRonda Map<Jugador, Integer>
     - aplicanExclusividad: List<Jugador>
+    - estadoRonda: EstadoRonda
     - exclusividad: Exclusividad
     + restablecerRonda(pregunta: Preguntable)
     + obtenerJugadores(): List<Jugador>
     + obtenerPregunta(): Preguntable
     + obtenerJugadorTurno(): Jugador
-    + responder(opcionesSeleccionadas: T)
-    + responder(jugador: Jugador, opciones: List<Opcion>):void
-    + responder(jugador: Jugador, opciones: List<Opcion>, multiplicador: MultiplicableStrategy):void
+    + responder(opciones: List<Opcion>, multiplicador: MultiplicableStrategy, aplicaExclusividad: Boolean):void
     + esRondaFinalizada(): Boolean
-    + aplicarPuntajes()
     - validarRonda(jugadores: List<Jugador>, pregunta: Preguntable)
     - actualizarTurno()
     - actualizarEstadoRonda()
     - cambiarJugadorTurno()
+    - aplicarPuntajes()
 }
 
 enum EstadoRonda{
@@ -59,9 +58,14 @@ enum EstadoRonda{
 }
 
 class ControladorPanel{
+    - contador: int
+    - pantallaPrincipal: PantallaPrincipal
+    - partida: Partida
     - jugar()
     - responder()
     - establecerTurno()
+    - countdown()
+    - reestablecerTemporizador()
 }
 
 interface ActionListener{

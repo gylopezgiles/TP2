@@ -5,7 +5,6 @@ import edu.fiuba.algo3.controlador.ControladorPanel;
 import edu.fiuba.algo3.interfazGrafica.PantallaPrincipal;
 import edu.fiuba.algo3.modelo.pregunta.cargador.CargadorPreguntas;
 
-import javax.sound.sampled.LineUnavailableException;
 import javax.swing.*;
 
 public class Kahoot {

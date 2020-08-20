@@ -1,0 +1,24 @@
+@startuml
+!include vista.iuml
+title Un jugador responde sin multiplicador y sin exclusividad BackEnd
+hide footbox
+
+    ControladorPanel -> Partida: responder(opcionesSeleccionadas, multiplicador, exclusividadSeleccionada)
+
+    Partida -> Ronda: responder(opcionesSeleccionadas, multiplicador, aplicaExclusividad)
+
+    Ronda -> Preguntable: establecerPuntuacion(opcionesSeleccionadas, multiplicador, exclusividad)
+
+    Preguntable --> Ronda: puntos
+
+    activate Ronda
+
+    Ronda -> Ronda: cambiarJugadorTurno()
+
+    Ronda -> Ronda: actualizarEstadoRonda()
+   
+    Partida -> Partida: actualizarTurno()
+
+    deactivate Ronda
+
+@enduml

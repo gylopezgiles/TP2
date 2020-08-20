@@ -1,7 +1,6 @@
 @startuml
 !include vista.iuml
 title Modelo de CargadorPreguntas
-
 class Kahoot {
     - controladorPanel: ControladorPanel
     + iniciar()
@@ -27,19 +26,18 @@ class Pregunta {
     + setDatoPregunta(datoPregunta: DatoPregunta)
 }
 
-class PreguntaCreador{
-    + crearPregunta(tipoPregunta: TipoPregunta): Preguntable
+class CreadorPregunta{
+    + {static} crearPregunta(tipoPregunta: TipoPregunta, pregunta: Str, opciones:List<Opcion>): Preguntable
 }
 
 interface Preguntable{
     + obtenerOpciones():List
     + obtenerPregunta():str
-    + obtenerTipoPregunta(): TipoPregunta
-    + establecerPuntuacion(opciones:List): int
-    + establecerPuntuacion(opciones: List<Opcion>, multiplicador: MultiplicableStrategy, exclusividad: Exclusividad): int
+    + obtenerTipoPregunta():TipoPregunta
+    + establecerPuntuacion(opciones: T, multiplicador: MultiplicableStrategy, exclusividad: Exclusividad): int
 }
 
-enum TipoPreguntaConcreta{
+enum TipoPregunta{
     VerdaderoFalsoClasico
     VerdaderoFalsoPenalidad
     MultipleChoiceClasico
@@ -51,8 +49,9 @@ enum TipoPreguntaConcreta{
 
 Kahoot -down-> CargadorPreguntas
 CargadorPreguntas -> Pregunta
-Pregunta -> PreguntaCreador
-PreguntaCreador -up->TipoPreguntaConcreta
-PreguntaCreador -down-> Preguntable
+Pregunta -> CreadorPregunta
+Pregunta o-right-> TipoPregunta
+CreadorPregunta -up->TipoPregunta
+CreadorPregunta -down-> Preguntable
 
 @enduml

@@ -1,0 +1,20 @@
+@startuml
+!include vista.iuml
+title Cargar Preguntas
+hide footbox
+
+Kahoot -> CargadorPreguntas: obtenerInstancia()
+
+CargadorPreguntas -> CargadorPreguntas: new CargadorPreguntas()
+
+CargadorPreguntas -> ObjectMapper: archivo json
+
+ObjectMapper --> CargadorPreguntas: preguntas
+
+loop por cantidad de preguntas
+    CargadorPreguntas -> Pregunta: parsearPregunta()
+    Pregunta --> CargadorPreguntas: preguntable
+
+end
+
+@enduml

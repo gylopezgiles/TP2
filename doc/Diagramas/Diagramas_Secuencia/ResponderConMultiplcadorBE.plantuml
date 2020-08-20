@@ -1,0 +1,28 @@
+@startuml
+!include vista.iuml
+title Un jugador responde con multiplicador BackEnd
+hide footbox
+
+    ControladorPanel -> Partida: responder(opcionesSeleccionadas, multiplicador, exclusividadSeleccionada)
+
+    Partida -> Ronda: responder(opcionesSeleccionadas, multiplicador, exclusividadSeleccionada)
+
+    Ronda -> Preguntable: establecerPuntuacion(opcionesSeleccionadas, multiplicador, exclusividad)
+
+    Preguntable -> Multiplicador: aplicarMultiplicador(puntos)
+
+    Multiplicador --> Preguntable: puntos
+
+    Preguntable --> Ronda: puntos
+
+    activate Ronda
+
+    Ronda -> Ronda: cambiarJugadorTurno()
+
+    Ronda -> Ronda: actualizarEstadoRonda()
+
+    Partida -> Partida: actualizarTurno()
+
+    deactivate Ronda
+
+@enduml

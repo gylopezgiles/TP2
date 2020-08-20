@@ -1,0 +1,29 @@
+@startuml
+!include vista.iuml
+title Fin de Ronda
+hide footbox
+
+    activate Ronda
+    Ronda -> Ronda: cambiarJugadorTurno()
+
+    Ronda -> Ronda: actualizarEstadoRonda()
+
+    Ronda -> Ronda: aplicarPuntajes()
+
+    Ronda -> Exclusividad: aplicarExclusividad(jugadores, puntajesRonda, aplicanExclusividad)
+
+    deactivate Ronda
+    activate Exclusividad
+    Exclusividad -> Exclusividad: elegirTipoExclusividad(aplicanExclusividad)
+
+    Exclusividad -> EstadoExclusividad: utilizarExclusividad(jugadores, puntajesRonda, modificador)
+    deactivate Exclusividad
+    EstadoExclusividad --> Exclusividad: puntajesRonda
+
+    Exclusividad --> Ronda: puntajesRonda
+
+    loop por cantidad de jugadores
+        Ronda -> Jugador: sumarPuntos(puntajesRonda.get(jugador))
+    end
+
+@enduml

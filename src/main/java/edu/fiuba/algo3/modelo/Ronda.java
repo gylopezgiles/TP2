@@ -3,7 +3,6 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.excepciones.ParametrosInvalidosExcepcion;
 import edu.fiuba.algo3.modelo.exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.multiplicador.MultiplicableStrategy;
-import edu.fiuba.algo3.modelo.multiplicador.Multiplicador;
 import edu.fiuba.algo3.modelo.pregunta.Preguntable;
 
 import java.util.*;
