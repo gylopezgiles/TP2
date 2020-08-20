@@ -155,4 +155,8 @@ public class PanelPregunta extends JPanel {
     public void establecerVisualTemporizador(int contador){
         temporizador.establecerVisual(contador);
     }
+
+    public void detenerTemporizador() {
+        temporizador.pausarTemporizador();
+    }
 }

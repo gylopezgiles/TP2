@@ -61,6 +61,7 @@ public class PantallaPrincipal extends JFrame {
     public void finalizarPartida(List<Jugador> jugadores) {
         panelPregunta.detenerMusica();
         panelPregunta.terminarMusica();
+        panelPregunta.detenerTemporizador();
         panelPregunta.setVisible(Boolean.FALSE);
         panelPregunta.removeAll();
         panelFinJuego = new PanelFinJuego(jugadores);
