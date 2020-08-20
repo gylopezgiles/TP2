@@ -39,4 +39,8 @@ public class Temporizador {
         timer.setActionCommand("COUNTDOWN");
     }
 
+    public void pausarTemporizador() {
+        timer.stop();
+    }
+
 }
