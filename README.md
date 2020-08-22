@@ -18,6 +18,8 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 
 Corrector: **Diego Sánchez**
 
+**Informe** - [Link](https://github.com/gylopezgiles/TP2/blob/develop/doc/Informe/Informe%20TP2%20Algoritmos%20y%20Programacion%20III.pdf)
+
 #### Diagrama de clases
 
 ![Modelo Juego](https://github.com/gylopezgiles/TP2/blob/develop/doc/Diagramas/Diagramas_Clase/Imagenes/partida.png)
